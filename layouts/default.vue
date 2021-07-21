@@ -134,7 +134,7 @@ export default Vue.extend({
         {
           type: 'application/ld+json',
           json: {
-            '@context': 'http://schema.org',
+            '@context': 'https://schema.org',
             '@type': 'SpecialAnnouncement',
             datePosted: dayjs(date).toISOString(),
             expires: dayjs(date).add(1, 'day').toISOString(),
@@ -170,13 +170,13 @@ export default Vue.extend({
         {
           type: 'application/ld+json',
           json: {
-            '@context': 'http://schema.org',
+            '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
             itemListElement: [
               {
                 '@type': 'ListItem',
                 position: 1,
-                name: 'まとめTOP',
+                name: '最新感染動向',
                 item: 'https://iwate.stopcovid19.jp/',
               },
               {
@@ -200,37 +200,37 @@ export default Vue.extend({
               {
                 '@type': 'ListItem',
                 position: 2,
-                name: '日別陽性者数',
+                name: '報告日別陽性数',
                 item: 'https://iwate.stopcovid19.jp/cards/number-of-confirmed-cases/',
               },
               {
                 '@type': 'ListItem',
                 position: 2,
-                name: '陽性者数グラフ',
+                name: '陽性数7日間平均',
                 item: 'https://iwate.stopcovid19.jp/cards/monitoring-number-of-confirmed-cases/',
               },
               {
                 '@type': 'ListItem',
                 position: 2,
-                name: '検査の陽性率',
+                name: '陽性率',
                 item: 'https://iwate.stopcovid19.jp/cards/positive-rate/',
               },
               {
                 '@type': 'ListItem',
                 position: 2,
-                name: '入院患者数',
+                name: '療養数',
                 item: 'https://iwate.stopcovid19.jp/cards/number-of-hospitalized/',
               },
               {
                 '@type': 'ListItem',
                 position: 2,
-                name: '入院病床の状況',
+                name: '入院病床',
                 item: 'https://iwate.stopcovid19.jp/cards/hospital-capacity/',
               },
               {
                 '@type': 'ListItem',
                 position: 2,
-                name: '宿泊療養の状況',
+                name: '宿泊療養',
                 item: 'https://iwate.stopcovid19.jp/cards/hotel-capacity/',
               },
               {
