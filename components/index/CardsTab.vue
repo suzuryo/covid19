@@ -8,7 +8,6 @@
         :href="`#tab-${i}`"
         @click="change"
       >
-        <v-icon class="TabIcon">{{ mdiChartTimelineVariant }}</v-icon>
         {{ item.label }}
       </v-tab>
       <v-tabs-items v-model="tab" touchless>
@@ -21,7 +20,6 @@
 </template>
 
 <script lang="ts">
-import { mdiChartTimelineVariant } from '@mdi/js'
 import Vue from 'vue'
 
 import CardsMonitoring from '@/components/index/CardsMonitoring.vue'
@@ -46,7 +44,6 @@ export default Vue.extend({
           component: CardsReference,
         },
       ],
-      mdiChartTimelineVariant,
     }
   },
   methods: {
@@ -102,9 +99,6 @@ export default Vue.extend({
     &:hover {
       color: $white !important;
     }
-    .TabIcon {
-      color: inherit !important;
-    }
   }
 }
 .v-tabs-items {
@@ -121,7 +115,7 @@ export default Vue.extend({
   }
   .v-tab {
     font-size: px2vw(16) !important;
-    font-weight: normal !important;
+    font-weight: bold !important;
     flex: 1 1 auto;
     width: 100%;
     padding: 0 8px !important;
@@ -132,9 +126,6 @@ export default Vue.extend({
   .v-tab {
     font-size: px2vw(20, 600) !important;
     padding: 0 4px !important;
-  }
-  .TabIcon {
-    font-size: px2vw(24, 600) !important;
   }
 }
 </style>
