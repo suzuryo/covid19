@@ -115,7 +115,7 @@ export default Vue.extend({
   }
   .v-tab {
     font-size: px2vw(16) !important;
-    font-weight: normal !important;
+    font-weight: bold !important;
     flex: 1 1 auto;
     width: 100%;
     padding: 0 8px !important;
