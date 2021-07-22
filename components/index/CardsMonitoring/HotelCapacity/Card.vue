@@ -6,7 +6,15 @@
         title-id="hotel-capacity"
         :date="date"
         :bed-summary="bedSummary"
-      />
+      >
+        <template #notes>
+          <ul>
+            <li v-for="note in $t('HotelCapacityCard.notes')" :key="note">
+              {{ note }}
+            </li>
+          </ul>
+        </template>
+      </hotel-capacity-beds>
       <slot name="breadCrumb" />
     </client-only>
   </v-col>

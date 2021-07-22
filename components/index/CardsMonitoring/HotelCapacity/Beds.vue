@@ -36,11 +36,6 @@
         {{ $t('HotelCapacityCard.overflowed') }}
       </div>
     </div>
-    <div class="legend3">
-      <div v-for="note in $t('HotelCapacityCard.legends3')" :key="note">
-        {{ note }}
-      </div>
-    </div>
     <template #notes>
       <notes-expansion-panel
         class="DataView-ExpansionPanel"
@@ -183,9 +178,5 @@ $bed_size: 16px;
     margin: 1px 0;
     flex-wrap: wrap;
   }
-}
-.legend3 {
-  margin-top: 20px;
-  @include font-size(12);
 }
 </style>
