@@ -30,7 +30,6 @@ import Data from '@/data/data.json'
 import PositiveRate from '@/data/positive_rate.json'
 import PositiveStatus from '@/data/positive_status.json'
 import { getDayjsObject } from '@/utils/formatDate.ts'
-import { getLinksLanguageAlternative } from '@/utils/i18nUtils'
 
 export default {
   components: {
@@ -178,13 +177,6 @@ export default {
 
     return {
       titleTemplate: (title) => `${this.title || title} | ${defaultTitle}`,
-      link: [
-        ...getLinksLanguageAlternative(
-          `cards/${this.$route.params.card}`,
-          this.$i18n.locales,
-          this.$i18n.defaultLocale
-        ),
-      ],
       meta: [
         {
           hid: 'og:url',
