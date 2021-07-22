@@ -41,8 +41,9 @@ def has_hotel_capacity_card(lang:, lang_json:)
   expect(find('#HotelCapacityCard > div > div > div.DataView-Content > div.legend2 > div:nth-child(2)').text).to eq lang_json['HotelCapacityCard']['phase3']
 
   # 凡例3
-  lang_json['HotelCapacityCard']['legends3'].each_with_index do |item, i|
-    expect(find("#HotelCapacityCard > div > div > div.DataView-Content > div.legend3 > div:nth-child(#{1 + i})").text).to eq item
+  find('#HotelCapacityCard > div > div > div > div.NotesExpansionPanel > div > div > button').click
+  lang_json['HotelCapacityCard']['notes'].each_with_index do |item, i|
+    expect(find("#HotelCapacityCard > div > div > div:nth-child(6) > div > div > div > div > div > ul > li:nth-child(#{1 + i})").text).to eq item
   end
 
   if MAIN_SUMMARY_JSON['宿泊療養'] > 300
