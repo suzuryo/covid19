@@ -515,7 +515,7 @@
     "phase2": "Solid lines indicate rooms allocated for Phase 2 (85 rooms)",
     "phase3": "Dotted lines indicate rooms allocated for Phase 3 (300 rooms)",
     "overflowed": "Red lines indicate rooms overflowed from Phase 3 plan",
-    "legends3": [
+    "notes": [
       "Hotel 1 (85 rooms) [Operations started on May 6, 2020]",
       "Hotel 2 (162 rooms) [Operations started on May 20, 2021]",
       "In Operation (85 + 162 = 247 rooms)"
