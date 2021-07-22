@@ -38,7 +38,7 @@
 import dayjs from 'dayjs'
 import PullToRefresh from 'pulltorefreshjs'
 import Vue from 'vue'
-import { LinkPropertyHref, MetaInfo } from 'vue-meta'
+import { MetaInfo } from 'vue-meta'
 import ScaleLoader from 'vue-spinner/src/ScaleLoader.vue'
 
 import NoScript from '@/components/_shared/NoScript.vue'
@@ -50,7 +50,6 @@ import {
   convertDateToJapaneseKanjiFormat,
   getDayjsObject,
 } from '@/utils/formatDate'
-import { getLinksLanguageAlternative } from '@/utils/i18nUtils'
 
 type LocalData = {
   hasNavigation: boolean
@@ -80,28 +79,7 @@ export default Vue.extend({
     }
   },
   head(): MetaInfo {
-    const { htmlAttrs, meta } = this.$nuxtI18nSeo()
-
-    const ogLocale =
-      meta && meta.length > 0
-        ? meta[0]
-        : {
-            hid: 'og:locale',
-            name: 'og:locale',
-            content: this.$i18n.locale,
-          }
-
-    let linksAlternate: LinkPropertyHref[] = []
-
-    const basename = this.getRouteBaseName()
-    // 404 エラーなどのときは this.getRouteBaseName() が null になるため除外
-    if (basename) {
-      linksAlternate = getLinksLanguageAlternative(
-        basename,
-        this.$i18n.locales,
-        this.$i18n.defaultLocale
-      )
-    }
+    const i18nHead = this.$nuxtI18nHead({ addSeoAttributes: true })
 
     const date = Data.patients_summary.data.slice(-1)[0].日付
 
@@ -129,7 +107,9 @@ export default Vue.extend({
     )}${this.$t('Common.対策サイト')}`
 
     return {
-      htmlAttrs,
+      htmlAttrs: {
+        ...i18nHead.htmlAttrs,
+      },
       script: [
         {
           type: 'application/ld+json',
@@ -248,7 +228,7 @@ export default Vue.extend({
           rel: 'canonical',
           href: `https://iwate.stopcovid19.jp${this.$route.path}`,
         },
-        ...linksAlternate,
+        ...i18nHead.link,
       ],
       // Disable prettier for readability purposes
       // eslint-disable-next-line prettier/prettier
@@ -274,7 +254,6 @@ export default Vue.extend({
           property: 'og:url',
           content: `https://iwate.stopcovid19.jp${this.$route.path}`,
         },
-        ogLocale,
         {
           hid: 'og:title',
           property: 'og:title',
@@ -305,6 +284,7 @@ export default Vue.extend({
           name: 'google-site-verification',
           content: 'wy96JdzncNSSkhp1c0EjfVdCXy0LQAMup_BHI0Bhb_Q',
         },
+        ...i18nHead.meta,
       ],
     }
   },
