@@ -27,6 +27,7 @@ const dateTimeFormatsCommon: DateTimeFormat = {
 }
 
 const options: NuxtVueI18n.Options.AllOptionsInterface = {
+  baseUrl: 'https://iwate.stopcovid19.jp',
   strategy: 'prefix_except_default',
   detectBrowserLanguage: false,
   defaultLocale: 'ja',
