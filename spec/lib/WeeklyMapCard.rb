@@ -67,7 +67,6 @@ def has_weekly_map_card(lang:, lang_json:)
   cities.each do |city|
     svg_g_element = find("svg#weekly_map > g[data-name=\"#{city[0]}\"]")
     expect(svg_g_element['data-area']).to eq city[1]
-    expect(svg_g_element['data-code']).to eq city[2]
     svg_g_path_element = find("svg#weekly_map > g[data-name=\"#{city[0]}\"] path")
 
     # 市町村のpathの初期
@@ -78,7 +77,7 @@ def has_weekly_map_card(lang:, lang_json:)
     svg_g_path_element.click
 
     # 市町村のpathのクリック後
-    expect(svg_g_path_element['stroke-width']).to eq '2px'
+    expect(svg_g_path_element['stroke-width']).to eq '3px'
     expect(svg_g_path_element['stroke']).to eq '#999'
 
     # DataSetPanelの値が変わる

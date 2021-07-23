@@ -1,7 +1,36 @@
 <template>
   <data-view :title="title" :title-id="titleId" :date="date">
-    <div id="weekly_map_canvas" ref="weekly_map_canvas">
-      <svg id="weekly_map" :class="isOGP ? `isOGP` : ``" />
+    <div id="weekly_map_canvas">
+      <svg
+        id="weekly_map"
+        :class="isOGP"
+        viewBox="0 0 962 962"
+        preserveAspectRatio="xMinYMin meet"
+        @click="resetDataSetPanel"
+        @mouseout="resetDataSetPanel"
+      >
+        <g
+          v-for="(item, i) in mapData"
+          :key="i"
+          :data-count="item.last7days"
+          :data-name="item.label"
+          :data-area="item.area"
+        >
+          <path
+            stroke="#aaa"
+            stroke-width="1px"
+            :fill="iwateMapColor(item.last7days)"
+            :d="item.d"
+            @click="highlightPath($event, item)"
+            @mouseover="highlightPath($event, item)"
+            @mouseout="unHighlightPath($event)"
+          >
+            <!-- eslint-disable prettier/prettier -->
+            <title>{{ item.label }} ({{ item.area }}) {{ item.last7days }} 例</title>
+            <!--eslint-enable-->
+          </path>
+        </g>
+      </svg>
     </div>
     <template #notes>
       <notes-expansion-panel
@@ -27,14 +56,13 @@
 </template>
 
 <script lang="ts">
-import * as d3 from 'd3'
-import * as topojson from 'topojson-client'
+import tinygradient from 'tinygradient'
 import Vue from 'vue'
 
 import DataView from '@/components/index/_shared/DataView.vue'
 import NotesExpansionPanel from '@/components/index/_shared/DataView/NotesExpansionPanel.vue'
 import DataViewDataSetPanel from '@/components/index/_shared/DataViewDataSetPanel.vue'
-import { MapDataItem } from '@/types/weekly-map'
+import { Cities } from '@/types/weekly-map'
 
 export default Vue.extend({
   components: { DataView, DataViewDataSetPanel, NotesExpansionPanel },
@@ -74,153 +102,60 @@ export default Vue.extend({
       sText: this.info.sText,
     }
 
-    let isOGP = false
-    if (this.$route.query.ogp === 'true') {
-      isOGP = true
-    }
     return {
       dataSetPanel,
-      isOGP,
     }
   },
-  mounted() {
-    this.renderMap()
+  computed: {
+    isOGP() {
+      return this.$route.query.ogp === 'true' ? 'isOGP' : ''
+    },
   },
   methods: {
-    last7days(city: string) {
-      return (this.mapData.find((a: any) => a.label === city) as MapDataItem)
-        .last7days
-    },
-    lastArea(city: string) {
-      return (this.mapData.find((a: any) => a.label === city) as MapDataItem)
-        .area
-    },
-    resetDataSetPanel(event: any) {
+    resetDataSetPanel() {
       this.dataSetPanel.lTextBefore = this.$t('岩手県全域')
       this.dataSetPanel.lText = `${this.last7DaysSum}`
       this.dataSetPanel.sText = this.$t('居住地が県外で県内滞在も含む')
-      event.stopPropagation()
+      // event.stopPropagation()
     },
-    updateDataSetPanel(gElement: any) {
+    highlightPath(event: MouseEvent, item: Cities) {
+      const pathElement = event.currentTarget as SVGPathElement
+      const gElement = pathElement.parentNode as SVGGElement
+      const svgElement = gElement.parentNode as SVGElement
+      pathElement.setAttribute('stroke', '#999')
+      pathElement.setAttribute('stroke-width', '3px')
+      svgElement.insertBefore(gElement, null)
       // 市町村がクリックされたらその地域の情報を表示
       // DataViewDataSetPanelに渡す
-      const name = this.$t(gElement.getAttribute('data-name'))
-      const count = gElement.getAttribute('data-count')
-      const area = this.$t(gElement.getAttribute('data-area'))
-      this.dataSetPanel.lTextBefore = this.$t(`${name}`)
-      this.dataSetPanel.lText = `${count}`
-      this.dataSetPanel.sText = this.$t('{area}を含む', { area })
-    },
-    highlightPath(event: any) {
-      const pathElement = event.currentTarget
-      const gElement = pathElement.parentNode
-      const svgElement = gElement.parentNode
-      // d3.select(pathElement).attr('stroke', '#999').attr('stroke-width', '2px')
-      pathElement.setAttribute('stroke', '#999')
-      pathElement.setAttribute('stroke-width', '2px')
-      svgElement.insertBefore(gElement, null)
-      this.updateDataSetPanel(gElement)
+      this.dataSetPanel.lTextBefore = this.$t(`${item.label}`)
+      this.dataSetPanel.lText = `${item.last7days}`
+      this.dataSetPanel.sText = this.$t('{area}を含む', {
+        area: this.$t(`${item.area}`),
+      })
       event.stopPropagation()
     },
-    renderMap() {
-      d3.json('/03_city.l.topo.json').then((iwate: any) => {
-        const svg = d3.select('#weekly_map_canvas svg')
-        const width = (this.$refs.weekly_map_canvas as Element).clientWidth
-        const topology: any = topojson.feature(iwate, iwate.objects.city)
-        const data = topology.features
-        // topojsonをgeojsonに変換して岩手県が中心に表示されるように整える
-        const projection = d3.geoMercator().translate([width / 2, width / 2])
-        const path = d3.geoPath().projection(projection)
-        const bounds = d3.geoBounds(topology)
-        const center = d3.geoCentroid(topology)
-        const distance = d3.geoDistance(bounds[0], bounds[1])
-        const scale = (width / distance) * 0.9
-        projection.scale(scale).center(center)
+    unHighlightPath(event: MouseEvent) {
+      const pathElement = event.currentTarget as SVGPathElement
+      pathElement.setAttribute('stroke', '#aaa')
+      pathElement.setAttribute('stroke-width', '1px')
+      // event.stopPropagation()
+    },
+    iwateMapColor(last7day: number) {
+      const gradient = tinygradient([
+        '#ffffff',
+        '#fee0d2',
+        '#fcbba1',
+        '#fc9272',
+        '#fb6a4a',
+        '#ef3b2c',
+        '#cb181d',
+        '#a50f15',
+        '#67000d',
+      ])
 
-        // 市町村以外の部分をクリックしたら県全域
-        d3.select('#weekly_map_canvas').on('click', (event) => {
-          this.resetDataSetPanel(event)
-        })
-
-        // 色生成のdomainの準備
-        const colorDomain = [...Array(9)].map((_v, i) =>
-          Math.floor((i * Math.max(this.last7DaysSum, 30)) / 10)
-        )
-
-        // iwateMapColor() の作成
-        // d3.interpolateReds をカスタムして、0は#fffにする
-        const iwateMapColor = d3
-          .scaleLinear<d3.RGBColor>()
-          .domain(colorDomain)
-          .range([
-            d3.rgb('#ffffff'),
-            d3.rgb('#fee0d2'),
-            d3.rgb('#fcbba1'),
-            d3.rgb('#fc9272'),
-            d3.rgb('#fb6a4a'),
-            d3.rgb('#ef3b2c'),
-            d3.rgb('#cb181d'),
-            d3.rgb('#a50f15'),
-            d3.rgb('#67000d'),
-          ])
-
-        // SVGの生成
-        svg
-          .attr('preserveAspectRatio', 'xMinYMin meet') // レスポンシブ用
-          .attr('viewBox', `0 0 ${width} ${width}`) // レスポンシブ用
-          .on('mouseover', (event, _d) => {
-            this.resetDataSetPanel(event)
-          })
-          .selectAll('g')
-          .data(data)
-          .enter()
-          .append('g')
-          .attr('data-count', (d: any) => {
-            // 直近1週間の陽性数
-            return this.last7days(d.properties.N03_004)
-          })
-          .attr('data-name', (d: any) => {
-            // 市町村名
-            return `${d.properties.N03_004}`
-          })
-          .attr('data-code', (d: any) => {
-            // 市町村コード
-            return `${d.properties.N03_007}`
-          })
-          .attr('data-area', (d: any) => {
-            // 管轄保健所
-            return `${this.lastArea(d.properties.N03_004)}`
-          })
-          .append('path')
-          .attr('stroke', '#aaa')
-          .attr('stroke-width', '1px')
-          .attr('fill', (d: any) => {
-            // 直近1週間の陽性数に応じて色を変える
-            const last7days = this.last7days(d.properties.N03_004)
-            return `${iwateMapColor(last7days)}`
-          })
-          .on('mouseenter', (event, _d) => {
-            this.highlightPath(event)
-          })
-          .on('click', (event, _d) => {
-            this.highlightPath(event)
-          })
-          .on('mouseout', (event, _d) => {
-            d3.select(event.currentTarget)
-              .attr('stroke', '#aaa')
-              .attr('stroke-width', '1px')
-          })
-          .attr('d', path as any)
-          .append('svg:title')
-          .text((d: any) => {
-            const last7days = this.last7days(d.properties.N03_004)
-            const city = this.$t(d.properties.N03_004)
-            return this.$t('{city} (管轄保健所管内含む) {last7days} 例', {
-              city,
-              last7days,
-            }) as string
-          })
-      })
+      return gradient.rgbAt(
+        last7day / Math.floor((8 * Math.max(this.last7DaysSum, 30)) / 10)
+      )
     },
   },
 })
