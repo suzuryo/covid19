@@ -43,6 +43,12 @@ def has_positive_rate_card(lang:, lang_json:)
       # 本来は pcr_negative は -27 になるが、マイナスにならないように GoogleSheets で 0 に手動で調整したため、
       # specでの実際の計算では -27 に戻して7日間移動平均を計算する
       n['pcr_negative_count'].to_i - 27
+    elsif Date.parse(n['diagnosed_date']) == Date.new(2021, 7, 23)
+      # 2021/7/24 に発表された 2021/7/23 のデータについて
+      # 検査件数より陽性件数の方が多く出た。
+      # 本来は pcr_negative は -12 になるが、マイナスにならないように GoogleSheets で 0 に手動で調整したため、
+      # specでの実際の計算では -12 に戻して7日間移動平均を計算する
+      n['pcr_negative_count'].to_i - 12
     else
       n['pcr_negative_count'].to_i
     end
@@ -66,6 +72,12 @@ def has_positive_rate_card(lang:, lang_json:)
       # 本来は pcr_negative は -27 になるが、マイナスにならないように GoogleSheets で 0 に手動で調整したため、
       # specでの実際の計算では -27 に戻して7日間移動平均を計算する
       n['pcr_negative_count'].to_i - 27
+    elsif Date.parse(n['diagnosed_date']) == Date.new(2021, 7, 23)
+      # 2021/7/24 に発表された 2021/7/23 のデータについて
+      # 検査件数より陽性件数の方が多く出た。
+      # 本来は pcr_negative は -12 になるが、マイナスにならないように GoogleSheets で 0 に手動で調整したため、
+      # specでの実際の計算では -12 に戻して7日間移動平均を計算する
+      n['pcr_negative_count'].to_i - 12
     else
       n['pcr_negative_count'].to_i
     end
