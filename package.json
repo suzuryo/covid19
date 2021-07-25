@@ -43,7 +43,7 @@
     "cross-env": "7.0.3",
     "dayjs": "1.10.6",
     "nuxt": "2.15.7",
-    "nuxt-i18n": "6.27.3",
+    "nuxt-i18n": "6.28.0",
     "pulltorefreshjs": "0.1.22",
     "tinygradient": "1.1.5",
     "vue": "2.6.14",
