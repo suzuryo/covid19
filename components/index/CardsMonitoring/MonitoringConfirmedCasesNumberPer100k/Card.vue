@@ -178,8 +178,8 @@ const options: ThisTypedComponentOptionsWithRecordProps<
 
     // ここが初期表示される項目
     const select = {
-      text: '中部保健所管内 (花巻市/遠野市/北上市/西和賀町)',
-      value: '中部保健所管内',
+      text: '岩手県全域',
+      value: '岩手県全域',
     }
     const items = Object.entries(hokenArea).map((a) => {
       // 岩手県全域の場合は市町村を()に入れない
