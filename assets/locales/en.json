@@ -443,7 +443,8 @@
     "notes": [
       "Number of new positives in the last week, categorized by city, town, or village of residence, with color added.",
       "Areas with a high number of new positives in the last week are darker in color, and areas with a low number of positives are lighter in color.",
-      "If it is announced as being within the jurisdiction of the local health department, +1 for all municipalities covered by the department."
+      "If it is announced as being within the jurisdiction of the local health department, +1 for all municipalities covered by the department.",
+      "If the place of residence is outside of the prefecture and the place of stay is published, the place of stay should be incorporated into the calculation."
     ]
   },
   "岩手のCOVID-19が気になる有志": "Volunteers who are interested in COVID-19 in Iwate",
