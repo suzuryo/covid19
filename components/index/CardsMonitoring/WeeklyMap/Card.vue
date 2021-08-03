@@ -227,6 +227,7 @@ export default Vue.extend({
       )
       .forEach((patient) => {
         last7DaysSum++
+        // 居住地の処理
         if (patient.居住地 in cities) {
           // 居住地が市町村で発表の場合
           cities[patient.居住地].count++
@@ -244,6 +245,24 @@ export default Vue.extend({
           } else {
             // 居住地が管内にも存在しない場合は県外として処理しておく
             cities['県外'].count++
+          }
+        }
+        // 県外で滞在地がある場合の処理
+        if (patient.居住地 === '県外' && patient.滞在地 !== null) {
+          if (patient.滞在地 in cities) {
+            cities[patient.滞在地].count++
+          } else {
+            // 滞在地が市町村リストに存在しない場合
+            // 保健所管内を取得
+            const areas = Object.keys(cities).filter(
+              (key) => cities[key].area === patient.滞在地
+            )
+            if (areas.length > 0) {
+              // 保健所管内が存在する場合は配下の市町村全て+1する
+              areas.forEach((a) => {
+                cities[a].count++
+              })
+            }
           }
         }
       })

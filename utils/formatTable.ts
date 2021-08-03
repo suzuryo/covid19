@@ -30,6 +30,7 @@ type DataType = {
   確定日: string
   発症日: string | null
   居住地: string | null
+  滞在地: string | null
   年代: string | null
   接触歴: string | null
   yt: string | null
@@ -42,6 +43,7 @@ type TableDataType = {
   確定日: DataType['確定日']
   発症日: DataType['発症日']
   居住地: DataType['居住地']
+  滞在地: DataType['滞在地']
   年代: DataType['年代']
   接触歴: DataType['接触歴']
   yt: DataType['yt']
@@ -77,6 +79,7 @@ export default function (data: DataType[]): TableDateType {
         確定日: d['確定日'] ? d['確定日'] : '不明',
         発症日: occurrenceConfirmedDateDiff(),
         居住地: d['居住地'] ?? '調査中',
+        滞在地: d['滞在地'] ?? null,
         年代: d['年代'] ?? '不明',
         接触歴: d['接触歴'],
         yt: d.yt ? `https://www.youtube.com/watch?v=${d.yt}` : null,

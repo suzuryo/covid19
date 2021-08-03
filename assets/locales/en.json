@@ -408,7 +408,7 @@
       "per 100,000 population in last 7 days"
     ],
     "notes": [
-      "Normally, this \"per 100,000 population index\" is used for \"prefecture\" units.",
+      "Normally, this Per 100,000 Population Index is used for Prefecture Units.",
       "Stage 3 index is 15",
       "Stage 4 index is 25",
       "Calculated using the preliminary population values from the 2020 national census.",
@@ -422,7 +422,8 @@
       "Kamaishi Area (Kamaishi/Ōtsuchi) = 43,109 people",
       "Miyako Area (Miyako/Yamada/Iwaizumi/Tanohata) = 76,524 people",
       "Kuji Area (Kuji/Fudai/Noda/Hirono) = 54,588 people",
-      "Ninohe Area (Ninohe/Karumai/Kunohe/Ichinohe) = 50,833 people"
+      "Ninohe Area (Ninohe/Karumai/Kunohe/Ichinohe) = 50,833 people",
+      "If the place of residence is outside of the prefecture and the place of stay is published, the place of stay should be incorporated into the calculation."
     ]
   },
   "EffectiveReproductionNumberCard": {
@@ -432,7 +433,9 @@
     ],
     "notes": [
       "If the effective reproduction number is less than 1 for a long period of time, the infection is coming to an end.",
-      "When the number of positive individuals is small, a difference of a few individuals can cause a large variation in the effective reproduction number."
+      "When the number of positive individuals is small, a difference of a few individuals can cause a large variation in the effective reproduction number.",
+      "If it is announced as being within the jurisdiction of the local health department, +1 for all municipalities covered by the department.",
+      "If the place of residence is outside of the prefecture and the place of stay is published, the place of stay should be incorporated into the calculation."
     ]
   },
   "NIID 国立感染症研究所": "NIID National Institute of Infectious Diseases",
@@ -443,7 +446,8 @@
     "notes": [
       "Number of new positives in the last week, categorized by city, town, or village of residence, with color added.",
       "Areas with a high number of new positives in the last week are darker in color, and areas with a low number of positives are lighter in color.",
-      "If it is announced as being within the jurisdiction of the local health department, +1 for all municipalities covered by the department."
+      "If it is announced as being within the jurisdiction of the local health department, +1 for all municipalities covered by the department.",
+      "If the place of residence is outside of the prefecture and the place of stay is published, the place of stay should be incorporated into the calculation."
     ]
   },
   "岩手のCOVID-19が気になる有志": "Volunteers who are interested in COVID-19 in Iwate",
@@ -470,7 +474,7 @@
       "通番": "Case Number",
       "確定日": "Confirmed date",
       "発症日": "Outbreak date",
-      "居住地": "Area",
+      "居住地": "Living Area (Stay Area)",
       "年代": "Age",
       "接触歴": "Contact route",
       "📺": "📺",

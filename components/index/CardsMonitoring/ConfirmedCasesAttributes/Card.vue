@@ -78,6 +78,8 @@ export default {
 
       // 居住地
       row['居住地'] = this.getTranslatedWording(row['居住地'])
+      // 滞在地
+      row['滞在地'] = this.getTranslatedWording(row['滞在地'])
 
       // 年代
       if (row['年代'].substr(-1, 1) === '代') {
