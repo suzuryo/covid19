@@ -35,7 +35,10 @@
               }}</time>
             </td>
             <td class="text-start">{{ item['発症日'] }}</td>
-            <td class="text-start">{{ item['居住地'] }}</td>
+            <td class="text-start">
+              {{ item['居住地'] }}
+              <span v-if="item['滞在地']"> ({{ item['滞在地'] }}) </span>
+            </td>
             <td class="text-start">{{ item['年代'] }}</td>
             <td class="text-center">{{ item['接触歴'] }}</td>
             <td class="text-center">

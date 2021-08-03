@@ -54,8 +54,8 @@ def has_confirmed_case_attributes_card
       end
   expect(find('#ConfirmedCasesAttributesCard > div > div > div.DataView-Content > div > div.v-data-table__wrapper > table > tbody > tr:nth-child(1) > td:nth-child(3)').text).to eq d.to_s
 
-  # テーブルの上から1行目をチェックする(居住地)
-  d = DATA_JSON['patients']['data'].last['居住地']
+  # テーブルの上から1行目をチェックする(居住地と滞在地)
+  d = DATA_JSON['patients']['data'].last['滞在地'] ? "#{DATA_JSON['patients']['data'].last['居住地']} (#{DATA_JSON['patients']['data'].last['滞在地']})" : DATA_JSON['patients']['data'].last['居住地']
   expect(find('#ConfirmedCasesAttributesCard > div > div > div.DataView-Content > div > div.v-data-table__wrapper > table > tbody > tr:nth-child(1) > td:nth-child(4)').text).to eq d.to_s
 
   # テーブルの上から1行目をチェックする(年代)
