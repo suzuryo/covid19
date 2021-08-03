@@ -210,8 +210,15 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       // 岩手県全域以外の場合は、選択した保健所管内に属する市町村の陽性者データ
       if (this.select.text !== '岩手県全域') {
         patients = patients.filter((a) => {
-          return [this.select.value, ...hokenArea[this.select.value]].includes(
-            a.居住地
+          // 居住地が県外で滞在地がある場合は、滞在地を元に計算する
+          const stayArea = a.居住地 === '県外' && a.滞在地 ? a.滞在地 : ''
+          return (
+            [this.select.value, ...hokenArea[this.select.value]].includes(
+              a.居住地
+            ) ||
+            [this.select.value, ...hokenArea[this.select.value]].includes(
+              stayArea
+            )
           )
         })
       }
