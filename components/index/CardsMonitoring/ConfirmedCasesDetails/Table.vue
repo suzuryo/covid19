@@ -28,6 +28,28 @@
           <ul :class="$style.group">
             <li :class="[$style.box]">
               <div :class="$style.content">
+                <span>{{ $t('Common.軽症') }}</span>
+                <span>
+                  <strong :class="$style.notDisclosed">
+                    {{ $t('Common.非公開') }}
+                  </strong>
+                  <span :class="$style.dailyDiff">[ - ]</span>
+                </span>
+              </div>
+            </li>
+            <li :class="[$style.box]">
+              <div :class="$style.content">
+                <span>{{ $t('Common.中等症') }}</span>
+                <span>
+                  <strong :class="$style.notDisclosed">
+                    {{ $t('Common.非公開') }}
+                  </strong>
+                  <span :class="$style.dailyDiff">[ - ]</span>
+                </span>
+              </div>
+            </li>
+            <li :class="[$style.box]">
+              <div :class="$style.content">
                 <span>{{ $t('Common.重症') }}</span>
                 <span>
                   <strong>
@@ -273,6 +295,10 @@ $default-boxdiff: 35px;
   strong {
     @include font-size(16);
   }
+  .notDisclosed {
+    font-weight: normal;
+    @include font-size(12);
+  }
 
   span.perTestPositive {
     margin-right: 1em;
@@ -351,6 +377,10 @@ $default-boxdiff: 35px;
 
     strong {
       @include font-size($fz + 2);
+    }
+    .notDisclosed {
+      font-weight: normal;
+      @include font-size($fz - 2);
     }
   }
 

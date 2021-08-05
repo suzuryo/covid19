@@ -18,7 +18,10 @@
     "人": " persons",
     "%": "%",
     "入院": "Hospitalized",
+    "軽症": "Mild cases",
+    "中等症": "Moderate cases",
     "重症": "Severe cases",
+    "非公開": "Not disclosed",
     "宿泊療養": "Recovering at designated hotels",
     "調整中": "Waiting",
     "７日間移動平均": "7 Day Moving Average",
@@ -63,7 +66,9 @@
     ],
     "notes": [
       "( ) is the percentage of the total number of positive cases.",
-      "[ ] is the difference from the yesterday."
+      "[ ] is the difference from the yesterday.",
+      "The number of severe cases will is disclosed, but the number of mild and moderate cases will not be disclosed.",
+      "Severe cases is on ventilator or ECMO"
     ]
   },
   "件": {

@@ -25,11 +25,11 @@ def has_confirmed_cases_details_card(lang:, lang_json:)
   expect(find('#ConfirmedCasesDetailsCard > div > div > div.DataView-Content > ul > li > ul > li:nth-child(1) > div > span:nth-child(2) > span').text).to eq d
 
   # 重症
-  expect(find('#ConfirmedCasesDetailsCard > div > div > div.DataView-Content > ul > li > ul > li:nth-child(1) > ul > li > div > span:nth-child(1)').text).to eq lang_json['Common']['重症'].to_s
+  expect(find('#ConfirmedCasesDetailsCard > div > div > div.DataView-Content > ul > li > ul > li:nth-child(1) > ul > li:nth-child(3) > div > span:nth-child(1)').text).to eq lang_json['Common']['重症'].to_s
   d = number_to_delimited(MAIN_SUMMARY_JSON['重症'])
-  expect(find('#ConfirmedCasesDetailsCard > div > div > div.DataView-Content > ul > li > ul > li:nth-child(1) > ul > li > div > span:nth-child(2) > strong').text).to eq d.to_s
+  expect(find('#ConfirmedCasesDetailsCard > div > div > div.DataView-Content > ul > li > ul > li:nth-child(1) > ul > li:nth-child(3) > div > span:nth-child(2) > strong').text).to eq d.to_s
   d = dailyDiff(MAIN_SUMMARY_JSON['重症前日差'])
-  expect(find('#ConfirmedCasesDetailsCard > div > div > div.DataView-Content > ul > li > ul > li:nth-child(1) > ul > li > div > span:nth-child(2) > span').text).to eq d
+  expect(find('#ConfirmedCasesDetailsCard > div > div > div.DataView-Content > ul > li > ul > li:nth-child(1) > ul > li:nth-child(3) > div > span:nth-child(2) > span').text).to eq d
 
   # 宿泊療養
   expect(find('#ConfirmedCasesDetailsCard > div > div > div.DataView-Content > ul > li > ul > li:nth-child(2) > div > span:nth-child(1)').text).to eq lang_json['Common']['宿泊療養'].to_s
