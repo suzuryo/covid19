@@ -152,9 +152,8 @@ export default Vue.extend({
       border-collapse: collapse;
     }
     th {
-      padding: 8px 10px !important;
+      padding: 6px 5px !important;
       height: auto !important;
-      border-bottom: 1px solid $gray-4 !important;
       color: $gray-2 !important;
       @include font-size(12, true);
 
@@ -167,19 +166,21 @@ export default Vue.extend({
       tr {
         color: $gray-1;
         th {
+          padding: 6px 5px !important;
           border-right: 1px dotted #dfdfdf;
           font-weight: normal;
+          @include font-size(12, true);
           @include lessThan($small) {
-            padding: 8px 2px !important;
+            padding: 5px 2px !important;
           }
         }
         td {
-          padding: 8px 10px !important;
+          padding: 6px 5px !important;
           height: auto !important;
           border-right: 1px dotted #dfdfdf;
           @include font-size(12, true);
           @include lessThan($small) {
-            padding: 8px 4px !important;
+            padding: 5px 4px !important;
           }
           &.text-center {
             text-align: center;
