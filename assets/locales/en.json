@@ -439,7 +439,6 @@
     "notes": [
       "If the effective reproduction number is less than 1 for a long period of time, the infection is coming to an end.",
       "When the number of positive individuals is small, a difference of a few individuals can cause a large variation in the effective reproduction number.",
-      "If it is announced as being within the jurisdiction of the local health department, +1 for all municipalities covered by the department.",
       "If the place of residence is outside of the prefecture and the place of stay is published, the place of stay should be incorporated into the calculation."
     ]
   },
