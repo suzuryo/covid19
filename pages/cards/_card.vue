@@ -21,6 +21,7 @@ import HotelCapacityCard from '@/components/index/CardsMonitoring/HotelCapacity/
 import MonitoringConfirmedCasesNumberCard from '@/components/index/CardsMonitoring/MonitoringConfirmedCasesNumber/Card.vue'
 import MonitoringConfirmedCasesNumberPer100kCard from '@/components/index/CardsMonitoring/MonitoringConfirmedCasesNumberPer100k/Card.vue'
 import PositiveRateCard from '@/components/index/CardsMonitoring/PositiveRate/Card.vue'
+import StageCard from '@/components/index/CardsMonitoring/Stage/Card.vue'
 import TestedNumberCard from '@/components/index/CardsMonitoring/TestedNumber/Card.vue'
 import UntrackedRateCard from '@/components/index/CardsMonitoring/UntrackedRate/Card.vue'
 import WeeklyMapCard from '@/components/index/CardsMonitoring/WeeklyMap/Card.vue'
@@ -50,6 +51,7 @@ export default {
     HospitalizedNumberCard,
     HospitalCapacityCard,
     HotelCapacityCard,
+    StageCard,
   },
   data() {
     let title, updatedAt, cardComponent, cardTitle
@@ -117,6 +119,10 @@ export default {
       case 'hotel-capacity':
         cardComponent = 'hotel-capacity-card'
         cardTitle = this.$t('HotelCapacityCard.title')
+        break
+      case 'stage':
+        cardComponent = 'stage-card'
+        cardTitle = this.$t('StageCard.title')
         break
     }
 

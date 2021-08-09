@@ -442,6 +442,36 @@
       "If the place of residence is outside of the prefecture and the place of stay is published, the place of stay should be incorporated into the calculation."
     ]
   },
+  "StageCard": {
+    "title": "Indicators for stage determination",
+    "指標": "Indicators",
+    "単位": "Unit",
+    "医療提供体制の負荷": "Healthcare delivery system load",
+    "医療のひっ迫具合": "Tightness of healthcare",
+    "入院医療": "Hospitalized care",
+    "確保病床の使用率": "Utilization rate of secured hospital beds",
+    "入院率": "Hospitalization rate",
+    "重症者用病床": "Hospital beds for the severe cases",
+    "療養者数(対人口10万人)": "Number of people under care (per 100,000 population)",
+    "感染の状況": "Status of infection",
+    "PCR陽性率(直近1週間)": "PCR positive rate (last 1 week)",
+    "新規陽性者数(直近1週間・対人口10万人)": "Number of new positives (last 1 week, per 100,000 population)",
+    "感染経路不明割合(直近1週間)": "Rate of unknown route of infection (last 1 week)",
+    "notes": [
+      "Stage 3 is the stage where measures are needed to avoid a rapid increase in the number of infected people and major disruptions in the healthcare delivery system.",
+      "Stage 4 is the stage where action is required to avoid explosive spread of infection and serious dysfunction of the healthcare delivery system.",
+      "The population of Iwate Prefecture in the 2020 Census (preliminary prefectural figures), 1211206, was used for the calculation.",
+      "(*1) Utilization rate of secured hospital beds = hospitalization / 350",
+      "(*2) Hospitalization rate = hospitalization / (hospitalization + residential care + home care + adjustment)",
+      "(*3) Utilization rate of secured hospital beds (severe cases) = severe cases / 45",
+      "(*4) Number of people under care (per 100,000 population) = (hospitalization + residential care + home care + adjustment) * 100000 / 1211206",
+      "(*5) PCR positivity rate (last 1 week) = number of positives in last 1 week / number of tests in last 1 week",
+      "(*6) Number of new positive cases (last 1 week, per 100,000 population) = Number of positive cases in last 1 week * 100000 / 1211206",
+      "(*7) Rate of unknown route of infection (last 1 week) = Number of cases with unknown route of infection in the last week / Number of tests in the last week",
+      "The hospitalization rate is applied when the number of people under treatment (per 100,000 population) is 10 or more.",
+      "If the denominator of the calculation is zero, it should be written as \"-\" ."
+    ]
+  },
   "NIID 国立感染症研究所": "NIID National Institute of Infectious Diseases",
   "COVID-19感染報告者数に基づく簡易実効再生産数推定方法(IASR Vol.42 p128-129: 2021年6月号)": "COVID-19感染報告者数に基づく簡易実効再生産数推定方法(IASR Vol.42 p128-129: 2021年6月号)",
   "を用いて計算": "",
