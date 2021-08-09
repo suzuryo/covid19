@@ -17,6 +17,7 @@ import HotelCapacityCard from '@/components/index/CardsMonitoring/HotelCapacity/
 import MonitoringConfirmedCasesNumberCard from '@/components/index/CardsMonitoring/MonitoringConfirmedCasesNumber/Card.vue' // 新規陽性者数の7日間移動平均
 import MonitoringConfirmedCasesNumberPer100kCard from '@/components/index/CardsMonitoring/MonitoringConfirmedCasesNumberPer100k/Card.vue' // 新規陽性者数の7日間移動平均対人口10万人
 import PositiveRateCard from '@/components/index/CardsMonitoring/PositiveRate/Card.vue' // 検査の陽性率・PCR検査の7日間移動平均
+import StageCard from '@/components/index/CardsMonitoring/Stage/Card.vue' // ステージ判断のための指標
 import TestedNumberCard from '@/components/index/CardsMonitoring/TestedNumber/Card.vue' // 検査実施件数
 import UntrackedRateCard from '@/components/index/CardsMonitoring/UntrackedRate/Card.vue' // 接触歴等不明者数(7日間移動平均)・前週比
 import WeeklyMapCard from '@/components/index/CardsMonitoring/WeeklyMap/Card.vue' // 直近1週間の陽性例マップ
@@ -28,6 +29,7 @@ export default Vue.extend({
   data() {
     return {
       rows: [
+        [StageCard],
         [ConfirmedCasesDetailsCard, WeeklyMapCard],
         [
           MonitoringConfirmedCasesNumberPer100kCard,
