@@ -467,7 +467,7 @@
       "(*4) Number of people under care (per 100,000 population) = (hospitalization + residential care + home care + adjustment) * 100000 / 1211206",
       "(*5) PCR positivity rate (last 1 week) = number of positives in last 1 week / number of tests in last 1 week",
       "(*6) Number of new positive cases (last 1 week, per 100,000 population) = Number of positive cases in last 1 week * 100000 / 1211206",
-      "(*7) Rate of unknown route of infection (last 1 week) = Number of cases with unknown route of infection in the last week / Number of tests in the last week",
+      "(*7) Rate of unknown route of infection (last 1 week) = Number of cases with unknown route of infection in the last week / Number of positive cases in the last 1 week",
       "The hospitalization rate is applied when the number of people under treatment (per 100,000 population) is 10 or more.",
       "If the denominator of the calculation is zero, it should be written as \"-\" ."
     ]
