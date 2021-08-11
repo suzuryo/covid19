@@ -227,35 +227,25 @@ export default Vue.extend({
       )
       .forEach((patient) => {
         last7DaysSum++
-        // 居住地の処理
-        if (patient.居住地 in cities) {
-          // 居住地が市町村で発表の場合
-          cities[patient.居住地].count++
-        } else {
-          // 居住地が市町村リストに存在しない場合
-          // 保健所管内を取得
-          const areas = Object.keys(cities).filter(
-            (key) => cities[key].area === patient.居住地
-          )
-          if (areas.length > 0) {
-            // 保健所管内が存在する場合は配下の市町村全て+1する
-            areas.forEach((a) => {
-              cities[a].count++
-            })
+        // 居住地と滞在地の両方が存在したら、滞在地を優先してカウントする
+        // 1. 滞在地が無し、居住地が市町村 => 居住地の市町村に+1
+        // 2. 滞在地が無し、居住地が県外 => 県外に+1
+        // 3. 滞在地が無し、居住地が管内 => 居住地の管内に+1
+        // 4. 滞在地が市町村、居住地が市町村 => 滞在地の市町村に+1
+        // 5. 滞在地が市町村、居住地が県外 => 滞在地の市町村に+1
+        // 6. 滞在地が市町村、居住地が管内 => 滞在地の市町村に+1
+        // 7. 滞在地が管内、居住地が市町村 => 滞在地の管内に+1
+        // 8. 滞在地が管内、居住地が管内 => 滞在地の管内に+1
+        // 9. 滞在地が管内、居住地が県外 => 滞在地の管内に+1
+        // 10. その他
+        if (patient.滞在地 === null) {
+          if (patient.居住地 in cities) {
+            // 1, 2
+            cities[patient.居住地].count++
           } else {
-            // 居住地が管内にも存在しない場合は県外として処理しておく
-            cities['県外'].count++
-          }
-        }
-        // 県外で滞在地がある場合の処理
-        if (patient.居住地 === '県外' && patient.滞在地 !== null) {
-          if (patient.滞在地 in cities) {
-            cities[patient.滞在地].count++
-          } else {
-            // 滞在地が市町村リストに存在しない場合
-            // 保健所管内を取得
+            // 3
             const areas = Object.keys(cities).filter(
-              (key) => cities[key].area === patient.滞在地
+              (key) => cities[key].area === patient.居住地
             )
             if (areas.length > 0) {
               // 保健所管内が存在する場合は配下の市町村全て+1する
@@ -263,6 +253,20 @@ export default Vue.extend({
                 cities[a].count++
               })
             }
+          }
+        } else if (patient.滞在地 in cities) {
+          // 4, 5, 6
+          cities[patient.滞在地].count++
+        } else {
+          // 7, 8, 9, 10
+          const areas = Object.keys(cities).filter(
+            (key) => cities[key].area === patient.滞在地
+          )
+          if (areas.length > 0) {
+            // 保健所管内が存在する場合は配下の市町村全て+1する
+            areas.forEach((a) => {
+              cities[a].count++
+            })
           }
         }
       })
