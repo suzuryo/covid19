@@ -3,16 +3,13 @@
     <client-only>
       <untracked-rate-chart
         :title-id="'untracked-rate'"
-        :info-titles="[
-          $t('UntrackedRateCard.titles[0]'),
-          $t('UntrackedRateCard.titles[1]'),
-        ]"
+        :info-titles="[$t('UntrackedRateCard.titles[0]')]"
         :chart-id="'untracked-rate-chart'"
         :chart-data="graphData"
         :get-formatter="getFormatter"
         :date="updated"
         :labels="dateList"
-        :unit="[$t('Common.人'), '%']"
+        :unit="[$t('Common.人')]"
         :data-labels="dataLabels"
         :table-labels="tableLabels"
       >
@@ -57,34 +54,24 @@ export default {
     const reportedCount = data.map((d) => d.reported_count)
     const missingCount = data.map((d) => d.missing_count)
     const untrackedRate = data.map((d) => d.weekly_average_untracked_count)
-    const untrackedIncreseRate = data.map(
-      (d) => d.weekly_average_untracked_increse_percent
-    )
     const dateList = data.map((d) => d.diagnosed_date)
     const updated = Data.date
-    const graphData = [
-      reportedCount,
-      missingCount,
-      untrackedRate,
-      untrackedIncreseRate,
-    ]
+    const graphData = [reportedCount, missingCount, untrackedRate]
 
     const dataLabels = [
       this.$t('接触歴等判明者数'),
       this.$t('接触歴等不明者数'),
       this.$t('UntrackedRateCard.titles[0]'),
-      this.$t('前週比'),
     ]
     const tableLabels = [
       this.$t('接触歴等判明者数'),
       this.$t('接触歴等不明者数'),
       this.$t('UntrackedRateCard.titles[0]'),
-      this.$t('前週比'),
     ]
 
     const getFormatter = (columnIndex) => {
-      // 7日間移動平均と前週比は小数点第1位まで表示する。
-      if (columnIndex >= 2) {
+      // 7日間移動平均は小数点第1位まで表示する。
+      if (columnIndex === 2) {
         return getNumberToFixedFunction(1)
       }
       return getNumberToLocaleStringFunction()

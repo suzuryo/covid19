@@ -65,7 +65,7 @@ def has_untracked_rate_card
   JA_JSON['UntrackedRateCard']['notes'].each_with_index do |item, index|
     expect(find("#UntrackedRateCard .NotesExpansionPanel .v-expansion-panel-content ul > li:nth-child(#{index + 1})").text).to eq item
   end
-  expect(find('#UntrackedRateCard .NotesExpansionPanel .v-expansion-panel-content ul > li:nth-child(4)').text).to eq JA_JSON['Common']['7MA']
+  expect(find('#UntrackedRateCard .NotesExpansionPanel .v-expansion-panel-content ul > li:nth-child(3)').text).to eq JA_JSON['Common']['7MA']
 
   # 注釈を表示ボタンをクリックすると閉じる
   expect(page).to have_selector('#UntrackedRateCard .NotesExpansionPanel .v-expansion-panel-content')

@@ -525,13 +525,11 @@
   },
   "UntrackedRateCard": {
     "titles": [
-      "Number of Unlinked 7-MA (Positive cases with unknown routes of infection) ",
-      "Week-over-week change"
+      "Number of Unlinked 7-MA (Positive cases with unknown routes of infection) "
     ],
     "notes": [
       "The new positive cases are classified into those with unlink (unknown contact history) or with link (known contact history) as of the date of publication.",
-      "It does not reflect the existence of contact history at the time of publication, which may be revealed by additional investigation after publication.",
-      "Week-over-week change is a comparison with the number of people with unlink, one week earlier (moving average). Intermittent due to small sample count."
+      "It does not reflect the existence of contact history at the time of publication, which may be revealed by additional investigation after publication."
     ]
   },
   "陽性者数/人口": "Number of positive cases/Population",
@@ -568,7 +566,6 @@
   "新型コロナウイルスワクチン接種に関する、厚生労働省のWebサイトです。": "The Ministry of Health, Labour and Welfare's website regarding vaccination against COVID-19.",
   "県内": "Inside Iwate",
   "このサイトの内容物は{creativeCommons}の下に提供されています。": "Content on This Site is Licensed Under a {creativeCommons}",
-  "前週比": "Week-over-week change",
   "指標": "Indexes",
   "計": "Total",
   "床": " beds",
