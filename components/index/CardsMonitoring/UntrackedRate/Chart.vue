@@ -21,17 +21,9 @@
           <div
             v-if="i === 2"
             :style="{
-              background: `repeating-linear-gradient(90deg, ${colors[i].fillColor}, ${colors[i].fillColor} 2px, #fff 2px, #fff 4px)`,
+              background: `repeating-linear-gradient(90deg, ${colors[i].fillColor}, ${colors[i].fillColor} 2px)`,
               border: 0,
               height: '3px',
-            }"
-          />
-          <div
-            v-else-if="i === 3"
-            :style="{
-              background: `repeating-linear-gradient(90deg, ${colors[i].fillColor}, ${colors[i].fillColor} 2px, #fff 2px, #fff 4px)`,
-              border: 0,
-              height: '1px',
             }"
           />
           <div
@@ -103,15 +95,6 @@
         :unit="displayInfo[0].unit"
         :card-path="`/cards/${titleId}`"
       />
-      <!--
-      <data-view-data-set-panel
-        :title="infoTitles[1]"
-        :l-text="displayInfo[1].lText"
-        :s-text="displayInfo[1].sText"
-        :unit="displayInfo[1].unit"
-        :card-path="`/cards/${titleId}`"
-      />
-      -->
     </template>
   </data-view>
 </template>
@@ -156,11 +139,6 @@ type Computed = {
       lText: string
       sText: string
       unit: string
-    },
-    {
-      lText: string
-      sText: string
-      unit: string
     }
   ]
   displayData: DisplayData
@@ -168,7 +146,6 @@ type Computed = {
   displayDataHeader: DisplayData
   displayOptionHeader: Chart.ChartOptions
   scaledTicksYAxisMax: number
-  scaledTicksYAxisMaxRight: number
   tableHeaders: TableHeader[]
   tableData: TableItem[]
 }
@@ -266,12 +243,11 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     },
   },
   data: () => ({
-    displayLegends: [true, true, true, true],
+    displayLegends: [true, true, true],
     colors: [
       getGraphSeriesColor('C'),
       getGraphSeriesColor('A'),
       getGraphSeriesColor('E'),
-      getGraphSeriesColor('H'),
     ],
     canvas: true,
   }),
@@ -282,15 +258,6 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         dataIndex: 2,
         digit: 1,
       })
-      const {
-        lastDay: lastDay3,
-        lastDayData: lastDayData3,
-        dayBeforeRatio: dayBeforeRatio3,
-      } = calcDayBeforeRatio({
-        displayData: this.displayData,
-        dataIndex: 3,
-        digit: 1,
-      })
       return [
         {
           lText: lastDayData,
@@ -299,13 +266,6 @@ const options: ThisTypedComponentOptionsWithRecordProps<
           })}（${this.$t('前日比')}: ${dayBeforeRatio} ${this.unit[0]}）`,
           unit: this.unit[0],
         },
-        {
-          lText: lastDayData3,
-          sText: `${this.$t('{date} の数値', {
-            date: this.$d(lastDay3, 'dateWithoutYear'),
-          })}（${this.$t('前日比')}: ${dayBeforeRatio3} ${this.unit[1]}）`,
-          unit: this.unit[1],
-        },
       ]
     },
     displayData() {
@@ -313,7 +273,6 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         getGraphSeriesColor('C'),
         getGraphSeriesColor('A'),
         getGraphSeriesColor('E'),
-        getGraphSeriesColor('H'),
       ]
       return {
         labels: this.labels,
@@ -347,21 +306,6 @@ const options: ThisTypedComponentOptionsWithRecordProps<
             pointBorderColor: 'rgba(0,0,0,0)',
             borderColor: graphSeries[2].strokeColor,
             borderWidth: 3,
-            borderDash: [4],
-            fill: false,
-            order: 2,
-            lineTension: 0,
-          },
-          {
-            type: 'line',
-            yAxisID: 'y-axis-2',
-            label: this.dataLabels[3],
-            data: this.chartData[3],
-            pointBackgroundColor: 'rgba(0,0,0,0)',
-            pointBorderColor: 'rgba(0,0,0,0)',
-            borderColor: graphSeries[3].strokeColor,
-            borderWidth: 1,
-            borderDash: [2],
             fill: false,
             order: 1,
             lineTension: 0,
@@ -399,7 +343,6 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         .reverse()
     },
     displayOption() {
-      const unit = this.unit[1]
       const getFormatter = this.getFormatter
       const options: Chart.ChartOptions = {
         tooltips: {
@@ -408,24 +351,16 @@ const options: ThisTypedComponentOptionsWithRecordProps<
             label: (tooltipItem) => {
               const formatter = getFormatter(tooltipItem.datasetIndex!)
               const cases = formatter(parseFloat(tooltipItem.value!))
-              let label = `${
+              const label = `${
                 this.dataLabels[tooltipItem.datasetIndex!]
               } : ${cases} ${this.$t('Common.人')}`
-              if (tooltipItem.datasetIndex! >= 3) {
-                label = `${
-                  this.dataLabels[tooltipItem.datasetIndex!]
-                } : ${cases} ${unit}`
-              }
               return label
             },
             title(tooltipItem, data) {
-              if (tooltipItem[0].datasetIndex! < 4) {
-                const date = dayjs(
-                  data.labels![tooltipItem[0].index!].toString()
-                ).format('M/D')
-                return String(date)
-              }
-              return ''
+              const date = dayjs(
+                data.labels![tooltipItem[0].index!].toString()
+              ).format('M/D')
+              return String(date)
             },
           },
         },
@@ -494,24 +429,6 @@ const options: ThisTypedComponentOptionsWithRecordProps<
                 suggestedMax: this.scaledTicksYAxisMax,
               },
             },
-            {
-              id: 'y-axis-2',
-              position: 'right',
-              gridLines: {
-                display: true,
-                drawOnChartArea: false,
-                color: '#E5E5E5', // #E5E5E5
-              },
-              ticks: {
-                suggestedMin: 0,
-                maxTicksLimit: 8,
-                fontColor: '#808080', // #808080
-                suggestedMax: this.scaledTicksYAxisMaxRight,
-                callback(value) {
-                  return `${value}%`
-                },
-              },
-            },
           ],
         },
       }
@@ -545,13 +462,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
           {
             data: [this.displayData.datasets[2].data[n]],
             backgroundColor: 'transparent',
-            yAxisID: 'y-axis-2',
-            borderWidth: 0,
-          },
-          {
-            data: [this.displayData.datasets[3].data[n]],
-            backgroundColor: 'transparent',
-            yAxisID: 'y-axis-2',
+            yAxisID: 'y-axis-1',
             borderWidth: 0,
           },
         ],
@@ -622,25 +533,6 @@ const options: ThisTypedComponentOptionsWithRecordProps<
                 suggestedMax: this.scaledTicksYAxisMax,
               },
             },
-            {
-              id: 'y-axis-2',
-              type: 'linear',
-              position: 'right',
-              gridLines: {
-                display: true,
-                drawOnChartArea: false,
-                color: '#E5E5E5', // #E5E5E5
-              },
-              ticks: {
-                suggestedMin: 0,
-                maxTicksLimit: 8,
-                fontColor: '#808080', // #808080
-                suggestedMax: this.scaledTicksYAxisMaxRight,
-                callback(value) {
-                  return `${value}%`
-                },
-              },
-            },
           ],
         },
         animation: { duration: 0 },
@@ -652,9 +544,6 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         .map((i) => this.chartData[0][i] + this.chartData[1][i])
         .reduce((a, b) => Math.max(a, b), 0)
       return this.chartData[2].reduce((a, b) => Math.max(a, b), max)
-    },
-    scaledTicksYAxisMaxRight() {
-      return this.chartData[3].reduce((a, b) => Math.max(a, b), 0)
     },
   },
   methods: {

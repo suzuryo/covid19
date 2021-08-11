@@ -19,7 +19,7 @@ import MonitoringConfirmedCasesNumberPer100kCard from '@/components/index/CardsM
 import PositiveRateCard from '@/components/index/CardsMonitoring/PositiveRate/Card.vue' // 検査の陽性率・PCR検査の7日間移動平均
 import StageCard from '@/components/index/CardsMonitoring/Stage/Card.vue' // ステージ判断のための指標
 import TestedNumberCard from '@/components/index/CardsMonitoring/TestedNumber/Card.vue' // 検査実施件数
-import UntrackedRateCard from '@/components/index/CardsMonitoring/UntrackedRate/Card.vue' // 接触歴等不明者数(7日間移動平均)・前週比
+import UntrackedRateCard from '@/components/index/CardsMonitoring/UntrackedRate/Card.vue' // 接触歴等不明者数(7日間移動平均)
 import WeeklyMapCard from '@/components/index/CardsMonitoring/WeeklyMap/Card.vue' // 直近1週間の陽性例マップ
 
 export default Vue.extend({
