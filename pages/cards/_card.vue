@@ -10,6 +10,7 @@
 
 <script>
 import Breadcrumb from '@/components/_shared/Breadcrumb.vue'
+import RestaurantCard from '@/components/index/CardsIwateNinshou/Restaurant/Card'
 import ConfirmedCasesAttributesCard from '@/components/index/CardsMonitoring/ConfirmedCasesAttributes/Card.vue'
 import ConfirmedCasesByMunicipalitiesCard from '@/components/index/CardsMonitoring/ConfirmedCasesByMunicipalities/Card.vue'
 import ConfirmedCasesDetailsCard from '@/components/index/CardsMonitoring/ConfirmedCasesDetails/Card.vue'
@@ -34,6 +35,7 @@ import { getDayjsObject } from '@/utils/formatDate.ts'
 
 export default {
   components: {
+    RestaurantCard,
     WeeklyMapCard,
     Breadcrumb,
     WhatsNewCard,
@@ -123,6 +125,10 @@ export default {
       case 'stage':
         cardComponent = 'stage-card'
         cardTitle = this.$t('StageCard.title')
+        break
+      case 'restaurant-card':
+        cardComponent = 'restaurant-card'
+        cardTitle = this.$t('RestaurantCard.title')
         break
     }
 

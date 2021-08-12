@@ -6,6 +6,7 @@
 import Vue from 'vue'
 
 import CardsLazyRow from '@/components/index/_shared/CardsLazyRow.vue'
+import RestaurantCard from '@/components/index/CardsIwateNinshou/Restaurant/Card.vue'
 import SelfDisclosuresCard from '@/components/index/CardsReference/SelfDisclosures/Card.vue' // 自主公表
 import WhatsNewCard from '@/components/index/CardsReference/WhatsNew/Card.vue' // 最新のお知らせ
 
@@ -15,7 +16,7 @@ export default Vue.extend({
   },
   data() {
     return {
-      rows: [[WhatsNewCard, SelfDisclosuresCard]],
+      rows: [[WhatsNewCard, SelfDisclosuresCard], [RestaurantCard]],
     }
   },
 })
