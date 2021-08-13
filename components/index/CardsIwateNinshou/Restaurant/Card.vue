@@ -3,7 +3,7 @@
     <client-only>
       <restaurant-map
         :title="$t('RestaurantCard.title')"
-        :title-id="`restaurant-card`"
+        :title-id="`restaurant-map`"
         :date="`2021-08-12`"
       >
         <template #notes>
