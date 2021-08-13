@@ -26,6 +26,7 @@ const pages = [
   '/cards/number-of-tested/',
   '/cards/hospital-capacity/',
   '/cards/hotel-capacity/',
+  '/cards/restaurant-map/',
 ]
 
 const config: NuxtConfig = {
