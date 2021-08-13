@@ -223,8 +223,8 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   },
   data: () => ({
     dataKind: 'transition',
-    displayLegends: [true, true, true],
-    colors: getGraphSeriesStyle(3),
+    displayLegends: [true, true, true, true],
+    colors: getGraphSeriesStyle(5),
     canvas: true,
     isSmall: false,
   }),
@@ -260,7 +260,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         ...(this.tableLabels as string[]).map((text, i) => {
           return { text, value: String(i), align: 'end' }
         }),
-        { text: this.$t('計'), value: '3', align: 'end' },
+        { text: this.$t('計'), value: '4', align: 'end' },
       ]
     },
     tableData() {
@@ -271,7 +271,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
               text: label,
             },
             ...this.chartData.map((_, j) => {
-              // j=0が入院, j=1が宿泊療養
+              // j=0が入院, j=1が宿泊療養, j=2が自宅療養, j=3が調整中
               const data = this.chartData[j]
               if (data[i] === null) {
                 return {
@@ -283,11 +283,12 @@ const options: ThisTypedComponentOptionsWithRecordProps<
               }
             }),
             {
-              // j=3で合計を計算
-              3:
+              // j=4で合計を計算
+              4:
                 this.chartData[0][i] +
                 this.chartData[1][i] +
-                this.chartData[2][i],
+                this.chartData[2][i] +
+                this.chartData[3][i],
             }
           )
         })
@@ -394,7 +395,8 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         const current =
           this.displayData.datasets[0].data[i] +
           this.displayData.datasets[1].data[i] +
-          this.displayData.datasets[2].data[i]
+          this.displayData.datasets[2].data[i] +
+          this.displayData.datasets[3].data[i]
         if (current > max) {
           max = current
           n = Number(i)
@@ -415,6 +417,11 @@ const options: ThisTypedComponentOptionsWithRecordProps<
           },
           {
             data: [this.displayData.datasets[2].data[n]],
+            backgroundColor: 'transparent',
+            borderWidth: 0,
+          },
+          {
+            data: [this.displayData.datasets[3].data[n]],
             backgroundColor: 'transparent',
             borderWidth: 0,
           },

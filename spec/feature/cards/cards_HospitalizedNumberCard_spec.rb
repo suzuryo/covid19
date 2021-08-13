@@ -32,10 +32,10 @@ describe 'iPhone 6/7/8', type: :feature do
       end
     end
 
-    describe '入院と宿泊療養の推移(HospitalizedNumberCard)' do
+    describe '療養者数の推移(HospitalizedNumberCard)' do
       it '項目の値' do
         has_hospitalized_number_card
-        has_breadcrumbs(id: '#HospitalizedNumberCard', title: '入院と宿泊療養と調整中の推移')
+        has_breadcrumbs(id: '#HospitalizedNumberCard', title: '療養者数の推移')
       end
     end
   end
