@@ -55,6 +55,8 @@ export function getGraphSeriesStyle(seriesLength: number) {
       return [surfaceStyleA, surfaceStyleC, surfaceStyleH]
     case 4:
       return [surfaceStyleA, surfaceStyleB, surfaceStyleC, surfaceStyleG]
+    case 5:
+      return [surfaceStyleA, surfaceStyleB, surfaceStyleC, surfaceStyleH]
     default:
       return [surfaceStyleA, surfaceStyleB, surfaceStyleC]
   }
