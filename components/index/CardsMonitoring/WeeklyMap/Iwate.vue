@@ -153,9 +153,7 @@ export default Vue.extend({
         '#67000d',
       ])
 
-      return gradient.rgbAt(
-        last7day / Math.floor((8 * Math.max(this.last7DaysSum, 30)) / 10)
-      )
+      return gradient.rgbAt(Math.min(last7day, 100) / 100)
     },
   },
 })
