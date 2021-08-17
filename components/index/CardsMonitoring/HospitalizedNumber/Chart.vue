@@ -240,7 +240,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       }
     },
     displayData() {
-      const graphSeries = getGraphSeriesStyle(this.chartData.length)
+      const graphSeries = getGraphSeriesStyle(5)
       return {
         labels: this.labels,
         datasets: this.chartData.map((item, index) => {
