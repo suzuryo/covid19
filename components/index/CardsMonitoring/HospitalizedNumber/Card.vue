@@ -97,6 +97,11 @@
                 {{ $t('ExtLink.岩手県19_41.text') }}
               </app-link>
             </div>
+            <div>
+              <app-link :to="$t('ExtLink.岩手県38_3.url')">
+                {{ $t('ExtLink.岩手県38_3.text') }}
+              </app-link>
+            </div>
           </div>
         </template>
       </hospitalized-time-stacked-bar-chart>
