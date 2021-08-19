@@ -556,6 +556,7 @@
     "title": "Hotel care room status",
     "療養中": "In use",
     "空き": "Vacancy",
+    "増室予定": "More rooms will be added from August 24.",
     "notes": [
       "Hotel 1 (85 rooms) [Operations started on May 6, 2020]",
       "Hotel 2 (162 rooms) [Operations started on May 20, 2021]",
