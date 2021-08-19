@@ -94,6 +94,7 @@
 
 <script lang="ts">
 import { Chart } from 'chart.js'
+import ChartJsAnnotation from 'chartjs-plugin-annotation'
 import dayjs from 'dayjs'
 import Vue from 'vue'
 import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
@@ -122,6 +123,10 @@ type Methods = {
   onClickLegend: (i: number) => void
 }
 
+type ChartJsAnnotationOptions = Chart.ChartOptions & {
+  annotation: ChartJsAnnotation.AnnotationConfig
+}
+
 type Computed = {
   displayInfo: [
     {
@@ -131,7 +136,7 @@ type Computed = {
     }
   ]
   displayData: DisplayData
-  displayOption: Chart.ChartOptions
+  displayOption: ChartJsAnnotationOptions
   displayDataHeader: DisplayData
   displayOptionHeader: Chart.ChartOptions
   scaledTicksYAxisMax: number
@@ -304,7 +309,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     },
     displayOption() {
       const unit = this.unit
-      const options: Chart.ChartOptions = {
+      const options: ChartJsAnnotationOptions = {
         tooltips: {
           displayColors: false,
           callbacks: {
@@ -375,6 +380,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
           ],
           yAxes: [
             {
+              id: 'monitoring-number-of-confirmed-cases',
               position: 'left',
               gridLines: {
                 display: true,
@@ -386,6 +392,30 @@ const options: ThisTypedComponentOptionsWithRecordProps<
                 maxTicksLimit: 8,
                 fontColor: '#808080', // #808080
                 suggestedMax: this.scaledTicksYAxisMax,
+              },
+            },
+          ],
+        },
+        // 県独自の緊急事態宣言宣言の解除条件
+        annotation: {
+          drawTime: 'afterDatasetsDraw',
+          annotations: [
+            {
+              id: 'stage3', // optional
+              type: 'line',
+              mode: 'horizontal',
+              scaleID: 'monitoring-number-of-confirmed-cases',
+              value: '17',
+              borderColor: 'rgba(33,33,33,0.6)',
+              borderWidth: 2,
+              label: {
+                backgroundColor: 'rgba(33,33,33,0.6)',
+                content: this.$t(
+                  'MonitoringConfirmedCasesNumberCard.県独自の緊急事態宣言の解除'
+                ) as string,
+                enabled: true,
+                position: 'right',
+                xAdjust: this.$nuxt.$vuetify.breakpoint.smAndDown ? 50 : 130,
               },
             },
           ],
