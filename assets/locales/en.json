@@ -55,6 +55,10 @@
     "岩手県19_41": {
       "text": "Iwate Pref 19th HQ Members Meeting Document. [4-1] [JA/PDF]",
       "url": "https://www.pref.iwate.jp/_res/projects/default_project/_page_/001/028/231/20200806_04_1_1.pdf#page=2"
+    },
+    "岩手県38_3": {
+      "text": "Iwate Pref 38th HQ Members Meeting Document. [3] [JA/PDF]",
+      "url": "https://www.pref.iwate.jp/_res/projects/default_project/_page_/001/035/134/20210819_03_1.pdf"
     }
   },
   "ConfirmedCasesDetailsCard": {
@@ -543,21 +547,21 @@
     "入院中": "In use",
     "入院療養等調整中": "Waiting",
     "空き": "Vacant",
-    "phase2": "Solid lines indicate rooms allocated for Phase 2 (220 for mild-moderate cases + 30 for severe cases = 250 beds)",
-    "phase3": "Dotted lines indicate rooms allocated for Phase 3 (305 for mild-moderate cases + 45 for severe cases = 350 beds)",
-    "overflowed": "Red lines indicate rooms overflowed from Phase 3 plan"
+    "notes": [
+      "Secured beds for Phase 2 (220 for mild-moderate disease + 30 for severe disease = 250 beds)",
+      "Secured beds for Phase 3 (305 for mild-moderate disease + 45 for severe disease = 350 beds)"
+    ]
   },
   "HotelCapacityCard": {
     "title": "Hotel care room status",
     "療養中": "In use",
-    "空き": "Vacant",
-    "phase2": "Solid lines indicate rooms allocated for Phase 2 (85 rooms)",
-    "phase3": "Dotted lines indicate rooms allocated for Phase 3 (300 rooms)",
-    "overflowed": "Red lines indicate rooms overflowed from Phase 3 plan",
+    "空き": "Vacancy",
     "notes": [
       "Hotel 1 (85 rooms) [Operations started on May 6, 2020]",
       "Hotel 2 (162 rooms) [Operations started on May 20, 2021]",
-      "In Operation (85 + 162 = 247 rooms)"
+      "Hotel 3 (130 rooms) [Operations started on Aug 24, 2021]",
+      "In Operation (85 + 162 + 130 = 377 rooms)",
+      "The plan was to have 85 secured rooms for Phase 2 and 300 secured rooms for Phase 3, but the number of rooms was increased at the 38th Headquarters staff meeting"
     ]
   },
   "RestaurantCard": {

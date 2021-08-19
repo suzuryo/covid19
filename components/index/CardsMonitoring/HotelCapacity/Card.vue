@@ -13,6 +13,23 @@
               {{ note }}
             </li>
           </ul>
+          <div :class="$style.bedExternalLink">
+            <div>
+              <app-link :to="$t('ExtLink.岩手県17_2.url')">
+                {{ $t('ExtLink.岩手県17_2.text') }}
+              </app-link>
+            </div>
+            <div>
+              <app-link :to="$t('ExtLink.岩手県19_41.url')">
+                {{ $t('ExtLink.岩手県19_41.text') }}
+              </app-link>
+            </div>
+            <div>
+              <app-link :to="$t('ExtLink.岩手県38_3.url')">
+                {{ $t('ExtLink.岩手県38_3.text') }}
+              </app-link>
+            </div>
+          </div>
         </template>
       </hotel-capacity-beds>
       <slot name="breadCrumb" />
@@ -24,6 +41,7 @@
 import dayjs from 'dayjs'
 import Vue from 'vue'
 
+import AppLink from '@/components/_shared/AppLink.vue'
 import HotelCapacityBeds from '@/components/index/CardsMonitoring/HotelCapacity/Beds.vue'
 import MainSummary from '@/data/main_summary.json'
 import PositiveStatus from '@/data/positive_status.json'
@@ -31,6 +49,7 @@ import PositiveStatus from '@/data/positive_status.json'
 export default Vue.extend({
   components: {
     HotelCapacityBeds,
+    AppLink,
   },
   props: {
     md: {
@@ -41,7 +60,7 @@ export default Vue.extend({
   data() {
     const date = dayjs(PositiveStatus.date).format('YYYY/MM/DD HH:mm')
     const hotel = MainSummary.宿泊療養
-    const maxBeds = hotel > 300 ? hotel : 300
+    const maxBeds = hotel > 85 + 162 + 130 ? hotel : 85 + 162 + 130
     const beds = [...Array(maxBeds).keys()]
     const bedSummary = {
       beds,
@@ -55,3 +74,10 @@ export default Vue.extend({
   },
 })
 </script>
+
+<style lang="scss" module>
+.bedExternalLink {
+  margin-top: 10px;
+  text-align: right;
+}
+</style>
