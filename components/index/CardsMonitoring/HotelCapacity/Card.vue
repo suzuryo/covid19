@@ -41,7 +41,7 @@ export default Vue.extend({
   data() {
     const date = dayjs(PositiveStatus.date).format('YYYY/MM/DD HH:mm')
     const hotel = MainSummary.宿泊療養
-    const maxBeds = hotel > 300 ? hotel : 300
+    const maxBeds = hotel > 85 + 162 + 130 ? hotel : 85 + 162 + 130
     const beds = [...Array(maxBeds).keys()]
     const bedSummary = {
       beds,
