@@ -41,11 +41,11 @@ def has_hospital_capacity_card(lang:, lang_json:)
   expect(page).to have_selector('#HospitalCapacityCard > div > div > div.DataView-Content > div.legend1 > div:nth-child(3) > span.Bed', count:1)
   expect(find('#HospitalCapacityCard > div > div > div.DataView-Content > div.legend1 > div:nth-child(3)').text).to eq lang_json['HospitalCapacityCard']['空き']
 
-  # 凡例2
-  expect(page).to have_selector('#HospitalCapacityCard > div > div > div.DataView-Content > div.legend2 > div:nth-child(1) > span.Bed.phase2', count:1)
-  expect(find('#HospitalCapacityCard > div > div > div.DataView-Content > div.legend2 > div:nth-child(1)').text).to eq lang_json['HospitalCapacityCard']['phase2']
-  expect(page).to have_selector('#HospitalCapacityCard > div > div > div.DataView-Content > div.legend2 > div:nth-child(2) > span.Bed.phase3', count:1)
-  expect(find('#HospitalCapacityCard > div > div > div.DataView-Content > div.legend2 > div:nth-child(2)').text).to eq lang_json['HospitalCapacityCard']['phase3']
+  # Notes
+  find('#HospitalCapacityCard > div > div > div > div.NotesExpansionPanel > div > div > button').click
+  lang_json['HospitalCapacityCard']['notes'].each_with_index do |item, i|
+    expect(find("#HospitalCapacityCard > div > div > div:nth-child(6) > div > div > div > div > div > ul > li:nth-child(#{1 + i})").text).to eq item
+  end
 
   if MAIN_SUMMARY_JSON['入院'] + MAIN_SUMMARY_JSON['調整中'] > 350
     expect(page).to have_selector('#HospitalCapacityCard > div > div > div.DataView-Content > div.legend2 > div:nth-child(3) > span.Bed.overflowed', count:1)

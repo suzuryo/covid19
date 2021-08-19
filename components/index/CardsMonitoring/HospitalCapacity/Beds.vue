@@ -24,20 +24,6 @@
         {{ $t('HospitalCapacityCard.空き') }}
       </div>
     </div>
-    <div class="legend2">
-      <div>
-        <span class="Bed phase2" />
-        {{ $t('HospitalCapacityCard.phase2') }}
-      </div>
-      <div>
-        <span class="Bed phase3" />
-        {{ $t('HospitalCapacityCard.phase3') }}
-      </div>
-      <div v-if="bedSummary.hospital + bedSummary.waiting > 350">
-        <span class="Bed overflowed" />
-        {{ $t('HospitalCapacityCard.overflowed') }}
-      </div>
-    </div>
     <template #notes>
       <notes-expansion-panel
         class="DataView-ExpansionPanel"
@@ -95,10 +81,6 @@ export default Vue.extend({
       const hospital = this.bedSummary.hospital
       // 調整中の数
       const waiting = this.bedSummary.waiting
-      // Phase2の最大病床数
-      const bedsPhase2 = 250
-      // Phase3の最大病床数
-      const bedsPhase3 = 350
 
       // ベッド使用中
       if (bed < hospital) {
@@ -108,21 +90,6 @@ export default Vue.extend({
       // 調整中
       if (bed >= hospital && bed < hospital + waiting) {
         classes.push('waiting')
-      }
-
-      // Phase2で確保されたベッド
-      if (bed < bedsPhase2) {
-        classes.push('phase2')
-      }
-
-      // Phase3で確保されるベッド
-      if (bed >= bedsPhase2 && bed < bedsPhase3) {
-        classes.push('phase3')
-      }
-
-      // Phase3で確保したベッド以上のベッド
-      if (bed >= bedsPhase3) {
-        classes.push('overflowed')
       }
 
       return classes.join(' ')
@@ -158,20 +125,11 @@ $bed_size: 16px;
     letter-spacing: 0;
     @include font-size(7);
   }
-  &.phase2 {
-    opacity: 1;
-  }
-  &.phase3 {
-    border-style: dotted;
-  }
   &.inuse {
     background-color: #fce5da;
   }
   &.waiting {
     background-color: #fff8bf;
-  }
-  &.overflowed {
-    border: 1px solid #f99;
   }
 }
 .legend1 {
@@ -179,15 +137,6 @@ $bed_size: 16px;
   @include font-size(12);
   > div {
     margin: 20px 20px 20px 0;
-    flex-wrap: wrap;
-  }
-}
-.legend2 {
-  display: flex;
-  flex-direction: column;
-  @include font-size(12);
-  > div {
-    margin: 1px 0;
     flex-wrap: wrap;
   }
 }

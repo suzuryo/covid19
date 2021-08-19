@@ -543,9 +543,10 @@
     "入院中": "In use",
     "入院療養等調整中": "Waiting",
     "空き": "Vacant",
-    "phase2": "Solid lines indicate rooms allocated for Phase 2 (220 for mild-moderate cases + 30 for severe cases = 250 beds)",
-    "phase3": "Dotted lines indicate rooms allocated for Phase 3 (305 for mild-moderate cases + 45 for severe cases = 350 beds)",
-    "overflowed": "Red lines indicate rooms overflowed from Phase 3 plan"
+    "notes": [
+      "Secured beds for Phase 2 (220 for mild-moderate disease + 30 for severe disease = 250 beds)",
+      "Secured beds for Phase 3 (305 for mild-moderate disease + 45 for severe disease = 350 beds)"
+    ]
   },
   "HotelCapacityCard": {
     "title": "Hotel care room status",
