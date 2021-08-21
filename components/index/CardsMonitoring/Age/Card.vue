@@ -22,7 +22,9 @@
         </template>
         <template #notes>
           <ul>
-            <li>ABC</li>
+            <li v-for="(note, i) in $t('AgeCard.notes')" :key="i">
+              {{ note }}
+            </li>
           </ul>
         </template>
       </age-chart>
