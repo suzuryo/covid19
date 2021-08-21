@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import DataTable from '@/components/index/CardsMonitoring/ConfirmedCasesAttributes/DataTable.vue'
+import DataTable from '@/components/index/CardsReference/ConfirmedCasesAttributes/DataTable.vue'
 import Data from '@/data/data.json'
 import { getDayjsObject } from '@/utils/formatDate'
 import formatTable from '@/utils/formatTable'
