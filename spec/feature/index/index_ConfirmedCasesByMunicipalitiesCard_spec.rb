@@ -9,6 +9,8 @@ describe 'iPhone 6/7/8', type: :feature do
     context "page #{data[:path]}" do
       before do
         visit data[:path]
+        page.scroll_to('.v-tabs')
+        find('#app .v-tabs .v-slide-group__content a[href="#tab-1"]').click
         render_lazy_contents
         page.scroll_to('#ConfirmedCasesByMunicipalitiesCard')
       end
