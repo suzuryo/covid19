@@ -6,7 +6,7 @@
 import Vue from 'vue'
 
 import CardsLazyRow from '@/components/index/_shared/CardsLazyRow.vue'
-import AgeCard from '@/components/index/CardsMonitoring/Age/Card.vue'
+import AgeGroupCard from '@/components/index/CardsMonitoring/AgeGroup/Card.vue'
 import ConfirmedCasesAttributesCard from '@/components/index/CardsMonitoring/ConfirmedCasesAttributes/Card.vue' // 陽性者の属性
 import ConfirmedCasesByMunicipalitiesCard from '@/components/index/CardsMonitoring/ConfirmedCasesByMunicipalities/Card.vue' // 陽性患者数（市町村別）
 import ConfirmedCasesDetailsCard from '@/components/index/CardsMonitoring/ConfirmedCasesDetails/Card.vue' // 検査陽性者の状況
@@ -31,7 +31,7 @@ export default Vue.extend({
     return {
       rows: [
         [StageCard, ConfirmedCasesDetailsCard],
-        [WeeklyMapCard, AgeCard],
+        [WeeklyMapCard, AgeGroupCard],
         [
           MonitoringConfirmedCasesNumberPer100kCard,
           EffectiveReproductionNumberCard,

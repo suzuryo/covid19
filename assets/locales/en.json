@@ -574,8 +574,8 @@
       "元サイトに公式に地図機能が実装されたり、データが公開されなくなった場合は、当マップの提供を停止する予定"
     ]
   },
-  "AgeCard": {
-    "title": "7-day moving average of number of positive cases by age",
+  "AgeGroupCard": {
+    "title": "Age group 7-day moving average of number of positive cases",
     "notes": [
       "7-day moving average of the number of new positive cases (based on reporting date) by age group"
     ]

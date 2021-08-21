@@ -1,9 +1,9 @@
 <template>
-  <v-col id="AgeCard" cols="12" :md="md" class="DataCard">
+  <v-col id="AgeGroupCard" cols="12" :md="md" class="DataCard">
     <client-only>
       <age-chart
         title-id="age"
-        :info-titles="[$t('AgeCard.title')]"
+        :info-titles="[$t('AgeGroupCard.title')]"
         chart-id="age-chart"
         :chart-data="chartData7MA"
         :get-formatter="getFormatter"
@@ -22,7 +22,7 @@
         </template>
         <template #notes>
           <ul>
-            <li v-for="(note, i) in $t('AgeCard.notes')" :key="i">
+            <li v-for="(note, i) in $t('AgeGroupCard.notes')" :key="i">
               {{ note }}
             </li>
           </ul>
@@ -39,7 +39,7 @@ import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
 import { TranslateResult } from 'vue-i18n'
 
 import AppLink from '@/components/_shared/AppLink.vue'
-import AgeChart from '@/components/index/CardsMonitoring/Age/Chart.vue'
+import AgeChart from '@/components/index/CardsMonitoring/AgeGroup/Chart.vue'
 import DailyPositiveDetail from '@/data/daily_positive_detail.json'
 import Data from '@/data/data.json'
 import { getNumberToFixedFunction } from '@/utils/monitoringStatusValueFormatters'
