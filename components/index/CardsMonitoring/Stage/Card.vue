@@ -1,5 +1,5 @@
 <template>
-  <v-col id="StageCard" cols="12" :md="12" class="DataCard">
+  <v-col id="StageCard" cols="12" :md="md" class="DataCard">
     <client-only>
       <stage-table
         :date="date"

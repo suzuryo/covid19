@@ -9,6 +9,7 @@ dayjs.extend(utc)
 const now = dayjs().utc().format()
 
 const pages = [
+  '/cards/age-group/',
   '/cards/stage/',
   '/cards/weekly-map/',
   '/cards/whats-new/',

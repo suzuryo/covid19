@@ -451,7 +451,6 @@
   "StageCard": {
     "title": "Indicators for stage determination",
     "指標": "Indicators",
-    "単位": "Unit",
     "医療提供体制の負荷": "Healthcare delivery system load",
     "医療のひっ迫具合": "Tightness of healthcare",
     "入院医療": "Hospitalized care",
@@ -573,6 +572,12 @@
       "元サイトで公開されているデータ(店名・住所・URL・緯度経度)をそのまま利用しており、当サイトではデータの正確性などは確認していません",
       "元サイトで公開されているデータに、緯度経度が含まれていない店舗があり、それらはマッピングされていない",
       "元サイトに公式に地図機能が実装されたり、データが公開されなくなった場合は、当マップの提供を停止する予定"
+    ]
+  },
+  "AgeGroupCard": {
+    "title": "Age group 7-day moving average of number of positive cases",
+    "notes": [
+      "7-day moving average of the number of new positive cases (based on reporting date) by age group"
     ]
   },
   "新型コロナウイルスワクチン接種に関する情報": "Information on vaccination against COVID-19",
