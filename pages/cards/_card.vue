@@ -11,6 +11,7 @@
 <script>
 import Breadcrumb from '@/components/_shared/Breadcrumb.vue'
 import RestaurantMapCard from '@/components/index/CardsIwateNinshou/Restaurant/Card'
+import AgeCard from '@/components/index/CardsMonitoring/Age/Card.vue'
 import ConfirmedCasesAttributesCard from '@/components/index/CardsMonitoring/ConfirmedCasesAttributes/Card.vue'
 import ConfirmedCasesByMunicipalitiesCard from '@/components/index/CardsMonitoring/ConfirmedCasesByMunicipalities/Card.vue'
 import ConfirmedCasesDetailsCard from '@/components/index/CardsMonitoring/ConfirmedCasesDetails/Card.vue'
@@ -54,6 +55,7 @@ export default {
     HospitalCapacityCard,
     HotelCapacityCard,
     StageCard,
+    AgeCard,
   },
   data() {
     let title, updatedAt, cardComponent, cardTitle
@@ -129,6 +131,10 @@ export default {
       case 'restaurant-map':
         cardComponent = 'restaurant-map-card'
         cardTitle = this.$t('RestaurantCard.title')
+        break
+      case 'age':
+        cardComponent = 'age-card'
+        cardTitle = this.$t('AgeCard.title')
         break
     }
 
