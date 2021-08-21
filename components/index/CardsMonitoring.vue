@@ -31,8 +31,11 @@ export default Vue.extend({
     return {
       rows: [
         [StageCard, ConfirmedCasesDetailsCard],
-        [EffectiveReproductionNumberCard, WeeklyMapCard],
-        [MonitoringConfirmedCasesNumberPer100kCard, AgeCard],
+        [WeeklyMapCard, AgeCard],
+        [
+          MonitoringConfirmedCasesNumberPer100kCard,
+          EffectiveReproductionNumberCard,
+        ],
         [ConfirmedCasesNumberCard, MonitoringConfirmedCasesNumberCard],
         [HospitalCapacityCard, HotelCapacityCard],
         [HospitalizedNumberCard, UntrackedRateCard],
