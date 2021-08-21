@@ -372,6 +372,24 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         scales: {
           xAxes: [
             {
+              id: 'day',
+              stacked: true,
+              gridLines: {
+                display: false,
+              },
+              ticks: {
+                fontSize: 9,
+                maxTicksLimit: 20,
+                fontColor: '#808080',
+                maxRotation: 0,
+                callback: (label: string) => {
+                  return dayjs(label).format('D')
+                },
+              },
+              // #2384: If you set "type" to "time", make sure that the bars at both ends are not hidden.
+              // #2384: typeをtimeに設定する時はグラフの両端が見切れないか確認してください
+            },
+            {
               id: 'month',
               stacked: true,
               gridLines: {
@@ -454,6 +472,23 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         tooltips: { enabled: false },
         scales: {
           xAxes: [
+            {
+              id: 'day',
+              stacked: true,
+              gridLines: {
+                display: false,
+              },
+              ticks: {
+                fontSize: 9,
+                maxTicksLimit: 20,
+                fontColor: 'transparent',
+                maxRotation: 0,
+                minRotation: 0,
+                callback: (label: string) => {
+                  return dayjs(label).format('D')
+                },
+              },
+            },
             {
               id: 'month',
               stacked: true,
