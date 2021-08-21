@@ -43,7 +43,10 @@
     <template #dataSetPanel>
       <data-view-data-set-panel
         :title="$t('HospitalCapacityCard.title')"
-        :card-path="`/cards/${titleId}/`"
+        :l-text-before="$t('残り')"
+        :l-text="`${remaining}`"
+        :unit="$t('床')"
+        :card-path="`/cards/${titleId}`"
       />
     </template>
   </data-view>
@@ -79,6 +82,12 @@ export default Vue.extend({
       type: Object,
       default: () => {},
     },
+  },
+  data() {
+    const remaining = 350 - this.bedSummary.hospital - this.bedSummary.waiting
+    return {
+      remaining,
+    }
   },
   methods: {
     bedInUse(bed: number): string {
