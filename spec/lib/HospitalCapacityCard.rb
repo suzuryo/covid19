@@ -9,6 +9,13 @@ def has_hospital_capacity_card(lang:, lang_json:)
   lang_prefix = lang == :ja ? '' : "/#{lang}"
   expect(URI.parse(d).path).to eq "#{lang_prefix}/cards/hospital-capacity/"
 
+  # DataSetPanel
+  expect(find('#HospitalCapacityCard > div.DataView > div.DataView-Inner > div.DataView-Header > div.DataView-DataSetPanel > div.DataView-DataSet > div.DataView-DataSet-DataInfo > span.DataView-DataSet-DataInfo-summary > span.lTextBefore').text).to eq lang_json['残り']
+  # 残り病床数
+  d = 350 - MAIN_SUMMARY_JSON['入院'] - MAIN_SUMMARY_JSON['調整中']
+  expect(find('#HospitalCapacityCard > div.DataView > div.DataView-Inner > div.DataView-Header > div.DataView-DataSetPanel > div.DataView-DataSet > div.DataView-DataSet-DataInfo > span.DataView-DataSet-DataInfo-summary > strong').text).to eq d.to_s
+  expect(find('#HospitalCapacityCard > div.DataView > div.DataView-Inner > div.DataView-Header > div.DataView-DataSetPanel > div.DataView-DataSet > div.DataView-DataSet-DataInfo > span.DataView-DataSet-DataInfo-summary > small.DataView-DataSet-DataInfo-summary-unit').text).to eq lang_json['床'].gsub(/^\s/, '')
+
   maxBeds = MAIN_SUMMARY_JSON['入院'] + MAIN_SUMMARY_JSON['調整中'] > 350 ? MAIN_SUMMARY_JSON['入院'] + MAIN_SUMMARY_JSON['調整中'] : 350
 
   maxBeds.times do |i|

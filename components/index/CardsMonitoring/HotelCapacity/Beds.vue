@@ -46,6 +46,9 @@
     <template #dataSetPanel>
       <data-view-data-set-panel
         :title="$t('HotelCapacityCard.title')"
+        :l-text-before="$t('残り')"
+        :l-text="`${remaining}`"
+        :unit="$t('室')"
         :card-path="`/cards/${titleId}/`"
       />
     </template>
@@ -82,6 +85,12 @@ export default Vue.extend({
       type: Object,
       default: () => {},
     },
+  },
+  data() {
+    const remaining = 85 + 162 - this.bedSummary.hotel
+    return {
+      remaining,
+    }
   },
   methods: {
     bedInUse(bed: number): string {
