@@ -6,9 +6,6 @@
           <th colspan="4" scope="row" :class="$style.headers">
             {{ $t('StageCard.指標') }}
           </th>
-          <th scope="row" :class="$style.headers">
-            {{ $t('StageCard.単位') }}
-          </th>
           <th scope="row" :class="[$style.headers, 'iwate']">
             {{ $t('Common.岩手県') }}
           </th>
@@ -34,7 +31,6 @@
           <th headers="sh1 sh4 sh4" scope="col">
             {{ $t('StageCard.確保病床の使用率') }}
           </th>
-          <td>%</td>
           <td :class="stage3stage4(tableData[0], 20, 50, 'gte')">
             {{ getFormatter(1)(tableData[0]) }}
           </td>
@@ -45,7 +41,6 @@
           <th headers="sh1 sh3 sh4" scope="col">
             {{ $t('StageCard.入院率') }}
           </th>
-          <td>%</td>
           <td
             :class="
               tableData[3] < 10
@@ -65,7 +60,6 @@
           <th headers="sh1 sh3 sh5" scope="col">
             {{ $t('StageCard.確保病床の使用率') }}
           </th>
-          <td>%</td>
           <td :class="stage3stage4(tableData[2], 20, 50, 'gte')">
             {{ getFormatter(1)(tableData[2]) }}
           </td>
@@ -76,7 +70,6 @@
           <th headers="sh1" scope="col" colspan="3">
             {{ $t('StageCard.療養者数(対人口10万人)') }}
           </th>
-          <td>{{ $t('Common.人') }}</td>
           <td :class="stage3stage4(tableData[3], 20, 30, 'gte')">
             {{ getFormatter(1)(tableData[3]) }}
           </td>
@@ -90,7 +83,6 @@
           <th headers="sh2" scope="col" colspan="3">
             {{ $t('StageCard.PCR陽性率(直近1週間)') }}
           </th>
-          <td>%</td>
           <td :class="stage3stage4(tableData[4], 5, 10, 'gte')">
             {{ tableData[4] === 99999 ? '-' : getFormatter(1)(tableData[4]) }}
           </td>
@@ -101,7 +93,6 @@
           <th headers="sh2" scope="col" colspan="3">
             {{ $t('StageCard.新規陽性者数(直近1週間・対人口10万人)') }}
           </th>
-          <td>{{ $t('Common.人') }}</td>
           <td :class="stage3stage4(tableData[5], 15, 25, 'gte')">
             {{ getFormatter(1)(tableData[5]) }}
           </td>
@@ -112,7 +103,6 @@
           <th headers="sh2" scope="col" colspan="3">
             {{ $t('StageCard.感染経路不明割合(直近1週間)') }}
           </th>
-          <td>%</td>
           <td :class="stage3stage4(tableData[6], 50, 50, 'gte')">
             {{ tableData[6] === 99999 ? '-' : getFormatter(1)(tableData[6]) }}
           </td>

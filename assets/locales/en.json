@@ -451,7 +451,6 @@
   "StageCard": {
     "title": "Indicators for stage determination",
     "指標": "Indicators",
-    "単位": "Unit",
     "医療提供体制の負荷": "Healthcare delivery system load",
     "医療のひっ迫具合": "Tightness of healthcare",
     "入院医療": "Hospitalized care",
