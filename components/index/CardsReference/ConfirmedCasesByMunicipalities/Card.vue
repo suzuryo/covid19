@@ -32,7 +32,7 @@
 <script>
 import dayjs from 'dayjs'
 
-import ConfirmedCasesByMunicipalitiesTable from '@/components/index/CardsMonitoring/ConfirmedCasesByMunicipalities/Table.vue'
+import ConfirmedCasesByMunicipalitiesTable from '@/components/index/CardsReference/ConfirmedCasesByMunicipalities/Table.vue'
 import Data from '@/data/data.json'
 import PatientMunicipalities from '@/data/patient_municipalities.json'
 
