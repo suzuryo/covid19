@@ -130,7 +130,6 @@ type Props = {
   labels: string[]
   dataLabels: string[] | TranslateResult[]
   tableLabels: string[] | TranslateResult[]
-  unit: string
 }
 
 const options: ThisTypedComponentOptionsWithRecordProps<
@@ -196,10 +195,6 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       type: Array,
       default: () => [],
     },
-    unit: {
-      type: String,
-      default: '',
-    },
   },
   data() {
     const colors = tinygradient(
@@ -241,7 +236,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
             borderWidth: 1.1,
             fill: false,
             order: i,
-            lineTension: 0.3,
+            lineTension: 0.2,
           }
         }),
       }
@@ -270,7 +265,6 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         .reverse()
     },
     displayOption() {
-      const unit = this.unit
       const options: Chart.ChartOptions = {
         tooltips: {
           displayColors: false,
@@ -279,16 +273,11 @@ const options: ThisTypedComponentOptionsWithRecordProps<
               const cases = this.getFormatter(tooltipItem.datasetIndex!)(
                 parseFloat(tooltipItem.value!)
               )
-              return `${
-                this.dataLabels[tooltipItem.datasetIndex!]
-              } : ${cases} ${unit}`
+              return `${this.dataLabels[tooltipItem.datasetIndex!]} : ${cases}`
             },
             title(tooltipItem, data) {
-              if (tooltipItem[0].datasetIndex! < 2) {
-                const date = data.labels![tooltipItem[0].index!].toString()
-                return dayjs(date).format('M/D')
-              }
-              return ''
+              const date = data.labels![tooltipItem[0].index!].toString()
+              return dayjs(date).format('M/D')
             },
           },
         },
@@ -446,11 +435,11 @@ export default Vue.extend(options)
     padding: 0 !important;
     li {
       display: inline-block;
-      margin: 0 3px;
+      margin: 0 2px;
       div {
         height: 12px;
-        margin: 2px 4px;
-        width: 40px;
+        margin: 2px 0;
+        width: 20px;
         display: inline-block;
         vertical-align: middle;
         border-width: 1px;
