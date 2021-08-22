@@ -406,10 +406,10 @@ const options: ThisTypedComponentOptionsWithRecordProps<
               mode: 'horizontal',
               scaleID: 'monitoring-number-of-confirmed-cases',
               value: '17',
-              borderColor: 'rgba(33,33,33,0.6)',
+              borderColor: 'rgba(33,33,33,0.5)',
               borderWidth: 2,
               label: {
-                backgroundColor: 'rgba(33,33,33,0.6)',
+                backgroundColor: 'rgba(33,33,33,0.5)',
                 content: this.$t(
                   'MonitoringConfirmedCasesNumberCard.県独自の緊急事態宣言の解除'
                 ) as string,
