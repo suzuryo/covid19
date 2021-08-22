@@ -2,9 +2,9 @@
   <v-col id="AgeGroupCard" cols="12" :md="md" class="DataCard">
     <client-only>
       <age-chart
-        title-id="age"
+        title-id="age-group"
         :info-titles="[$t('AgeGroupCard.title')]"
-        chart-id="age-chart"
+        chart-id="age-group-chart"
         :chart-data="chartData7MA"
         :get-formatter="getFormatter"
         :date="date"
@@ -12,14 +12,6 @@
         :data-labels="ageLabels"
         :table-labels="ageLabels"
       >
-        <template #selectCity>
-          <v-select
-            v-model="select"
-            :items="items"
-            return-object
-            @input="handleChangeCity"
-          />
-        </template>
         <template #notes>
           <ul>
             <li v-for="(note, i) in $t('AgeGroupCard.notes')" :key="i">
@@ -110,7 +102,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     const date = DailyPositiveDetail.date
 
     const getFormatter = () => {
-      // 実効再生産数(推定値)は小数点第2位まで表示する。
+      // 7日間移動平均は小数点第2位まで表示する。
       return getNumberToFixedFunction(1)
     }
 
