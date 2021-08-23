@@ -28,10 +28,6 @@
         <span class="Bed" />
         {{ $t('HotelCapacityCard.空き') }}
       </div>
-      <div>
-        <span class="Bed adding" />
-        {{ $t('HotelCapacityCard.増室予定') }}
-      </div>
     </div>
     <template #notes>
       <notes-expansion-panel
@@ -87,7 +83,7 @@ export default Vue.extend({
     },
   },
   data() {
-    const remaining = 85 + 162 - this.bedSummary.hotel
+    const remaining = 85 + 162 + 130 - this.bedSummary.hotel
     return {
       remaining,
     }
@@ -99,10 +95,6 @@ export default Vue.extend({
       // ベッド使用中
       if (bed < this.bedSummary.hotel) {
         classes.push('inuse')
-      }
-
-      if (bed >= 247) {
-        classes.push('adding')
       }
 
       return classes.join(' ')
@@ -140,9 +132,6 @@ $bed_size: 16px;
   }
   &.inuse {
     background-color: #fce5da;
-  }
-  &.adding {
-    border-style: dotted;
   }
 }
 .legend1 {
