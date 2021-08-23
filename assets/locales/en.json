@@ -557,13 +557,12 @@
     "title": "Hotel care room status",
     "療養中": "In use",
     "空き": "Vacancy",
-    "増室予定": "More rooms will be added from Aug 24.",
     "notes": [
       "Hotel 1 (85 rooms) [Operations started on May 6, 2020]",
       "Hotel 2 (162 rooms) [Operations started on May 20, 2021]",
       "Hotel 3 (130 rooms) [Operations started on Aug 24, 2021]",
       "In Operation (85 + 162 + 130 = 377 rooms)",
-      "The plan was to have 85 secured rooms for Phase 2 and 300 secured rooms for Phase 3, but the number of rooms was increased at the 38th HQ staff meeting"
+      "The plan was to have 85 secured rooms for Phase 2 and 300 rooms for Phase 3, but the rooms was increased to 377 at the 38th HQ staff meeting."
     ]
   },
   "RestaurantCard": {
