@@ -15,7 +15,7 @@ describe 'iPhone 6/7/8', type: :feature do
 
       describe 'meta' do
         it 'title' do
-          expect(title).to eq "#{LOCALES[lang][:json]['PositiveRateCard']['titles'].join(',')} | #{LOCALES[lang][:json]['Common']['岩手県']} #{LOCALES[lang][:json]['Common']['新型コロナウイルス感染症']}#{LOCALES[lang][:json]['Common']['対策サイト']}"
+          expect(title).to eq "#{LOCALES[lang][:json]['PositiveRateCard']['titles'][0]} | #{LOCALES[lang][:json]['Common']['岩手県']} #{LOCALES[lang][:json]['Common']['新型コロナウイルス感染症']}#{LOCALES[lang][:json]['Common']['対策サイト']}"
         end
 
         it 'og:title' do
