@@ -58,7 +58,7 @@ export default {
     AgeGroupCard,
   },
   data() {
-    let title, updatedAt, cardComponent, cardTitle
+    let cardComponent, cardTitle
     switch (this.$route.params.card) {
       case 'weekly-map':
         cardComponent = 'weekly-map-card'
@@ -155,8 +155,7 @@ export default {
 
     return {
       cardComponent,
-      title,
-      updatedAt,
+      cardTitle,
       breadCrumb,
     }
   },
@@ -194,7 +193,7 @@ export default {
     )}${this.$t('Common.対策サイト')}`
 
     return {
-      titleTemplate: (title) => `${this.title || title} | ${defaultTitle}`,
+      titleTemplate: (title) => `${this.cardTitle || title} | ${defaultTitle}`,
       meta: [
         {
           hid: 'og:url',
