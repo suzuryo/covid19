@@ -372,22 +372,9 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         scales: {
           xAxes: [
             {
+              display: false,
               id: 'day',
               stacked: true,
-              gridLines: {
-                display: false,
-              },
-              ticks: {
-                fontSize: 9,
-                maxTicksLimit: 20,
-                fontColor: '#808080',
-                maxRotation: 0,
-                callback: (label: string) => {
-                  return dayjs(label).format('D')
-                },
-              },
-              // #2384: If you set "type" to "time", make sure that the bars at both ends are not hidden.
-              // #2384: typeをtimeに設定する時はグラフの両端が見切れないか確認してください
             },
             {
               id: 'month',
@@ -473,21 +460,9 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         scales: {
           xAxes: [
             {
+              display: false,
               id: 'day',
               stacked: true,
-              gridLines: {
-                display: false,
-              },
-              ticks: {
-                fontSize: 9,
-                maxTicksLimit: 20,
-                fontColor: 'transparent',
-                maxRotation: 0,
-                minRotation: 0,
-                callback: (label: string) => {
-                  return dayjs(label).format('D')
-                },
-              },
             },
             {
               id: 'month',
@@ -503,24 +478,6 @@ const options: ThisTypedComponentOptionsWithRecordProps<
                 fontColor: 'transparent', // #808080
                 padding: 13, // 3 + 10(tickMarkLength)
                 fontStyle: 'bold',
-                callback: (label: string) => {
-                  const monthStringArry = [
-                    'Jan',
-                    'Feb',
-                    'Mar',
-                    'Apr',
-                    'May',
-                    'Jun',
-                    'Jul',
-                    'Aug',
-                    'Sep',
-                    'Oct',
-                    'Nov',
-                    'Dec',
-                  ]
-                  const month = monthStringArry.indexOf(label.split(' ')[0]) + 1
-                  return `${month}月`
-                },
               },
               type: 'time',
               time: {
