@@ -288,6 +288,10 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         scales: {
           xAxes: [
             {
+              display: false, // day軸は非表示にしたいが、削除すると#2384のように見切れるので残す workaround
+              id: 'day',
+            },
+            {
               id: 'month',
               stacked: true,
               gridLines: {
@@ -355,6 +359,10 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         tooltips: { enabled: false },
         scales: {
           xAxes: [
+            {
+              display: false, // day軸は非表示にしたいが、削除すると#2384のように見切れるので残す workaround
+              id: 'day',
+            },
             {
               id: 'month',
               stacked: true,
