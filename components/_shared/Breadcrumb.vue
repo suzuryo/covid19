@@ -39,21 +39,8 @@ export default Vue.extend(options)
 
 <style lang="scss" scoped>
 nav {
-  padding-left: 4px;
   ul.v-breadcrumbs {
     padding: 12px 0 !important;
-  }
-}
-</style>
-
-<style lang="scss">
-nav {
-  ul.v-breadcrumbs {
-    li {
-      a.v-breadcrumbs__item {
-        color: $gray-1;
-      }
-    }
   }
 }
 </style>

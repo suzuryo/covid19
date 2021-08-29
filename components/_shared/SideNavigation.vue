@@ -282,10 +282,10 @@ export default Vue.extend({
   top: 0;
   left: 0;
   padding: 18px 8px 18px 16px;
-  font-size: 28px;
+  @include font-size(28);
   @include lessThan($tiny) {
-    font-size: 24px;
     padding: 20px 10px;
+    @include font-size(24);
   }
   @include largerThan($small) {
     display: none;
@@ -297,10 +297,10 @@ export default Vue.extend({
   top: 0;
   left: 0;
   padding: 18px 8px 18px 16px;
-  font-size: 28px;
+  @include font-size(28);
   @include lessThan($tiny) {
-    font-size: 24px;
     padding: 20px 10px;
+    @include font-size(24);
   }
   @include largerThan($small) {
     display: none;

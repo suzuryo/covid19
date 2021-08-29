@@ -216,7 +216,7 @@ export default Vue.extend({
 })
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 /* stylelint-disable no-descending-specificity */
 
 .DataView-Share-Opener {

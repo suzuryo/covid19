@@ -1,8 +1,8 @@
 <template>
   <data-view :title="title" :title-id="titleId" :date="date">
-    <div id="weekly_map_canvas">
+    <div class="WeeklyMapCanvas">
       <svg
-        id="weekly_map"
+        class="WeeklyMap"
         :class="isOGP"
         viewBox="0 0 962 962"
         preserveAspectRatio="xMinYMin meet"
@@ -159,34 +159,34 @@ export default Vue.extend({
 })
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 /* svgのレスポンシブ対応 */
-#weekly_map_canvas {
+.WeeklyMapCanvas {
   display: inline-block;
   position: relative;
   width: 100%;
   padding-bottom: 100%;
   vertical-align: top;
   overflow: visible;
-}
-#weekly_map {
-  display: inline-block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  g {
-    cursor: pointer;
-  }
-  &.isOGP {
-    top: -70px;
-    left: 25%;
-    width: 50%;
-    height: 50%;
-    margin-left: auto;
-    margin-right: auto;
-    > g {
-      path {
-        stroke-width: 3px;
+  .WeeklyMap {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    g {
+      cursor: pointer;
+    }
+    &.isOGP {
+      top: -70px;
+      left: 25%;
+      width: 50%;
+      height: 50%;
+      margin-left: auto;
+      margin-right: auto;
+      > g {
+        path {
+          stroke-width: 3px;
+        }
       }
     }
   }

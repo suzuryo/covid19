@@ -117,17 +117,3 @@ const options: ThisTypedComponentOptionsWithRecordProps<
 
 export default Vue.extend(options)
 </script>
-
-<style lang="scss">
-.v-data-table-header {
-  .text-end {
-    text-align: right !important;
-  }
-}
-.cardTable-header {
-  white-space: nowrap !important;
-}
-.v-data-table .text-end {
-  text-align: right;
-}
-</style>

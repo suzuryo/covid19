@@ -84,7 +84,7 @@ export default Vue.extend({
 })
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .DataView {
   &-DataSet {
     display: flex;
@@ -92,9 +92,9 @@ export default Vue.extend({
     margin-bottom: 10px;
 
     &-title {
-      font-size: 2rem;
       font-weight: normal;
       flex: 1 1 auto;
+      @include font-size(20);
       &-HeaderLink {
         text-decoration: none;
         color: $gray-2 !important;
@@ -141,8 +141,8 @@ export default Vue.extend({
 
       &-SelfDisclosureForm {
         > a {
-          height: 3rem;
-          line-height: 3rem;
+          height: 30px;
+          line-height: 30px;
           display: inline-block;
           @include font-size(11);
         }

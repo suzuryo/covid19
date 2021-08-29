@@ -52,7 +52,7 @@ export default Vue.extend({
 })
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .MenuList {
   margin-top: 24px;
   padding: 12px 0 !important;

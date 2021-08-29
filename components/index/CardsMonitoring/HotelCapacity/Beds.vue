@@ -120,6 +120,7 @@ $bed_size: 16px;
   margin-bottom: 3px;
   border: 1px solid #aaa;
   background-color: #fff;
+  @include font-size(10);
   > span {
     display: inline-block;
     line-height: $bed_size - 2px;
