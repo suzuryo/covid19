@@ -20,7 +20,7 @@ def has_self_disclosures_card(lang:, lang_json:)
       expect(page).not_to have_selector("#SelfDisclosuresCard > div > div > div.DataView-Content > div > div > div > table > tbody > tr:nth-child(#{1 + index}) > td:nth-child(1) > a")
       expect(find("#SelfDisclosuresCard > div > div > div.DataView-Content > div > div > div > table > tbody > tr:nth-child(#{1 + index}) > td:nth-child(1)").text).to eq text.to_s
     else
-      expect(find("#SelfDisclosuresCard > div > div > div.DataView-Content > div > div > div > table > tbody > tr:nth-child(#{1 + index}) > td:nth-child(1) > a").text).to eq "#{d['icon']} #{text}".rstrip
+      expect(find("#SelfDisclosuresCard > div > div > div.DataView-Content > div > div > div > table > tbody > tr:nth-child(#{1 + index}) > td:nth-child(1) > a").text).to eq "#{text}".rstrip
     end
 
     # テーブルの上からi行目をチェックする(日付)
@@ -51,15 +51,13 @@ def has_self_disclosures_card(lang:, lang_json:)
   find('#SelfDisclosuresCard > div > div > div.DataView-Content > div > div > div.v-data-footer > div.v-data-footer__icons-after > button').click
 
   # 次のページの先頭は11番目の要素。enがなければja
-  text = SELF_DISCLOSURES_ITEMS[10]['text'][lang.to_s] || SELF_DISCLOSURES_ITEMS[10]['text']['ja']
-  d = "#{SELF_DISCLOSURES_ITEMS[10]['icon']} #{text}"
+  d = SELF_DISCLOSURES_ITEMS[10]['text'][lang.to_s] || SELF_DISCLOSURES_ITEMS[10]['text']['ja']
   expect(find('#SelfDisclosuresCard > div > div > div.DataView-Content > div > div > div.v-data-table__wrapper > table > tbody > tr:nth-child(1) > td.text-start').text).to eq d.to_s
 
   # さらに次のページ
   find('#SelfDisclosuresCard > div > div > div.DataView-Content > div > div > div.v-data-footer > div.v-data-footer__icons-after > button').click
 
   # さらに次のページの先頭は21番目の要素。enがなければja
-  text = SELF_DISCLOSURES_ITEMS[20]['text'][lang.to_s] || SELF_DISCLOSURES_ITEMS[20]['text']['ja']
-  d = "#{SELF_DISCLOSURES_ITEMS[20]['icon']} #{text}"
+  d = SELF_DISCLOSURES_ITEMS[20]['text'][lang.to_s] || SELF_DISCLOSURES_ITEMS[20]['text']['ja']
   expect(find('#SelfDisclosuresCard > div > div > div.DataView-Content > div > div > div.v-data-table__wrapper > table > tbody > tr:nth-child(1) > td.text-start').text).to eq d.to_s
 end
