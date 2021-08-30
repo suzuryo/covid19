@@ -10,8 +10,8 @@ def has_weekly_map_card(lang:, lang_json:)
   expect(URI.parse(d).path).to eq "#{lang_prefix}/cards/weekly-map/"
 
   # div id="weekly_map_canvas"
-  expect(page).to have_selector'#WeeklyMapCard > div > div > div.DataView-Content > div#weekly_map_canvas', count: 1
-  expect(page).to have_selector'svg#weekly_map', count: 1
+  expect(page).to have_selector'#WeeklyMapCard > div > div > div.DataView-Content > div.WeeklyMapCanvas', count: 1
+  expect(page).to have_selector'svg.WeeklyMap', count: 1
 
 
   # DataSetPanelの初期状態は岩手県全域の状況
@@ -65,9 +65,9 @@ def has_weekly_map_card(lang:, lang_json:)
   cities = [cities.sample]
 
   cities.each do |city|
-    svg_g_element = find("svg#weekly_map > g[data-name=\"#{city[0]}\"]")
+    svg_g_element = find("svg.WeeklyMap > g[data-name=\"#{city[0]}\"]")
     expect(svg_g_element['data-area']).to eq city[1]
-    svg_g_path_element = find("svg#weekly_map > g[data-name=\"#{city[0]}\"] path")
+    svg_g_path_element = find("svg.WeeklyMap > g[data-name=\"#{city[0]}\"] path")
 
     # 市町村のpathの初期
     expect(svg_g_path_element['stroke-width']).to eq '1px'
