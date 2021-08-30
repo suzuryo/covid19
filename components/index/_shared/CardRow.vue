@@ -98,9 +98,3 @@ const options: ThisTypedComponentOptionsWithRecordProps<
 
 export default Vue.extend(options)
 </script>
-
-<style lang="scss">
-.DataCard {
-  transition: max-height 0.3s;
-}
-</style>

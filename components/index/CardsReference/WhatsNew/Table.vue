@@ -18,7 +18,6 @@
               <td class="text-start">
                 <template v-if="item.url">
                   <app-link :to="item.url" :show-icon="false">
-                    {{ item.icon }}
                     {{ item.text }}
                   </app-link>
                 </template>
@@ -150,7 +149,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
 export default Vue.extend(options)
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .WhatsNew {
   &-Content {
     .cardTable {

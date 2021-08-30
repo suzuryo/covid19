@@ -270,22 +270,20 @@ export default Vue.extend(options)
 }
 </style>
 
-<style lang="scss">
-#StageCard {
-  th,
-  td {
-    &.iwate {
-      width: 6em;
-      font-weight: bold;
-    }
-    &.stage3 {
-      color: rgb(255, 105, 51);
-      background-color: rgb(255, 234, 156);
-    }
-    &.stage4 {
-      color: rgb(255, 1, 0);
-      background-color: rgb(255, 199, 205);
-    }
+<style lang="scss" scoped>
+th,
+td {
+  &.iwate {
+    width: 6em;
+    font-weight: bold;
+  }
+  &.stage3 {
+    color: rgb(255, 105, 51);
+    background-color: rgb(255, 234, 156);
+  }
+  &.stage4 {
+    color: rgb(255, 1, 0);
+    background-color: rgb(255, 199, 205);
   }
 }
 </style>

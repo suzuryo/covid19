@@ -49,7 +49,7 @@ export default Vue.extend({
 })
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .v-expansion-panels {
   color: $gray-2;
 }
