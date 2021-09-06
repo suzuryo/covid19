@@ -10,7 +10,6 @@
 
 <script>
 import Breadcrumb from '@/components/_shared/Breadcrumb.vue'
-import RestaurantMapCard from '@/components/index/CardsIwateNinshou/Restaurant/Card'
 import AgeGroupCard from '@/components/index/CardsMonitoring/AgeGroup/Card.vue'
 import ConfirmedCasesDetailsCard from '@/components/index/CardsMonitoring/ConfirmedCasesDetails/Card.vue'
 import ConfirmedCasesNumberCard from '@/components/index/CardsMonitoring/ConfirmedCasesNumber/Card.vue'
@@ -27,6 +26,7 @@ import UntrackedRateCard from '@/components/index/CardsMonitoring/UntrackedRate/
 import WeeklyMapCard from '@/components/index/CardsMonitoring/WeeklyMap/Card.vue'
 import ConfirmedCasesAttributesCard from '@/components/index/CardsReference/ConfirmedCasesAttributes/Card.vue'
 import ConfirmedCasesByMunicipalitiesCard from '@/components/index/CardsReference/ConfirmedCasesByMunicipalities/Card.vue'
+import RestaurantMapCard from '@/components/index/CardsReference/IwateNinshou/Restaurant/Card'
 import SelfDisclosuresCard from '@/components/index/CardsReference/SelfDisclosures/Card.vue'
 import WhatsNewCard from '@/components/index/CardsReference/WhatsNew/Card.vue'
 import Data from '@/data/data.json'

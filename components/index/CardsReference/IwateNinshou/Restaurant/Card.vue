@@ -23,7 +23,7 @@
 import Vue from 'vue'
 import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
 
-import RestaurantMap from '@/components/index/CardsIwateNinshou/Restaurant/Map.vue'
+import RestaurantMap from '@/components/index/CardsReference/IwateNinshou/Restaurant/Map.vue'
 
 type DataType = {}
 type MethodsType = {}
