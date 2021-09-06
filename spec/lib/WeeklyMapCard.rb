@@ -75,11 +75,12 @@ def has_weekly_map_card(lang:, lang_json:)
 
     # 各市をクリックすると
     svg_g_path_element.click
+    sleep 1
 
     # 市町村のpathのクリック後
     # タイミングで？failするのでコメントアウトしておく
-    # expect(svg_g_path_element['stroke-width']).to eq '3px'
-    # expect(svg_g_path_element['stroke']).to eq '#999'
+    expect(svg_g_path_element['stroke-width']).to eq '3px'
+    expect(svg_g_path_element['stroke']).to eq '#999'
 
     # DataSetPanelの値が変わる
     expect(find('#WeeklyMapCard > div.DataView > div.DataView-Inner > div.DataView-Header > div.DataView-DataSetPanel > div.DataView-DataSet > div.DataView-DataSet-DataInfo > span.DataView-DataSet-DataInfo-summary > span.lTextBefore').text).to eq lang_json[city[0]]
