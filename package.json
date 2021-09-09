@@ -64,7 +64,7 @@
     "@types/chartjs-plugin-annotation": "0.5.2",
     "@types/pulltorefreshjs": "0.1.5",
     "axe-core": "4.3.3",
-    "core-js": "3.17.2",
+    "core-js": "3.17.3",
     "eslint": "7.32.0",
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-prettier": "4.0.0",
