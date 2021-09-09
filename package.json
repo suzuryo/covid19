@@ -74,7 +74,7 @@
     "lint-staged": "11.1.2",
     "nuxt-purgecss": "1.0.0",
     "nuxt-svg-loader": "1.2.0",
-    "prettier": "2.3.2",
+    "prettier": "2.4.0",
     "sharp": "0.29.1",
     "stylelint": "13.13.1",
     "stylelint-config-prettier": "8.0.2",
