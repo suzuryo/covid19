@@ -388,7 +388,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
           drawTime: 'afterDatasetsDraw',
           annotations: [
             {
-              id: 'stage3', // optional
+              id: 'iwate_kinkyujitai', // optional
               type: 'line',
               mode: 'horizontal',
               scaleID: 'monitoring-number-of-confirmed-cases',
