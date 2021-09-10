@@ -414,7 +414,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
               borderColor: 'rgba(33,33,33,0.5)',
               borderWidth: 2,
               label: {
-                backgroundColor: 'rgba(33,33,33,0.5)',
+                backgroundColor: 'rgba(204,102,102,0.5)',
                 content: this.$t('Common.ステージ4') as string,
                 enabled: true,
                 position: 'right',
