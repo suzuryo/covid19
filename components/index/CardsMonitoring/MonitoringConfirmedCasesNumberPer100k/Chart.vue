@@ -414,7 +414,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
               borderColor: 'rgba(33,33,33,0.5)',
               borderWidth: 2,
               label: {
-                backgroundColor: 'rgba(33,33,33,0.5)',
+                backgroundColor: 'rgba(204,102,102,0.5)',
                 content: this.$t('Common.ステージ4') as string,
                 enabled: true,
                 position: 'right',
@@ -437,6 +437,24 @@ const options: ThisTypedComponentOptionsWithRecordProps<
                 enabled: true,
                 position: 'right',
                 xAdjust: this.$nuxt.$vuetify.breakpoint.smAndDown ? 40 : 110,
+              },
+            },
+            {
+              id: 'iwate_kinkyujitai', // optional
+              type: 'line',
+              mode: 'horizontal',
+              scaleID: 'number-of-confirmed-cases-per-100k',
+              value: '10',
+              borderColor: 'rgba(33,33,33,0.5)',
+              borderWidth: 2,
+              label: {
+                backgroundColor: 'rgba(33,33,33,0.5)',
+                content: this.$t(
+                  'MonitoringConfirmedCasesNumberCard.県独自の緊急事態宣言の解除'
+                ) as string,
+                enabled: true,
+                position: 'right',
+                xAdjust: this.$nuxt.$vuetify.breakpoint.smAndDown ? 50 : 123,
               },
             },
           ],
