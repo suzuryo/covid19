@@ -21,7 +21,7 @@ def has_hotel_capacity_card(lang:, lang_json:)
 
   maxBeds.times do |i|
     # 50ごとにspanに数字が書いてある
-    if i % 50 == 49
+    if i % 50 == 49 || i == MAIN_SUMMARY_JSON['宿泊療養'] - 1
       expect(find("#HotelCapacityCard > div > div > div.DataView-Content > div.Beds > div.Bed:nth-child(#{i+1}) > span").text).to eq "#{i+1}"
     end
 
