@@ -9,6 +9,7 @@
       >
         <span
           v-if="
+            bed === bedSummary.hotel - 1 ||
             bed % 50 === 50 - 1 ||
             bed === 85 - 1 ||
             bed === 85 + 162 - 1 ||
