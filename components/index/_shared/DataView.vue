@@ -67,7 +67,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { MetaInfo } from 'vue-meta'
+import type { MetaInfo } from 'vue-meta'
 
 import AppLink from '@/components/_shared/AppLink.vue'
 import ExpansionPanel from '@/components/index/_shared/DataView/ExpansionPanel.vue'
