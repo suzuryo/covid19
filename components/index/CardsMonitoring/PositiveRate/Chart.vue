@@ -451,7 +451,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
               },
               ticks: {
                 fontSize: 11,
-                fontColor: '#808080',
+                fontColor: '#707070',
                 padding: 3,
                 fontStyle: 'bold',
               },
@@ -477,7 +477,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
               ticks: {
                 suggestedMin: 0,
                 maxTicksLimit: 8,
-                fontColor: '#808080', // #808080
+                fontColor: '#707070', // #707070
                 suggestedMax: this.scaledTicksYAxisMax,
               },
             },
@@ -492,7 +492,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
               ticks: {
                 suggestedMin: 0,
                 maxTicksLimit: 8,
-                fontColor: '#808080', // #808080
+                fontColor: '#707070', // #707070
                 suggestedMax: this.scaledTicksYAxisMaxRight,
                 callback(value) {
                   return `${value}%`
@@ -584,7 +584,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
               },
               ticks: {
                 fontSize: 11,
-                fontColor: 'transparent', // #808080
+                fontColor: 'transparent', // #707070
                 padding: 13, // 3 + 10(tickMarkLength)
                 fontStyle: 'bold',
               },
@@ -608,7 +608,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
               ticks: {
                 suggestedMin: 0,
                 maxTicksLimit: 8,
-                fontColor: '#808080', // #808080
+                fontColor: '#707070', // #707070
                 suggestedMax: this.scaledTicksYAxisMax,
               },
             },
@@ -625,7 +625,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
               ticks: {
                 suggestedMin: 0,
                 maxTicksLimit: 8,
-                fontColor: '#808080', // #808080
+                fontColor: '#707070', // #707070
                 suggestedMax: this.scaledTicksYAxisMaxRight,
                 callback(value) {
                   return `${value}%`
