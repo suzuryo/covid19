@@ -28,7 +28,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
-import { TranslateResult } from 'vue-i18n'
+import type { TranslateResult } from 'vue-i18n'
 
 import AppLink from '@/components/_shared/AppLink.vue'
 import AgeChart from '@/components/index/CardsMonitoring/AgeGroup/Chart.vue'

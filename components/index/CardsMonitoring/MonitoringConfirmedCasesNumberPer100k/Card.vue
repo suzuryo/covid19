@@ -47,7 +47,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
-import { TranslateResult } from 'vue-i18n'
+import type { TranslateResult } from 'vue-i18n'
 
 import MonitoringConfirmedCasesChartPer100kChart from '@/components/index/CardsMonitoring/MonitoringConfirmedCasesNumberPer100k/Chart.vue'
 import DailyPositiveDetail from '@/data/daily_positive_detail.json'
