@@ -38,7 +38,7 @@
 import dayjs from 'dayjs'
 import PullToRefresh from 'pulltorefreshjs'
 import Vue from 'vue'
-import { MetaInfo } from 'vue-meta'
+import type { MetaInfo } from 'vue-meta'
 import ScaleLoader from 'vue-spinner/src/ScaleLoader.vue'
 
 import NoScript from '@/components/_shared/NoScript.vue'

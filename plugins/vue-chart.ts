@@ -1,7 +1,8 @@
 import { Plugin } from '@nuxt/types'
 import { Chart, ChartData, ChartOptions } from 'chart.js'
 import ChartJsAnnotation from 'chartjs-plugin-annotation'
-import Vue, { PropType } from 'vue'
+import type { PropType } from 'vue'
+import Vue from 'vue'
 import { Bar, Doughnut, Line, mixins } from 'vue-chartjs'
 
 import { useDayjsAdapter } from '@/plugins/chartjs-adapter-dayjs'

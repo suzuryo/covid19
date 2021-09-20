@@ -98,7 +98,7 @@ import ChartJsAnnotation from 'chartjs-plugin-annotation'
 import dayjs from 'dayjs'
 import Vue from 'vue'
 import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
-import { TranslateResult } from 'vue-i18n'
+import type { TranslateResult } from 'vue-i18n'
 
 import DataView from '@/components/index/_shared/DataView.vue'
 import NotesExpansionPanel from '@/components/index/_shared/DataView/NotesExpansionPanel.vue'

@@ -127,7 +127,7 @@ import {
   mdiNeedle,
 } from '@mdi/js'
 import Vue from 'vue'
-import { TranslateResult } from 'vue-i18n'
+import type { TranslateResult } from 'vue-i18n'
 
 import AppLink from '@/components/_shared/AppLink.vue'
 import LanguageSelector from '@/components/_shared/SideNavigation/LanguageSelector.vue'
