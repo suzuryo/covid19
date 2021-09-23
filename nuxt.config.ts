@@ -223,6 +223,13 @@ const config: NuxtConfig = {
   },
   router: {
     trailingSlash: true,
+    extendRoutes(routes) {
+      routes.forEach((route) => {
+        if (route.name === 'index' || route.name === 'reference') {
+          route.meta = { tabs: true }
+        }
+      })
+    },
   },
   generate: {
     fallback: true,
