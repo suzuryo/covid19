@@ -4,13 +4,19 @@
       v-for="(item, i) in items"
       :key="i"
       v-ripple="false"
-      :href="`#tab-${i}`"
+      :to="{ path: localePath(item.path) }"
+      nuxt
+      exact
       @click="change"
     >
       {{ item.label }}
     </v-tab>
     <v-tabs-items v-model="tab" touchless>
-      <v-tab-item v-for="(item, i) in items" :key="i" :value="`tab-${i}`">
+      <v-tab-item
+        v-for="(item, i) in items"
+        :key="i"
+        :value="localePath(item.path)"
+      >
         <lazy-component :is="item.component" />
       </v-tab-item>
     </v-tabs-items>
@@ -36,10 +42,12 @@ export default Vue.extend({
         {
           label: this.$t('Common.モニタリング項目'),
           component: CardsMonitoring,
+          path: '/',
         },
         {
           label: this.$t('Common.お知らせ・参考資料'),
           component: CardsReference,
+          path: '/reference/',
         },
       ],
     }
