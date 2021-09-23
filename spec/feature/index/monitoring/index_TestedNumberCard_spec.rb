@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require_relative '../../lib/BreadCrumbs'
-require_relative '../../lib/TestedNumberCard'
+require_relative '../../../lib/BreadCrumbs'
+require_relative '../../../lib/TestedNumberCard'
 
 describe 'iPhone 6/7/8', type: :feature do
   context 'page [/]' do
