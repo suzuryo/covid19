@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require_relative '../../lib/BreadCrumbs'
-require_relative '../../lib/WeeklyMapCard'
+require_relative '../../../lib/BreadCrumbs'
+require_relative '../../../lib/WeeklyMapCard'
 
 describe 'iPhone 6/7/8', type: :feature do
   LOCALES.each do |lang, data|

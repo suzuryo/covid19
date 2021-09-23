@@ -51,7 +51,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       lastUpdate,
       headerItem: {
         iconPath: mdiChartTimelineVariant,
-        title: this.$t('Common.岩手の最新感染動向') as string,
+        title: this.$t('Common.お知らせ・参考資料') as string,
       },
     }
   },
@@ -62,7 +62,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   },
   head(): MetaInfo {
     return {
-      title: this.$t('Common.岩手の最新感染動向') as string,
+      title: this.$t('Common.お知らせ・参考資料') as string,
     }
   },
 }

@@ -1,14 +1,13 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require_relative '../../lib/BreadCrumbs'
+require_relative '../../../lib/BreadCrumbs'
 
 describe 'iPhone 6/7/8', type: :feature do
   context 'page [/]' do
     before do
-      visit '/'
+      visit '/reference/'
       page.scroll_to('.v-tabs')
-      find('#app .v-tabs .v-slide-group__content a[href="#tab-1"]').click
       render_lazy_contents
     end
 

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require_relative '../../lib/SiteTopUpper'
+require_relative '../../../lib/SiteTopUpper'
 
 describe 'iPhone 6/7/8', type: :feature do
   LOCALES.each do |lang, data|
