@@ -60,3 +60,9 @@ export default Vue.extend({
   },
 })
 </script>
+
+<style lang="scss">
+.v-tabs {
+  min-height: 100vh;
+}
+</style>
