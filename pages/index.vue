@@ -6,9 +6,7 @@
       :updated-at="lastUpdateAsString"
     />
     <site-top-upper />
-    <v-lazy>
-      <cards-tab />
-    </v-lazy>
+    <cards-tab />
   </div>
 </template>
 
