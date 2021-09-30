@@ -47,7 +47,7 @@
       <h3>盛岡市による全年齢向け集団接種</h3>
       <p>
         <app-link
-          to="http://www.city.morioka.iwate.jp/kenkou/kenko/1031971/1032080/1035726.html"
+          to="https://www.city.morioka.iwate.jp/corona/1032080/1035726.html"
         >
           盛岡市の集団接種
         </app-link>
@@ -120,7 +120,7 @@
       </p>
       <p>
         <app-link
-          to="http://www.city.morioka.iwate.jp/kenkou/kenko/1031971/1032080/1035346.html"
+          to="https://www.city.morioka.iwate.jp/corona/1032080/vaccine.html"
         >
           盛岡市のワクチン接種
         </app-link>
