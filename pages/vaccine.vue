@@ -49,7 +49,14 @@
         <app-link
           to="https://www.city.morioka.iwate.jp/corona/1032080/1035726.html"
         >
-          盛岡市の集団接種
+          盛岡市の集団接種(SGプラザ)
+        </app-link>
+      </p>
+      <p>
+        <app-link
+          to="https://www.city.morioka.iwate.jp/corona/1032080/1037211.html"
+        >
+          盛岡市の集団接種(岩手大学)
         </app-link>
       </p>
       <h4>会場へのアクセス</h4>
