@@ -59,9 +59,7 @@
           盛岡市の集団接種(岩手大学)
         </app-link>
       </p>
-      <h4>会場へのアクセス</h4>
       <p>
-        駐車場の案内や無料シャトルバスのほか、タクシー券の交付が発表されています。
         <app-link
           to="https://www.city.morioka.iwate.jp/corona/1032080/1036950.html"
         >
