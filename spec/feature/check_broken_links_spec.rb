@@ -19,8 +19,8 @@ describe 'iPhone 6/7/8', type: :feature do
 
     # news.json の 個別ページのURL は直接読み込む
     NEWS_JSON['newsItems'].each do |item|
-      urls << URI(item['url']['ja']) unless item['url']['ja'].blank?
-      urls << URI(item['url']['en']) unless item['url']['en'].blank?
+      urls << URI(item['url']['ja']) unless item['url']['ja'].blank? || item['url']['ja'].match(/www\.youtube\.com/)
+      urls << URI(item['url']['en']) unless item['url']['en'].blank? || item['url']['en'].match(/www\.youtube\.com/)
     end
 
     # alert.json の 個別ページのURL は直接読み込む
@@ -70,7 +70,7 @@ describe 'iPhone 6/7/8', type: :feature do
           headers: {
             'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.3 Safari/605.1.15 '
           },
-          method: :head,
+          method: :get,
           followlocation: true,
           timeout: 10
         )
