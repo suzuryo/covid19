@@ -20,7 +20,7 @@ describe 'iPhone 6/7/8', type: :feature do
     # news.json の 個別ページのURL は直接読み込む
     NEWS_JSON['newsItems'].each do |item|
       urls << URI(item['url']['ja']) unless item['url']['ja'].blank? || item['url']['ja'].match(/www\.youtube\.com/)
-      urls << URI(item['url']['en']) unless item['url']['en'].blank? || item['url']['ja'].match(/www\.youtube\.com/)
+      urls << URI(item['url']['en']) unless item['url']['en'].blank? || item['url']['en'].match(/www\.youtube\.com/)
     end
 
     # alert.json の 個別ページのURL は直接読み込む
