@@ -14,8 +14,13 @@ def has_effective_reproduction_number_card(lang:, lang_json:)
   # 世代時間は5とする
   m1sum = DATA_JSON['patients']['data'].filter{|i| Time.parse(i['確定日']) > Time.parse(POSITIVE_RATE_JSON['data'].last['diagnosed_date']).days_ago(7)}.size
   m2sum = DATA_JSON['patients']['data'].filter{|i| Time.parse(i['確定日']) < Time.parse(POSITIVE_RATE_JSON['data'].last['diagnosed_date']).days_ago(4) && Time.parse(i['確定日']) > Time.parse(POSITIVE_RATE_JSON['data'].last['diagnosed_date']).days_ago(12)}.size
-  d = m1sum.to_f / m2sum.to_f
-  d = number_to_delimited(page.evaluate_script("#{d}.toFixed(2)"))
+  # 0で割り算になる時は、都合上0.00にしておく
+  if m2sum != 0
+    d = m1sum.to_f / m2sum.to_f
+    d = number_to_delimited(page.evaluate_script("#{d}.toFixed(2)"))
+  else
+    d = number_to_delimited('0.00')
+  end
   expect(find('#EffectiveReproductionNumberCard > div.DataView > div.DataView-Inner > div.DataView-Header > div.DataView-DataSetPanel > div.DataView-DataSet > div.DataView-DataSet-DataInfo > span.DataView-DataSet-DataInfo-summary > strong').text).to eq d
   expect(find('#EffectiveReproductionNumberCard > div.DataView > div.DataView-Inner > div.DataView-Header > div.DataView-DataSetPanel > div.DataView-DataSet > div.DataView-DataSet-DataInfo > span > small').text).to eq ''
 
