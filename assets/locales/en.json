@@ -503,6 +503,7 @@
   "相談する医療機関に迷う場合や「かかりつけ医」がない場合「受診・相談センター」": "If you have no idea about which medical institution to consult, or if you don't have a \"family doctor,\" please contact the Consultation Center.",
   "または、かかりつけ医の紹介先で受診・検査となります": "Or, you will be referred to a hospital by your family doctor for examination and testing.",
   "かかりつけ医にて受診・検査をおこないます（診療・検査医療機関の場合）": "If your family doctor is a specific designated medical laboratory, you will be examined there.",
+  "診療・検査医療機関の一覧": "List of medical institutions for covid19 treatment and testing",
   "ConfirmedCasesAttributesCard": {
     "title": "Details of test positives",
     "notes": [
