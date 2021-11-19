@@ -1,11 +1,12 @@
 import { NuxtConfig } from '@nuxt/types'
-import dayjs from 'dayjs'
+import dayjs, { extend } from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 
 // eslint-disable-next-line no-restricted-imports
-import i18n from './nuxt-i18n.config'
+import i18nOptions from './i18n.config'
 const environment = process.env.NODE_ENV || 'development'
-dayjs.extend(utc)
+
+extend(utc)
 const now = dayjs().utc().format()
 
 const pages = [
@@ -109,7 +110,7 @@ const config: NuxtConfig = {
   modules: [
     // Doc: https://github.com/nuxt-community/dotenv-module
     ['@nuxtjs/dotenv', { filename: `.env.${environment}` }],
-    ['nuxt-i18n', i18n],
+    ['@nuxtjs/i18n', i18nOptions],
     'nuxt-svg-loader',
     '@nuxtjs/sitemap',
   ],

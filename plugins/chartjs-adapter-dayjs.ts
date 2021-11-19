@@ -2,8 +2,9 @@ import 'dayjs/locale/en'
 import 'dayjs/locale/ja'
 
 import { NuxtAppOptions } from '@nuxt/types/app'
+// eslint-disable-next-line import/named
 import { _adapters } from 'chart.js'
-import dayjs from 'dayjs'
+import dayjs, { extend, locale as dayjsLocale } from 'dayjs'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
 
 const DEFAULT_FORMATS = {
@@ -20,7 +21,7 @@ const DEFAULT_FORMATS = {
 }
 
 export function useDayjsAdapter(nuxtI18n: NuxtAppOptions['i18n']) {
-  dayjs.extend(customParseFormat)
+  extend(customParseFormat)
 
   // set locale when page onload
   setLocale(nuxtI18n.locale)
@@ -70,5 +71,5 @@ function setLocale(newLocale: string) {
     locale = 'ja'
   }
 
-  dayjs.locale(locale)
+  dayjsLocale(locale)
 }

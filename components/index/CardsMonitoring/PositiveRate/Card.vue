@@ -63,7 +63,7 @@
 </template>
 
 <script>
-import dayjs from 'dayjs'
+import { extend } from 'dayjs'
 import duration from 'dayjs/plugin/duration'
 
 import AppLink from '@/components/_shared/AppLink.vue'
@@ -74,7 +74,7 @@ import {
   getNumberToFixedFunction,
   getNumberToLocaleStringFunction,
 } from '@/utils/monitoringStatusValueFormatters'
-dayjs.extend(duration)
+extend(duration)
 
 export default {
   components: {
