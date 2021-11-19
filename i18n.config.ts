@@ -1,4 +1,4 @@
-import type { NuxtVueI18n } from 'nuxt-i18n'
+import type { Options } from '@nuxtjs/i18n'
 import { DateTimeFormat } from 'vue-i18n'
 
 const dateTimeFormatsCommon: DateTimeFormat = {
@@ -26,7 +26,7 @@ const dateTimeFormatsCommon: DateTimeFormat = {
   },
 }
 
-const options: NuxtVueI18n.Options.AllOptionsInterface = {
+const i18nOptions: Options = {
   baseUrl: 'https://iwate.stopcovid19.jp',
   strategy: 'prefix_except_default',
   detectBrowserLanguage: false,
@@ -58,7 +58,6 @@ const options: NuxtVueI18n.Options.AllOptionsInterface = {
       description: 'English',
     },
   ],
-  seo: false,
 }
 
-export default options
+export default i18nOptions

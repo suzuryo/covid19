@@ -1,6 +1,6 @@
 import type { TranslateResult } from 'vue-i18n'
 
-type Cities = {
+export type Cities = {
   [key: string]: {
     count: number
     area: string
@@ -16,4 +16,4 @@ type MapDataItem = {
   d?: string
 }
 
-type MapData = MapDataItem[]
+export type MapData = MapDataItem[]
