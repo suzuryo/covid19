@@ -72,6 +72,15 @@
             }}
           </p>
         </div>
+        <div :class="$style.detail">
+          <app-link
+            to="https://www.pref.iwate.jp/_res/projects/default_project/_page_/001/027/496/covid19_20211110-3.pdf"
+            :icon-size="20"
+            :icon-class="$style.icon"
+            :class="$style.detailButton"
+            >{{ $t('診療・検査医療機関の一覧') }}
+          </app-link>
+        </div>
       </div>
       <div id="anx" ref="lowerTrigger" :class="$style.section">
         <h4 :class="$style.sxnHeading">
