@@ -96,7 +96,7 @@
 </template>
 
 <script lang="ts">
-import { Chart } from 'chart.js'
+import Chart from 'chart.js'
 import ChartJsAnnotation from 'chartjs-plugin-annotation'
 import dayjs from 'dayjs'
 import Vue from 'vue'

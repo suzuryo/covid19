@@ -84,7 +84,7 @@
 </template>
 
 <script lang="ts">
-import { Chart } from 'chart.js'
+import Chart from 'chart.js'
 import dayjs from 'dayjs'
 import Vue from 'vue'
 import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'

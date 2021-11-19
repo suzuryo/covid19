@@ -82,7 +82,7 @@
 </template>
 
 <script lang="ts">
-import { Chart } from 'chart.js'
+import Chart from 'chart.js'
 import dayjs from 'dayjs'
 import tinygradient from 'tinygradient'
 import Vue from 'vue'
