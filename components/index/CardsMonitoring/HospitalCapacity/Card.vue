@@ -29,6 +29,11 @@
                 {{ $t('ExtLink.岩手県38_3.text') }}
               </app-link>
             </div>
+            <div>
+              <app-link :to="$t('ExtLink.岩手県_3_11.url')">
+                {{ $t('ExtLink.岩手県_3_11.text') }}
+              </app-link>
+            </div>
           </div>
         </template>
       </hospital-capacity-beds>
