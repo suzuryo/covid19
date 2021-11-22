@@ -29,6 +29,11 @@
                 {{ $t('ExtLink.岩手県38_3.text') }}
               </app-link>
             </div>
+            <div>
+              <app-link :to="$t('ExtLink.岩手県_3_11.url')">
+                {{ $t('ExtLink.岩手県_3_11.text') }}
+              </app-link>
+            </div>
           </div>
         </template>
       </hotel-capacity-beds>
@@ -60,7 +65,7 @@ export default Vue.extend({
   data() {
     const date = dayjs(PositiveStatus.date).format('YYYY/MM/DD HH:mm')
     const hotel = MainSummary.宿泊療養
-    const maxBeds = hotel > 85 + 162 + 130 ? hotel : 85 + 162 + 130
+    const maxBeds = hotel > 370 ? hotel : 370
     const beds = [...Array(maxBeds).keys()]
     const bedSummary = {
       beds,
