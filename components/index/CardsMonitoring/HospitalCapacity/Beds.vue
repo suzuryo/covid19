@@ -27,7 +27,7 @@
       </div>
     </div>
     <div class="legend2">
-      <div v-if="bedSummary.hospital + bedSummary.waiting > 350">
+      <div v-if="bedSummary.hospital + bedSummary.waiting > 400">
         <span class="Bed overflowed" />
         {{ $t('HospitalCapacityCard.overflowed') }}
       </div>
@@ -86,7 +86,7 @@ export default Vue.extend({
     },
   },
   data() {
-    const remaining = 350 - this.bedSummary.hospital - this.bedSummary.waiting
+    const remaining = 400 - this.bedSummary.hospital - this.bedSummary.waiting
     return {
       remaining,
     }
@@ -99,7 +99,7 @@ export default Vue.extend({
       // 調整中の数
       const waiting = this.bedSummary.waiting
       // Phase3の最大病床数
-      const bedsPhase3 = 350
+      const bedsPhase3 = 400
 
       // ベッド使用中
       if (bed < hospital) {

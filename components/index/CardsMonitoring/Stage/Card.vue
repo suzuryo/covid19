@@ -108,7 +108,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     // 0で割り算になる場合は 99999 を返しておく
 
     // 確保病床の使用率
-    const stageIndex0 = (MainSummary.入院 / 350.0) * 100
+    const stageIndex0 = (MainSummary.入院 / 400.0) * 100
 
     // 入院率
     const stageIndex1 =
