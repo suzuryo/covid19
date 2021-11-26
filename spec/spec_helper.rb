@@ -18,9 +18,14 @@ Capybara.register_driver :emulated_chrome_ios do |app|
   options.add_argument('--host-resolver-rules=MAP www.google-analytics.com 127.0.0.1, MAP www.googletagmanager.com 127.0.0.1')
   options.add_emulation(device_name: 'iPhone 6/7/8')
 
+  caps = [
+    options,
+    Selenium::WebDriver::Remote::Capabilities.chrome
+  ]
+
   Capybara::Selenium::Driver.new(app,
                                  browser: :chrome,
-                                 options: options)
+                                 capabilities: caps)
 end
 
 Capybara.default_driver = :emulated_chrome_ios
