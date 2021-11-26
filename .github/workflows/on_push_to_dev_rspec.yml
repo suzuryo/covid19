@@ -54,7 +54,7 @@ jobs:
           yarn run start &
       - name: rspec
         run: |
-          bundle exec parallel_rspec spec
+          bundle exec rspec spec
       - name: upload rspec screenshots
         uses: actions/upload-artifact@v2
         if: failure()
