@@ -41,7 +41,7 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.0.2'
+          ruby-version: '3.0.3'
           bundler-cache: true
       - name: Copy data.json to master
         run: |
@@ -75,7 +75,10 @@ jobs:
           yarn run start &
       - name: rspec
         run: |
-          bundle exec parallel_rspec spec
+          bundle exec rspec spec/feature/page
+          bundle exec rspec spec/feature/cards
+          bundle exec rspec spec/feature/index
+          bundle exec rspec spec/feature/check_broken_links_spec.rb
       - name: upload rspec screenshots
         uses: actions/upload-artifact@v2
         if: failure()
