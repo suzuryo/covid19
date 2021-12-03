@@ -55,9 +55,7 @@ jobs:
           yarn run start &
       - name: rspec
         run: |
-          bundle exec rspec spec/feature/page
-          bundle exec rspec spec/feature/cards
-          bundle exec rspec spec/feature/index
+          bundle exec rspec spec/feature/index/shared/index_h1h2_spec.rb
           bundle exec rspec spec/feature/check_broken_links_spec.rb
       - name: upload rspec screenshots
         uses: actions/upload-artifact@v2
