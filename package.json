@@ -63,7 +63,7 @@
     "@types/chartjs-plugin-annotation": "0.5.2",
     "axe-core": "4.3.5",
     "eslint": "8.4.0",
-    "core-js": "3.19.1",
+    "core-js": "3.19.2",
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-prettier": "4.0.0",
     "eslint-plugin-simple-import-sort": "7.0.0",
