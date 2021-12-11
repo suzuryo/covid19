@@ -44,7 +44,7 @@
           </p>
           <p :class="$style.detail">
             <app-link
-              to="https://www.pref.iwate.jp/_res/projects/default_project/_page_/001/027/496/covid19_20211202.pdf"
+              to="https://www.pref.iwate.jp/_res/projects/default_project/_page_/001/027/496/031210_itiran.pdf"
               :icon-size="20"
               :icon-class="$style.icon"
               :class="$style.detailButton"
