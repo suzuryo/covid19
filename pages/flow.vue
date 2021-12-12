@@ -44,7 +44,7 @@
           </p>
           <p :class="$style.detail">
             <app-link
-              to="https://www.pref.iwate.jp/_res/projects/default_project/_page_/001/027/496/031210_itiran.pdf"
+              :to="extUrlShinryouKikanIchiran"
               :icon-size="20"
               :icon-class="$style.icon"
               :class="$style.detailButton"
@@ -149,6 +149,7 @@ import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
 import AppLink from '@/components/_shared/AppLink.vue'
 import PageHeader from '@/components/_shared/PageHeader.vue'
 import PrinterButton from '@/components/_shared/PrinterButton.vue'
+import Urls from '@/data/urls.json'
 import CovidIcon from '@/static/covid.svg'
 import FigCondAnx from '@/static/flow/cond_anx.svg'
 import FigCondSy from '@/static/flow/cond_sy.svg'
@@ -158,6 +159,7 @@ type Data = {
   headerItem: {
     title: string
   }
+  extUrlShinryouKikanIchiran: string
 }
 type Methods = {}
 type Computed = {}
@@ -181,10 +183,14 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     IconPhone,
   },
   data() {
+    const extUrlShinryouKikanIchiran =
+      Urls.items.find((a) => a.item === '診療医療機関の一覧')?.url ?? ''
+
     return {
       headerItem: {
         title: this.$t('SideNavigation.a[4]') as string,
       },
+      extUrlShinryouKikanIchiran,
     }
   },
   head(): any {
