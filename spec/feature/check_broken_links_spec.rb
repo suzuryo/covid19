@@ -29,6 +29,11 @@ describe 'iPhone 6/7/8', type: :feature do
       urls << URI(item['url']['en']) unless item['url']['en'].blank?
     end
 
+    # urls.json の URL は直接読み込む
+    URLS_JSON['items'].each do |item|
+      urls << URI(item['url'])
+    end
+
     # SELF_DISCLOSURES_JSON.url は、ページが削除されても記録として 404になってもよいとする
 
     before do
