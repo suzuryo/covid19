@@ -7,7 +7,7 @@ require_relative '../../../lib/UntrackedRateCard'
 describe 'iPhone 6/7/8', type: :feature do
   context 'page [/]' do
     before do
-      visit '/'
+      visit '/monitoring/'
       render_lazy_contents
       page.scroll_to('#UntrackedRateCard')
     end

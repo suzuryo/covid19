@@ -8,7 +8,7 @@ describe 'iPhone 6/7/8', type: :feature do
   LOCALES.each do |lang, data|
     context "page #{data[:path]}" do
       before do
-        visit data[:path]
+        visit "#{data[:path]}monitoring/"
         render_lazy_contents
         page.scroll_to('#PositiveRateCard')
       end

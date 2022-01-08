@@ -47,7 +47,7 @@ import dayjs from 'dayjs'
 import Vue from 'vue'
 
 import AppLink from '@/components/_shared/AppLink.vue'
-import HotelCapacityBeds from '@/components/index/CardsMonitoring/HotelCapacity/Beds.vue'
+import HotelCapacityBeds from '@/components/index/CardsFeatured/HotelCapacity/Beds.vue'
 import MainSummary from '@/data/main_summary.json'
 import PositiveStatus from '@/data/positive_status.json'
 

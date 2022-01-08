@@ -26,7 +26,7 @@ import dayjs from 'dayjs'
 import Vue from 'vue'
 import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
 
-import StageTable from '@/components/index/CardsMonitoring/Stage/Table.vue'
+import StageTable from '@/components/index/CardsFeatured/Stage/Table.vue'
 import DailyPositiveDetail from '@/data/daily_positive_detail.json'
 import Data from '@/data/data.json'
 import MainSummary from '@/data/main_summary.json'
