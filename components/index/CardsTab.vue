@@ -27,12 +27,14 @@
 <script lang="ts">
 import Vue from 'vue'
 
+import CardsFeatured from '@/components/index/CardsFeatured.vue'
 import CardsMonitoring from '@/components/index/CardsMonitoring.vue'
 import CardsReference from '@/components/index/CardsReference.vue'
 import { EventBus, TOGGLE_EVENT } from '@/utils/tab-event-bus'
 
 export default Vue.extend({
   components: {
+    CardsFeatured,
     CardsMonitoring,
     CardsReference,
   },
@@ -41,12 +43,21 @@ export default Vue.extend({
       tab: null,
       items: [
         {
-          label: this.$t('Common.モニタリング項目'),
-          component: CardsMonitoring,
+          label: this.$t('Common.現在の状況'),
+          component: CardsFeatured,
           path: '/',
         },
         {
-          label: this.$t('Common.お知らせ・参考資料'),
+          label: this.$vuetify.breakpoint.smAndDown
+            ? this.$t('Common.モニタリング')
+            : this.$t('Common.モニタリング項目'),
+          component: CardsMonitoring,
+          path: '/monitoring',
+        },
+        {
+          label: this.$vuetify.breakpoint.smAndDown
+            ? this.$t('Common.参考資料')
+            : this.$t('Common.お知らせ・参考資料'),
           component: CardsReference,
           path: '/reference/',
         },

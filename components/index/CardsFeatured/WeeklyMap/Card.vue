@@ -26,7 +26,7 @@
 import dayjs from 'dayjs'
 import Vue from 'vue'
 
-import WeeklyMapIwate from '@/components/index/CardsMonitoring/WeeklyMap/Iwate.vue'
+import WeeklyMapIwate from '@/components/index/CardsFeatured/WeeklyMap/Iwate.vue'
 import Data from '@/data/data.json'
 import PatientMunicipalities from '@/data/patient_municipalities.json'
 import { Cities, MapData } from '@/types/weekly-map'
