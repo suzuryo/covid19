@@ -16,7 +16,7 @@ Capybara.register_driver :emulated_chrome_ios do |app|
   options.add_argument('--headless')
   options.add_argument('--disable-gpu')
   options.add_argument('--host-resolver-rules=MAP www.google-analytics.com 127.0.0.1, MAP www.googletagmanager.com 127.0.0.1')
-  options.add_emulation(device_name: 'iPhone 6/7/8')
+  options.add_emulation(device_name: 'iPhone SE')
 
   caps = [
     options,
