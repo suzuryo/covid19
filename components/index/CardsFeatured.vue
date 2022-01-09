@@ -6,12 +6,21 @@
 import Vue from 'vue'
 
 import CardsLazyRow from '@/components/index/_shared/CardsLazyRow.vue'
-import ConfirmedCasesDetailsCard from '@/components/index/CardsFeatured/ConfirmedCasesDetails/Card.vue' // 検査陽性者の状況
-import HospitalCapacityCard from '@/components/index/CardsFeatured/HospitalCapacity/Card.vue' // 入院病床の状況
-import HotelCapacityCard from '@/components/index/CardsFeatured/HotelCapacity/Card.vue' // 宿泊療養の状況
-import MonitoringConfirmedCasesNumberPer100kCard from '@/components/index/CardsFeatured/MonitoringConfirmedCasesNumberPer100k/Card.vue' // 直近1週間の陽性例マップ
-import StageCard from '@/components/index/CardsFeatured/Stage/Card.vue' // ステージ判断のための指標
-import WeeklyMapCard from '@/components/index/CardsFeatured/WeeklyMap/Card.vue'
+
+const ConfirmedCasesDetailsCard = () =>
+  import('@/components/index/CardsFeatured/ConfirmedCasesDetails/Card.vue')
+const HospitalCapacityCard = () =>
+  import('@/components/index/CardsFeatured/HospitalCapacity/Card.vue')
+const HotelCapacityCard = () =>
+  import('@/components/index/CardsFeatured/HotelCapacity/Card.vue')
+const MonitoringConfirmedCasesNumberPer100kCard = () =>
+  import(
+    '@/components/index/CardsFeatured/MonitoringConfirmedCasesNumberPer100k/Card.vue'
+  )
+const StageCard = () =>
+  import('@/components/index/CardsFeatured/Stage/Card.vue')
+const WeeklyMapCard = () =>
+  import('@/components/index/CardsFeatured/WeeklyMap/Card.vue')
 
 export default Vue.extend({
   components: {
