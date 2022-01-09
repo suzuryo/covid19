@@ -195,7 +195,9 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     const extUrlShinryouKikanIchiran =
       Urls.items.find((a) => a.item === '診療医療機関の一覧')?.url ?? ''
     const extUrlFreePCR =
-      Urls.items.find((a) => a.item === '無症状の方の薬局等におけるPCR検査等の無料化')?.url ?? ''
+      Urls.items.find(
+        (a) => a.item === '無症状の方の薬局等におけるPCR検査等の無料化'
+      )?.url ?? ''
 
     return {
       headerItem: {
