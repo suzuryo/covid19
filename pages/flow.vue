@@ -87,6 +87,15 @@
           <fig-cond-anx :class="$style.fig" aria-hidden="true" />
           {{ $t('不安に思う方') }}
         </h4>
+        <p :class="$style.detail">
+          <app-link
+            :to="extUrlFreePCR"
+            :icon-size="20"
+            :icon-class="$style.icon"
+            :class="$style.detailButton"
+            >{{ $t('無症状の方の薬局等におけるPCR検査等の無料化') }}
+          </app-link>
+        </p>
         <p :class="$style.sxnText">
           {{
             $t(
@@ -185,12 +194,15 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   data() {
     const extUrlShinryouKikanIchiran =
       Urls.items.find((a) => a.item === '診療医療機関の一覧')?.url ?? ''
+    const extUrlFreePCR =
+      Urls.items.find((a) => a.item === '無症状の方の薬局等におけるPCR検査等の無料化')?.url ?? ''
 
     return {
       headerItem: {
         title: this.$t('SideNavigation.a[4]') as string,
       },
       extUrlShinryouKikanIchiran,
+      extUrlFreePCR,
     }
   },
   head(): any {
