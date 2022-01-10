@@ -6,19 +6,11 @@
 import Vue from 'vue'
 
 import CardsLazyRow from '@/components/index/_shared/CardsLazyRow.vue'
-
-const ConfirmedCasesAttributesCard = () =>
-  import('@/components/index/CardsReference/ConfirmedCasesAttributes/Card.vue')
-const ConfirmedCasesByMunicipalitiesCard = () =>
-  import(
-    '@/components/index/CardsReference/ConfirmedCasesByMunicipalities/Card.vue'
-  )
-const RestaurantCard = () =>
-  import('@/components/index/CardsReference/IwateNinshou/Restaurant/Card.vue')
-const SelfDisclosuresCard = () =>
-  import('@/components/index/CardsReference/SelfDisclosures/Card.vue')
-const WhatsNewCard = () =>
-  import('@/components/index/CardsReference/WhatsNew/Card.vue')
+import ConfirmedCasesAttributesCard from '@/components/index/CardsReference/ConfirmedCasesAttributes/Card.vue'
+import ConfirmedCasesByMunicipalitiesCard from '@/components/index/CardsReference/ConfirmedCasesByMunicipalities/Card.vue'
+import RestaurantCard from '@/components/index/CardsReference/IwateNinshou/Restaurant/Card.vue'
+import SelfDisclosuresCard from '@/components/index/CardsReference/SelfDisclosures/Card.vue'
+import WhatsNewCard from '@/components/index/CardsReference/WhatsNew/Card.vue'
 
 export default Vue.extend({
   components: {
