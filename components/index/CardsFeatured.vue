@@ -7,6 +7,7 @@ import Vue from 'vue'
 
 import CardsLazyRow from '@/components/index/_shared/CardsLazyRow.vue'
 import ConfirmedCasesDetailsCard from '@/components/index/CardsFeatured/ConfirmedCasesDetails/Card.vue'
+import HomeCapacityCard from '@/components/index/CardsFeatured/HomeCapacity/Card.vue'
 import HospitalCapacityCard from '@/components/index/CardsFeatured/HospitalCapacity/Card.vue'
 import HotelCapacityCard from '@/components/index/CardsFeatured/HotelCapacity/Card.vue'
 import MonitoringConfirmedCasesNumberPer100kCard from '@/components/index/CardsFeatured/MonitoringConfirmedCasesNumberPer100k/Card.vue'
@@ -23,6 +24,7 @@ export default Vue.extend({
         [StageCard, ConfirmedCasesDetailsCard],
         [MonitoringConfirmedCasesNumberPer100kCard, WeeklyMapCard],
         [HospitalCapacityCard, HotelCapacityCard],
+        [HomeCapacityCard],
       ],
     }
   },

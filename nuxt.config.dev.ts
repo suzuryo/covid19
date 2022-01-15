@@ -28,6 +28,7 @@ const pages = [
   '/cards/number-of-tested/',
   '/cards/hospital-capacity/',
   '/cards/hotel-capacity/',
+  '/cards/home-capacity/',
   '/cards/restaurant-map/',
 ]
 
