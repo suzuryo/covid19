@@ -11,6 +11,7 @@
 <script>
 import Breadcrumb from '@/components/_shared/Breadcrumb.vue'
 import ConfirmedCasesDetailsCard from '@/components/index/CardsFeatured/ConfirmedCasesDetails/Card.vue'
+import HomeCapacityCard from '@/components/index/CardsFeatured/HomeCapacity/Card.vue'
 import HospitalCapacityCard from '@/components/index/CardsFeatured/HospitalCapacity/Card.vue'
 import HotelCapacityCard from '@/components/index/CardsFeatured/HotelCapacity/Card.vue'
 import MonitoringConfirmedCasesNumberPer100kCard from '@/components/index/CardsFeatured/MonitoringConfirmedCasesNumberPer100k/Card.vue'
@@ -54,6 +55,7 @@ export default {
     HospitalizedNumberCard,
     HospitalCapacityCard,
     HotelCapacityCard,
+    HomeCapacityCard,
     StageCard,
     AgeGroupCard,
   },
@@ -123,6 +125,10 @@ export default {
       case 'hotel-capacity':
         cardComponent = 'hotel-capacity-card'
         cardTitle = this.$t('HotelCapacityCard.title')
+        break
+      case 'home-capacity':
+        cardComponent = 'home-capacity-card'
+        cardTitle = this.$t('HomeCapacityCard.title')
         break
       case 'stage':
         cardComponent = 'stage-card'

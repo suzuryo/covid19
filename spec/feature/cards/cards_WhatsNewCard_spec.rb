@@ -4,7 +4,7 @@ require 'spec_helper'
 require_relative '../../lib/BreadCrumbs'
 require_relative '../../lib/WhatsNewCard'
 
-describe 'iPhone 6/7/8', type: :feature do
+describe 'iPhone SE', type: :feature do
   context 'page [/cards/whats-new/]' do
     before do
       visit '/cards/whats-new/'

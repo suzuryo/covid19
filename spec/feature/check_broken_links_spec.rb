@@ -3,12 +3,12 @@
 require 'spec_helper'
 require 'typhoeus'
 
-# 1. Vue.js を chrome (mobile emulation iPhone 6/7/8) で解釈する
+# 1. Vue.js を chrome (mobile emulation iPhone SE) で解釈する
 # 2. ページ上の a href を 全部探す
 # 3. href を GET してみて、 status code が 200 を確認
 # なぜなら、盛岡市の個別事例ページがよく URL が変更になって 404 になるから。
 
-describe 'iPhone 6/7/8', type: :feature do
+describe 'iPhone SE', type: :feature do
   context 'page [/]' do
     urls = []
 

@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 require_relative '../../../lib/BreadCrumbs'
-require_relative '../../../lib/StageCard'
+require_relative '../../../lib/HomeCapacityCard'
 
 describe 'iPhone SE', type: :feature do
   LOCALES.each do |lang, data|
@@ -10,13 +10,13 @@ describe 'iPhone SE', type: :feature do
       before do
         visit data[:path]
         render_lazy_contents
-        page.scroll_to('#StageCard')
+        page.scroll_to('#HomeCapacityCard')
       end
 
-      describe 'ステージ判断の指標(StageCard)' do
+      describe '自宅療養の状況(HomeCapacityCard)' do
         it '項目の値' do
-          has_stage_card(lang: lang, lang_json: data[:json])
-          has_no_breadcrumbs(id: '#StageCard')
+          has_home_capacity_card(lang: lang, lang_json: data[:json])
+          has_no_breadcrumbs(id: '#HomeCapacityCard')
         end
       end
     end
