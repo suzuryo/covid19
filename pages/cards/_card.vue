@@ -11,9 +11,9 @@
 <script>
 import Breadcrumb from '@/components/_shared/Breadcrumb.vue'
 import ConfirmedCasesDetailsCard from '@/components/index/CardsFeatured/ConfirmedCasesDetails/Card.vue'
+import HomeCapacityCard from '@/components/index/CardsFeatured/HomeCapacity/Card.vue'
 import HospitalCapacityCard from '@/components/index/CardsFeatured/HospitalCapacity/Card.vue'
 import HotelCapacityCard from '@/components/index/CardsFeatured/HotelCapacity/Card.vue'
-import HomeCapacityCard from '@/components/index/CardsFeatured/HomeCapacity/Card.vue'
 import MonitoringConfirmedCasesNumberPer100kCard from '@/components/index/CardsFeatured/MonitoringConfirmedCasesNumberPer100k/Card.vue'
 import StageCard from '@/components/index/CardsFeatured/Stage/Card.vue'
 import WeeklyMapCard from '@/components/index/CardsFeatured/WeeklyMap/Card.vue'
