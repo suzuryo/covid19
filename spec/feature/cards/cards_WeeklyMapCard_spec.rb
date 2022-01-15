@@ -4,7 +4,7 @@ require 'spec_helper'
 require_relative '../../lib/BreadCrumbs'
 require_relative '../../lib/WeeklyMapCard'
 
-describe 'iPhone 6/7/8', type: :feature do
+describe 'iPhone SE', type: :feature do
   LOCALES.each do |lang, data|
     context "page #{data[:path]}" do
       before do
