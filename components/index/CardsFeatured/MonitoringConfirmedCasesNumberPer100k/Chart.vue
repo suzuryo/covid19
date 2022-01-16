@@ -390,53 +390,39 @@ const options: ThisTypedComponentOptionsWithRecordProps<
           drawTime: 'afterDatasetsDraw',
           annotations: [
             {
-              id: 'stage3', // optional
-              type: 'line',
-              mode: 'horizontal',
-              scaleID: 'number-of-confirmed-cases-per-100k',
-              value: '15',
-              borderColor: 'rgba(204,102,102,0.5)',
-              borderWidth: 2,
-              label: {
-                backgroundColor: 'rgba(204,102,102,0.5)',
-                content: this.$t('Common.ステージ3') as string,
-                enabled: true,
-                position: 'right',
-                xAdjust: this.$nuxt.$vuetify.breakpoint.smAndDown ? 100 : 170,
-              },
-            },
-            {
-              id: 'stage4',
-              type: 'line',
-              mode: 'horizontal',
-              scaleID: 'number-of-confirmed-cases-per-100k',
-              value: '25',
-              borderColor: 'rgba(33,33,33,0.5)',
-              borderWidth: 2,
-              label: {
-                backgroundColor: 'rgba(204,102,102,0.5)',
-                content: this.$t('Common.ステージ4') as string,
-                enabled: true,
-                position: 'right',
-                xAdjust: this.$nuxt.$vuetify.breakpoint.smAndDown ? 100 : 170,
-              },
-            },
-            {
               id: 'mambo',
               type: 'line',
               mode: 'horizontal',
               scaleID: 'number-of-confirmed-cases-per-100k',
               value: '30',
               borderColor: 'rgba(33,33,33,0.5)',
-              borderWidth: 2,
+              borderWidth: 1,
               label: {
-                backgroundColor: 'rgba(33,33,33,0.5)',
+                backgroundColor: 'rgba(33,33,33,0.4)',
                 content: this.$t(
                   'Common.まん延防止等重点措置要請の目安'
                 ) as string,
                 enabled: true,
                 position: 'right',
-                xAdjust: this.$nuxt.$vuetify.breakpoint.smAndDown ? 40 : 110,
+                xAdjust: this.$nuxt.$vuetify.breakpoint.smAndDown ? 60 : 120,
+              },
+            },
+            {
+              id: 'stage3', // optional
+              type: 'line',
+              mode: 'horizontal',
+              scaleID: 'number-of-confirmed-cases-per-100k',
+              value: '15',
+              borderColor: 'rgba(33,33,33,0.5)',
+              borderWidth: 1,
+              label: {
+                backgroundColor: 'rgba(33,33,33,0.4)',
+                content: this.$t(
+                  'MonitoringConfirmedCasesNumberCard.岩手緊急事態宣言の実施'
+                ) as string,
+                enabled: true,
+                position: 'right',
+                xAdjust: this.$nuxt.$vuetify.breakpoint.smAndDown ? 80 : 143,
               },
             },
             {
@@ -446,15 +432,15 @@ const options: ThisTypedComponentOptionsWithRecordProps<
               scaleID: 'number-of-confirmed-cases-per-100k',
               value: '10',
               borderColor: 'rgba(33,33,33,0.5)',
-              borderWidth: 2,
+              borderWidth: 1,
               label: {
-                backgroundColor: 'rgba(33,33,33,0.5)',
+                backgroundColor: 'rgba(33,33,33,0.4)',
                 content: this.$t(
-                  'MonitoringConfirmedCasesNumberCard.県独自の緊急事態宣言の解除'
+                  'MonitoringConfirmedCasesNumberCard.岩手緊急事態宣言の解除'
                 ) as string,
                 enabled: true,
                 position: 'right',
-                xAdjust: this.$nuxt.$vuetify.breakpoint.smAndDown ? 50 : 123,
+                xAdjust: this.$nuxt.$vuetify.breakpoint.smAndDown ? 80 : 143,
               },
             },
           ],
