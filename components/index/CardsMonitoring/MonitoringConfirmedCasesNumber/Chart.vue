@@ -94,7 +94,6 @@
 
 <script lang="ts">
 import Chart from 'chart.js'
-import ChartJsAnnotation from 'chartjs-plugin-annotation'
 import dayjs from 'dayjs'
 import Vue from 'vue'
 import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
@@ -123,10 +122,6 @@ type Methods = {
   onClickLegend: (i: number) => void
 }
 
-type ChartJsAnnotationOptions = Chart.ChartOptions & {
-  annotation: ChartJsAnnotation.AnnotationConfig
-}
-
 type Computed = {
   displayInfo: [
     {
@@ -136,7 +131,7 @@ type Computed = {
     }
   ]
   displayData: DisplayData
-  displayOption: ChartJsAnnotationOptions
+  displayOption: Chart.ChartOptions
   displayDataHeader: DisplayData
   displayOptionHeader: Chart.ChartOptions
   scaledTicksYAxisMax: number
@@ -309,7 +304,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     },
     displayOption() {
       const unit = this.unit
-      const options: ChartJsAnnotationOptions = {
+      const options: Chart.ChartOptions = {
         tooltips: {
           displayColors: false,
           callbacks: {
@@ -379,30 +374,6 @@ const options: ThisTypedComponentOptionsWithRecordProps<
                 maxTicksLimit: 8,
                 fontColor: '#707070', // #707070
                 suggestedMax: this.scaledTicksYAxisMax,
-              },
-            },
-          ],
-        },
-        // 県独自の緊急事態宣言宣言の解除条件
-        annotation: {
-          drawTime: 'afterDatasetsDraw',
-          annotations: [
-            {
-              id: 'iwate_kinkyujitai', // optional
-              type: 'line',
-              mode: 'horizontal',
-              scaleID: 'monitoring-number-of-confirmed-cases',
-              value: '17',
-              borderColor: 'rgba(33,33,33,0.5)',
-              borderWidth: 2,
-              label: {
-                backgroundColor: 'rgba(33,33,33,0.5)',
-                content: this.$t(
-                  'MonitoringConfirmedCasesNumberCard.県独自の緊急事態宣言の解除'
-                ) as string,
-                enabled: true,
-                position: 'right',
-                xAdjust: this.$nuxt.$vuetify.breakpoint.smAndDown ? 50 : 130,
               },
             },
           ],
