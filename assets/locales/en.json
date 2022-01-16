@@ -412,7 +412,8 @@
       "Average Daily Cases in Last 7 Days",
       "Number of Positive Cases per 100,000 population in Last 7 Days"
     ],
-    "県独自の緊急事態宣言の解除": "Iwate own declaration of a state of emergency",
+    "岩手緊急事態宣言の解除": "Lifting of Iwate Emergency Declaration",
+    "岩手緊急事態宣言の実施": "Iwate Emergency Declaration",
     "a": [
       "Including examinations at medical institutions"
     ]
