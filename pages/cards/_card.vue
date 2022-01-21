@@ -1,10 +1,13 @@
 <template>
-  <div class="DataBlock">
-    <component :is="cardComponent" md="12">
-      <template #breadCrumb>
-        <breadcrumb :items="breadCrumb.items" />
-      </template>
-    </component>
+  <div>
+    <site-top-upper />
+    <div class="DataBlock">
+      <component :is="cardComponent" md="12">
+        <template #breadCrumb>
+          <breadcrumb :items="breadCrumb.items" />
+        </template>
+      </component>
+    </div>
   </div>
 </template>
 
@@ -30,6 +33,7 @@ import ConfirmedCasesByMunicipalitiesCard from '@/components/index/CardsReferenc
 import RestaurantMapCard from '@/components/index/CardsReference/IwateNinshou/Restaurant/Card'
 import SelfDisclosuresCard from '@/components/index/CardsReference/SelfDisclosures/Card.vue'
 import WhatsNewCard from '@/components/index/CardsReference/WhatsNew/Card.vue'
+import SiteTopUpper from '@/components/index/SiteTopUpper.vue'
 import Data from '@/data/data.json'
 import PositiveRate from '@/data/positive_rate.json'
 import PositiveStatus from '@/data/positive_status.json'
@@ -37,6 +41,7 @@ import { getDayjsObject } from '@/utils/formatDate.ts'
 
 export default {
   components: {
+    SiteTopUpper,
     RestaurantMapCard,
     WeeklyMapCard,
     Breadcrumb,
