@@ -59,7 +59,7 @@
     "@nuxtjs/eslint-config-typescript": "7.0.2",
     "@nuxtjs/stylelint-module": "4.0.0",
     "@nuxtjs/vuetify": "1.12.1",
-    "@types/chart.js": "2.9.34",
+    "@types/chart.js": "2.9.35",
     "@types/chartjs-plugin-annotation": "0.5.2",
     "axe-core": "4.3.5",
     "eslint": "8.4.1",
