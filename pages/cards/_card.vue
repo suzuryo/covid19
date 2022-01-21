@@ -1,6 +1,6 @@
 <template>
   <div>
-    <site-top-upper />
+    <site-top-upper v-if="hasSiteTopUpper" />
     <div class="DataBlock">
       <component :is="cardComponent" md="12">
         <template #breadCrumb>
@@ -65,6 +65,13 @@ export default {
     AgeGroupCard,
   },
   data() {
+    let hasSiteTopUpper = true
+    if (this.$route.query.embed === 'true') {
+      hasSiteTopUpper = false
+    } else if (this.$route.query.ogp === 'true') {
+      hasSiteTopUpper = false
+    }
+
     let cardComponent, cardTitle
     switch (this.$route.params.card) {
       case 'weekly-map':
@@ -168,6 +175,7 @@ export default {
       cardComponent,
       cardTitle,
       breadCrumb,
+      hasSiteTopUpper,
     }
   },
   head() {
