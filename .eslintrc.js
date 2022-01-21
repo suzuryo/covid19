@@ -31,5 +31,6 @@ module.exports = {
         patterns: ['./', '../'],
       },
     ],
+    'vue/multi-word-component-names': 'off',
   },
 }
