@@ -470,6 +470,7 @@
     "新規陽性者数(直近1週間・対人口10万人)": "Number of new positives (last 1 week, per 100,000 population)",
     "感染経路不明割合(直近1週間)": "Rate of unknown route of infection (last 1 week)",
     "notes": [
+      "New indicators using \"levels\" based on a new approach to level classification are now in use, and the indicators in this table, which are classified into \"stages,\" are the old indicators, but are retained for convenience.",
       "Stage 3 is the stage where measures are needed to avoid a rapid increase in the number of infected people and major disruptions in the healthcare delivery system.",
       "Stage 4 is the stage where action is required to avoid explosive spread of infection and serious dysfunction of the healthcare delivery system.",
       "The population of Iwate Prefecture in the 2020 Census (preliminary prefectural figures), 1211206, was used for the calculation.",

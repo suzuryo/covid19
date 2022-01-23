@@ -111,27 +111,6 @@
         </tr>
       </tbody>
     </table>
-    <div :class="$style.newLevel">
-      <p>
-        * 2021年11月から
-        <app-link
-          to="https://www.cas.go.jp/jp/seisaku/ful/taisakusuisin/bunkakai/dai10/newlevel_bunrui.pdf"
-        >
-          新たなレベル分類の考え方
-        </app-link>
-        による「レベル」を使った新指標が運用されており、「ステージ」に分類するこの表の指標は旧指標である。
-      </p>
-      <p>
-        *
-        <app-link
-          to="https://www.pref.iwate.jp/_res/projects/default_project/_page_/001/035/134/20211215_02_1.pdf"
-        >
-          岩手県のレベル分類の判断基準
-        </app-link>
-        は数値的な判断基準ではなく「総合的に判断する」という<del>曖昧な</del>柔軟な判断基準であり、
-        かつ、岩手県が「現在レベル何」なのか公式発表が無く、現状のレベルが分からないため、利便性のためこの旧指標の表示は残しておく。
-      </p>
-    </div>
     <template #notes>
       <notes-expansion-panel
         class="DataView-ExpansionPanel"
@@ -290,13 +269,6 @@ export default Vue.extend(options)
 }
 .indexStage4 {
   color: rgb(255, 1, 0);
-}
-.newLevel {
-  margin-top: 20px;
-  @include font-size(12);
-  > p:last-child {
-    margin-bottom: 0;
-  }
 }
 </style>
 
