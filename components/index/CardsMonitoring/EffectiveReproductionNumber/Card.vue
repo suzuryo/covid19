@@ -206,9 +206,15 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       // 20210701    m2
       // 20210630    m2
       // 世代時間を5日とする
-      const gt = 5
+      // 2022-01-01 からは、オミクロンを考慮して、暫定的に世代時間を3日とする
+      let gt = 5
       const effectiveReproductionNumber: number[] = []
       labels.forEach((_currentValue, index, _array) => {
+        if (Date.parse(_currentValue) > Date.parse('2021-12-31')) {
+          gt = 3
+        } else {
+          gt = 5
+        }
         let rt = 0
         // データの前半は0にする
         if (index >= 11) {

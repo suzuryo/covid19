@@ -13,7 +13,11 @@ def has_effective_reproduction_number_card(lang:, lang_json:)
   # 岩手県全域の実効再生産数を計算
   # 世代時間は5とする
   m1sum = DATA_JSON['patients']['data'].filter{|i| Time.parse(i['確定日']) > Time.parse(POSITIVE_RATE_JSON['data'].last['diagnosed_date']).days_ago(7)}.size
-  m2sum = DATA_JSON['patients']['data'].filter{|i| Time.parse(i['確定日']) < Time.parse(POSITIVE_RATE_JSON['data'].last['diagnosed_date']).days_ago(4) && Time.parse(i['確定日']) > Time.parse(POSITIVE_RATE_JSON['data'].last['diagnosed_date']).days_ago(12)}.size
+  if Time.parse(POSITIVE_RATE_JSON['data'].last['diagnosed_date']) > Time.parse('2021-12-31')
+    m2sum = DATA_JSON['patients']['data'].filter{|i| Time.parse(i['確定日']) < Time.parse(POSITIVE_RATE_JSON['data'].last['diagnosed_date']).days_ago(2) && Time.parse(i['確定日']) > Time.parse(POSITIVE_RATE_JSON['data'].last['diagnosed_date']).days_ago(10)}.size
+  else
+    m2sum = DATA_JSON['patients']['data'].filter{|i| Time.parse(i['確定日']) < Time.parse(POSITIVE_RATE_JSON['data'].last['diagnosed_date']).days_ago(4) && Time.parse(i['確定日']) > Time.parse(POSITIVE_RATE_JSON['data'].last['diagnosed_date']).days_ago(12)}.size
+  end
   # 0で割り算になる時は、都合上0.00にしておく
   if m2sum != 0
     d = m1sum.to_f / m2sum.to_f
