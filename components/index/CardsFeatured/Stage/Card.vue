@@ -117,7 +117,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         : (MainSummary.入院 / hospitalHotelCountToday) * 100
 
     // 確保病床の使用率(重症者用)
-    const stageIndex2 = (MainSummary.重症 / 45) * 100
+    const stageIndex2 = (MainSummary.重症 / 33) * 100
 
     // 療養者数(対人口10万人)
     const stageIndex3 = (hospitalHotelCountToday * 100000) / 1211206
