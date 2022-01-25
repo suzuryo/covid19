@@ -12,6 +12,7 @@ const now = dayjs().utc().format()
 const pages = [
   '/cards/age-group/',
   '/cards/stage/',
+  '/cards/health-burden',
   '/cards/weekly-map/',
   '/cards/whats-new/',
   '/cards/self-disclosures/',
