@@ -61,11 +61,15 @@ const createCustomChart = () => {
     watch: {
       displayLegends: watchDisplayLegends,
       width() {
-        setTimeout(() => this.$data._chart.resize())
-        this.$parent.$emit('update-width')
+        Vue.nextTick().then(() => {
+          this.$data._chart.resize()
+          this.$parent.$emit('update-width')
+        })
       },
       chartData() {
-        setTimeout(() => this.renderChart(this.chartData, this.options))
+        Vue.nextTick().then(() => {
+          this.renderChart(this.chartData, this.options)
+        })
       },
     },
     mounted() {
@@ -73,7 +77,9 @@ const createCustomChart = () => {
         ChartJsAnnotation as Chart.PluginServiceGlobalRegistration &
           Chart.PluginServiceRegistrationOptions
       )
-      setTimeout(() => this.renderChart(this.chartData, this.options))
+      Vue.nextTick().then(() => {
+        this.renderChart(this.chartData, this.options)
+      })
     },
   })
 
