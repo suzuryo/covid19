@@ -66,9 +66,9 @@ export default function (data: DataType[]): TableDateType {
         if (d['無症状'] === true && d['発症日'] === null) {
           return '無症状'
         } else if (d['無症状'] === false && d['発症日'] === null) {
-          return '不明'
+          return '調査中'
         } else if (d['確定日'] === null || d['発症日'] == null) {
-          return '不明'
+          return '調査中'
         } else {
           return `${dayjs(d['確定日']).diff(d['発症日'], 'day')}日前`
         }
@@ -76,11 +76,11 @@ export default function (data: DataType[]): TableDateType {
       return {
         id: d.id,
         通番URL: d.url,
-        確定日: d['確定日'] ? d['確定日'] : '不明',
+        確定日: d['確定日'] ? d['確定日'] : '調査中',
         発症日: occurrenceConfirmedDateDiff(),
         居住地: d['居住地'] ?? '調査中',
         滞在地: d['滞在地'] ?? null,
-        年代: d['年代'] ?? '不明',
+        年代: d['年代'] ?? '調査中',
         接触歴: d['接触歴'],
         yt: d.yt ? `https://www.youtube.com/watch?v=${d.yt}` : null,
       }
