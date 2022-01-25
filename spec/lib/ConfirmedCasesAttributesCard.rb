@@ -45,25 +45,43 @@ def has_confirmed_case_attributes_card
   expect(find('#ConfirmedCasesAttributesCard > div > div > div.DataView-Content > div > div.v-data-table__wrapper > table > tbody > tr:nth-child(1) > td:nth-child(2) > time')['datetime']).to eq d.to_s
 
   # テーブルの上から1行目をチェックする(発症日)
-  d = if DATA_JSON['patients']['data'].last&.[]('無症状')
-        JA_JSON['ConfirmedCasesAttributesCard']['table']['無症状']
-      elsif DATA_JSON['patients']['data'].last&.[]('発症日')
+  d = if DATA_JSON['patients']['data'].last&.[]('発症日')
         "#{(Date.parse(DATA_JSON['patients']['data'].last&.[]('確定日')) - Date.parse(DATA_JSON['patients']['data'].last&.[]('発症日'))).to_i}日前"
+      elsif DATA_JSON['patients']['data'].last&.[]('無症状')
+        JA_JSON['ConfirmedCasesAttributesCard']['table']['無症状']
+      elsif DATA_JSON['patients']['data'].last&.[]('調査中').nil?
+        JA_JSON['ConfirmedCasesAttributesCard']['table']['調査中']
       else
         JA_JSON['ConfirmedCasesAttributesCard']['table']['不明']
       end
   expect(find('#ConfirmedCasesAttributesCard > div > div > div.DataView-Content > div > div.v-data-table__wrapper > table > tbody > tr:nth-child(1) > td:nth-child(3)').text).to eq d.to_s
 
   # テーブルの上から1行目をチェックする(居住地と滞在地)
-  d = DATA_JSON['patients']['data'].last['滞在地'] ? "#{DATA_JSON['patients']['data'].last['居住地']} (#{DATA_JSON['patients']['data'].last['滞在地']})" : DATA_JSON['patients']['data'].last['居住地']
+  d = if DATA_JSON['patients']['data'].last['居住地'].nil?
+        JA_JSON['ConfirmedCasesAttributesCard']['table']['調査中']
+      elsif DATA_JSON['patients']['data'].last['滞在地']
+        "#{DATA_JSON['patients']['data'].last['居住地']} (#{DATA_JSON['patients']['data'].last['滞在地']})"
+      else
+        DATA_JSON['patients']['data'].last['居住地']
+      end
   expect(find('#ConfirmedCasesAttributesCard > div > div > div.DataView-Content > div > div.v-data-table__wrapper > table > tbody > tr:nth-child(1) > td:nth-child(4)').text).to eq d.to_s
 
   # テーブルの上から1行目をチェックする(年代)
-  d = DATA_JSON['patients']['data'].last['年代']
+  d = if DATA_JSON['patients']['data'].last['年代'].nil?
+        JA_JSON['ConfirmedCasesAttributesCard']['table']['調査中']
+      else
+        DATA_JSON['patients']['data'].last['年代']
+      end
   expect(find('#ConfirmedCasesAttributesCard > div > div > div.DataView-Content > div > div.v-data-table__wrapper > table > tbody > tr:nth-child(1) > td:nth-child(5)').text).to eq d.to_s
 
   # テーブルの上から1行目をチェックする(接触)
-  d = DATA_JSON['patients']['data'].last['接触歴'] == '判明' ? '' : '無'
+  d = if  DATA_JSON['patients']['data'].last['接触歴'].nil?
+        JA_JSON['ConfirmedCasesAttributesCard']['table']['調査中']
+      elsif DATA_JSON['patients']['data'].last['接触歴'] == '判明'
+        ''
+      else
+        '無'
+      end
   expect(find('#ConfirmedCasesAttributesCard > div > div > div.DataView-Content > div > div.v-data-table__wrapper > table > tbody > tr:nth-child(1) > td:nth-child(6)').text).to eq d.to_s
 
   # テーブルの上から1行目をチェックする(📺)
