@@ -63,10 +63,10 @@ export default {
     // 陽性者の属性 中身の翻訳
     for (const row of patientsTable.datasets) {
       // 相対発症日・無症状・不明
-      if (row['発症日'] === '無症状') {
+      if (row['発症日'] === '調査中') {
+        row['発症日'] = this.$t('ConfirmedCasesAttributesCard.table.調査中')
+      } else if (row['発症日'] === '無症状') {
         row['発症日'] = this.$t('ConfirmedCasesAttributesCard.table.無症状')
-      } else if (row['発症日'] === '不明') {
-        row['発症日'] = this.$t('ConfirmedCasesAttributesCard.table.不明')
       } else {
         const d = row['発症日'].replace('日前', '')
         row['発症日'] = this.$tc(
@@ -77,12 +77,18 @@ export default {
       }
 
       // 居住地
-      row['居住地'] = this.getTranslatedWording(row['居住地'])
+      if (row['居住地'] === '調査中') {
+        row['居住地'] = this.$t('ConfirmedCasesAttributesCard.table.調査中')
+      } else {
+        row['居住地'] = this.getTranslatedWording(row['居住地'])
+      }
       // 滞在地
       row['滞在地'] = this.getTranslatedWording(row['滞在地'])
 
       // 年代
-      if (row['年代'].substr(-1, 1) === '代') {
+      if (row['年代'] === '調査中') {
+        row['年代'] = this.$t('ConfirmedCasesAttributesCard.table.調査中')
+      } else if (row['年代'].substr(-1, 1) === '代') {
         const age = row['年代'].substring(0, 2)
         row['年代'] = this.$t('ConfirmedCasesAttributesCard.table.{age}代', {
           age,
@@ -94,7 +100,9 @@ export default {
       }
 
       // 接触歴
-      if (row['接触歴'] === '判明') {
+      if (row['接触歴'] === null) {
+        row['接触歴'] = this.$t('ConfirmedCasesAttributesCard.table.調査中')
+      } else if (row['接触歴'] === '判明') {
         row['接触歴'] = ''
       } else {
         row['接触歴'] = this.$t('ConfirmedCasesAttributesCard.table.無')
