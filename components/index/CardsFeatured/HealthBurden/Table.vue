@@ -44,20 +44,41 @@
       <tbody>
         <tr>
           <th>1週間後</th>
-          <td :class="$style.simulation">
+          <td
+            :class="[
+              $style.simulation,
+              isLevel3(healthBurden.重症病床を要する人.week1, 33)
+                ? $style.level3
+                : '',
+            ]"
+          >
             {{ healthBurden.重症病床を要する人.week1 }}
           </td>
           <td rowspan="3">33</td>
         </tr>
         <tr>
           <th>2週間後</th>
-          <td :class="$style.simulation">
+          <td
+            :class="[
+              $style.simulation,
+              isLevel3(healthBurden.重症病床を要する人.week2, 33)
+                ? $style.level3
+                : '',
+            ]"
+          >
             {{ healthBurden.重症病床を要する人.week2 }}
           </td>
         </tr>
         <tr>
           <th>3週間後</th>
-          <td :class="$style.simulation">
+          <td
+            :class="[
+              $style.simulation,
+              isLevel3(healthBurden.重症病床を要する人.week3, 33)
+                ? $style.level3
+                : '',
+            ]"
+          >
             {{ healthBurden.重症病床を要する人.week3 }}
           </td>
         </tr>
@@ -75,20 +96,50 @@
       <tbody>
         <tr>
           <th>1週間後</th>
-          <td :class="$style.simulation">
+          <td
+            :class="[
+              $style.simulation,
+              isLevel3(
+                healthBurden.自宅療養や療養施設を積極的に利用した場合.week1,
+                400
+              )
+                ? $style.level3
+                : '',
+            ]"
+          >
             {{ healthBurden.自宅療養や療養施設を積極的に利用した場合.week1 }}
           </td>
           <td rowspan="3">400</td>
         </tr>
         <tr>
           <th>2週間後</th>
-          <td :class="$style.simulation">
+          <td
+            :class="[
+              $style.simulation,
+              isLevel3(
+                healthBurden.自宅療養や療養施設を積極的に利用した場合.week2,
+                400
+              )
+                ? $style.level3
+                : '',
+            ]"
+          >
             {{ healthBurden.自宅療養や療養施設を積極的に利用した場合.week2 }}
           </td>
         </tr>
         <tr>
           <th>3週間後</th>
-          <td :class="$style.simulation">
+          <td
+            :class="[
+              $style.simulation,
+              isLevel3(
+                healthBurden.自宅療養や療養施設を積極的に利用した場合.week3,
+                400
+              )
+                ? $style.level3
+                : '',
+            ]"
+          >
             {{ healthBurden.自宅療養や療養施設を積極的に利用した場合.week3 }}
           </td>
         </tr>
@@ -106,20 +157,41 @@
       <tbody>
         <tr>
           <th>1週間後</th>
-          <td :class="$style.simulation">
+          <td
+            :class="[
+              $style.simulation,
+              isLevel3(healthBurden.基本的に入院させる場合.week1, 400)
+                ? $style.level3
+                : '',
+            ]"
+          >
             {{ healthBurden.基本的に入院させる場合.week1 }}
           </td>
           <td rowspan="3">400</td>
         </tr>
         <tr>
           <th>2週間後</th>
-          <td :class="$style.simulation">
+          <td
+            :class="[
+              $style.simulation,
+              isLevel3(healthBurden.基本的に入院させる場合.week2, 400)
+                ? $style.level3
+                : '',
+            ]"
+          >
             {{ healthBurden.基本的に入院させる場合.week2 }}
           </td>
         </tr>
         <tr>
           <th>3週間後</th>
-          <td :class="$style.simulation">
+          <td
+            :class="[
+              $style.simulation,
+              isLevel3(healthBurden.基本的に入院させる場合.week3, 400)
+                ? $style.level3
+                : '',
+            ]"
+          >
             {{ healthBurden.基本的に入院させる場合.week3 }}
           </td>
         </tr>
@@ -154,7 +226,9 @@ import NotesExpansionPanel from '@/components/index/_shared/DataView/NotesExpans
 import DataViewDataSetPanel from '@/components/index/_shared/DataViewDataSetPanel.vue'
 
 type Data = {}
-type Methods = {}
+type Methods = {
+  isLevel3: (current: number, level3: number) => boolean
+}
 type Computed = {}
 type Props = {
   date: string
@@ -197,6 +271,11 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       required: true,
     },
   },
+  methods: {
+    isLevel3(current: number, level3: number) {
+      return current >= level3
+    },
+  },
 }
 
 export default Vue.extend(options)
@@ -223,9 +302,14 @@ export default Vue.extend(options)
     }
     .simulation {
       width: 20%;
+      font-weight: bold;
     }
     .real {
       width: 20%;
+    }
+    .level3 {
+      color: rgb(255, 1, 0);
+      background-color: rgb(255, 199, 205);
     }
   }
   @include lessThan($small) {
