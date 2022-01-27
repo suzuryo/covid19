@@ -523,7 +523,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       // return this.chartData.reduce((max, data) => {
       //   return Math.max(max, ...data.map((a) => Math.ceil(a))) + 10
       // }, 0)
-      return 35
+      return 50
     },
   },
   methods: {
