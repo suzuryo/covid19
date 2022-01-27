@@ -7,7 +7,7 @@
       <thead>
         <tr>
           <th colspan="2" :class="$style.headers">
-            酸素投与を要する人の予測値（重症者を含む）
+            酸素投与を要する人（重症者を含む）の予測値
           </th>
         </tr>
       </thead>
