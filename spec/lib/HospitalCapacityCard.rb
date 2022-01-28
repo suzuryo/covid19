@@ -12,7 +12,7 @@ def has_hospital_capacity_card(lang:, lang_json:)
   # DataSetPanel
   expect(find('#HospitalCapacityCard > div.DataView > div.DataView-Inner > div.DataView-Header > div.DataView-DataSetPanel > div.DataView-DataSet > div.DataView-DataSet-DataInfo > span.DataView-DataSet-DataInfo-summary > span.lTextBefore').text).to eq lang_json['残り']
   # 残り病床数
-  d = 400 - MAIN_SUMMARY_JSON['入院'] - MAIN_SUMMARY_JSON['調整中']
+  d = 400 - MAIN_SUMMARY_JSON['入院']
   expect(find('#HospitalCapacityCard > div.DataView > div.DataView-Inner > div.DataView-Header > div.DataView-DataSetPanel > div.DataView-DataSet > div.DataView-DataSet-DataInfo > span.DataView-DataSet-DataInfo-summary > strong').text).to eq d.to_s
   expect(find('#HospitalCapacityCard > div.DataView > div.DataView-Inner > div.DataView-Header > div.DataView-DataSetPanel > div.DataView-DataSet > div.DataView-DataSet-DataInfo > span.DataView-DataSet-DataInfo-summary > small.DataView-DataSet-DataInfo-summary-unit').text).to eq lang_json['床'].gsub(/^\s/, '')
 

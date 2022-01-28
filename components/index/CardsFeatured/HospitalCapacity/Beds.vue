@@ -86,7 +86,7 @@ export default Vue.extend({
     },
   },
   data() {
-    const remaining = 400 - this.bedSummary.hospital - this.bedSummary.waiting
+    const remaining = 400 - this.bedSummary.hospital
     return {
       remaining,
     }
