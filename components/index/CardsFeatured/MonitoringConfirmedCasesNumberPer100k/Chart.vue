@@ -15,7 +15,7 @@
       <li v-for="(item, i) in dataLabels" :key="i" @click="onClickLegend(i)">
         <button>
           <div
-            v-if="i === 1"
+            v-if="i === 1 || i === 2"
             :style="{
               background: colors[i].fillColor,
               border: 0,
@@ -95,7 +95,6 @@
 
 <script lang="ts">
 import Chart from 'chart.js'
-import ChartJsAnnotation from 'chartjs-plugin-annotation'
 import dayjs, { extend } from 'dayjs'
 import isBetween from 'dayjs/plugin/isBetween'
 import Vue from 'vue'
@@ -129,10 +128,6 @@ type Methods = {
   onClickLegend: (i: number) => void
 }
 
-type ChartJsAnnotationOptions = Chart.ChartOptions & {
-  annotation: ChartJsAnnotation.AnnotationConfig
-}
-
 type Computed = {
   minDate: string
   maxDate: string
@@ -144,7 +139,7 @@ type Computed = {
     }
   ]
   displayData: DisplayData
-  displayOption: ChartJsAnnotationOptions
+  displayOption: Chart.ChartOptions
   scaledTicksYAxisMax: number
   tableHeaders: TableHeader[]
   tableData: TableItem[]
@@ -243,9 +238,10 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     const colors: SurfaceStyle[] = [
       getGraphSeriesColor('C'),
       getGraphSeriesColor('E'),
+      getGraphSeriesColor('I'),
     ]
     return {
-      displayLegends: [true, true],
+      displayLegends: [true, true, true],
       colors,
       canvas: true,
       startDate: '2020-01-01',
@@ -262,7 +258,11 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     displayInfo() {
       const data = {
         labels: this.labels,
-        datasets: [{ data: this.chartData[0] }, { data: this.chartData[1] }],
+        datasets: [
+          { data: this.chartData[0] },
+          { data: this.chartData[1] },
+          { data: this.chartData[2] },
+        ],
       }
       const { lastDay, lastDayData, dayBeforeRatio } = calcDayBeforeRatio({
         displayData: data,
@@ -314,6 +314,22 @@ const options: ThisTypedComponentOptionsWithRecordProps<
             order: 2,
             lineTension: 0,
           },
+          // 値 15 のライン
+          {
+            type: 'line',
+            label: this.dataLabels[2],
+            data: this.chartData[2].slice(
+              this.startDateIndex,
+              this.endDateIndex + 1
+            ),
+            pointBackgroundColor: 'rgba(0,0,0,0)',
+            pointBorderColor: 'rgba(0,0,0,0)',
+            borderColor: '#666',
+            borderWidth: 1.5,
+            fill: false,
+            order: 2,
+            lineTension: 0,
+          },
         ],
       }
     },
@@ -342,7 +358,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     },
     displayOption() {
       const unit = this.unit
-      const options: ChartJsAnnotationOptions = {
+      const options: Chart.ChartOptions = {
         tooltips: {
           displayColors: false,
           callbacks: {
@@ -412,66 +428,6 @@ const options: ThisTypedComponentOptionsWithRecordProps<
                 fontColor: '#707070', // #707070
                 min: 0,
                 max: this.scaledTicksYAxisMax,
-              },
-            },
-          ],
-        },
-        // ステージ3とステージ4に横線を引く
-        annotation: {
-          drawTime: 'afterDatasetsDraw',
-          annotations: [
-            // {
-            //   id: 'mambo',
-            //   type: 'line',
-            //   mode: 'horizontal',
-            //   scaleID: 'number-of-confirmed-cases-per-100k',
-            //   value: '30',
-            //   borderColor: 'rgba(33,33,33,0.5)',
-            //   borderWidth: 1,
-            //   label: {
-            //     backgroundColor: 'rgba(33,33,33,0.4)',
-            //     content: this.$t(
-            //       'Common.まん延防止等重点措置要請の目安'
-            //     ) as string,
-            //     enabled: true,
-            //     position: 'right',
-            //     xAdjust: this.$nuxt.$vuetify.breakpoint.smAndDown ? 60 : 120,
-            //   },
-            // },
-            // {
-            //   id: 'stage3', // optional
-            //   type: 'line',
-            //   mode: 'horizontal',
-            //   scaleID: 'number-of-confirmed-cases-per-100k',
-            //   value: '15',
-            //   borderColor: 'rgba(33,33,33,0.5)',
-            //   borderWidth: 1,
-            //   label: {
-            //     backgroundColor: 'rgba(33,33,33,0.4)',
-            //     content: this.$t(
-            //       'MonitoringConfirmedCasesNumberCard.岩手緊急事態宣言の実施'
-            //     ) as string,
-            //     enabled: true,
-            //     position: 'right',
-            //     xAdjust: this.$nuxt.$vuetify.breakpoint.smAndDown ? 80 : 143,
-            //   },
-            // },
-            {
-              id: 'iwate_kinkyujitai', // optional
-              type: 'line',
-              mode: 'horizontal',
-              scaleID: 'number-of-confirmed-cases-per-100k',
-              value: '10',
-              borderColor: 'rgba(33,33,33,0.5)',
-              borderWidth: 1,
-              label: {
-                backgroundColor: 'rgba(33,33,33,0.4)',
-                content: this.$t(
-                  'MonitoringConfirmedCasesNumberCard.岩手緊急事態宣言の解除'
-                ) as string,
-                enabled: true,
-                position: 'right',
-                xAdjust: this.$nuxt.$vuetify.breakpoint.smAndDown ? 80 : 143,
               },
             },
           ],

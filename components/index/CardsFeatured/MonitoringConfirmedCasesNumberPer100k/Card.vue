@@ -161,6 +161,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     const dataLabels = [
       this.$t('MonitoringConfirmedCasesNumberPer100kCard.legends[0]'),
       this.$t('MonitoringConfirmedCasesNumberPer100kCard.legends[1]'),
+      this.$t('MonitoringConfirmedCasesNumberPer100kCard.legends[2]'),
     ]
     const tableLabels = [
       this.$t('MonitoringConfirmedCasesNumberPer100kCard.legends[0]'),
@@ -238,7 +239,12 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         )
       })
 
-      return [patientsCount, sevenDayMoveAveragesPer10k]
+      // 岩手緊急事態宣言の解除
+      const line15 = labels.map(() => {
+        return 15
+      })
+
+      return [patientsCount, sevenDayMoveAveragesPer10k, line15]
     },
     labels() {
       return DailyPositiveDetail.data.map((a) => a.diagnosed_date)
