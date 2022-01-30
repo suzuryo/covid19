@@ -34,30 +34,29 @@
     <h4 :id="`${titleId}-graph`" class="visually-hidden">
       {{ $t(`{title}のグラフ`, { title }) }}
     </h4>
-    <scrollable-chart v-show="canvas" :display-data="displayData">
-      <template #chart="{ chartWidth }">
-        <bar
-          :ref="'barChart'"
-          :chart-id="chartId"
-          :chart-data="displayData"
-          :options="displayOption"
-          :display-legends="displayLegends"
-          :height="240"
-          :width="chartWidth"
-        />
-      </template>
-      <template #sticky-chart>
-        <bar
-          class="sticky-legend"
-          :chart-id="`${chartId}-header`"
-          :chart-data="displayDataHeader"
-          :options="displayOptionHeader"
-          :plugins="yAxesBgPlugin"
-          :display-legends="displayLegends"
-          :height="240"
-        />
-      </template>
-    </scrollable-chart>
+    <div v-show="canvas">
+      <bar
+        :ref="'barChart'"
+        :chart-id="chartId"
+        :chart-data="displayData"
+        :options="displayOption"
+        :display-legends="displayLegends"
+        :height="240"
+        :width="300"
+        :min="startDate"
+        :max="endDate"
+        :y-axis-max="scaledTicksYAxisMax"
+        :switch="dataKind"
+      />
+      <date-range-slider
+        :id="titleId"
+        :min-date="minDate"
+        :max-date="maxDate"
+        :default-day-period="dayPeriod"
+        @start-date="startDate = $event"
+        @end-date="endDate = $event"
+      />
+    </div>
     <template #notes>
       <notes-expansion-panel
         class="DataView-ExpansionPanel"
@@ -89,8 +88,9 @@
 </template>
 
 <script lang="ts">
-import Chart from 'chart.js'
-import dayjs from 'dayjs'
+import { ChartOptions, ChartTooltipItem } from 'chart.js'
+import dayjs, { extend } from 'dayjs'
+import isBetween from 'dayjs/plugin/isBetween'
 import Vue from 'vue'
 import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
 import type { TranslateResult } from 'vue-i18n'
@@ -103,10 +103,12 @@ import DataViewTable, {
   TableHeader,
   TableItem,
 } from '@/components/index/_shared/DataViewTable.vue'
-import ScrollableChart from '@/components/index/_shared/ScrollableChart.vue'
-import { DisplayData, yAxesBgPlugin } from '@/plugins/vue-chart'
+import DateRangeSlider from '@/components/index/_shared/DateRangeSlider.vue'
+import { DisplayData } from '@/plugins/vue-chart'
 import { getGraphSeriesStyle, SurfaceStyle } from '@/utils/colors'
 import { getComplementedDate, getDayjsObject } from '@/utils/formatDate'
+
+extend(isBetween)
 
 type Data = {
   dataKind: 'transition' | 'cumulative'
@@ -114,7 +116,10 @@ type Data = {
   displayLegends: boolean[]
   colors: SurfaceStyle[]
   isSmall: boolean
+  startDate: string
+  endDate: string
 }
+
 type Methods = {
   sum: (array: number[]) => number
   cumulative: (array: number[]) => number[]
@@ -126,18 +131,20 @@ type Methods = {
 }
 
 type Computed = {
+  minDate: string
+  maxDate: string
   displayInfo: {
     lText: string
     sText: string
     unit: string
   }
   displayData: DisplayData
-  displayOption: Chart.ChartOptions
-  displayDataHeader: DisplayData
-  displayOptionHeader: Chart.ChartOptions
+  displayOption: ChartOptions
   scaledTicksYAxisMax: number
   tableHeaders: TableHeader[]
   tableData: TableItem[]
+  startDateIndex: number
+  endDateIndex: number
 }
 
 type Props = {
@@ -151,7 +158,7 @@ type Props = {
   dataLabels: string[] | TranslateResult[]
   tableLabels: string[] | TranslateResult[]
   unit: string
-  yAxesBgPlugin: Chart.PluginServiceRegistrationOptions[]
+  dayPeriod: number
 }
 
 const options: ThisTypedComponentOptionsWithRecordProps<
@@ -174,7 +181,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     DataViewTable,
     DataViewDataSetPanel,
     NotesExpansionPanel,
-    ScrollableChart,
+    DateRangeSlider,
   },
   props: {
     title: {
@@ -220,19 +227,29 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       type: String,
       default: '',
     },
-    yAxesBgPlugin: {
-      type: Array,
-      default: () => yAxesBgPlugin,
+    dayPeriod: {
+      type: Number,
+      default: 60,
     },
   },
-  data: () => ({
-    dataKind: 'transition',
-    displayLegends: [true, true],
-    colors: getGraphSeriesStyle(2),
-    canvas: true,
-    isSmall: false,
-  }),
+  data() {
+    return {
+      dataKind: 'transition',
+      displayLegends: [true, true],
+      colors: getGraphSeriesStyle(2),
+      canvas: true,
+      isSmall: false,
+      startDate: '2020-01-01',
+      endDate: dayjs().format('YYYY-MM-DD'),
+    }
+  },
   computed: {
+    minDate() {
+      return dayjs(this.labels[0]).format('YYYY-MM-DD')
+    },
+    maxDate() {
+      return dayjs(this.labels[this.labels.length - 1]).format('YYYY-MM-DD')
+    },
     displayInfo() {
       const lastDay = this.labels[this.labels.length - 1]
       const date = this.$d(getDayjsObject(lastDay).toDate(), 'dateWithoutYear')
@@ -252,13 +269,17 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     },
     displayData() {
       const graphSeries = getGraphSeriesStyle(this.chartData.length)
+      const rangeDate = this.labels.filter((item) => {
+        const date = dayjs(item)
+        return date.isBetween(this.startDate, this.endDate, null, '[]')
+      })
       if (this.dataKind === 'transition') {
         return {
-          labels: this.labels,
+          labels: rangeDate,
           datasets: this.chartData.map((item, index) => {
             return {
               label: this.items[index],
-              data: item,
+              data: item.slice(this.startDateIndex, this.endDateIndex + 1),
               backgroundColor: graphSeries[index].fillColor,
               borderColor: graphSeries[index].strokeColor,
               borderWidth: 1,
@@ -267,11 +288,14 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         }
       }
       return {
-        labels: this.labels,
+        labels: rangeDate,
         datasets: this.chartData.map((item, index) => {
           return {
             label: this.items[index],
-            data: this.cumulative(item),
+            data: this.cumulative(item).slice(
+              this.startDateIndex,
+              this.endDateIndex + 1
+            ),
             backgroundColor: graphSeries[index].fillColor,
             borderColor: graphSeries[index].strokeColor,
             borderWidth: 1,
@@ -324,20 +348,26 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     },
     displayOption() {
       const unit = this.unit
-      const sumArray = this.eachArraySum(this.chartData)
       const data = this.chartData
-      const cumulativeData = this.chartData.map((item) => {
+      const sumArray = this.eachArraySum(data)
+      const cumulativeData = data.map((item) => {
         return this.cumulative(item)
       })
       const cumulativeSumArray = this.eachArraySum(cumulativeData)
-      const options: Chart.ChartOptions = {
+      const searchIndex = (obj: ChartTooltipItem) => {
+        return this.labels.findIndex((v) => {
+          return v === obj.label
+        })
+      }
+      const options: ChartOptions = {
         tooltips: {
           displayColors: false,
           callbacks: {
             label: (tooltipItem) => {
               let casesTotal, cases, label
+              const itemIndex = searchIndex(tooltipItem)
               if (this.dataKind === 'transition') {
-                casesTotal = sumArray[tooltipItem.index!].toLocaleString()
+                casesTotal = sumArray[itemIndex].toLocaleString()
                 cases =
                   data[tooltipItem.datasetIndex!][
                     tooltipItem.index!
@@ -347,7 +377,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
                   cumulativeSumArray[tooltipItem.index!].toLocaleString()
                 cases =
                   cumulativeData[tooltipItem.datasetIndex!][
-                    tooltipItem.index!
+                    itemIndex
                   ].toLocaleString()
               }
 
@@ -409,7 +439,6 @@ const options: ThisTypedComponentOptionsWithRecordProps<
               },
               ticks: {
                 suggestedMin: 0,
-                suggestedMax: this.scaledTicksYAxisMax,
                 maxTicksLimit: 8,
                 fontColor: '#707070',
               },
@@ -422,94 +451,28 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       }
       return options
     },
-    displayDataHeader() {
-      let n = 0
-      let max = 0
-      for (const i in this.displayData.datasets[0].data) {
-        const current =
-          this.displayData.datasets[0].data[i] +
-          this.displayData.datasets[1].data[i]
-        if (current > max) {
-          max = current
-          n = Number(i)
-        }
-      }
-      return {
-        labels: ['2020-01-01'],
-        datasets: [
-          {
-            data: [this.displayData.datasets[0].data[n]],
-            backgroundColor: 'transparent',
-            borderWidth: 0,
-          },
-          {
-            data: [this.displayData.datasets[1].data[n]],
-            backgroundColor: 'transparent',
-            borderWidth: 0,
-          },
-        ],
-      }
-    },
-    displayOptionHeader() {
-      const options: Chart.ChartOptions = {
-        maintainAspectRatio: false,
-        legend: {
-          display: false,
-        },
-        tooltips: { enabled: false },
-        scales: {
-          xAxes: [
-            {
-              display: false,
-              id: 'day',
-              stacked: true,
-            },
-            {
-              id: 'month',
-              stacked: true,
-              gridLines: {
-                drawOnChartArea: false,
-                drawTicks: false, // true -> false
-                drawBorder: false,
-                tickMarkLength: 10,
-              },
-              ticks: {
-                fontSize: 11,
-                fontColor: 'transparent', // #707070
-                padding: 13, // 3 + 10(tickMarkLength)
-                fontStyle: 'bold',
-              },
-              type: 'time',
-              time: {
-                unit: 'month',
-              },
-            },
-          ],
-          yAxes: [
-            {
-              stacked: true,
-              gridLines: {
-                display: true,
-                drawOnChartArea: false,
-                color: '#E5E5E5', // #E5E5E5
-              },
-              ticks: {
-                suggestedMin: 0,
-                maxTicksLimit: 8,
-                fontColor: '#707070', // #707070
-                suggestedMax: this.scaledTicksYAxisMax,
-              },
-            },
-          ],
-        },
-        animation: { duration: 0 },
-      }
-      return options
-    },
     scaledTicksYAxisMax() {
-      return Array.from(this.chartData[0].keys())
-        .map((i) => this.chartData[0][i] + this.chartData[1][i])
+      const data = this.displayData.datasets
+      const max = Array.from(data[0].data.keys())
+        .map((i) => data[0].data[i] + data[1].data[i])
         .reduce((a, b) => Math.max(a, b), 0)
+      const digits = String(max).length
+      const base = 10 ** (digits - 1)
+      return Math.ceil(max / base) * base
+    },
+    startDateIndex() {
+      const searchIndex = this.labels.findIndex((item) => {
+        const date = dayjs(item).format('YYYY-MM-DD')
+        return date === this.startDate
+      })
+      return searchIndex === -1 ? 0 : searchIndex
+    },
+    endDateIndex() {
+      const searchIndex = this.labels.findIndex((item) => {
+        const date = dayjs(item).format('YYYY-MM-DD')
+        return date === this.endDate
+      })
+      return searchIndex === -1 ? this.labels.length - 1 : searchIndex
     },
   },
   methods: {
@@ -567,6 +530,12 @@ const options: ThisTypedComponentOptionsWithRecordProps<
 
     window.addEventListener('resize', this.handleResize)
     this.handleResize()
+
+    this.$nextTick().then(() => {
+      this.startDate = dayjs(this.maxDate)
+        .subtract(this.dayPeriod, 'day')
+        .format('YYYY-MM-DD')
+    })
   },
   destroyed() {
     window.removeEventListener('resize', this.handleResize)
