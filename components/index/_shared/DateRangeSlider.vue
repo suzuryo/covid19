@@ -1,32 +1,45 @@
 <template>
-  <div class="range-slider">
-    <div class="range-slider-inner">
-      <input
-        v-model="start"
-        type="range"
-        :min="min"
-        :max="max"
-        :step="step"
-        @change="$emit('start-date', getDateFormat($event.target.value))"
-      />
-      <input
-        v-model="end"
-        type="range"
-        :min="min"
-        :max="max"
-        :step="step"
-        @change="$emit('end-date', getDateFormat($event.target.value))"
-      />
-      <div class="label">
-        <span>{{ getDisplayDate(start) }}</span>
-        <span>{{ getDisplayDate(end) }}</span>
+  <div class="range-slider" role="group" aria-labelledby="date-range">
+    <span id="date-range" class="range-slider-title">{{ $t('表示期間') }}</span>
+    <div class="range-slider-container">
+      <div class="range-slider-inner">
+        <label class="sr-only" :for="`start-${id}`">{{ $t('開始') }}</label>
+        <input
+          :id="`start-${id}`"
+          v-model="start"
+          type="range"
+          :min="min"
+          :max="max"
+          :step="step"
+          :aria-valuetext="$t(`{date}から`, { date: getDisplayDate(start) })"
+          @change="$emit('start-date', getDateFormat($event.target.value))"
+        />
+        <label class="sr-only" :for="`end-${id}`">{{ $t('終了') }}</label>
+        <input
+          :id="`end-${id}`"
+          v-model="end"
+          type="range"
+          :min="min"
+          :max="max"
+          :step="step"
+          :aria-valuetext="$t(`{date}まで`, { date: getDisplayDate(end) })"
+          @change="$emit('end-date', getDateFormat($event.target.value))"
+        />
+      </div>
+      <div class="range-slider-label">
+        <output :for="`start-${id}`">
+          {{ $t(`{date}から`, { date: getDisplayDate(start) }) }}
+        </output>
+        <output :for="`end-${id}`">
+          {{ $t(`{date}まで`, { date: getDisplayDate(end) }) }}
+        </output>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import dayjs from 'dayjs'
+import dayjs, { unix } from 'dayjs'
 import Vue from 'vue'
 import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
 
@@ -47,8 +60,10 @@ type Computed = {
 }
 
 type Props = {
+  id: string
   minDate: string
   maxDate: string
+  defaultDayPeriod: number
 }
 
 const options: ThisTypedComponentOptionsWithRecordProps<
@@ -59,6 +74,10 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   Props
 > = {
   props: {
+    id: {
+      type: String,
+      required: true,
+    },
     minDate: {
       type: String,
       default: '2020-01-01',
@@ -67,22 +86,26 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       type: String,
       default: dayjs().format('YYYY-MM-DD'),
     },
+    defaultDayPeriod: {
+      type: Number,
+      default: 60,
+    },
   },
   data() {
     return {
-      start: dayjs(this.minDate).unix(),
+      start: dayjs(this.maxDate).subtract(this.defaultDayPeriod, 'day').unix(),
       end: dayjs(this.maxDate).unix(),
       step: 86400,
     }
   },
   watch: {
     start(value) {
-      if (value >= 0 && value > this.end)
-        this.start = dayjs.unix(this.end).subtract(2, 'day').unix()
+      if (value >= 0 && value >= this.end)
+        this.start = unix(this.end).subtract(14, 'day').unix()
     },
     end(value) {
-      if (value >= 0 && value < this.start)
-        this.end = dayjs.unix(this.start).add(2, 'day').unix()
+      if (value >= 0 && value <= this.start)
+        this.end = unix(this.start).add(14, 'day').unix()
     },
   },
   computed: {
@@ -95,7 +118,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   },
   methods: {
     getDateFormat(seconds: number) {
-      return dayjs.unix(seconds).format('YYYY-MM-DD')
+      return unix(seconds).format('YYYY-MM-DD')
     },
     getDisplayDate(seconds: number) {
       const date = this.getDateFormat(seconds)
@@ -107,67 +130,109 @@ export default options
 </script>
 
 <style scoped lang="scss">
-input[type='range'] {
+$h: 1.2rem;
+
+@mixin track() {
   width: 100%;
-  height: 30px;
-  overflow: hidden;
+  height: 100%;
+  background: none;
+}
+
+@mixin thumb() {
+  border: none;
+  width: $h;
+  height: $h;
+  border-radius: 3em;
+  background: currentColor;
+  pointer-events: auto;
   cursor: pointer;
-  outline: none;
 }
 
-input[type='range'],
-input[type='range']::-webkit-slider-runnable-track,
-input[type='range']::-webkit-slider-thumb {
-  -webkit-appearance: none;
+@mixin thumb-focus() {
+  outline-offset: 2px;
+  outline: 2px solid $focus;
+}
+
+.sr-only {
+  position: absolute;
+  clip-path: inset(50%);
+}
+
+input[type='range'] {
+  &::-webkit-slider-runnable-track,
+  &::-webkit-slider-thumb,
+  & {
+    -webkit-appearance: none;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  grid-column: 1;
+  grid-row: 2;
+  margin: 0;
   background: none;
-}
-
-input[type='range']::-webkit-slider-runnable-track {
+  color: $gray-1;
+  font: inherit;
+  pointer-events: none;
   width: 100%;
-  height: 2px;
-  background: $green-1;
-}
 
-input[type='range']:nth-child(2)::-webkit-slider-runnable-track {
-  background: none;
-}
+  &::-webkit-slider-runnable-track {
+    @include track;
+  }
 
-input[type='range']::-webkit-slider-thumb {
-  position: relative;
-  height: 15px;
-  width: 15px;
-  margin-top: -7px;
-  background: #fff;
-  border: 1px solid $green-1;
-  border-radius: 25px;
-  z-index: 1;
-}
+  &::-moz-range-track {
+    @include track;
+  }
 
-input[type='range']:nth-child(1)::-webkit-slider-thumb {
-  z-index: 2;
+  &::-webkit-slider-thumb {
+    @include thumb;
+  }
+
+  &::-moz-range-thumb {
+    @include thumb;
+  }
+
+  &:focus-visible::-webkit-slider-thumb {
+    @include thumb-focus;
+  }
+
+  &:focus-visible::-moz-range-thumb {
+    @include thumb-focus;
+  }
 }
 
 .range-slider {
   width: 100%;
-  height: 60px;
   display: flex;
-  justify-content: center;
+  margin-top: 16px;
+}
+
+.range-slider-title {
+  margin: 6px 12px 0 0;
+
+  @include font-size(14);
+}
+
+.range-slider-container {
+  flex: 1 1 auto;
 }
 
 .range-slider-inner {
+  display: grid;
+  grid-template-rows: max-content $h;
+  grid-template-columns: auto;
   position: relative;
-  flex: 0 0 90%;
+  margin: 1em auto;
+  width: 100%;
+  background: linear-gradient(0deg, $gray-4 $h, transparent 0);
 }
 
-.range-slider input {
-  position: absolute;
-}
-
-.label {
-  flex: 0 0 100%;
+.range-slider-label {
   display: flex;
   justify-content: space-between;
-  margin-top: 28px;
+  margin: 10px 0;
 
   @include font-size(14);
 }

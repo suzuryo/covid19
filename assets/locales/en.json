@@ -606,5 +606,10 @@
   "残り": "Remaining",
   "計": "Total",
   "床": " beds",
-  "室": " rooms"
+  "室": " rooms",
+  "終了": "End",
+  "開始": "Start",
+  "{date}まで": "To {date}",
+  "表示期間": "Range",
+  "{date}から": "From {date}"
 }
