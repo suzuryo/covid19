@@ -55,9 +55,9 @@ def has_hospital_capacity_card(lang:, lang_json:)
   end
 
   if MAIN_SUMMARY_JSON['入院'] + MAIN_SUMMARY_JSON['調整中'] > 400
-    expect(page).to have_selector('#HospitalCapacityCard > div > div > div.DataView-Content > div.legend2 > div:nth-child(3) > span.Bed.overflowed', count:1)
-    expect(find('#HospitalCapacityCard > div > div > div.DataView-Content > div.legend2 > div:nth-child(3)').text).to eq lang_json['HospitalCapacityCard']['overflowed']
+    expect(page).to have_selector('#HospitalCapacityCard > div > div > div.DataView-Content > div.legend2 > div:nth-child(1) > span.Bed.overflowed', count:1)
+    expect(find('#HospitalCapacityCard > div > div > div.DataView-Content > div.legend2 > div:nth-child(1)').text).to eq lang_json['HospitalCapacityCard']['overflowed']
   else
-    expect(page).to have_selector('#HospitalCapacityCard > div > div > div.DataView-Content > div.legend2 > div:nth-child(3) > span.Bed.overflowed', count:0)
+    expect(page).to have_selector('#HospitalCapacityCard > div > div > div.DataView-Content > div.legend2 > div:nth-child(1) > span.Bed.overflowed', count:0)
   end
 end
