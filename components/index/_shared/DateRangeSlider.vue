@@ -130,7 +130,7 @@ export default options
 </script>
 
 <style scoped lang="scss">
-$h: 1.2rem;
+$h: 0.75rem;
 
 @mixin track() {
   width: 100%;
@@ -227,6 +227,7 @@ input[type='range'] {
   margin: 1em auto;
   width: 100%;
   background: linear-gradient(0deg, $gray-4 $h, transparent 0);
+  @include font-size(10);
 }
 
 .range-slider-label {
