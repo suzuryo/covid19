@@ -64,7 +64,6 @@
 
 <script lang="ts">
 import Chart from 'chart.js'
-import ChartJsAnnotation from 'chartjs-plugin-annotation'
 import dayjs, { extend } from 'dayjs'
 import isBetween from 'dayjs/plugin/isBetween'
 import Vue from 'vue'
@@ -94,10 +93,6 @@ type Data = {
 }
 type Methods = {}
 
-type ChartJsAnnotationOptions = Chart.ChartOptions & {
-  annotation: ChartJsAnnotation.AnnotationConfig
-}
-
 type Computed = {
   minDate: string
   maxDate: string
@@ -109,7 +104,7 @@ type Computed = {
     }
   ]
   displayData: DisplayData
-  displayOption: ChartJsAnnotationOptions
+  displayOption: Chart.ChartOptions
   scaledTicksYAxisMax: number
   tableHeaders: TableHeader[]
   tableData: TableItem[]
@@ -260,6 +255,22 @@ const options: ThisTypedComponentOptionsWithRecordProps<
             order: 1,
             lineTension: 0.3,
           },
+          // 値 1 のライン
+          {
+            type: 'line',
+            label: this.dataLabels[1],
+            data: this.chartData[1].slice(
+              this.startDateIndex,
+              this.endDateIndex + 1
+            ),
+            pointBackgroundColor: 'rgba(0,0,0,0)',
+            pointBorderColor: 'rgba(0,0,0,0)',
+            borderColor: '#666',
+            borderWidth: 1.5,
+            fill: false,
+            order: 2,
+            lineTension: 0,
+          },
         ],
       }
     },
@@ -288,7 +299,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     },
     displayOption() {
       const unit = this.unit
-      const options: ChartJsAnnotationOptions = {
+      const options: Chart.ChartOptions = {
         tooltips: {
           displayColors: false,
           callbacks: {
@@ -360,21 +371,6 @@ const options: ThisTypedComponentOptionsWithRecordProps<
                 min: 0,
                 max: this.scaledTicksYAxisMax,
               },
-            },
-          ],
-        },
-        // ステージ3とステージ4に横線を引く
-        annotation: {
-          drawTime: 'afterDatasetsDraw',
-          annotations: [
-            {
-              id: 'rt1', // optional
-              type: 'line',
-              mode: 'horizontal',
-              scaleID: 'effective-reproduction-number',
-              value: '1',
-              borderColor: '#666',
-              borderWidth: 1.5,
             },
           ],
         },

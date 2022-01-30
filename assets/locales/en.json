@@ -412,8 +412,6 @@
       "Average Daily Cases in Last 7 Days",
       "Number of Positive Cases per 100,000 population in Last 7 Days"
     ],
-    "岩手緊急事態宣言の解除": "Lifting of Iwate Emergency Declaration",
-    "岩手緊急事態宣言の実施": "Iwate Emergency Declaration",
     "a": [
       "Including examinations at medical institutions"
     ]
@@ -422,7 +420,8 @@
     "title": "Number of Positive Cases per 100,000 population in last 7 Days",
     "legends": [
       "Positive cases",
-      "per 100,000 population in last 7 days"
+      "per 100,000 population in last 7 days",
+      "Lifting of Iwate Emergency Declaration"
     ],
     "notes": [
       "Normally, this Per 100,000 Population Index is used for Prefecture Units.",
@@ -484,6 +483,15 @@
       "(*7) Rate of unknown route of infection (last 1 week) = Number of cases with unknown route of infection in the last week / Number of positive cases in the last 1 week",
       "The hospitalization rate is applied when the number of people under treatment (per 100,000 population) is 10 or more.",
       "If the denominator of the calculation is zero, it should be written as \"-\" ."
+    ]
+  },
+  "HealthBurdenCard": {
+    "title": "Forecasting medical demand for level decisions",
+    "notes": [
+      "Forecast of healthcare demand using the forecasting tool presented in the \"New Level Classification Approach\".",
+      "Calculated based on actual daily values in Iwate Prefecture using the formula in the \"医療需要予測ツール_オミクロンとブースター考慮版v3_20220103.xlsx\", a tool for forecasting medical demand according to the spread of new coronavirus infection and vaccination progress",
+      "cf. https://github.com/yukifuruse1217/COVIDhealthBurden",
+      "If the number of infected people is small or the point of prediction is far away, the accuracy will be low."
     ]
   },
   "NIID 国立感染症研究所": "NIID National Institute of Infectious Diseases",

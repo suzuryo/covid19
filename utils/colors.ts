@@ -3,7 +3,7 @@ export type SurfaceStyle = {
   fillColor: string
 }
 
-type Series = 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G' | 'H'
+type Series = 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G' | 'H' | 'I'
 
 const surfaceStyleA: SurfaceStyle = {
   strokeColor: '#5a8055',
@@ -45,6 +45,11 @@ const surfaceStyleH: SurfaceStyle = {
   fillColor: '#f0f0f0',
 }
 
+const surfaceStyleI: SurfaceStyle = {
+  strokeColor: '#666',
+  fillColor: '#666',
+}
+
 export function getGraphSeriesStyle(seriesLength: number) {
   switch (seriesLength) {
     case 1:
@@ -72,6 +77,7 @@ export function getGraphSeriesColor(series: Series) {
     F: surfaceStyleF,
     G: surfaceStyleG,
     H: surfaceStyleH,
+    I: surfaceStyleI,
   }
   return styles[series]
 }

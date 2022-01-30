@@ -232,7 +232,11 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         effectiveReproductionNumber.push(rt)
       })
 
-      return [effectiveReproductionNumber]
+      const line1 = labels.map(() => {
+        return 1
+      })
+
+      return [effectiveReproductionNumber, line1]
     },
     labels() {
       return DailyPositiveDetail.data.map((a) => a.diagnosed_date)
