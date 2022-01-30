@@ -610,6 +610,6 @@
   "終了": "End",
   "開始": "Start",
   "{date}まで": "To {date}",
-  "表示期間": "Range",
+  "表示期間": "Period",
   "{date}から": "From {date}"
 }
