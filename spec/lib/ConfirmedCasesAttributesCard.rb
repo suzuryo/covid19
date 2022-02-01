@@ -99,7 +99,7 @@ def has_confirmed_case_attributes_card
   expect(find('#ConfirmedCasesAttributesCard > div > div > div.DataView-Content > div > div.v-data-footer > div.v-data-footer__select').text).to eq "#{JA_JSON['DataView_Footer'][0]}\n15"
 
   # 項目中
-  d = DATA_JSON['patients']['data'].last['id']
+  d = DATA_JSON['patients']['data'].size
   expect(find('#ConfirmedCasesAttributesCard > div > div > div.DataView-Content > div > div.v-data-footer > div.v-data-footer__pagination').text).to eq (JA_JSON['DataView_Footer'][1]).to_s.gsub('{itemsLength}', d.to_s).gsub('{pageStart}', '1').gsub('{pageStop}', d < 15 ? d.to_s : '15').rstrip
 
   # 次のページ
