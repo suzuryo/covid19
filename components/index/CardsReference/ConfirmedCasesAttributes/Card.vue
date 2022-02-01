@@ -50,7 +50,7 @@ export default {
     const date = this.$d(getDayjsObject(lastDay).toDate(), 'dateWithoutYear')
 
     const sumInfoOfPatients = {
-      lText: `${Data.patients.data[Data.patients.data.length - 1].id}`,
+      lText: `${Data.patients.data.length}`,
       sText: this.$t('Common.{date}の累計', { date }),
       unit: this.$t('Common.人'),
     }
