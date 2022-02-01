@@ -40,7 +40,7 @@ def has_confirmed_cases_number_card
   expect(find('#ConfirmedCasesNumberCard .DataViewExpansionPanel .v-expansion-panel-content table > tbody > tr:nth-child(1) > td:nth-child(3)').text).to eq d.to_s
 
   # テーブルの最上部の値(陽性者・累計)(idからチェック)
-  d = number_to_delimited(DATA_JSON['patients']['data'].last['id'].to_i)
+  d = number_to_delimited(DATA_JSON['patients']['data'].size)
   expect(find('#ConfirmedCasesNumberCard .DataViewExpansionPanel .v-expansion-panel-content table > tbody > tr:nth-child(1) > td:nth-child(3)').text).to eq d.to_s
 
   # データを表示ボタンをクリックすると閉じる

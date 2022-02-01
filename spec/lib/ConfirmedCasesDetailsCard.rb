@@ -12,7 +12,7 @@ def has_confirmed_cases_details_card(lang:, lang_json:)
 
   # 陽性者数（累計）
   expect(find('#ConfirmedCasesDetailsCard > div > div > div.DataView-Content > ul > li > div > span:nth-child(1)').text).to eq "#{lang_json['Common']['陽性者数']} (#{lang_json['Common']['累計']})"
-  d = number_to_delimited(DATA_JSON['patients']['data'].last['id'])
+  d = number_to_delimited(DATA_JSON['patients']['data'].size)
   expect(find('#ConfirmedCasesDetailsCard > div > div > div.DataView-Content > ul > li > div > span:nth-child(2) > strong').text).to eq d.to_s
   d = dailyDiff(MAIN_SUMMARY_JSON['陽性者数前日差'])
   expect(find('#ConfirmedCasesDetailsCard > div > div > div.DataView-Content > ul > li > div > span:nth-child(2) > span').text).to eq d
