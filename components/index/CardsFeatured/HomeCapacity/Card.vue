@@ -13,6 +13,13 @@
               {{ note }}
             </li>
           </ul>
+          <div :class="$style.homeCapacityExternalLink">
+            <div>
+              <app-link :to="$t('ExtLink.岩手県48_3_1.url')">
+                {{ $t('ExtLink.岩手県48_3_1.text') }}
+              </app-link>
+            </div>
+          </div>
         </template>
       </home-capacity-beds>
       <slot name="breadCrumb" />
@@ -24,6 +31,7 @@
 import dayjs from 'dayjs'
 import Vue from 'vue'
 
+import AppLink from '@/components/_shared/AppLink.vue'
 import HomeCapacityBeds from '@/components/index/CardsFeatured/HomeCapacity/Beds.vue'
 import MainSummary from '@/data/main_summary.json'
 import PositiveStatus from '@/data/positive_status.json'
@@ -31,6 +39,7 @@ import PositiveStatus from '@/data/positive_status.json'
 export default Vue.extend({
   components: {
     HomeCapacityBeds,
+    AppLink,
   },
   props: {
     md: {
@@ -53,3 +62,10 @@ export default Vue.extend({
   },
 })
 </script>
+
+<style lang="scss" module>
+.homeCapacityExternalLink {
+  margin-top: 10px;
+  text-align: right;
+}
+</style>

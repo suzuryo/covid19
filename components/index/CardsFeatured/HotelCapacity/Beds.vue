@@ -11,7 +11,7 @@
           v-if="
             bed === bedSummary.hotel - 1 ||
             bed % 50 === 50 - 1 ||
-            bed === 300 - 1
+            bed === 370 - 1
           "
         >
           {{ bed + 1 }}
@@ -82,7 +82,7 @@ export default Vue.extend({
     },
   },
   data() {
-    const remaining = 300 - this.bedSummary.hotel
+    const remaining = 370 - this.bedSummary.hotel
     return {
       remaining,
     }
