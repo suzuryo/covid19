@@ -142,13 +142,17 @@ $bed_size: 16px;
   @include font-size(10);
   > span {
     display: inline-block;
-    line-height: $bed_size - 2px;
-    height: $bed_size - 2px;
-    width: $bed_size - 2px;
+    line-height: $bed_size;
+    height: $bed_size;
+    width: $bed_size;
     text-align: center;
     font-family: 'Helvetica', 'Arial', sans-serif;
+    font-weight: 600;
+    color: #777;
     letter-spacing: 0;
-    @include font-size(7);
+    word-wrap: normal;
+    transform: scale(0.8) translate(-10%);
+    @include font-size(10);
   }
   &.inuse {
     background-color: #fce5da;
