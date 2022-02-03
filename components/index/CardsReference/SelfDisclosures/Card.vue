@@ -27,7 +27,7 @@ import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
 
 import AppLink from '@/components/_shared/AppLink.vue'
 import SelfDisclosuresTable from '@/components/index/CardsReference/SelfDisclosures/Table.vue'
-import Data from '@/data/self_disclosures.json'
+import SelfDisclosures from '@/data/self_disclosures.json'
 
 type NewsItem = {
   date: string
@@ -67,7 +67,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       newsItems: [],
     }
 
-    newsItems.newsItems = Data.newsItems
+    newsItems.newsItems = SelfDisclosures.newsItems
       .reverse()
       .sort((a, b) => {
         if (dayjs(a.date).isBefore(dayjs(b.date))) return 1

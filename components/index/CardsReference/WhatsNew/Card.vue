@@ -18,7 +18,7 @@ import Vue from 'vue'
 import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
 
 import WhatsNewTable from '@/components/index/CardsReference/WhatsNew/Table.vue'
-import Data from '@/data/news.json'
+import News from '@/data/news.json'
 
 type NewsItem = {
   date: string
@@ -57,7 +57,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       newsItems: [],
     }
 
-    newsItems.newsItems = Data.newsItems
+    newsItems.newsItems = News.newsItems
       .reverse()
       .sort((a, b) => {
         if (dayjs(a.date).isBefore(dayjs(b.date))) return 1
