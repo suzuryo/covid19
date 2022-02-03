@@ -26,9 +26,6 @@ const VueChartPlugin: Plugin = ({ app }) => {
   createCustomChart()
 }
 
-const rgba0 = 'rgba(255,255,255,0)'
-const rgba1 = 'rgba(255,255,255,1)'
-
 const createCustomChart = () => {
   const { reactiveProp } = VueChartJs.mixins
 
