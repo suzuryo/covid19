@@ -89,11 +89,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         }
       })
 
-    const date = dayjs(
-      Data.newsItems.sort((a, b) => {
-        return dayjs(a.date).isBefore(dayjs(b.date)) ? 1 : -1
-      })[0].date
-    ).format()
+    const date = SelfDisclosures.date
 
     return {
       newsItems,
