@@ -249,27 +249,16 @@
   "接触歴等不明者数（７日間移動平均）": "Unlinked 7-MA",
   "PositiveRateCard": {
     "titles": [
-      "Positive Test Percentage",
-      "Number of PCR tests (7-MA)"
+      "Positive rate",
+      "Number of tests (7-MA)"
     ],
-    "a": [
-      "Positive Test Percentage",
-      "Number of PCR tests (7-MA)",
-      "Positive PCR Test Count",
-      "Positive Antigen Test Count",
-      "Negative PCR Test Count",
-      "Negative Antigen Test Count",
-      "Number of tests (a 7-day moving average)",
-      "Positive rate"
-    ],
-    "b": [
-      "Rate of Test Positives : Moving average of test positive patients /Moving average of Tested people (as test positive + negative cases)",
-      "Preliminary value. May be modified later",
-      "11月に盛岡市が実施した1713件分の検査件数について計上漏れがあったと県より発表あり。その報告ミスの検査件数が2/27の検査件数として一括計上された。したがって11月の該当日時(不明)と2/27周辺の・検査の陽性率・PCR検査数の7日間移動平均などが、実際には正しく計算することができない。本来は実際に検査を実施した11月の該当日時に遡って検査件数を正しく訂正すべきなのに、その公表が無い。"
-    ],
-    "c": [
-      "The number of PCR tests available per day in Iwate Pref is 864.",
-      "As an estimate of the number of tests per day at the peak of infection, assuming a positivity rate of 10.4%, there would be 444 tests if the effective reproduction rate is 1.7, and 829 tests if the effective reproduction rate is 2.0."
+    "検査の陽性率": "Positive Test Percentage",
+    "陽性": "Positive",
+    "陰性": "Negative",
+    "検査件数（7日間移動平均）": "Number of tests (7 days moving average)",
+    "陽性率": "Positive rate",
+    "notes": [
+      "Positive rate = Positive count in 7 days ／ Test count in 7 days"
     ]
   },
   "確保病床": "Number of beds for patients",

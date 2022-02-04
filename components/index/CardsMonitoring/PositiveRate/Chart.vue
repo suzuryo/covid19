@@ -16,7 +16,7 @@
       >
         <button>
           <div
-            v-if="i === 4"
+            v-if="i === 2"
             :style="{
               background: `repeating-linear-gradient(90deg, ${colors[i].fillColor}, ${colors[i].fillColor} 2px, #fff 2px, #fff 4px)`,
               border: 0,
@@ -24,9 +24,9 @@
             }"
           />
           <div
-            v-else-if="i === 5"
+            v-else-if="i === 3"
             :style="{
-              backgroundColor: colors[4].fillColor,
+              backgroundColor: colors[i].fillColor,
               border: 0,
               height: '3px',
             }"
@@ -126,11 +126,7 @@ import DataViewTable, {
 } from '@/components/index/_shared/DataViewTable.vue'
 import DateRangeSlider from '@/components/index/_shared/DateRangeSlider.vue'
 import { DisplayData } from '@/plugins/vue-chart'
-import {
-  getGraphSeriesColor,
-  getGraphSeriesStyle,
-  SurfaceStyle,
-} from '@/utils/colors'
+import { getGraphSeriesColor, SurfaceStyle } from '@/utils/colors'
 import { calcDayBeforeRatio } from '@/utils/formatDayBeforeRatio'
 import { getNumberToFixedFunction } from '@/utils/monitoringStatusValueFormatters'
 
@@ -257,8 +253,13 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   },
   data() {
     return {
-      displayLegends: [true, true, true, true, true, true],
-      colors: [...getGraphSeriesStyle(4), getGraphSeriesColor('E')],
+      displayLegends: [true, true, true, true],
+      colors: [
+        getGraphSeriesColor('A'),
+        getGraphSeriesColor('C'),
+        getGraphSeriesColor('E'),
+        getGraphSeriesColor('E'),
+      ],
       canvas: true,
       startDate: '2020-01-01',
       endDate: dayjs().format('YYYY-MM-DD'),
@@ -279,13 +280,11 @@ const options: ThisTypedComponentOptionsWithRecordProps<
           { data: this.chartData[1] },
           { data: this.chartData[2] },
           { data: this.chartData[3] },
-          { data: this.chartData[4] },
-          { data: this.chartData[5] },
         ],
       }
       const { lastDay, lastDayData, dayBeforeRatio } = calcDayBeforeRatio({
         displayData: data,
-        dataIndex: 5,
+        dataIndex: 3,
         digit: 1,
       })
       const {
@@ -294,7 +293,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         dayBeforeRatio: dayBeforeRatio4,
       } = calcDayBeforeRatio({
         displayData: this.displayData,
-        dataIndex: 4,
+        dataIndex: 2,
         digit: 1,
       })
 
@@ -320,7 +319,12 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         const date = dayjs(item)
         return date.isBetween(this.startDate, this.endDate, null, '[]')
       })
-      const graphSeries = [...getGraphSeriesStyle(4), getGraphSeriesColor('E')]
+      const graphSeries = [
+        getGraphSeriesColor('A'),
+        getGraphSeriesColor('C'),
+        getGraphSeriesColor('E'),
+        getGraphSeriesColor('E'),
+      ]
       return {
         labels: rangeDate,
         datasets: [
@@ -351,42 +355,16 @@ const options: ThisTypedComponentOptionsWithRecordProps<
             order: 2,
           },
           {
-            type: 'bar',
+            type: 'line',
             yAxisID: 'y-axis-1',
             label: this.dataLabels[2],
             data: this.chartData[2].slice(
               this.startDateIndex,
               this.endDateIndex + 1
             ),
-            backgroundColor: graphSeries[2].fillColor,
-            borderColor: graphSeries[2].strokeColor,
-            borderWidth: 1,
-            order: 3,
-          },
-          {
-            type: 'bar',
-            yAxisID: 'y-axis-1',
-            label: this.dataLabels[3],
-            data: this.chartData[3].slice(
-              this.startDateIndex,
-              this.endDateIndex + 1
-            ),
-            backgroundColor: graphSeries[3].fillColor,
-            borderColor: graphSeries[3].strokeColor,
-            borderWidth: 1,
-            order: 4,
-          },
-          {
-            type: 'line',
-            yAxisID: 'y-axis-1',
-            label: this.dataLabels[4],
-            data: this.chartData[4].slice(
-              this.startDateIndex,
-              this.endDateIndex + 1
-            ),
             pointBackgroundColor: 'rgba(0,0,0,0)',
             pointBorderColor: 'rgba(0,0,0,0)',
-            borderColor: graphSeries[4].strokeColor,
+            borderColor: graphSeries[2].strokeColor,
             borderWidth: 3,
             fill: false,
             order: 0,
@@ -395,14 +373,14 @@ const options: ThisTypedComponentOptionsWithRecordProps<
           {
             type: 'line',
             yAxisID: 'y-axis-2',
-            label: this.dataLabels[5],
-            data: this.chartData[5].slice(
+            label: this.dataLabels[3],
+            data: this.chartData[3].slice(
               this.startDateIndex,
               this.endDateIndex + 1
             ),
             pointBackgroundColor: 'rgba(0,0,0,0)',
             pointBorderColor: 'rgba(0,0,0,0)',
-            borderColor: graphSeries[4].strokeColor,
+            borderColor: graphSeries[3].strokeColor,
             borderWidth: 3,
             fill: false,
             order: 0,
@@ -453,7 +431,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
               let label = `${
                 this.dataLabels[tooltipItem.datasetIndex!]
               } : ${cases} ${this.$t('Common.人')}`
-              if (tooltipItem.datasetIndex! >= 5) {
+              if (tooltipItem.datasetIndex! >= 3) {
                 label = `${
                   this.dataLabels[tooltipItem.datasetIndex!]
                 } : ${cases} ${unit}`
@@ -558,7 +536,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       return Math.ceil(max / base) * base
     },
     scaledTicksYAxisMaxRight() {
-      return this.chartData[5].reduce((a, b) => Math.max(a, b), 0)
+      return this.chartData[3].reduce((a, b) => Math.max(a, b), 0)
     },
     startDateIndex() {
       const searchIndex = this.labels?.findIndex((item) => {
