@@ -151,9 +151,11 @@ export default Vue.extend({
         '#cb181d',
         '#a50f15',
         '#67000d',
+        '#3f0008',
       ])
 
-      return gradient.rgbAt(Math.min(last7day, 100) / 100)
+      // 200以上の場合は rgbAt(1) にする
+      return gradient.rgbAt(Math.min(last7day, 200) / 200)
     },
   },
 })
