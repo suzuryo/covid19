@@ -19,8 +19,18 @@ def has_hospital_capacity_card(lang:, lang_json:)
   maxBeds = MAIN_SUMMARY_JSON['入院'] + MAIN_SUMMARY_JSON['調整中'] > 400 ? MAIN_SUMMARY_JSON['入院'] + MAIN_SUMMARY_JSON['調整中'] : 400
 
   maxBeds.times do |i|
-    # 50ごとにspanに数字が書いてある
-    if i % 50 == 49 || i == MAIN_SUMMARY_JSON['入院'] - 1
+    # 50ごとに数字が書いてある
+    if i % 50 == 49
+      expect(find("#HospitalCapacityCard > div > div > div.DataView-Content > div.Beds > div.Bed:nth-child(#{i+1}) > span").text).to eq "#{i+1}"
+    end
+
+    # 入院中の最後に数字が書いてある
+    if i == MAIN_SUMMARY_JSON['入院'] - 1
+      expect(find("#HospitalCapacityCard > div > div > div.DataView-Content > div.Beds > div.Bed:nth-child(#{i+1}) > span").text).to eq "#{i+1}"
+    end
+
+    # 入院中+調整中の最後に数字が書いてある
+    if i == MAIN_SUMMARY_JSON['入院'] + MAIN_SUMMARY_JSON['調整中'] - 1
       expect(find("#HospitalCapacityCard > div > div > div.DataView-Content > div.Beds > div.Bed:nth-child(#{i+1}) > span").text).to eq "#{i+1}"
     end
 
