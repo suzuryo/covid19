@@ -7,9 +7,15 @@
         :class="bedInUse(bed)"
         :title="bed + 1"
       >
-        <span v-if="bed === bedSummary.hospital - 1 || bed % 50 === 49">{{
-          bed + 1
-        }}</span>
+        <span
+          v-if="
+            bed === bedSummary.hospital - 1 ||
+            bed === bedSummary.hospital + bedSummary.waiting - 1 ||
+            bed % 50 === 49
+          "
+        >
+          {{ bed + 1 }}
+        </span>
       </div>
     </div>
     <div class="legend1">
