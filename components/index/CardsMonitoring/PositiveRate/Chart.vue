@@ -414,8 +414,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
             })
           )
         })
-        .sort((a, b) => dayjs(a.text).unix() - dayjs(b.text).unix())
-        .reverse()
+        .sort((a, b) => Date.parse(b.text) - Date.parse(a.text))
     },
     displayOption() {
       const unit = this.unit

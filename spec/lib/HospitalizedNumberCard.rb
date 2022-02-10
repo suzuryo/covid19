@@ -40,7 +40,7 @@ def has_hospitalized_number_card
   expect(find('#HospitalizedNumberCard .DataViewExpansionPanel .v-expansion-panel-content table > tbody > tr:nth-child(1) > td:nth-child(3)').text).to eq d.to_s
 
   # テーブルの上から1行目をチェックする(自宅療養)
-  d = POSITIVE_STATUS_JSON['data'].last['home'].to_i
+  d = number_to_delimited(POSITIVE_STATUS_JSON['data'].last['home'].to_i)
   expect(find('#HospitalizedNumberCard .DataViewExpansionPanel .v-expansion-panel-content table > tbody > tr:nth-child(1) > td:nth-child(4)').text).to eq d.to_s
 
   # テーブルの上から1行目をチェックする(調整中)

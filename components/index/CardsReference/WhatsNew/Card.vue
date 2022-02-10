@@ -13,7 +13,6 @@
 </template>
 
 <script lang="ts">
-import dayjs from 'dayjs'
 import Vue from 'vue'
 import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
 
@@ -58,11 +57,16 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     }
 
     newsItems.newsItems = News.newsItems
+      .slice()
       .reverse()
       .sort((a, b) => {
-        if (dayjs(a.date).isBefore(dayjs(b.date))) return 1
-        if (dayjs(b.date).isBefore(dayjs(a.date))) return -1
-        return 0
+        if (Date.parse(a.date) < Date.parse(b.date)) {
+          return 1
+        } else if (Date.parse(a.date) > Date.parse(b.date)) {
+          return -1
+        } else {
+          return 0
+        }
       })
       .map((d: any) => {
         const _locale: string = this.$i18n.locale
