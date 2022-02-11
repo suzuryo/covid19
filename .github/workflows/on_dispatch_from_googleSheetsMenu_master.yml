@@ -51,6 +51,7 @@ jobs:
           curl -o data/urls.json https://raw.githubusercontent.com/suzuryo/covid19-iwate-data-bot/master/data/urls.json
           curl -o data/self_disclosures.json https://raw.githubusercontent.com/suzuryo/covid19-iwate-data-bot/master/data/self_disclosures.json
           curl -o data/main_summary.json https://raw.githubusercontent.com/suzuryo/covid19-iwate-data-bot/master/data/main_summary.json
+          curl -o data/confirmed_case_area.json https://raw.githubusercontent.com/suzuryo/covid19-iwate-data-bot/master/data/confirmed_case_area.json
       - name: yarn run generate:deploy for generate OGP
         run: |
           yarn run generate:deploy --fail-on-page-error
