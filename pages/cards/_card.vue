@@ -13,6 +13,7 @@
 
 <script>
 import Breadcrumb from '@/components/_shared/Breadcrumb.vue'
+import ConfirmedCasesAreaCard from '@/components/index/CardsFeatured/ConfirmedCasesArea/Card.vue'
 import ConfirmedCasesDetailsCard from '@/components/index/CardsFeatured/ConfirmedCasesDetails/Card.vue'
 import HealthBurdenCard from '@/components/index/CardsFeatured/HealthBurden/Card.vue'
 import HomeCapacityCard from '@/components/index/CardsFeatured/HomeCapacity/Card.vue'
@@ -65,6 +66,7 @@ export default {
     StageCard,
     AgeGroupCard,
     HealthBurdenCard,
+    ConfirmedCasesAreaCard,
   },
   data() {
     let hasSiteTopUpper = true
@@ -159,6 +161,10 @@ export default {
       case 'health-burden':
         cardComponent = 'health-burden-card'
         cardTitle = this.$t('HealthBurdenCard.title')
+        break
+      case 'confirmed-cases-area':
+        cardComponent = 'confirmed-cases-area-card'
+        cardTitle = this.$t('ConfirmedCasesAreaCard.title')
         break
     }
 

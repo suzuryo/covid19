@@ -10,6 +10,7 @@ extend(utc)
 const now = dayjs().utc().format()
 
 const pages = [
+  '/cards/confirmed-cases-area/',
   '/cards/age-group/',
   '/cards/stage/',
   '/cards/health-burden',
