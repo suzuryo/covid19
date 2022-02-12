@@ -8,6 +8,7 @@ if not os.path.exists("ogp"):
     os.mkdir("ogp")
 
 PATHS = {
+    "/cards/confirmed-cases-area/": (959, 520),
     "/cards/health-burden/": (959, 520),
     "/cards/age-group/": (959, 520),
     "/cards/restaurant-map/": (959, 520),
