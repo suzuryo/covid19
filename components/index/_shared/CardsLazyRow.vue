@@ -15,7 +15,7 @@
           :is="component"
           v-for="(component, j) in row"
           :key="j"
-          md="6"
+          :md="isSingleRow(row) ? '12' : '6'"
         />
       </card-row>
     </v-lazy>
@@ -23,7 +23,7 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue, { VueConstructor } from 'vue'
 
 import CardRow from '@/components/index/_shared/CardRow.vue'
 
@@ -38,6 +38,7 @@ type Methods = {
     isIntersecting: boolean
   ) => void
   onScroll: () => void
+  isSingleRow: (row: VueConstructor) => boolean
 }
 type Computed = {}
 type Props = {
@@ -70,6 +71,9 @@ export default Vue.extend<Data, Methods, Computed, Props>({
       this.scroll = true
       this.$set(this.actives, 0, true)
       this.$set(this.actives, 1, true)
+    },
+    isSingleRow(row) {
+      return row.length === 1
     },
   },
 })
