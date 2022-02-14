@@ -1,9 +1,40 @@
 module.exports = {
-  extends: ['stylelint-config-standard', 'stylelint-config-prettier'],
-  plugins: ['stylelint-scss'],
+  extends: [
+    'stylelint-config-standard',
+    'stylelint-config-standard-scss',
+    'stylelint-config-prettier',
+  ],
+  overrides: [
+    {
+      files: ['**/*.vue'],
+      customSyntax: 'postcss-html',
+    },
+  ],
   rules: {
     'at-rule-no-unknown': null,
     'rule-empty-line-before': null,
-    'scss/at-rule-no-unknown': true,
+    'scss/at-rule-no-unknown': null,
+    // 以下 ライブラリのアップデートによってoffに指定しておく
+    'selector-id-pattern': null,
+    'font-family-name-quotes': null,
+    'function-no-unknown': null,
+    'color-function-notation': null,
+    'alpha-value-notation': null,
+    'value-no-vendor-prefix': null,
+    'value-keyword-case': null,
+    'selector-class-pattern': null,
+    'property-no-vendor-prefix': null,
+    'declaration-block-no-redundant-longhand-properties': null,
+    'shorthand-property-no-redundant-values': null,
+    'scss/double-slash-comment-empty-line-before': null,
+    'scss/at-mixin-pattern': null,
+    'scss/dollar-variable-pattern': null,
+    'scss/at-rule-conditional-no-parentheses': null,
+    'scss/at-if-closing-brace-newline-after': null,
+    'scss/at-if-closing-brace-space-after': null,
+    'scss/at-else-empty-line-before': null,
+    'scss/double-slash-comment-whitespace-inside': null,
+    'scss/dollar-variable-empty-line-before': null,
+    'scss/at-mixin-argumentless-call-parentheses': null,
   },
 }
