@@ -128,7 +128,6 @@ type Data = {
   endDate: string
 }
 type Methods = {
-  makeLineData: (value: number) => number[]
   onClickLegend: (i: number) => void
 }
 
@@ -479,9 +478,6 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     onClickLegend(i) {
       this.displayLegends[i] = !this.displayLegends[i]
       this.displayLegends = this.displayLegends.slice()
-    },
-    makeLineData(value: number): number[] {
-      return this.chartData[0].map((_) => value)
     },
   },
   mounted() {
