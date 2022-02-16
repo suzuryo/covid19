@@ -9,6 +9,7 @@ import CardsLazyRow from '@/components/index/_shared/CardsLazyRow.vue'
 import AgeGroupCard from '@/components/index/CardsMonitoring/AgeGroup/Card.vue'
 import ConfirmedCasesNumberCard from '@/components/index/CardsMonitoring/ConfirmedCasesNumber/Card.vue'
 import EffectiveReproductionNumberCard from '@/components/index/CardsMonitoring/EffectiveReproductionNumber/Card.vue'
+import HealthBurdenHospitalCard from '@/components/index/CardsMonitoring/HealthBurdenHospital/Card.vue'
 import HospitalizedNumberCard from '@/components/index/CardsMonitoring/HospitalizedNumber/Card.vue'
 import MonitoringConfirmedCasesNumberCard from '@/components/index/CardsMonitoring/MonitoringConfirmedCasesNumber/Card.vue'
 import PositiveRateCard from '@/components/index/CardsMonitoring/PositiveRate/Card.vue'
@@ -26,6 +27,7 @@ export default Vue.extend({
         [HospitalizedNumberCard, UntrackedRateCard],
         [PositiveRateCard, TestedNumberCard],
         [AgeGroupCard, EffectiveReproductionNumberCard],
+        [HealthBurdenHospitalCard],
       ],
     }
   },
