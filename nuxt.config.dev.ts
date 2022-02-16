@@ -14,6 +14,7 @@ const pages = [
   '/cards/age-group/',
   '/cards/stage/',
   '/cards/health-burden',
+  '/cards/health-burden-hospital',
   '/cards/weekly-map/',
   '/cards/whats-new/',
   '/cards/self-disclosures/',

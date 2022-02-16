@@ -23,9 +23,9 @@ export default Vue.extend({
   data() {
     return {
       rows: [
-        [WeeklyMapCard, ConfirmedCasesAreaChart],
-        [ConfirmedCasesDetailsCard, MonitoringConfirmedCasesNumberPer100kCard],
         [StageCard, HealthBurdenCard],
+        [ConfirmedCasesDetailsCard, MonitoringConfirmedCasesNumberPer100kCard],
+        [WeeklyMapCard, ConfirmedCasesAreaChart],
         [HospitalCapacityCard, HotelCapacityCard],
         [HomeCapacityCard],
       ],

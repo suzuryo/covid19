@@ -25,6 +25,7 @@ import WeeklyMapCard from '@/components/index/CardsFeatured/WeeklyMap/Card.vue'
 import AgeGroupCard from '@/components/index/CardsMonitoring/AgeGroup/Card.vue'
 import ConfirmedCasesNumberCard from '@/components/index/CardsMonitoring/ConfirmedCasesNumber/Card.vue'
 import EffectiveReproductionNumberCard from '@/components/index/CardsMonitoring/EffectiveReproductionNumber/Card.vue'
+import HealthBurdenHospitalCard from '@/components/index/CardsMonitoring/HealthBurdenHospital/Card.vue'
 import HospitalizedNumberCard from '@/components/index/CardsMonitoring/HospitalizedNumber/Card.vue'
 import MonitoringConfirmedCasesNumberCard from '@/components/index/CardsMonitoring/MonitoringConfirmedCasesNumber/Card.vue'
 import PositiveRateCard from '@/components/index/CardsMonitoring/PositiveRate/Card.vue'
@@ -67,6 +68,7 @@ export default {
     AgeGroupCard,
     HealthBurdenCard,
     ConfirmedCasesAreaCard,
+    HealthBurdenHospitalCard,
   },
   data() {
     let hasSiteTopUpper = true
@@ -165,6 +167,9 @@ export default {
       case 'confirmed-cases-area':
         cardComponent = 'confirmed-cases-area-card'
         cardTitle = this.$t('ConfirmedCasesAreaCard.title')
+      case 'health-burden-hospital':
+        cardComponent = 'health-burden-hospital-card'
+        cardTitle = this.$t('HealthBurdenHospitalCard.title')
         break
     }
 
