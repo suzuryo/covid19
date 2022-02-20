@@ -33,9 +33,9 @@ import Vue from 'vue'
 import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
 import { TranslateResult } from 'vue-i18n'
 
-import ConfirmedCasesAreaChart from '~/components/index/CardsFeatured/ConfirmedCasesArea/Chart.vue'
-import ConfirmedCaseArea from '~/data/confirmed_case_area.json'
-import { getNumberToFixedFunction } from '~/utils/monitoringStatusValueFormatters'
+import ConfirmedCasesAreaChart from '@/components/index/CardsFeatured/ConfirmedCasesArea/Chart.vue'
+import ConfirmedCaseArea from '@/data/confirmed_case_area.json'
+import { getNumberToFixedFunction } from '@/utils/monitoringStatusValueFormatters'
 
 type DataType = {
   areaLabels: string[] | TranslateResult[]
