@@ -1,5 +1,5 @@
 <template>
-  <v-col id="AgeGroupCard" cols="12" :md="md" class="DataCard">
+  <v-col id="AgeGroupCard" cols="12" :md="isSingleCard || md" class="DataCard">
     <client-only>
       <age-chart
         title-id="age-group"
@@ -11,6 +11,7 @@
         :labels="labels7MA"
         :data-labels="ageLabels"
         :table-labels="ageLabels"
+        :day-period="isSingleCard && $vuetify.breakpoint.mdAndUp ? 120 : 60"
       >
         <template #notes>
           <ul>
@@ -35,6 +36,7 @@ import AgeChart from '@/components/index/CardsMonitoring/AgeGroup/Chart.vue'
 import DailyPositiveDetail from '@/data/daily_positive_detail.json'
 import Data from '@/data/data.json'
 import { getNumberToFixedFunction } from '@/utils/monitoringStatusValueFormatters'
+import { isSingleCard } from '@/utils/urls'
 
 type DataType = {
   ageLabels: string[] | TranslateResult[]
@@ -48,7 +50,9 @@ type DataType = {
 
 type MethodsType = {}
 
-type ComputedType = {}
+type ComputedType = {
+  isSingleCard: boolean
+}
 
 type PropsType = {}
 
@@ -148,6 +152,11 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       labels7MA,
       chartData7MA,
     }
+  },
+  computed: {
+    isSingleCard() {
+      return isSingleCard(this.$route.path)
+    },
   },
 }
 

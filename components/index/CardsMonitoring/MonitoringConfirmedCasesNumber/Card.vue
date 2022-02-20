@@ -2,7 +2,7 @@
   <v-col
     id="MonitoringConfirmedCasesNumberCard"
     cols="12"
-    :md="md"
+    :md="isSingleCard || md"
     class="DataCard"
   >
     <client-only>
@@ -20,6 +20,7 @@
         :data-labels="dataLabels"
         :table-labels="tableLabels"
         :unit="$t('Common.人')"
+        :day-period="isSingleCard && $vuetify.breakpoint.mdAndUp ? 120 : 60"
       >
         <template #notes>
           <ul>
@@ -50,6 +51,7 @@ import {
   getNumberToFixedFunction,
   getNumberToLocaleStringFunction,
 } from '@/utils/monitoringStatusValueFormatters'
+import { isSingleCard } from '@/utils/urls'
 
 export default {
   components: {
@@ -98,6 +100,11 @@ export default {
       tableLabels,
       getFormatter,
     }
+  },
+  computed: {
+    isSingleCard() {
+      return isSingleCard(this.$route.path)
+    },
   },
 }
 </script>

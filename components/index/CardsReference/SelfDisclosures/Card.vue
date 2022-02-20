@@ -1,5 +1,10 @@
 <template>
-  <v-col id="SelfDisclosuresCard" cols="12" :md="md" class="DataCard">
+  <v-col
+    id="SelfDisclosuresCard"
+    cols="12"
+    :md="isSingleCard || md"
+    class="DataCard"
+  >
     <client-only>
       <self-disclosures-table
         :title="$t('SelfDisclosuresCard.title')"
@@ -27,6 +32,7 @@ import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
 import AppLink from '@/components/_shared/AppLink.vue'
 import SelfDisclosuresTable from '@/components/index/CardsReference/SelfDisclosures/Table.vue'
 import SelfDisclosures from '@/data/self_disclosures.json'
+import { isSingleCard } from '@/utils/urls'
 
 type NewsItem = {
   date: string
@@ -40,7 +46,9 @@ type NewsItems = {
 }
 
 type Methods = {}
-type Computed = {}
+type Computed = {
+  isSingleCard: boolean
+}
 type Props = {}
 
 const options: ThisTypedComponentOptionsWithRecordProps<
@@ -99,6 +107,11 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       newsItems,
       date,
     }
+  },
+  computed: {
+    isSingleCard() {
+      return isSingleCard(this.$route.path)
+    },
   },
 }
 

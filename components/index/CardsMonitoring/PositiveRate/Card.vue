@@ -1,5 +1,10 @@
 <template>
-  <v-col id="PositiveRateCard" cols="12" :md="md" class="DataCard">
+  <v-col
+    id="PositiveRateCard"
+    cols="12"
+    :md="isSingleCard || md"
+    class="DataCard"
+  >
     <client-only>
       <positive-rate-chart
         :title-id="'positive-rate'"
@@ -16,6 +21,7 @@
         :option-unit="$t('件.reports')"
         :data-labels="positiveRateDataLabels"
         :table-labels="positiveRateTableLabels"
+        :day-period="isSingleCard && $vuetify.breakpoint.mdAndUp ? 120 : 60"
       >
         <template #notes>
           <div :class="$style.newScenario">
@@ -43,6 +49,8 @@ import {
   getNumberToFixedFunction,
   getNumberToLocaleStringFunction,
 } from '@/utils/monitoringStatusValueFormatters'
+import { isSingleCard } from '@/utils/urls'
+
 extend(duration)
 
 export default {
@@ -105,6 +113,11 @@ export default {
       positiveRateTableLabels,
       getFormatter,
     }
+  },
+  computed: {
+    isSingleCard() {
+      return isSingleCard(this.$route.path)
+    },
   },
 }
 </script>

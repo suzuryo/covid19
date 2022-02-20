@@ -1,5 +1,10 @@
 <template>
-  <v-col id="HealthBurdenHospitalCard" cols="12" :md="md" class="DataCard">
+  <v-col
+    id="HealthBurdenHospitalCard"
+    cols="12"
+    :md="isSingleCard || md"
+    class="DataCard"
+  >
     <client-only>
       <health-burden-hospital-chart
         title-id="health-burden-hospital"
@@ -37,6 +42,7 @@ import type { TranslateResult } from 'vue-i18n'
 import AppLink from '@/components/_shared/AppLink.vue'
 import HealthBurdenHospitalChart from '@/components/index/CardsMonitoring/HealthBurdenHospital/Chart.vue'
 import HealthBurden from '@/data/health_burden.json'
+import { isSingleCard } from '@/utils/urls'
 
 type DataType = {
   healthBurdenLabels: string[] | TranslateResult[]
@@ -49,7 +55,9 @@ type DataType = {
 
 type MethodsType = {}
 
-type ComputedType = {}
+type ComputedType = {
+  isSingleCard: boolean
+}
 
 type PropsType = {}
 
@@ -108,6 +116,11 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       labels,
       chartData,
     }
+  },
+  computed: {
+    isSingleCard() {
+      return isSingleCard(this.$route.path)
+    },
   },
 }
 

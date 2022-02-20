@@ -1,5 +1,10 @@
 <template>
-  <v-col id="ConfirmedCasesDetailsCard" cols="12" :md="md" class="DataCard">
+  <v-col
+    id="ConfirmedCasesDetailsCard"
+    cols="12"
+    :md="isSingleCard || md"
+    class="DataCard"
+  >
     <client-only>
       <data-view
         :title="$t('ConfirmedCasesDetailsCard.title')"
@@ -47,6 +52,7 @@ import NotesExpansionPanel from '@/components/index/_shared/DataView/NotesExpans
 import DataViewDataSetPanel from '@/components/index/_shared/DataViewDataSetPanel.vue'
 import ConfirmedCasesDetailsTable from '@/components/index/CardsFeatured/ConfirmedCasesDetails/Table.vue'
 import MainSummary from '@/data/main_summary.json'
+import { isSingleCard } from '@/utils/urls'
 
 export default {
   components: {
@@ -70,6 +76,11 @@ export default {
       MainSummary,
       updatedAt,
     }
+  },
+  computed: {
+    isSingleCard() {
+      return isSingleCard(this.$route.path)
+    },
   },
 }
 </script>

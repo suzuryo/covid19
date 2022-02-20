@@ -2,7 +2,7 @@
   <v-col
     id="ConfirmedCasesByMunicipalitiesCard"
     cols="12"
-    :md="md"
+    :md="isSingleCard || md"
     class="DataCard"
   >
     <client-only>
@@ -35,6 +35,7 @@ import dayjs from 'dayjs'
 import ConfirmedCasesByMunicipalitiesTable from '@/components/index/CardsReference/ConfirmedCasesByMunicipalities/Table.vue'
 import Data from '@/data/data.json'
 import PatientMunicipalities from '@/data/patient_municipalities.json'
+import { isSingleCard } from '@/utils/urls'
 
 const population = {
   盛岡市: 289893,
@@ -172,6 +173,11 @@ export default {
       municipalitiesTable,
       info,
     }
+  },
+  computed: {
+    isSingleCard() {
+      return isSingleCard(this.$route.path)
+    },
   },
 }
 </script>

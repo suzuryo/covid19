@@ -1,5 +1,10 @@
 <template>
-  <v-col id="IwateNinshouRestaurantMapCard" cols="12" :md="12" class="DataCard">
+  <v-col
+    id="IwateNinshouRestaurantMapCard"
+    cols="12"
+    :md="isSingleCard || md"
+    class="DataCard"
+  >
     <client-only>
       <restaurant-map
         :title="$t('RestaurantCard.title')"
@@ -24,6 +29,7 @@ import Vue from 'vue'
 import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
 
 import RestaurantMap from '@/components/index/CardsReference/IwateNinshou/Restaurant/Map.vue'
+import { isSingleCard } from '@/utils/urls'
 
 type DataType = {}
 type MethodsType = {}
@@ -44,6 +50,11 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     md: {
       type: String,
       default: '6',
+    },
+  },
+  computed: {
+    isSingleCard() {
+      return isSingleCard(this.$route.path)
     },
   },
 }

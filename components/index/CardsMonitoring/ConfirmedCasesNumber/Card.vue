@@ -1,5 +1,10 @@
 <template>
-  <v-col id="ConfirmedCasesNumberCard" cols="12" :md="md" class="DataCard">
+  <v-col
+    id="ConfirmedCasesNumberCard"
+    cols="12"
+    :md="isSingleCard || md"
+    class="DataCard"
+  >
     <client-only>
       <time-bar-chart
         :title="$t('ConfirmedCasesNumberCard.title')"
@@ -9,6 +14,7 @@
         :date="Data.patients_summary.date"
         :unit="$t('Common.人')"
         :by-date="true"
+        :day-period="isSingleCard && $vuetify.breakpoint.mdAndUp ? 120 : 60"
       />
       <slot name="breadCrumb" />
     </client-only>
@@ -19,6 +25,7 @@
 import TimeBarChart from '@/components/index/_shared/TimeBarChart.vue'
 import Data from '@/data/data.json'
 import formatGraph from '@/utils/formatGraph'
+import { isSingleCard } from '@/utils/urls'
 
 export default {
   components: {
@@ -38,6 +45,11 @@ export default {
       Data,
       patientsGraph,
     }
+  },
+  computed: {
+    isSingleCard() {
+      return isSingleCard(this.$route.path)
+    },
   },
 }
 </script>

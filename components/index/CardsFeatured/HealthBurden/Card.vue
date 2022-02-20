@@ -1,5 +1,10 @@
 <template>
-  <v-col id="HealthBurdenCard" cols="12" :md="md" class="DataCard">
+  <v-col
+    id="HealthBurdenCard"
+    cols="12"
+    :md="isSingleCard || md"
+    class="DataCard"
+  >
     <client-only>
       <health-burden-table
         :info-titles="[$t('HealthBurdenCard.title')]"
@@ -26,6 +31,7 @@ import Vue from 'vue'
 
 import HealthBurdenTable from '@/components/index/CardsFeatured/HealthBurden/Table.vue'
 import HealthBurden from '@/data/health_burden.json'
+import { isSingleCard } from '@/utils/urls'
 
 export default Vue.extend({
   components: {
@@ -43,6 +49,11 @@ export default Vue.extend({
       date,
       HealthBurden,
     }
+  },
+  computed: {
+    isSingleCard() {
+      return isSingleCard(this.$route.path)
+    },
   },
 })
 </script>

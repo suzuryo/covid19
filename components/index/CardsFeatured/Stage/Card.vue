@@ -1,5 +1,5 @@
 <template>
-  <v-col id="StageCard" cols="12" :md="md" class="DataCard">
+  <v-col id="StageCard" cols="12" :md="isSingleCard || md" class="DataCard">
     <client-only>
       <stage-table
         :date="date"
@@ -32,13 +32,16 @@ import Data from '@/data/data.json'
 import MainSummary from '@/data/main_summary.json'
 import PositiveRate from '@/data/positive_rate.json'
 import { getNumberToFixedFunction } from '@/utils/monitoringStatusValueFormatters'
+import { isSingleCard } from '@/utils/urls'
 
 type DataType = {
   date: string
   tableData: number[]
 }
 type MethodsType = {}
-type ComputedType = {}
+type ComputedType = {
+  isSingleCard: boolean
+}
 type PropsType = {}
 
 const options: ThisTypedComponentOptionsWithRecordProps<
@@ -155,6 +158,11 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       getFormatter,
       tableData,
     }
+  },
+  computed: {
+    isSingleCard() {
+      return isSingleCard(this.$route.path)
+    },
   },
 }
 
