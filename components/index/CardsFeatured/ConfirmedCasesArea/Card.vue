@@ -1,5 +1,10 @@
 <template>
-  <v-col id="ConfirmedCasesAreaCard" cols="12" :md="md" class="DataCard">
+  <v-col
+    id="ConfirmedCasesAreaCard"
+    cols="12"
+    :md="isSingleCard || md"
+    class="DataCard"
+  >
     <client-only>
       <confirmed-cases-area-chart
         title-id="confirmed-cases-area"
@@ -11,6 +16,7 @@
         :labels="labels7MA"
         :data-labels="areaLabels"
         :table-labels="areaLabels"
+        :day-period="isSingleCard && $vuetify.breakpoint.mdAndUp ? 120 : 60"
       >
         <template #notes>
           <ul>
@@ -36,6 +42,7 @@ import { TranslateResult } from 'vue-i18n'
 import ConfirmedCasesAreaChart from '@/components/index/CardsFeatured/ConfirmedCasesArea/Chart.vue'
 import ConfirmedCaseArea from '@/data/confirmed_case_area.json'
 import { getNumberToFixedFunction } from '@/utils/monitoringStatusValueFormatters'
+import { isSingleCard } from '@/utils/urls'
 
 type DataType = {
   areaLabels: string[] | TranslateResult[]
@@ -47,7 +54,9 @@ type DataType = {
 
 type MethodsType = {}
 
-type ComputedType = {}
+type ComputedType = {
+  isSingleCard: boolean
+}
 
 type PropsType = {}
 
@@ -135,6 +144,11 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       labels7MA,
       chartData7MA,
     }
+  },
+  computed: {
+    isSingleCard() {
+      return isSingleCard(this.$route.path)
+    },
   },
 }
 

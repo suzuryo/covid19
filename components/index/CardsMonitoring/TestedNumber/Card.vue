@@ -1,5 +1,10 @@
 <template>
-  <v-col id="TestedNumberCard" cols="12" :md="md" class="DataCard">
+  <v-col
+    id="TestedNumberCard"
+    cols="12"
+    :md="isSingleCard || md"
+    class="DataCard"
+  >
     <client-only>
       <time-stacked-bar-chart
         :title="$t('TestedNumberCard.title')"
@@ -12,6 +17,7 @@
         :unit="$t('件.tested')"
         :data-labels="inspectionsDataLabels"
         :table-labels="inspectionsTableLabels"
+        :day-period="isSingleCard && $vuetify.breakpoint.mdAndUp ? 120 : 60"
       >
         <template #notes>
           <ul>
@@ -29,6 +35,7 @@
 <script>
 import TimeStackedBarChart from '@/components/index/_shared/TimeStackedBarChart.vue'
 import PositiveRate from '@/data/positive_rate.json'
+import { isSingleCard } from '@/utils/urls'
 
 export default {
   components: {
@@ -71,6 +78,11 @@ export default {
       inspectionsDataLabels,
       inspectionsTableLabels,
     }
+  },
+  computed: {
+    isSingleCard() {
+      return isSingleCard(this.$route.path)
+    },
   },
 }
 </script>

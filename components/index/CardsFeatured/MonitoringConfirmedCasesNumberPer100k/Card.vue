@@ -2,7 +2,7 @@
   <v-col
     id="MonitoringConfirmedCasesNumberPer100kCard"
     cols="12"
-    :md="md"
+    :md="isSingleCard || md"
     class="DataCard"
   >
     <client-only>
@@ -17,6 +17,7 @@
         :data-labels="dataLabels"
         :table-labels="tableLabels"
         :unit="$t('Common.人')"
+        :day-period="isSingleCard && $vuetify.breakpoint.mdAndUp ? 120 : 60"
       >
         <template #selectCity>
           <v-select
@@ -56,6 +57,7 @@ import {
   getNumberToFixedFunction,
   getNumberToLocaleStringFunction,
 } from '@/utils/monitoringStatusValueFormatters'
+import { isSingleCard } from '@/utils/urls'
 
 type SelectItem = {
   text: string
@@ -79,6 +81,7 @@ type ComputedType = {
   labels: string[]
   chartData: number[][]
   population: number
+  isSingleCard: boolean
 }
 
 type PropsType = {}
@@ -256,6 +259,9 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         .reduce((accumulator, currentValue, _index, _array) => {
           return accumulator + currentValue
         }, 0)
+    },
+    isSingleCard() {
+      return isSingleCard(this.$route.path)
     },
   },
   methods: {

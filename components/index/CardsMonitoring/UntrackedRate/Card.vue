@@ -1,5 +1,10 @@
 <template>
-  <v-col id="UntrackedRateCard" cols="12" :md="md" class="DataCard">
+  <v-col
+    id="UntrackedRateCard"
+    cols="12"
+    :md="isSingleCard || md"
+    class="DataCard"
+  >
     <client-only>
       <untracked-rate-chart
         :title-id="'untracked-rate'"
@@ -12,6 +17,7 @@
         :unit="[$t('Common.人')]"
         :data-labels="dataLabels"
         :table-labels="tableLabels"
+        :day-period="isSingleCard && $vuetify.breakpoint.mdAndUp ? 120 : 60"
       >
         <template #notes>
           <ul>
@@ -36,6 +42,7 @@ import {
   getNumberToFixedFunction,
   getNumberToLocaleStringFunction,
 } from '@/utils/monitoringStatusValueFormatters'
+import { isSingleCard } from '@/utils/urls'
 
 export default {
   components: {
@@ -85,6 +92,11 @@ export default {
       tableLabels,
       getFormatter,
     }
+  },
+  computed: {
+    isSingleCard() {
+      return isSingleCard(this.$route.path)
+    },
   },
 }
 </script>

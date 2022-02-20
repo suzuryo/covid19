@@ -1,5 +1,10 @@
 <template>
-  <v-col id="HospitalizedNumberCard" cols="12" :md="md" class="DataCard">
+  <v-col
+    id="HospitalizedNumberCard"
+    cols="12"
+    :md="isSingleCard || md"
+    class="DataCard"
+  >
     <client-only>
       <hospitalized-time-stacked-bar-chart
         :title="$t('HospitalizedNumberCard.title')"
@@ -12,6 +17,7 @@
         :unit="$t('Common.人')"
         :data-labels="hospitalizedDataLabels"
         :table-labels="hospitalizedTableLabels"
+        :day-period="isSingleCard && $vuetify.breakpoint.mdAndUp ? 120 : 60"
       >
         <template #notes>
           <table :class="$style.beds">
@@ -103,6 +109,7 @@ import AppLink from '@/components/_shared/AppLink.vue'
 import HospitalizedTimeStackedBarChart from '@/components/index/CardsMonitoring/HospitalizedNumber/Chart.vue'
 import PositiveStatus from '@/data/positive_status.json'
 import { getNumberToLocaleStringFunction } from '@/utils/monitoringStatusValueFormatters.ts'
+import { isSingleCard } from '@/utils/urls'
 
 export default {
   components: {
@@ -149,6 +156,11 @@ export default {
       hospitalizedTableLabels,
       getFormatter,
     }
+  },
+  computed: {
+    isSingleCard() {
+      return isSingleCard(this.$route.path)
+    },
   },
 }
 </script>

@@ -2,7 +2,7 @@
   <v-col
     id="EffectiveReproductionNumberCard"
     cols="12"
-    :md="md"
+    :md="isSingleCard || md"
     class="DataCard"
   >
     <client-only>
@@ -16,6 +16,7 @@
         :labels="labels"
         :data-labels="dataLabels"
         :table-labels="tableLabels"
+        :day-period="isSingleCard && $vuetify.breakpoint.mdAndUp ? 120 : 60"
       >
         <template #selectCity>
           <v-select
@@ -64,6 +65,7 @@ import EffectiveReproductionNumberChart from '@/components/index/CardsMonitoring
 import DailyPositiveDetail from '@/data/daily_positive_detail.json'
 import Data from '@/data/data.json'
 import { getNumberToFixedFunction } from '@/utils/monitoringStatusValueFormatters'
+import { isSingleCard } from '@/utils/urls'
 
 type SelectItem = {
   text: string
@@ -86,6 +88,7 @@ type MethodsType = {
 type ComputedType = {
   labels: string[]
   chartData: number[][]
+  isSingleCard: boolean
 }
 
 type PropsType = {}
@@ -240,6 +243,9 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     },
     labels() {
       return DailyPositiveDetail.data.map((a) => a.diagnosed_date)
+    },
+    isSingleCard() {
+      return isSingleCard(this.$route.path)
     },
   },
   methods: {

@@ -1,5 +1,5 @@
 <template>
-  <v-col id="WhatsNewCard" cols="12" :md="md" class="DataCard">
+  <v-col id="WhatsNewCard" cols="12" :md="isSingleCard || md" class="DataCard">
     <client-only>
       <whats-new-table
         :title="$t('WhatsNewCard.title')"
@@ -18,6 +18,7 @@ import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
 
 import WhatsNewTable from '@/components/index/CardsReference/WhatsNew/Table.vue'
 import News from '@/data/news.json'
+import { isSingleCard } from '@/utils/urls'
 
 type NewsItem = {
   date: string
@@ -31,7 +32,9 @@ type NewsItems = {
 }
 
 type Methods = {}
-type Computed = {}
+type Computed = {
+  isSingleCard: boolean
+}
 type Props = {}
 
 const options: ThisTypedComponentOptionsWithRecordProps<
@@ -89,6 +92,11 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       newsItems,
       date,
     }
+  },
+  computed: {
+    isSingleCard() {
+      return isSingleCard(this.$route.path)
+    },
   },
 }
 

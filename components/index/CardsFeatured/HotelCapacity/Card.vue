@@ -1,5 +1,10 @@
 <template>
-  <v-col id="HotelCapacityCard" cols="12" :md="md" class="DataCard">
+  <v-col
+    id="HotelCapacityCard"
+    cols="12"
+    :md="isSingleCard || md"
+    class="DataCard"
+  >
     <client-only>
       <hotel-capacity-beds
         :title="$t('HotelCapacityCard.title')"
@@ -50,6 +55,7 @@ import AppLink from '@/components/_shared/AppLink.vue'
 import HotelCapacityBeds from '@/components/index/CardsFeatured/HotelCapacity/Beds.vue'
 import MainSummary from '@/data/main_summary.json'
 import PositiveStatus from '@/data/positive_status.json'
+import { isSingleCard } from '@/utils/urls'
 
 export default Vue.extend({
   components: {
@@ -76,6 +82,11 @@ export default Vue.extend({
       date,
       bedSummary,
     }
+  },
+  computed: {
+    isSingleCard() {
+      return isSingleCard(this.$route.path)
+    },
   },
 })
 </script>

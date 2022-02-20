@@ -1,5 +1,10 @@
 <template>
-  <v-col id="ConfirmedCasesAttributesCard" cols="12" :md="md" class="DataCard">
+  <v-col
+    id="ConfirmedCasesAttributesCard"
+    cols="12"
+    :md="isSingleCard || md"
+    class="DataCard"
+  >
     <client-only>
       <data-table
         :title="$t('ConfirmedCasesAttributesCard.title')"
@@ -31,6 +36,7 @@ import DataTable from '@/components/index/CardsReference/ConfirmedCasesAttribute
 import Data from '@/data/data.json'
 import { getDayjsObject } from '@/utils/formatDate'
 import formatTable from '@/utils/formatTable'
+import { isSingleCard } from '@/utils/urls'
 
 export default {
   components: {
@@ -114,6 +120,11 @@ export default {
       patientsTable,
       sumInfoOfPatients,
     }
+  },
+  computed: {
+    isSingleCard() {
+      return isSingleCard(this.$route.path)
+    },
   },
   methods: {
     getTranslatedWording(value) {
