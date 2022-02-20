@@ -167,6 +167,7 @@ export default {
       case 'confirmed-cases-area':
         cardComponent = 'confirmed-cases-area-card'
         cardTitle = this.$t('ConfirmedCasesAreaCard.title')
+        break
       case 'health-burden-hospital':
         cardComponent = 'health-burden-hospital-card'
         cardTitle = this.$t('HealthBurdenHospitalCard.title')
