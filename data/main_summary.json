@@ -1,1 +1,17 @@
-{"date":"2022-02-22T20:28:13+09:00","陽性者数":8754,"陽性者数前日差":228,"入院":185,"入院前日差":1,"重症":1,"重症前日差":0,"宿泊療養":94,"宿泊療養前日差":-1,"自宅療養":2103,"自宅療養前日差":180,"調整中":106,"調整中前日差":2,"死亡":57,"死亡前日差":1,"退院等":6209,"退院等前日差":45}
+
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <title>503 Backend is unhealthy</title>
+  </head>
+  <body>
+    <h1>Error 503 Backend is unhealthy</h1>
+    <p>Backend is unhealthy</p>
+    <h3>Guru Mediation:</h3>
+    <p>Details: cache-sea4453-SEA 1645530201 667574733</p>
+    <hr>
+    <p>Varnish cache server</p>
+  </body>
+</html>
