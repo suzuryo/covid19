@@ -1,17 +1,1 @@
-
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
- "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
-  <head>
-    <title>503 Backend is unhealthy</title>
-  </head>
-  <body>
-    <h1>Error 503 Backend is unhealthy</h1>
-    <p>Backend is unhealthy</p>
-    <h3>Guru Mediation:</h3>
-    <p>Details: cache-sea4478-SEA 1645530201 3935318710</p>
-    <hr>
-    <p>Varnish cache server</p>
-  </body>
-</html>
+{"date":"2022-02-22T20:56:23+09:00","items":[{"item":"診療医療機関の一覧","url":"https://www.pref.iwate.jp/_res/projects/default_project/_page_/001/027/496/covid19_20220222.pdf"},{"item":"無症状の方の薬局等におけるPCR検査等の無料化","url":"https://www.pref.iwate.jp/kurashikankyou/iryou/seido/1048469/1048471.html"}]}
