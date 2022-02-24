@@ -6,12 +6,24 @@
         :items="items"
         :mobile-breakpoint="0"
         hide-default-header
+        :headers="headers"
         class="cardTable"
+        :search="search"
         :footer-props="{
           'items-per-page-options': [10, 30, 50, 100, 200, 300, -1],
           'items-per-page-text': $t('DataView_Footer[0]'),
         }"
       >
+        <template #top>
+          <v-text-field
+            v-model="search"
+            ref="search"
+            :append-icon="mdiMagnify"
+            dense
+            single-line
+            :onchange="searchOnChange(search)"
+          />
+        </template>
         <template #body="{ items }">
           <tbody>
             <tr v-for="(item, i) in items" :key="i">
@@ -65,6 +77,7 @@
 </template>
 
 <script lang="ts">
+import { mdiMagnify } from '@mdi/js'
 import Vue from 'vue'
 import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
 
@@ -74,10 +87,20 @@ import NotesExpansionPanel from '@/components/index/_shared/DataView/NotesExpans
 import DataViewDataSetPanel from '@/components/index/_shared/DataViewDataSetPanel.vue'
 import { getDayjsObject } from '@/utils/formatDate'
 
-type Data = {}
+type Data = {
+  search: string
+  headers: {
+    text: string
+    align: string
+    filterable: boolean
+    value: string
+  }[]
+  mdiMagnify: string
+}
 type Methods = {
   formatDate: (dateString: string) => string
   formatDateTime: (dateString: string) => string
+  searchOnChange: (searchTerm: string) => void
 }
 type Computed = {}
 type Props = {
@@ -121,6 +144,28 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       default: () => {},
     },
   },
+  data() {
+    const search = ''
+    const headers = [
+      {
+        text: 'text',
+        align: 'start',
+        filterable: true,
+        value: 'text',
+      },
+      {
+        text: 'date',
+        align: 'end',
+        filterable: true,
+        value: 'date',
+      },
+    ]
+    return {
+      search,
+      headers,
+      mdiMagnify,
+    }
+  },
   mounted() {
     const vTables = this.$refs.displayedTable as Vue
     const vTableElement = vTables.$el
@@ -143,6 +188,9 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     formatDateTime(dateString: string): string {
       const date = getDayjsObject(dateString)
       return date.format('YYYY-MM-DD')
+    },
+    searchOnChange(searchTerm: string) {
+      this.$gtm.push({ event: 'search', search_term: searchTerm })
     },
   },
 }
