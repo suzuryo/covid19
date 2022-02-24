@@ -189,7 +189,10 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       return date.format('YYYY-MM-DD')
     },
     searchOnChange(searchTerm: string) {
-      this.$gtm.push({ event: 'search', search_term: searchTerm })
+      this.$gtm.push({
+        event: 'self_disclosures_search',
+        search_term: searchTerm,
+      })
     },
   },
 }
