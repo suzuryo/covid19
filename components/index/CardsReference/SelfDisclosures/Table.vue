@@ -17,7 +17,6 @@
         <template #top>
           <v-text-field
             v-model="search"
-            ref="search"
             :append-icon="mdiMagnify"
             dense
             single-line
