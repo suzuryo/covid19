@@ -15,7 +15,7 @@ jobs:
         with:
           ref: master
       - name: Setup Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: '16.14.0'
       - name: restore node_modules
