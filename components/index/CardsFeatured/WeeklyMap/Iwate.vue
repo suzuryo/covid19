@@ -154,8 +154,13 @@ export default Vue.extend({
         '#3f0008',
       ])
 
-      // 200以上の場合は rgbAt(1) にする
-      return gradient.rgbAt(Math.min(last7day, 200) / 200)
+      if (last7day >= 400) {
+        // 400以上の場合は 000000
+        return '#000000'
+      } else {
+        // 200以上の場合は rgbAt(1) にする
+        return gradient.rgbAt(Math.min(last7day, 200) / 200)
+      }
     },
   },
 })
