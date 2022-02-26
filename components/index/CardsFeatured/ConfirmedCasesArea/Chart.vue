@@ -376,7 +376,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         0
       )
       const digits = String(Math.ceil(max)).length
-      const base = 10 ** (digits - 1)
+      const base = 10 ** (digits - 2)
       return Math.ceil(max / base) * base
     },
     startDateIndex() {
