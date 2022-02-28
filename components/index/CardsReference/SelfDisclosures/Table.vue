@@ -190,8 +190,8 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     },
     searchOnChange(searchTerm: string) {
       this.$gtm.push({
-        event: 'search',
-        search_term: searchTerm,
+        event: 'selfDisclosuresSearch',
+        selfDisclosuresSearchTerm: searchTerm,
       })
     },
   },
