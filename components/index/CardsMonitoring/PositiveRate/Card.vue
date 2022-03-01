@@ -9,7 +9,7 @@
       <positive-rate-chart
         :title-id="'positive-rate'"
         :info-titles="[
-          $t('PositiveRateCard.titles[0]'),
+          `${$t('PositiveRateCard.titles[0]')} *`,
           $t('PositiveRateCard.titles[1]'),
         ]"
         :chart-id="'positive-rate-chart'"
@@ -17,7 +17,7 @@
         :get-formatter="getFormatter"
         :date="PositiveRate.date"
         :labels="positiveRateLabels"
-        unit="%"
+        unit="% *"
         :option-unit="$t('件.reports')"
         :data-labels="positiveRateDataLabels"
         :table-labels="positiveRateTableLabels"
