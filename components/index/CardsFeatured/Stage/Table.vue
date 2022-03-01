@@ -82,9 +82,11 @@
           </th>
           <th headers="sh2" scope="col" colspan="3">
             {{ $t('StageCard.PCR陽性率(直近1週間)') }}
+            <span> * </span>
           </th>
           <td :class="stage3stage4(tableData[4], 5, 10, 'gte')">
             {{ tableData[4] === 99999 ? '-' : getFormatter(1)(tableData[4]) }}
+            <span> * </span>
           </td>
           <td :class="$style.indexStage3">5</td>
           <td :class="$style.indexStage4">10</td>

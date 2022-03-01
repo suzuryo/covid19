@@ -258,6 +258,7 @@
     "検査件数（7日間移動平均）": "Number of tests (7 days moving average)",
     "陽性率": "Positive rate",
     "notes": [
+      "Since February 25, 2022, the \"deemed positive\" (i.e., a patient's family members living with the patient are diagnosed as positive without testing if they show symptoms) has been applied, so the accurate positive rate cannot be calculated after that.",
       "Positive rate = Positive count in 7 days ／ Test count in 7 days"
     ]
   },
@@ -295,7 +296,6 @@
     "notes": [
       "Cumulative value based on the residence of positive cases reported in the previous day.",
       "If the place of residence is not disclosed due to the patient's wishes, it is not included in the cumulative total.",
-      "For example, if their live outside of the iwate prefecture or in another area, but test positive in Morioka City, they may be not counted as Morioka City.",
       "Number of positive cases/Population is the ratio of the number of positive cases to the population of the municipality (as of Oct 1, 2020)."
     ]
   },
@@ -463,6 +463,7 @@
     "新規陽性者数(直近1週間・対人口10万人)": "Number of new positives (last 1 week, per 100,000 population)",
     "感染経路不明割合(直近1週間)": "Rate of unknown route of infection (last 1 week)",
     "notes": [
+      "Since February 25, 2022, the \"deemed positive\" (i.e., a patient's family members living with the patient are diagnosed as positive without testing if they show symptoms) has been applied, so the accurate positive rate cannot be calculated after that.",
       "New indicators using \"levels\" based on a new approach to level classification are now in use, and the indicators in this table, which are classified into \"stages,\" are the old indicators, but are retained for convenience.",
       "Stage 3 is the stage where measures are needed to avoid a rapid increase in the number of infected people and major disruptions in the healthcare delivery system.",
       "Stage 4 is the stage where action is required to avoid explosive spread of infection and serious dysfunction of the healthcare delivery system.",
