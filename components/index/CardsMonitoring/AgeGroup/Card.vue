@@ -33,16 +33,13 @@ import type { TranslateResult } from 'vue-i18n'
 
 import AppLink from '@/components/_shared/AppLink.vue'
 import AgeChart from '@/components/index/CardsMonitoring/AgeGroup/Chart.vue'
-import DailyPositiveDetail from '@/data/daily_positive_detail.json'
-import Data from '@/data/data.json'
+import ConfirmedCaseAge from '@/data/confirmed_case_age.json'
 import { getNumberToFixedFunction } from '@/utils/monitoringStatusValueFormatters'
 import { isSingleCard } from '@/utils/urls'
 
 type DataType = {
   ageLabels: string[] | TranslateResult[]
   date: string
-  dataLabels: string[] | TranslateResult[]
-  tableLabels: string[] | TranslateResult[]
   getFormatter: Function
   labels7MA: string[]
   chartData7MA: number[][]
@@ -55,6 +52,18 @@ type ComputedType = {
 }
 
 type PropsType = {}
+
+type AgeName =
+  | '10歳未満'
+  | '10代'
+  | '20代'
+  | '30代'
+  | '40代'
+  | '50代'
+  | '60代'
+  | '70代'
+  | '80代'
+  | '90歳以上'
 
 const options: ThisTypedComponentOptionsWithRecordProps<
   Vue,
@@ -74,7 +83,16 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     },
   },
   data() {
-    const ages = [
+    const labels = ConfirmedCaseAge.data.map((d) => d.date)
+    const labels7MA = labels
+    const date = ConfirmedCaseAge.date
+
+    const getFormatter = () => {
+      // 7日間移動平均は小数点第2位まで表示する。
+      return getNumberToFixedFunction(1)
+    }
+
+    const ages: AgeName[] = [
       '10歳未満',
       '10代',
       '20代',
@@ -100,45 +118,15 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       this.$t('ConfirmedCasesAttributesCard.table.90歳以上'),
     ]
 
-    const dataLabels = ageLabels
-    const tableLabels = ageLabels
-
-    const date = DailyPositiveDetail.date
-
-    const getFormatter = () => {
-      // 7日間移動平均は小数点第2位まで表示する。
-      return getNumberToFixedFunction(1)
-    }
-
-    const patients = Data.patients.data
-
-    const labels = DailyPositiveDetail.data.map((a) => a.diagnosed_date)
-
-    const chartData = ages.map((age) => {
-      return labels.map((a) => {
-        return patients.filter((b) => b.確定日 === a && b.年代 === age).length
-      })
-    })
-
-    const labels7MA = DailyPositiveDetail.data
-      .slice(6)
-      .map((a) => a.diagnosed_date)
-
-    const chartData7MA: [number[]] = [[]]
-    chartData.forEach((a, i) => {
-      chartData7MA[i] = []
-      a.forEach((_b, j) => {
-        if (j > 5) {
-          chartData7MA[i].push(
-            (a[j - 6] +
-              a[j - 5] +
-              a[j - 4] +
-              a[j - 3] +
-              a[j - 2] +
-              a[j - 1] +
-              a[j]) /
-              7.0
-          )
+    const chartData7MA = ages.map((age) => {
+      return labels.map((date) => {
+        const a = ConfirmedCaseAge.data.find((d) => {
+          return date === d.date
+        })
+        if (a !== undefined) {
+          return a.data[age]
+        } else {
+          return 0
         }
       })
     })
@@ -146,8 +134,6 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     return {
       ageLabels,
       date,
-      dataLabels,
-      tableLabels,
       getFormatter,
       labels7MA,
       chartData7MA,
