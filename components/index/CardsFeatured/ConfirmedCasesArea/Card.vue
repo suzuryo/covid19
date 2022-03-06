@@ -98,7 +98,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       return getNumberToFixedFunction(1)
     }
 
-    const area: AreaName[] = [
+    const areas: AreaName[] = [
       '盛岡市',
       '県央',
       '中部',
@@ -124,7 +124,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       this.$t('ConfirmedCasesAreaCard.area.二戸'),
     ]
 
-    const chartData7MA = area.map((area) => {
+    const chartData7MA = areas.map((area) => {
       return labels.map((date) => {
         const a = ConfirmedCaseArea.data.find((d) => {
           return date === d.date
