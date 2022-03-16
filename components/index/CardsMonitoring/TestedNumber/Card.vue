@@ -6,17 +6,14 @@
     class="DataCard"
   >
     <client-only>
-      <time-stacked-bar-chart
+      <time-bar-chart
         :title="$t('TestedNumberCard.title')"
         :title-id="'number-of-tested'"
         :chart-id="'time-stacked-bar-chart-inspections'"
         :chart-data="inspectionsGraph"
         :date="PositiveRate.date"
-        :items="inspectionsItems"
-        :labels="inspectionsLabels"
         :unit="$t('件.tested')"
-        :data-labels="inspectionsDataLabels"
-        :table-labels="inspectionsTableLabels"
+        :by-date="true"
         :day-period="isSingleCard && $vuetify.breakpoint.mdAndUp ? 120 : 60"
       >
         <template #notes>
@@ -26,20 +23,21 @@
             </li>
           </ul>
         </template>
-      </time-stacked-bar-chart>
+      </time-bar-chart>
       <slot name="breadCrumb" />
     </client-only>
   </v-col>
 </template>
 
-<script>
-import TimeStackedBarChart from '@/components/index/_shared/TimeStackedBarChart.vue'
+<script type="typescript">
+import TimeBarChart from '@/components/index/_shared/TimeBarChart.vue'
 import PositiveRate from '@/data/positive_rate.json'
+import formatGraph from '@/utils/formatGraph'
 import { isSingleCard } from '@/utils/urls'
 
 export default {
   components: {
-    TimeStackedBarChart,
+    TimeBarChart,
   },
   props: {
     md: {
@@ -49,34 +47,21 @@ export default {
   },
   data() {
     // 検査実施日別状況
-    const pcr = PositiveRate.data.map((d) => {
-      return (d.pcr_positive_count ?? 0) + (d.pcr_negative_count ?? 0)
+    const totalTests = PositiveRate.data.map((d) => {
+      return {
+        日付: d.diagnosed_date,
+        小計:
+          (d.pcr_positive_count ?? 0) +
+          (d.pcr_negative_count ?? 0) +
+          (d.antigen_positive_count ?? 0) +
+          (d.antigen_negative_count ?? 0),
+      }
     })
-    const antigen = PositiveRate.data.map((d) => {
-      return (d.antigen_positive_count ?? 0) + (d.antigen_negative_count ?? 0)
-    })
-    const inspectionsGraph = [pcr, antigen]
-    const inspectionsItems = [
-      this.$t('TestedNumberCard.legends[0]'),
-      this.$t('TestedNumberCard.legends[1]'),
-    ]
-    const inspectionsLabels = PositiveRate.data.map((d) => d.diagnosed_date)
-    const inspectionsDataLabels = [
-      this.$t('TestedNumberCard.legends[0]'),
-      this.$t('TestedNumberCard.legends[1]'),
-    ]
-    const inspectionsTableLabels = [
-      this.$t('TestedNumberCard.legends[0]'),
-      this.$t('TestedNumberCard.legends[1]'),
-    ]
+    const inspectionsGraph = formatGraph(totalTests)
 
     return {
       PositiveRate,
       inspectionsGraph,
-      inspectionsItems,
-      inspectionsLabels,
-      inspectionsDataLabels,
-      inspectionsTableLabels,
     }
   },
   computed: {

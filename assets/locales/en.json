@@ -95,7 +95,8 @@
       "Antigen tests"
     ],
     "notes": [
-      "Preliminary value. May be modified later"
+      "There was a period of time when Iwate Prefecture did not publish the number of inspections, and there is no data for that period, so the cumulative number does not match the cumulative total published by the prefecture.",
+      "Number of tests regardless of test type since the breakdown of tests (number of PCR and antigen tests) is no longer published on 2022/03/16"
     ]
   },
   "About": {
