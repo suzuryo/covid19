@@ -5,7 +5,7 @@
   "author": "岩手県内有志",
   "private": true,
   "engines": {
-    "node": ">=16.14.1"
+    "node": ">=16.14.2"
   },
   "scripts": {
     "dev": "cross-env NODE_ENV=development GENERATE_ENV=development nuxt --config-file nuxt.config.dev.ts --modern=client",
