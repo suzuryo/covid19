@@ -41,11 +41,6 @@
             </td>
             <td class="text-start">{{ item['年代'] }}</td>
             <td class="text-center">{{ item['接触歴'] }}</td>
-            <td class="text-center">
-              <template v-if="item.yt">
-                <app-link :to="item.yt" :show-icon="false">📺</app-link>
-              </template>
-            </td>
           </tr>
         </tbody>
       </template>

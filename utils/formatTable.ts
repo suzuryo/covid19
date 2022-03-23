@@ -17,11 +17,6 @@ const headers: Header[] = [
     value: 'ConfirmedCasesAttributesCard.table.接触歴',
     align: 'center',
   },
-  {
-    text: '📺',
-    value: 'ConfirmedCasesAttributesCard.table.📺',
-    align: 'center',
-  },
 ]
 
 type DataType = {
@@ -33,7 +28,6 @@ type DataType = {
   滞在地: string | null
   年代: string | null
   接触歴: string | null
-  yt: string | null
   [key: string]: any
 }
 
@@ -46,7 +40,6 @@ type TableDataType = {
   滞在地: DataType['滞在地']
   年代: DataType['年代']
   接触歴: DataType['接触歴']
-  yt: DataType['yt']
 }
 
 type TableDateType = {
@@ -82,7 +75,6 @@ export default function (data: DataType[]): TableDateType {
         滞在地: d['滞在地'] ?? null,
         年代: d['年代'] ?? '調査中',
         接触歴: d['接触歴'],
-        yt: d.yt ? `https://www.youtube.com/watch?v=${d.yt}` : null,
       }
     })
     .sort((a, b) => a.id - b.id)
