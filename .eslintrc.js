@@ -1,5 +1,5 @@
 module.exports = {
-  plugins: ['eslint-plugin-tsdoc', 'simple-import-sort'],
+  plugins: ['eslint-plugin-tsdoc', 'simple-import-sort', 'vuejs-accessibility'],
   extends: [
     '@nuxtjs/eslint-config-typescript',
     'prettier',
@@ -32,5 +32,14 @@ module.exports = {
       },
     ],
     'vue/multi-word-component-names': 'off',
+    'vuejs-accessibility/alt-text': 'error',
+    'vuejs-accessibility/aria-props': 'error',
+    'vuejs-accessibility/aria-role': ['error', { ignoreNonDOM: true }],
+    'vuejs-accessibility/aria-unsupported-elements': 'error',
+    'vuejs-accessibility/form-control-has-label': 'error',
+    'vuejs-accessibility/heading-has-content': 'error',
+    'vuejs-accessibility/no-redundant-roles': 'error',
+    'vuejs-accessibility/role-has-required-aria-props': 'error',
+    'vuejs-accessibility/tabindex-no-positive': 'error',
   },
 }
