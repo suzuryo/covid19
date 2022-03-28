@@ -255,7 +255,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
               this.startDateIndex,
               this.endDateIndex + 1
             ),
-            pointRadius: 0,
+            pointRadius: 1,
             borderColor: this.colors.rgbAt(i / this.chartData.length),
             borderWidth: 1.1,
             fill: false,
