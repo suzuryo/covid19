@@ -76,7 +76,7 @@
     "postcss-html": "1.4.1",
     "postcss-scss": "4.0.3",
     "prettier": "2.6.2",
-    "sharp": "0.30.3",
+    "sharp": "0.30.4",
     "stylelint": "14.7.0",
     "stylelint-config-prettier": "9.0.3",
     "stylelint-config-standard": "25.0.0",
