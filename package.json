@@ -21,6 +21,9 @@
     "stylelint": "stylelint '**/*.{css,scss,vue}'",
     "stylelint:fix": "stylelint --fix '**/*.{css,scss,vue}'"
   },
+  "browserslist": [
+    "> 0.5%, last 2 versions, not dead, not IE < 12"
+  ],
   "lint-staged": {
     "*.{js,ts,css,vue}": [
       "eslint --fix"
