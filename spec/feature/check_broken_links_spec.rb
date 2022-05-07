@@ -87,7 +87,11 @@ describe 'iPhone SE', type: :feature do
 
       requests.map do |request|
         p "#{request.response.response_code} #{request.response.redirect_count} #{request.base_url}"
-        expect(request.response.response_code).to eq 200
+        if ['https://clarity.microsoft.com/terms', 'https://privacy.microsoft.com/privacystatement'].include? "#{request.base_url}"
+          expect(request.response.response_code).to eq 400
+        else
+          expect(request.response.response_code).to eq 200
+        end
       end
     end
   end
