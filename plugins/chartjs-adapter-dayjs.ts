@@ -4,7 +4,14 @@ import 'dayjs/locale/ja'
 import { NuxtAppOptions } from '@nuxt/types/app'
 // eslint-disable-next-line import/named
 import { _adapters } from 'chart.js'
-import dayjs, { extend, locale as dayjsLocale } from 'dayjs'
+import dayjs, {
+  ConfigType,
+  extend,
+  locale as dayjsLocale,
+  ManipulateType,
+  OpUnitType,
+  QUnitType,
+} from 'dayjs'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
 
 const DEFAULT_FORMATS = {
@@ -36,29 +43,31 @@ export function useDayjsAdapter(nuxtI18n: NuxtAppOptions['i18n']) {
       return DEFAULT_FORMATS
     },
 
-    parse(time, format) {
+    parse(time: ConfigType, format: string | undefined) {
       const value = format ? dayjs(time, format) : dayjs(time)
 
       return value.isValid() ? value.valueOf() : null
     },
 
-    format(time, format) {
+    format(time: ConfigType, format: string) {
       return dayjs(time).format(format)
     },
 
-    add(time, amount, unit) {
-      return dayjs(time).add(amount, unit)
+    add(time: ConfigType, amount: number, unit: OpUnitType) {
+      // dayjs v1.11.2 への対応
+      // Chart.js側がアップデートされたら、as ManipulateType の部分が変わるかも
+      return dayjs(time).add(amount, unit as ManipulateType)
     },
 
-    diff(max, min, unit) {
+    diff(max: ConfigType, min: ConfigType, unit: QUnitType | OpUnitType) {
       return dayjs(max).diff(dayjs(min), unit)
     },
 
-    startOf(time, unit, _) {
+    startOf(time: ConfigType, unit: OpUnitType, _: null | undefined) {
       return dayjs(time).startOf(unit)
     },
 
-    endOf(time, unit) {
+    endOf(time: ConfigType, unit: OpUnitType) {
       return dayjs(time).endOf(unit)
     },
   })
