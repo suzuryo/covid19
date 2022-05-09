@@ -19,15 +19,15 @@
     "lint": "eslint './**/*.{js,ts,vue}'",
     "lint:fix": "eslint './**/*.{js,ts,vue}' --fix",
     "stylelint": "stylelint '**/*.{css,scss,vue}'",
-    "stylelint:fix": "stylelint --fix '**/*.{css,scss,vue}'"
+    "stylelint:fix": "stylelint --fix '**/*.{css,scss,vue}'",
+    "prepare": "husky install",
+    "lint-staged": "lint-staged"
   },
   "browserslist": [
     "> 0.5%, last 2 versions, not dead, not IE < 12"
   ],
   "lint-staged": {
-    "*.{js,ts,css,vue}": [
-      "eslint --fix"
-    ],
+    "*.{js,ts,css,vue}": "eslint",
     "*.{css,scss,vue}": "stylelint"
   },
   "husky": {
