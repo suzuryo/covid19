@@ -10,7 +10,9 @@
         class="cardTable"
         :search="search"
         :footer-props="{
-          'items-per-page-options': [10, 30, 50, 100, 200, 300, -1],
+          'items-per-page-options': isSingleCard
+            ? [20, 30, 50, 100, 200, 300, -1]
+            : [10, 30, 50, 100, 200, 300, -1],
           'items-per-page-text': $t('DataView_Footer[0]'),
         }"
       >
@@ -85,6 +87,7 @@ import DataView from '@/components/index/_shared/DataView.vue'
 import NotesExpansionPanel from '@/components/index/_shared/DataView/NotesExpansionPanel.vue'
 import DataViewDataSetPanel from '@/components/index/_shared/DataViewDataSetPanel.vue'
 import { getDayjsObject } from '@/utils/formatDate'
+import { isSingleCard } from '@/utils/urls'
 
 type Data = {
   search: string
@@ -101,7 +104,9 @@ type Methods = {
   formatDateTime: (dateString: string) => string
   searchOnChange: (searchTerm: string) => void
 }
-type Computed = {}
+type Computed = {
+  isSingleCard: boolean
+}
 type Props = {
   title: string
   titleId: string
@@ -193,6 +198,11 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         event: 'selfDisclosuresSearch',
         selfDisclosuresSearchTerm: searchTerm,
       })
+    },
+  },
+  computed: {
+    isSingleCard() {
+      return isSingleCard(this.$route.path)
     },
   },
 }
