@@ -35,7 +35,7 @@ describe 'iPhone SE', type: :feature do
 
       describe '自主公表(SelfDisclosuresCard)' do
         it '項目の値' do
-          has_self_disclosures_card(lang: lang, lang_json: data[:json])
+          has_self_disclosures_card(lang: lang, lang_json: data[:json], is_single: true)
           has_breadcrumbs(id: '#SelfDisclosuresCard', title: data[:json]['SelfDisclosuresCard']['title'], lang_json: data[:json])
         end
       end
