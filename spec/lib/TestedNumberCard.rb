@@ -16,7 +16,7 @@ def has_tested_number_card(lang:, lang_json:)
   d2 = if d2_diff > 0
          "+#{d2_diff}"
        elsif d2_diff < 0
-         "-#{d2_diff}"
+         "#{d2_diff}"
        else
          d2_diff
        end
