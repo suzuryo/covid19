@@ -3,5 +3,5 @@ export function isExternal(path: string): boolean {
 }
 
 export function isSingleCard(path: string): boolean {
-  return path.startsWith('/cards/')
+  return path.match(/\/cards\//) !== null
 }
