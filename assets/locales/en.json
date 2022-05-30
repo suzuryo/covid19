@@ -422,8 +422,7 @@
     "title": "Number of Positive Cases per 100,000 population in last 7 Days",
     "legends": [
       "Positive cases",
-      "per 100,000 population in last 7 days",
-      "Lifting of Iwate Emergency Declaration"
+      "per 100,000 population in last 7 days"
     ],
     "notes": [
       "Normally, this Per 100,000 Population Index is used for Prefecture Units.",

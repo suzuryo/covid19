@@ -237,10 +237,9 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     const colors: SurfaceStyle[] = [
       getGraphSeriesColor('C'),
       getGraphSeriesColor('E'),
-      getGraphSeriesColor('I'),
     ]
     return {
-      displayLegends: [true, true, true],
+      displayLegends: [true, true],
       colors,
       canvas: true,
       startDate: '2020-01-01',
@@ -257,11 +256,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     displayInfo() {
       const data = {
         labels: this.labels,
-        datasets: [
-          { data: this.chartData[0] },
-          { data: this.chartData[1] },
-          { data: this.chartData[2] },
-        ],
+        datasets: [{ data: this.chartData[0] }, { data: this.chartData[1] }],
       }
       const { lastDay, lastDayData, dayBeforeRatio } = calcDayBeforeRatio({
         displayData: data,
@@ -309,22 +304,6 @@ const options: ThisTypedComponentOptionsWithRecordProps<
             pointBorderColor: 'rgba(0,0,0,0)',
             borderColor: this.colors[1].fillColor,
             borderWidth: 3,
-            fill: false,
-            order: 2,
-            lineTension: 0,
-          },
-          // 値 15 のライン
-          {
-            type: 'line',
-            label: this.dataLabels[2],
-            data: this.chartData[2].slice(
-              this.startDateIndex,
-              this.endDateIndex + 1
-            ),
-            pointBackgroundColor: 'rgba(0,0,0,0)',
-            pointBorderColor: 'rgba(0,0,0,0)',
-            borderColor: '#666',
-            borderWidth: 1.5,
             fill: false,
             order: 2,
             lineTension: 0,
