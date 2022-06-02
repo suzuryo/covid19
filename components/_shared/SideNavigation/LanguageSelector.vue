@@ -4,21 +4,23 @@
       <earth-icon class="EarthIcon" aria-hidden="true" />
       <select-menu-icon class="SelectMenuIcon" aria-hidden="true" />
     </div>
-    <select
-      id="LanguageSelector"
-      v-model="currentLocaleCode"
-      class="LanguageSelector-Menu"
-      @change="handleChangeLanguage"
-    >
-      <option
-        v-for="locale in $i18n.locales"
-        :key="locale.code"
-        :value="locale.code"
-        :title="`Switch to ${locale.description}`"
+    <label>
+      <select
+        id="LanguageSelector"
+        v-model="currentLocaleCode"
+        class="LanguageSelector-Menu"
+        @change="handleChangeLanguage"
       >
-        {{ locale.name }}
-      </option>
-    </select>
+        <option
+          v-for="locale in $i18n.locales"
+          :key="locale.code"
+          :value="locale.code"
+          :title="`Switch to ${locale.description}`"
+        >
+          {{ locale.name }}
+        </option>
+      </select>
+    </label>
   </div>
 </template>
 
