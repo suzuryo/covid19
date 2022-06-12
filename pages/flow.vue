@@ -272,7 +272,7 @@ $margin: 20;
   }
   > * {
     line-height: 1.5;
-    &:not(.box):not(.boxes):not(:first-child) {
+    &:not(.box, .boxes, :first-child) {
       margin-top: $margin * 1px;
     }
   }
@@ -447,7 +447,7 @@ $margin: 20;
       border-width: px2vw(3);
     }
     > * {
-      &:not(.box):not(.boxes):not(:first-child) {
+      &:not(.box, .boxes, :first-child) {
         margin-top: px2vw($margin);
       }
     }
