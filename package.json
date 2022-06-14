@@ -64,7 +64,7 @@
     "@types/chart.js": "2.9.37",
     "@types/chartjs-plugin-annotation": "0.5.2",
     "axe-core": "4.4.2",
-    "core-js": "3.22.8",
+    "core-js": "3.23.1",
     "eslint": "8.17.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-prettier": "4.0.0",
