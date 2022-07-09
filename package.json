@@ -76,7 +76,7 @@
     "nuxt-purgecss": "1.0.0",
     "nuxt-svg-loader": "1.2.0",
     "postcss": "8.4.14",
-    "postcss-html": "1.4.1",
+    "postcss-html": "1.5.0",
     "postcss-scss": "4.0.4",
     "prettier": "2.7.1",
     "sharp": "0.30.7",
