@@ -12,11 +12,11 @@ def has_hospital_capacity_card(lang:, lang_json:)
   # DataSetPanel
   expect(find('#HospitalCapacityCard > div.DataView > div.DataView-Inner > div.DataView-Header > div.DataView-DataSetPanel > div.DataView-DataSet > div.DataView-DataSet-DataInfo > span.DataView-DataSet-DataInfo-summary > span.lTextBefore').text).to eq lang_json['残り']
   # 残り病床数
-  d = 400 - MAIN_SUMMARY_JSON['入院']
+  d = 435 - MAIN_SUMMARY_JSON['入院']
   expect(find('#HospitalCapacityCard > div.DataView > div.DataView-Inner > div.DataView-Header > div.DataView-DataSetPanel > div.DataView-DataSet > div.DataView-DataSet-DataInfo > span.DataView-DataSet-DataInfo-summary > strong').text).to eq d.to_s
   expect(find('#HospitalCapacityCard > div.DataView > div.DataView-Inner > div.DataView-Header > div.DataView-DataSetPanel > div.DataView-DataSet > div.DataView-DataSet-DataInfo > span.DataView-DataSet-DataInfo-summary > small.DataView-DataSet-DataInfo-summary-unit').text).to eq lang_json['床'].gsub(/^\s/, '')
 
-  maxBeds = MAIN_SUMMARY_JSON['入院'] + MAIN_SUMMARY_JSON['調整中'] > 400 ? MAIN_SUMMARY_JSON['入院'] + MAIN_SUMMARY_JSON['調整中'] : 400
+  maxBeds = MAIN_SUMMARY_JSON['入院'] + MAIN_SUMMARY_JSON['調整中'] > 435 ? MAIN_SUMMARY_JSON['入院'] + MAIN_SUMMARY_JSON['調整中'] : 435
 
   maxBeds.times do |i|
     # 50ごとに数字が書いてある
@@ -45,7 +45,7 @@ def has_hospital_capacity_card(lang:, lang_json:)
     end
 
     # Beds 超過
-    if i >= 400
+    if i >= 435
       expect(find("#HospitalCapacityCard > div > div > div.DataView-Content > div.Beds > div.Bed.overflowed:nth-child(#{i+1})")[:title]).to eq "#{i+1}"
     end
   end
@@ -64,7 +64,7 @@ def has_hospital_capacity_card(lang:, lang_json:)
     expect(find("#HospitalCapacityCard > div > div > div:nth-child(6) > div > div > div > div > div > ul > li:nth-child(#{1 + i})").text).to eq item
   end
 
-  if MAIN_SUMMARY_JSON['入院'] + MAIN_SUMMARY_JSON['調整中'] > 400
+  if MAIN_SUMMARY_JSON['入院'] + MAIN_SUMMARY_JSON['調整中'] > 435
     expect(page).to have_selector('#HospitalCapacityCard > div > div > div.DataView-Content > div.legend2 > div:nth-child(1) > span.Bed.overflowed', count:1)
     expect(find('#HospitalCapacityCard > div > div > div.DataView-Content > div.legend2 > div:nth-child(1)').text).to eq lang_json['HospitalCapacityCard']['overflowed']
   else

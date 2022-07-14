@@ -67,6 +67,10 @@
     "岩手県48_3_1": {
       "text": "About Home Care (Iwate Pref 48th HQ Members Meeting doc 3-1) [JA/PDF]",
       "url": "https://www.pref.iwate.jp/_res/projects/default_project/_page_/001/035/134/20220201_03_1.pdf"
+    },
+    "岩手県59_2-1": {
+      "text": "Plan for Securing Hospital Beds【Iwate Pref 59th HQ Members Meeting doc 2-1】[JA/PDF])",
+      "url": "https://www.pref.iwate.jp/_res/projects/default_project/_page_/001/050/416/20220714_02_1.pdf"
     }
   },
   "ConfirmedCasesDetailsCard": {
@@ -476,7 +480,7 @@
       "Stage 3 is the stage where measures are needed to avoid a rapid increase in the number of infected people and major disruptions in the healthcare delivery system.",
       "Stage 4 is the stage where action is required to avoid explosive spread of infection and serious dysfunction of the healthcare delivery system.",
       "The population of Iwate Prefecture in the 2020 Census (preliminary prefectural figures), 1211206, was used for the calculation.",
-      "(*1) Utilization rate of secured hospital beds = hospitalization / 400",
+      "(*1) Utilization rate of secured hospital beds = hospitalization / 435",
       "(*2) Hospitalization rate = hospitalization / (hospitalization + residential care + home care + adjustment)",
       "(*3) Utilization rate of secured hospital beds (severe cases) = severe cases / 33",
       "(*4) Number of people under care (per 100,000 population) = (hospitalization + residential care + home care + adjustment) * 100000 / 1211206",
@@ -567,7 +571,7 @@
     "空き": "Vacant",
     "overflowed": "Red lines indicate rooms overflowed from Phase 3 plan",
     "notes": [
-      "Secured beds for Phase 3 (400 beds)"
+      "Secured beds for Phase 3 (435 beds)"
     ]
   },
   "HotelCapacityCard": {
@@ -634,7 +638,7 @@
     "title": "Projected number of secured hospital beds that may be needed",
     "自宅療養や療養施設を積極的に利用した場合": "Active use of home treatment and treatment facilities",
     "ハイリスク軽症者やハイリスクでなくとも中等症1は基本的に入院させる場合": "When high-risk minor illness or not high-risk but moderate illness1 is basically hospitalized",
-    "確保病床400床": "400 secured hospital beds",
+    "確保病床435床": "435 secured hospital beds",
     "notes": [
       "Forecast of healthcare demand using the forecasting tool presented in the \"New Level Classification Approach\".",
       "Calculated based on actual daily values in Iwate Prefecture using the formula in the \"医療需要予測ツール_オミクロンとブースター考慮版v3_20220103.xlsx\", a tool for forecasting medical demand according to the spread of new coronavirus infection and vaccination progress",

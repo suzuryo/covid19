@@ -406,7 +406,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       )
       const digits = String(max).length
       const base = 10 ** (digits - 1)
-      if (max <= 400) {
+      if (max <= 435) {
         return Math.ceil(max / base) * base + 100
       } else {
         return Math.ceil(max / base) * base

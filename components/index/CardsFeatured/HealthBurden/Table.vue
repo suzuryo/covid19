@@ -101,7 +101,7 @@
               $style.simulation,
               isLevel3(
                 healthBurden.自宅療養や療養施設を積極的に利用した場合.week1,
-                400
+                435
               )
                 ? $style.level3
                 : '',
@@ -109,7 +109,7 @@
           >
             {{ healthBurden.自宅療養や療養施設を積極的に利用した場合.week1 }}
           </td>
-          <td rowspan="3">400</td>
+          <td rowspan="3">435</td>
         </tr>
         <tr>
           <th>2週間後</th>
@@ -118,7 +118,7 @@
               $style.simulation,
               isLevel3(
                 healthBurden.自宅療養や療養施設を積極的に利用した場合.week2,
-                400
+                435
               )
                 ? $style.level3
                 : '',
@@ -134,7 +134,7 @@
               $style.simulation,
               isLevel3(
                 healthBurden.自宅療養や療養施設を積極的に利用した場合.week3,
-                400
+                435
               )
                 ? $style.level3
                 : '',
@@ -160,21 +160,21 @@
           <td
             :class="[
               $style.simulation,
-              isLevel3(healthBurden.基本的に入院させる場合.week1, 400)
+              isLevel3(healthBurden.基本的に入院させる場合.week1, 435)
                 ? $style.level3
                 : '',
             ]"
           >
             {{ healthBurden.基本的に入院させる場合.week1 }}
           </td>
-          <td rowspan="3">400</td>
+          <td rowspan="3">435</td>
         </tr>
         <tr>
           <th>2週間後</th>
           <td
             :class="[
               $style.simulation,
-              isLevel3(healthBurden.基本的に入院させる場合.week2, 400)
+              isLevel3(healthBurden.基本的に入院させる場合.week2, 435)
                 ? $style.level3
                 : '',
             ]"
@@ -187,7 +187,7 @@
           <td
             :class="[
               $style.simulation,
-              isLevel3(healthBurden.基本的に入院させる場合.week3, 400)
+              isLevel3(healthBurden.基本的に入院させる場合.week3, 435)
                 ? $style.level3
                 : '',
             ]"
