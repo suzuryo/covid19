@@ -9,6 +9,9 @@ def has_stage_card(lang:, lang_json:)
   lang_prefix = lang == :ja ? '' : "/#{lang}"
   expect(URI.parse(d).path).to eq "#{lang_prefix}/cards/stage/"
 
+  # 入院医療 確保病床の使用率
+  expect(find('#StageCard > div > div > div.DataView-Content > table > tbody > tr:nth-child(1) > td.iwate').text).to eq (MAIN_SUMMARY_JSON['入院'] / 435.0 * 100).round(1).to_s
+
   # 注釈を表示ボタンの文言
   expect(find('#StageCard .NotesExpansionPanel button.v-expansion-panel-header').text).to eq lang_json['Common']['注']
 
