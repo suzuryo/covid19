@@ -86,7 +86,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       this.$t(
         'HealthBurdenHospitalCard.ハイリスク軽症者やハイリスクでなくとも中等症1は基本的に入院させる場合'
       ),
-      this.$t('HealthBurdenHospitalCard.確保病床400床'),
+      this.$t('HealthBurdenHospitalCard.確保病床435床'),
     ]
 
     const date = HealthBurden.date
@@ -104,7 +104,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       HealthBurden.自宅療養や療養施設を積極的に利用した場合データ,
       HealthBurden.基本的に入院させる場合データ,
       HealthBurden.酸素需要を要する人データ.map(() => {
-        return 400
+        return 435
       }),
     ]
 

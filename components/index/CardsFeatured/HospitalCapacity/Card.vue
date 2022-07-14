@@ -39,6 +39,11 @@
                 {{ $t('ExtLink.岩手県_3_11.text') }}
               </app-link>
             </div>
+            <div>
+              <app-link :to="$t('ExtLink.岩手県59_2-1.url')">
+                {{ $t('ExtLink.岩手県59_2-1.text') }}
+              </app-link>
+            </div>
           </div>
         </template>
       </hospital-capacity-beds>
@@ -72,7 +77,7 @@ export default Vue.extend({
     const date = dayjs(PositiveStatus.date).format('YYYY/MM/DD HH:mm')
     const hospital = MainSummary.入院
     const waiting = MainSummary.調整中
-    const maxBeds = hospital + waiting > 400 ? hospital + waiting : 400
+    const maxBeds = hospital + waiting > 435 ? hospital + waiting : 435
     const beds = [...Array(maxBeds).keys()]
     const bedSummary = {
       beds,
