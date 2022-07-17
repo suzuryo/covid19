@@ -47,21 +47,21 @@
           <td
             :class="[
               $style.simulation,
-              isLevel3(healthBurden.重症病床を要する人.week1, 33)
+              isLevel3(healthBurden.重症病床を要する人.week1, 34)
                 ? $style.level3
                 : '',
             ]"
           >
             {{ healthBurden.重症病床を要する人.week1 }}
           </td>
-          <td rowspan="3">33</td>
+          <td rowspan="3">34</td>
         </tr>
         <tr>
           <th>2週間後</th>
           <td
             :class="[
               $style.simulation,
-              isLevel3(healthBurden.重症病床を要する人.week2, 33)
+              isLevel3(healthBurden.重症病床を要する人.week2, 34)
                 ? $style.level3
                 : '',
             ]"
@@ -74,7 +74,7 @@
           <td
             :class="[
               $style.simulation,
-              isLevel3(healthBurden.重症病床を要する人.week3, 33)
+              isLevel3(healthBurden.重症病床を要する人.week3, 34)
                 ? $style.level3
                 : '',
             ]"
