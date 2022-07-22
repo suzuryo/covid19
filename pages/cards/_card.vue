@@ -222,9 +222,7 @@ export default {
       PositiveStatus.data.slice(-1)[0].hotel +
       PositiveStatus.data.slice(-1)[0].home +
       PositiveStatus.data.slice(-1)[0].waiting
-    }${this.$t(
-      '人です。陽性者の属性、検査の陽性率、病床数、市町村別陽性者数、相談件数などの各種データや過去の推移グラフはこちら。'
-    )}`
+    }${this.$t('人です。')}`
 
     const defaultTitle = `${this.$t('Common.岩手県')} ${this.$t(
       'Common.新型コロナウイルス感染症'
