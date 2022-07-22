@@ -94,6 +94,7 @@ export default Vue.extend({
     }${this.$t('件・療養中は')}${
       PositiveStatus.data.slice(-1)[0].hospital +
       PositiveStatus.data.slice(-1)[0].hotel +
+      PositiveStatus.data.slice(-1)[0].home +
       PositiveStatus.data.slice(-1)[0].waiting
     }${this.$t('人です。')}`
 
