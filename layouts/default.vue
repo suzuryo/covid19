@@ -82,7 +82,7 @@ export default Vue.extend({
 
     const date = Data.patients_summary.data.slice(-1)[0].日付
 
-    const descriptionToday = `${this.$t('{date}', {
+    const description = `${this.$t('{date}', {
       date: this.$d(getDayjsObject(date).toDate(), 'date'),
     })}${this.$t('は陽性が')}${
       PositiveRate.data.slice(-1)[0].positive_count
@@ -94,12 +94,9 @@ export default Vue.extend({
     }${this.$t('件・療養中は')}${
       PositiveStatus.data.slice(-1)[0].hospital +
       PositiveStatus.data.slice(-1)[0].hotel +
+      PositiveStatus.data.slice(-1)[0].home +
       PositiveStatus.data.slice(-1)[0].waiting
     }${this.$t('人です。')}`
-
-    const description = `${descriptionToday}${this.$t(
-      '陽性者の属性、検査の陽性率、病床数、市町村別陽性者数、相談件数などの各種データや過去の推移グラフはこちら。'
-    )}`
 
     const defaultTitle = `${this.$t('Common.岩手県')} ${this.$t(
       'Common.新型コロナウイルス感染症'
@@ -120,7 +117,7 @@ export default Vue.extend({
             name: `岩手県の${this.$t('{date}', {
               date: convertDateToJapaneseKanjiFormat(date),
             })}の陽性件数・検査件数・入院患者数`,
-            text: descriptionToday,
+            text: description,
             category: 'https://www.wikidata.org/wiki/Q81068910',
             url: 'https://iwate.stopcovid19.jp/',
             newsUpdatesAndGuidelines: 'https://iwate.stopcovid19.jp/',
