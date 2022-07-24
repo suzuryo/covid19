@@ -380,10 +380,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       return options
     },
     scaledTicksYAxisMax() {
-      // return this.chartData.reduce((max, data) => {
-      //   return Math.max(max, ...data.map((a) => Math.ceil(a))) + 10
-      // }, 0)
-      return 5
+      return 2
     },
     startDateIndex() {
       const searchIndex = this.labels.findIndex((item) => {
