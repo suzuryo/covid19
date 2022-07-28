@@ -38,10 +38,9 @@ jobs:
       - name: yarn install
         if: steps.node-modules-cache.outputs.cache-hit != 'true'
         run: yarn install --frozen-lockfile
-      - name: Copy data.json to master
+      - name: Copy data to master
         run: |
           curl -o data/daily_positive_detail.json https://raw.githubusercontent.com/suzuryo/covid19-iwate-data-bot/master/data/daily_positive_detail.json
-          curl -o data/data.json https://raw.githubusercontent.com/suzuryo/covid19-iwate-data-bot/master/data/data.json
           curl -o data/patient_municipalities.json https://raw.githubusercontent.com/suzuryo/covid19-iwate-data-bot/master/data/patient_municipalities.json
           curl -o data/health_burden.json https://raw.githubusercontent.com/suzuryo/covid19-iwate-data-bot/master/data/health_burden.json
           curl -o data/positive_rate.json https://raw.githubusercontent.com/suzuryo/covid19-iwate-data-bot/master/data/positive_rate.json
