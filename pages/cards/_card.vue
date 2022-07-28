@@ -19,25 +19,23 @@ import HealthBurdenCard from '@/components/index/CardsFeatured/HealthBurden/Card
 import HomeCapacityCard from '@/components/index/CardsFeatured/HomeCapacity/Card.vue'
 import HospitalCapacityCard from '@/components/index/CardsFeatured/HospitalCapacity/Card.vue'
 import HotelCapacityCard from '@/components/index/CardsFeatured/HotelCapacity/Card.vue'
-import MonitoringConfirmedCasesNumberPer100kCard from '@/components/index/CardsFeatured/MonitoringConfirmedCasesNumberPer100k/Card.vue'
+// import MonitoringConfirmedCasesNumberPer100kCard from '@/components/index/CardsFeatured/MonitoringConfirmedCasesNumberPer100k/Card.vue'
 import StageCard from '@/components/index/CardsFeatured/Stage/Card.vue'
-import WeeklyMapCard from '@/components/index/CardsFeatured/WeeklyMap/Card.vue'
+// import WeeklyMapCard from '@/components/index/CardsFeatured/WeeklyMap/Card.vue'
 import AgeGroupCard from '@/components/index/CardsMonitoring/AgeGroup/Card.vue'
 import ConfirmedCasesNumberCard from '@/components/index/CardsMonitoring/ConfirmedCasesNumber/Card.vue'
-import EffectiveReproductionNumberCard from '@/components/index/CardsMonitoring/EffectiveReproductionNumber/Card.vue'
+// import EffectiveReproductionNumberCard from '@/components/index/CardsMonitoring/EffectiveReproductionNumber/Card.vue'
 import HealthBurdenHospitalCard from '@/components/index/CardsMonitoring/HealthBurdenHospital/Card.vue'
 import HospitalizedNumberCard from '@/components/index/CardsMonitoring/HospitalizedNumber/Card.vue'
 import MonitoringConfirmedCasesNumberCard from '@/components/index/CardsMonitoring/MonitoringConfirmedCasesNumber/Card.vue'
 import PositiveRateCard from '@/components/index/CardsMonitoring/PositiveRate/Card.vue'
 import TestedNumberCard from '@/components/index/CardsMonitoring/TestedNumber/Card.vue'
 import UntrackedRateCard from '@/components/index/CardsMonitoring/UntrackedRate/Card.vue'
-import ConfirmedCasesAttributesCard from '@/components/index/CardsReference/ConfirmedCasesAttributes/Card.vue'
 import ConfirmedCasesByMunicipalitiesCard from '@/components/index/CardsReference/ConfirmedCasesByMunicipalities/Card.vue'
 import RestaurantMapCard from '@/components/index/CardsReference/IwateNinshou/Restaurant/Card'
 import SelfDisclosuresCard from '@/components/index/CardsReference/SelfDisclosures/Card.vue'
 import WhatsNewCard from '@/components/index/CardsReference/WhatsNew/Card.vue'
 import SiteTopUpper from '@/components/index/SiteTopUpper.vue'
-import Data from '@/data/data.json'
 import PositiveRate from '@/data/positive_rate.json'
 import PositiveStatus from '@/data/positive_status.json'
 import { getDayjsObject } from '@/utils/formatDate.ts'
@@ -46,18 +44,17 @@ export default {
   components: {
     SiteTopUpper,
     RestaurantMapCard,
-    WeeklyMapCard,
+    // WeeklyMapCard,
     Breadcrumb,
     WhatsNewCard,
     SelfDisclosuresCard,
     MonitoringConfirmedCasesNumberCard,
-    MonitoringConfirmedCasesNumberPer100kCard,
-    EffectiveReproductionNumberCard,
+    // MonitoringConfirmedCasesNumberPer100kCard,
+    // EffectiveReproductionNumberCard,
     PositiveRateCard,
     UntrackedRateCard,
     ConfirmedCasesDetailsCard,
     ConfirmedCasesNumberCard,
-    ConfirmedCasesAttributesCard,
     ConfirmedCasesByMunicipalitiesCard,
     TestedNumberCard,
     HospitalizedNumberCard,
@@ -80,10 +77,10 @@ export default {
 
     let cardComponent, cardTitle
     switch (this.$route.params.card) {
-      case 'weekly-map':
-        cardComponent = 'weekly-map-card'
-        cardTitle = this.$t('WeeklyMapCard.title')
-        break
+      // case 'weekly-map':
+      //   cardComponent = 'weekly-map-card'
+      //   cardTitle = this.$t('WeeklyMapCard.title')
+      //   break
       case 'whats-new':
         cardComponent = 'whats-new-card'
         cardTitle = this.$t('WhatsNewCard.title')
@@ -104,10 +101,6 @@ export default {
         cardComponent = 'confirmed-cases-by-municipalities-card'
         cardTitle = this.$t('ConfirmedCasesByMunicipalitiesCard.title')
         break
-      case 'attributes-of-confirmed-cases':
-        cardComponent = 'confirmed-cases-attributes-card'
-        cardTitle = this.$t('ConfirmedCasesAttributesCard.title')
-        break
       case 'number-of-tested':
         cardComponent = 'tested-number-card'
         cardTitle = this.$t('TestedNumberCard.title')
@@ -120,18 +113,18 @@ export default {
         cardComponent = 'monitoring-confirmed-cases-number-card'
         cardTitle = this.$t('MonitoringConfirmedCasesNumberCard.titles[0]')
         break
-      case 'monitoring-number-of-confirmed-cases-per-100k':
-        cardComponent = 'monitoring-confirmed-cases-number-per-100k-card'
-        cardTitle = this.$t('MonitoringConfirmedCasesNumberPer100kCard.title')
-        break
-      case 'effective-reproduction-number':
-        cardComponent = 'effective-reproduction-number-card'
-        cardTitle = this.$t('EffectiveReproductionNumberCard.title')
-        break
       case 'untracked-rate':
         cardComponent = 'untracked-rate-card'
         cardTitle = this.$t('UntrackedRateCard.titles[0]')
         break
+      // case 'monitoring-number-of-confirmed-cases-per-100k':
+      //   cardComponent = 'monitoring-confirmed-cases-number-per-100k-card'
+      //   cardTitle = this.$t('MonitoringConfirmedCasesNumberPer100kCard.title')
+      //   break
+      // case 'effective-reproduction-number':
+      //   cardComponent = 'effective-reproduction-number-card'
+      //   cardTitle = this.$t('EffectiveReproductionNumberCard.title')
+      //   break
       case 'number-of-hospitalized':
         cardComponent = 'hospitalized-number-card'
         cardTitle = this.$t('HospitalizedNumberCard.title')
@@ -206,7 +199,7 @@ export default {
         ? `${url}/ogp/${this.$route.params.card}.png?t=${timestamp}`
         : `${url}/ogp/${this.$i18n.locale}/${this.$route.params.card}.png?t=${timestamp}`
 
-    const date = Data.patients_summary.data.slice(-1)[0].日付
+    const date = PositiveRate.data.slice(-1)[0].diagnosed_date
 
     const description = `${this.$t('{date}', {
       date: this.$d(getDayjsObject(date).toDate(), 'date'),

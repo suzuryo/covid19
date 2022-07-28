@@ -46,7 +46,7 @@
 
 <script>
 import MonitoringConfirmedCasesNumberChart from '@/components/index/CardsMonitoring/MonitoringConfirmedCasesNumber/Chart.vue'
-import Data from '@/data/daily_positive_detail.json'
+import PositiveRate from '@/data/positive_rate.json'
 import {
   getNumberToFixedFunction,
   getNumberToLocaleStringFunction,
@@ -64,15 +64,16 @@ export default {
     },
   },
   data() {
-    const [patientsCount, sevenDayMoveAverages, labels] = Data.data.reduce(
-      (res, data) => {
-        res[0].push(data.count)
-        res[1].push(data.weekly_average_count)
-        res[2].push(data.diagnosed_date)
-        return res
-      },
-      [[], [], []]
-    )
+    const [patientsCount, sevenDayMoveAverages, labels] =
+      PositiveRate.data.reduce(
+        (res, data) => {
+          res[0].push(data.positive_count)
+          res[1].push(data.weekly_average_positive_count)
+          res[2].push(data.diagnosed_date)
+          return res
+        },
+        [[], [], []]
+      )
     const chartData = [patientsCount, sevenDayMoveAverages]
     const dataLabels = [
       this.$t('Common.陽性者数'),
@@ -82,7 +83,7 @@ export default {
       this.$t('Common.陽性者数'),
       this.$t('Common.７日間移動平均'),
     ]
-    const date = Data.date
+    const date = PositiveRate.data.slice(-1)[0].diagnosed_date
 
     const getFormatter = (columnIndex) => {
       // 新規陽性者数の7日間移動平均は小数点第1位まで表示する。

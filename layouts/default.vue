@@ -42,7 +42,6 @@ import ScaleLoader from 'vue-spinner/src/ScaleLoader.vue'
 
 import NoScript from '@/components/_shared/NoScript.vue'
 import SideNavigation from '@/components/_shared/SideNavigation.vue'
-import Data from '@/data/data.json'
 import PositiveRate from '@/data/positive_rate.json'
 import PositiveStatus from '@/data/positive_status.json'
 import {
@@ -80,7 +79,7 @@ export default Vue.extend({
   head(): MetaInfo {
     const i18nHead = this.$nuxtI18nHead({ addSeoAttributes: true })
 
-    const date = Data.patients_summary.data.slice(-1)[0].日付
+    const date = PositiveRate.data.slice(-1)[0].diagnosed_date
 
     const description = `${this.$t('{date}', {
       date: this.$d(getDayjsObject(date).toDate(), 'date'),

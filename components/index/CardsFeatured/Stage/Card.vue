@@ -22,13 +22,10 @@
 </template>
 
 <script lang="ts">
-import dayjs from 'dayjs'
 import Vue from 'vue'
 import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
 
 import StageTable from '@/components/index/CardsFeatured/Stage/Table.vue'
-import DailyPositiveDetail from '@/data/daily_positive_detail.json'
-import Data from '@/data/data.json'
 import MainSummary from '@/data/main_summary.json'
 import PositiveRate from '@/data/positive_rate.json'
 import { getNumberToFixedFunction } from '@/utils/monitoringStatusValueFormatters'
@@ -61,44 +58,24 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     },
   },
   data() {
-    const date = DailyPositiveDetail.date
+    const date = MainSummary.date
 
     const getFormatter = () => {
       return getNumberToFixedFunction(1)
     }
 
-    // 計算前のデータ準備
-    const positiveRateLast7days = PositiveRate.data.filter((a) =>
-      dayjs(a.diagnosed_date).isAfter(
-        dayjs(
-          Data.patients_summary.data[Data.patients_summary.data.length - 1].日付
-        ).add(-8, 'days') // 確定日の翌日に発表があるので -7 じゃなくて -8
-      )
-    )
-
-    const dailyPositiveDetailLast7days = DailyPositiveDetail.data.filter((a) =>
-      dayjs(a.diagnosed_date).isAfter(
-        dayjs(
-          Data.patients_summary.data[Data.patients_summary.data.length - 1].日付
-        ).add(-8, 'days') // 確定日の翌日に発表があるので -7 じゃなくて -8
-      )
-    )
+    // 陽性数7MA
+    const weeklyAveragePositiveCount =
+      PositiveRate.data.at(-1)?.weekly_average_positive_count ?? 0
+    // 検査件数7MA
+    const weeklyAverageDiagnosedCount =
+      PositiveRate.data.at(-1)?.weekly_average_diagnosed_count ?? 0
 
     // 直近1週間の陽性件数
-    const positiveCountLast7Days = positiveRateLast7days.reduce((a, c) => {
-      return a + c.positive_count
-    }, 0)
+    const positiveCountLast7Days = weeklyAveragePositiveCount * 7
 
     // 直近1週間の検査件数
-    const pcrCountLast7Days = positiveRateLast7days.reduce((a, c) => {
-      return (
-        a +
-        c.pcr_positive_count +
-        (c.antigen_positive_count ?? 0) +
-        c.pcr_negative_count +
-        (c.antigen_negative_count ?? 0)
-      )
-    }, 0)
+    const pcrCountLast7Days = weeklyAverageDiagnosedCount * 7
 
     // 療養者数
     const hospitalHotelCountToday =
@@ -135,13 +112,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     const stageIndex5 = (positiveCountLast7Days * 100000) / 1211206
 
     const stageIndex6 =
-      positiveCountLast7Days === 0
-        ? 99999
-        : (dailyPositiveDetailLast7days.reduce((a, c) => {
-            return a + c.missing_count
-          }, 0) /
-            positiveCountLast7Days) *
-          100
+      (weeklyAveragePositiveCount / weeklyAverageDiagnosedCount) * 100
 
     const tableData = [
       stageIndex0,

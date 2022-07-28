@@ -19,14 +19,14 @@ import type { MetaInfo } from 'vue-meta'
 import PageHeader from '@/components/_shared/PageHeader.vue'
 import CardsTab from '@/components/index/CardsTab.vue'
 import SiteTopUpper from '@/components/index/SiteTopUpper.vue'
-import { lastUpdate } from '@/data/data.json'
+import { date } from '@/data/main_summary.json'
 
 type Data = {
   headerItem: {
     iconPath: string
     title: string
   }
-  lastUpdate: string
+  date: string
 }
 type Methods = {}
 type Computed = {
@@ -48,7 +48,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   },
   data() {
     return {
-      lastUpdate,
+      date,
       headerItem: {
         iconPath: mdiChartTimelineVariant,
         title: this.$t('Common.モニタリング項目') as string,
@@ -57,7 +57,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   },
   computed: {
     lastUpdateAsString() {
-      return this.lastUpdate
+      return this.date
     },
   },
   head(): MetaInfo {
