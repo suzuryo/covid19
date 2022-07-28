@@ -11,7 +11,7 @@
         :title-id="'number-of-confirmed-cases'"
         :chart-id="'time-bar-chart-patients'"
         :chart-data="patientsGraph"
-        :date="Data.patients_summary.date"
+        :date="PositiveRate.date"
         :unit="$t('Common.人')"
         :by-date="true"
         :day-period="isSingleCard && $vuetify.breakpoint.mdAndUp ? 120 : 60"
@@ -23,8 +23,8 @@
 
 <script>
 import TimeBarChart from '@/components/index/_shared/TimeBarChart.vue'
-import Data from '@/data/data.json'
-import formatGraph from '@/utils/formatGraph'
+import PositiveRate from '@/data/positive_rate.json'
+import formatPositiveRateGraph from '@/utils/formatPositiveRateGraph'
 import { isSingleCard } from '@/utils/urls'
 
 export default {
@@ -39,10 +39,10 @@ export default {
   },
   data() {
     // 感染者数グラフ
-    const patientsGraph = formatGraph(Data.patients_summary.data)
+    const patientsGraph = formatPositiveRateGraph(PositiveRate.data)
 
     return {
-      Data,
+      PositiveRate,
       patientsGraph,
     }
   },

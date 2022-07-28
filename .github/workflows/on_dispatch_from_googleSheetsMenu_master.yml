@@ -63,7 +63,7 @@ jobs:
         run: |
           python3 -m http.server --directory ./dist 8000 &
           python3 ./ui-test/ogp_screenshot.py
-          node ./ui-test/ogp_composite_weekly_map.js
+#          node ./ui-test/ogp_composite_weekly_map.js
       - name: Commit OGP & JSON files to master
         run: |
           cp -f static/ogp.png dist/ogp.png

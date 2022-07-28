@@ -33,45 +33,8 @@
 import dayjs from 'dayjs'
 
 import ConfirmedCasesByMunicipalitiesTable from '@/components/index/CardsReference/ConfirmedCasesByMunicipalities/Table.vue'
-import Data from '@/data/data.json'
 import PatientMunicipalities from '@/data/patient_municipalities.json'
 import { isSingleCard } from '@/utils/urls'
-
-const population = {
-  盛岡市: 289893,
-  宮古市: 50401,
-  大船渡市: 34739,
-  花巻市: 93234,
-  北上市: 93089,
-  久慈市: 33063,
-  遠野市: 25381,
-  一関市: 111970,
-  陸前高田市: 18271,
-  釜石市: 32096,
-  二戸市: 25528,
-  八幡平市: 24042,
-  奥州市: 113027,
-  滝沢市: 55600,
-  雫石町: 15742,
-  葛巻町: 5638,
-  岩手町: 12294,
-  紫波町: 32166,
-  矢巾町: 28076,
-  西和賀町: 5137,
-  金ケ崎町: 15545,
-  平泉町: 7258,
-  住田町: 5050,
-  大槌町: 11013,
-  山田町: 14332,
-  岩泉町: 8732,
-  田野畑村: 3059,
-  普代村: 2489,
-  軽米町: 8423,
-  野田村: 3938,
-  九戸村: 5376,
-  洋野町: 15098,
-  一戸町: 11506,
-}
 
 export default {
   components: {
@@ -122,26 +85,6 @@ export default {
       return d === null ? '' : `${d}%`
     }
 
-    const getLast7days = (d) => {
-      const last7 = Data.patients.data
-        .filter((a) => a.居住地 === d)
-        .filter((a) =>
-          dayjs(a.確定日).isAfter(
-            dayjs(
-              Data.patients_summary.data[Data.patients_summary.data.length - 1]
-                .日付
-            ).add(-8, 'days') // 確定日の翌日に発表があるので -7 じゃなくて -8
-          )
-        )
-      return d === '県外' ? '' : last7.length
-    }
-
-    const getLast7DaysPer100k = (d) => {
-      return d === '県外'
-        ? ''
-        : ((getLast7days(d) * 100000) / population[d]).toFixed(1)
-    }
-
     // データを追加
     municipalitiesTable.datasets = PatientMunicipalities.datasets.data
       .filter((d) => d.label !== '小計')
@@ -152,8 +95,8 @@ export default {
           label: this.$t(d.label),
           count: d.count,
           count_per_population: getCountPerPopulation(d.count_per_population),
-          last7days: getLast7days(d.label),
-          last7_per_100k: getLast7DaysPer100k(d.label),
+          last7days: d.last7days,
+          last7_per_100k: d.last7_per_100k,
         }
       })
 
