@@ -2,10 +2,10 @@
 
 require 'spec_helper'
 require_relative '../../../lib/BreadCrumbs'
-require_relative '../../../lib/ConfirmedCasesAttributesCard'
+require_relative '../../../lib/removed/ConfirmedCasesAttributesCard'
 
 describe 'iPhone SE', type: :feature do
-  context 'page [/]' do
+  skip 'page [/]' do
     before do
       visit "/reference/"
       render_lazy_contents

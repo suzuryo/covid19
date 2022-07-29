@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require_relative '../../lib/BreadCrumbs'
-require_relative '../../lib/WeeklyMapCard'
+require_relative '../../../lib/BreadCrumbs'
+require_relative '../../../lib/removed/WeeklyMapCard'
 
 describe 'iPhone SE', type: :feature do
   LOCALES.each do |lang, data|
-    context "page #{data[:path]}" do
+    skip "page #{data[:path]}" do
       before do
         visit "#{data[:path]}cards/weekly-map/"
         render_lazy_contents

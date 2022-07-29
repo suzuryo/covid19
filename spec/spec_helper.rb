@@ -76,22 +76,14 @@ RSpec.configure do |config|
 end
 
 def render_lazy_contents
-  # div.v-lazy の中に div.row が2つまたは1つ入って min-height が 550
-  # div.rowの数 * 550 までスクロールする
   h = 550
-  i = 0
-  loop do
-    m = page.all('div.DataBlock > div.v-lazy').count * 2
-    i = i > h * m ? 0 : i + h
-    c = page.all('div.v-lazy > div.row > div.DataCard').count
-    break if [m - 1, m].include?(c)
-
-    page.evaluate_script "window.scroll(0,#{i})"
+  30.times do |i |
+    page.evaluate_script "window.scroll(0,#{h * i})"
+    sleep 0.1
   end
 end
 
 DAILY_POSITIVE_DETAIL_JSON = JSON.parse(File.read(File.join(__dir__, '../data/daily_positive_detail.json')))
-DATA_JSON = JSON.parse(File.read(File.join(__dir__, '../data/data.json')))
 JA_JSON = JSON.parse(File.read(File.join(__dir__, '../assets/locales/ja.json')))
 EN_JSON = JSON.parse(File.read(File.join(__dir__, '../assets/locales/en.json')))
 NEWS_JSON = JSON.parse(File.read(File.join(__dir__, '../data/news.json')))

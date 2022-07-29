@@ -2,11 +2,11 @@
 
 require 'spec_helper'
 require_relative '../../../lib/BreadCrumbs'
-require_relative '../../../lib/MonitoringConfirmedCasesNumberPer100kCard'
+require_relative '../../../lib/removed/MonitoringConfirmedCasesNumberPer100kCard'
 
 describe 'iPhone SE', type: :feature do
   LOCALES.each do |lang, data|
-    context "page #{data[:path]}" do
+    skip "page #{data[:path]}" do
       before do
         visit data[:path]
         render_lazy_contents
