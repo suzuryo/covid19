@@ -12,11 +12,6 @@ describe 'iPhone SE', type: :feature do
   context 'page [/]' do
     urls = []
 
-    # data.json の 陽性事例の 個別ページのURL は直接読み込む
-    DATA_JSON['patients']['data'].each do |item|
-      urls << URI(item['url']) unless item['url'].blank?
-    end
-
     # news.json の 個別ページのURL は直接読み込む
     NEWS_JSON['newsItems'].each do |item|
       urls << URI(item['url']['ja']) unless item['url']['ja'].blank? || item['url']['ja'].match(/www\.youtube\.com/)

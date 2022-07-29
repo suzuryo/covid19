@@ -16,12 +16,12 @@ def has_page_header(lang:, data:)
 
   if lang == :ja
     # time
-    expect(find('.PageHeader > div.UpdatedAt > time').text).to eq Time.parse(DATA_JSON['lastUpdate']).strftime('%Y年%-m月%-d日 %-H:%M JST')
+    expect(find('.PageHeader > div.UpdatedAt > time').text).to eq Time.parse(MAIN_SUMMARY_JSON['date']).strftime('%Y年%-m月%-d日 %-H:%M JST')
     # Annotation
     expect(page).not_to have_selector('.PageHeader > .Annotation')
   else
     # time
-    expect(find('.PageHeader.mb-3 > div.UpdatedAt > time').text).to eq Time.parse(DATA_JSON['lastUpdate']).strftime('%b %-d, %Y, %H:%M JST')
+    expect(find('.PageHeader.mb-3 > div.UpdatedAt > time').text).to eq Time.parse(MAIN_SUMMARY_JSON['date']).strftime('%b %-d, %Y, %H:%M JST')
     # Annotation
     expect(find('.PageHeader > .Annotation > span').text).to eq lang_json['SiteTopUpper']['注釈'].to_s
   end

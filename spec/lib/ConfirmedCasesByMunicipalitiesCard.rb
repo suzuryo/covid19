@@ -34,19 +34,12 @@ def has_confirmed_cases_by_municipalities_card(lang:, lang_json:)
 
   # テーブルの上から1行目をチェックする(直近1週間)
   expect(find('#ConfirmedCasesByMunicipalitiesCard > div > div > div.DataView-Content > div > div > table > thead > tr > th:nth-child(4)').text).to eq lang_json['ConfirmedCasesByMunicipalitiesCard']['legends'][3]
-  d = DATA_JSON['patients']['data']
-      .select { | item | item['居住地'] == PATIENT_MUNICIPALITIES_JSON['datasets']['data'].first['label'] }
-      .select { |item| Date.parse(item['確定日']) > Date.parse(DATA_JSON['patients_summary']['data'].last['日付']) - 8 }
-      .count
+  d = PATIENT_MUNICIPALITIES_JSON['datasets']['data'].first['last7days']
   expect(find('#ConfirmedCasesByMunicipalitiesCard > div > div > div.DataView-Content > div > div > table > tbody > tr:nth-child(1) > td:nth-child(4)').text).to eq d.to_s
 
   # テーブルの上から1行目をチェックする(直近1週間対人口10万人)
   expect(find('#ConfirmedCasesByMunicipalitiesCard > div > div > div.DataView-Content > div > div > table > thead > tr > th:nth-child(5)').text).to eq lang_json['ConfirmedCasesByMunicipalitiesCard']['legends'][4]
-  d = DATA_JSON['patients']['data']
-        .select { | item | item['居住地'] == PATIENT_MUNICIPALITIES_JSON['datasets']['data'].first['label'] }
-        .select { |item| Date.parse(item['確定日']) > Date.parse(DATA_JSON['patients_summary']['data'].last['日付']) - 8 }
-        .count * 100000.0 / 289893.0 # 盛岡市の場合
-  d = page.evaluate_script("#{d}.toFixed(1)")
+  d = PATIENT_MUNICIPALITIES_JSON['datasets']['data'].first['last7_per_100k']
   expect(find('#ConfirmedCasesByMunicipalitiesCard > div > div > div.DataView-Content > div > div > table > tbody > tr:nth-child(1) > td:nth-child(5)').text).to eq d.to_s
 
   # 市町村を1回目クリックしても、一番下は常に「県外」

@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require_relative '../../lib/BreadCrumbs'
-require_relative '../../lib/ConfirmedCasesAttributesCard'
+require_relative '../../../lib/BreadCrumbs'
+require_relative '../../../lib/removed/ConfirmedCasesAttributesCard'
 
 describe 'iPhone SE', type: :feature do
-  context 'page [/cards/attributes-of-confirmed-cases]' do
+  skip 'page [/cards/attributes-of-confirmed-cases]' do
     before do
       visit '/cards/attributes-of-confirmed-cases/'
       render_lazy_contents
