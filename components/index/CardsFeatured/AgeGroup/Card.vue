@@ -32,7 +32,7 @@ import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
 import type { TranslateResult } from 'vue-i18n'
 
 import AppLink from '@/components/_shared/AppLink.vue'
-import AgeChart from '@/components/index/CardsMonitoring/AgeGroup/Chart.vue'
+import AgeChart from '@/components/index/CardsFeatured/AgeGroup/Chart.vue'
 import ConfirmedCaseAge from '@/data/confirmed_case_age.json'
 import { getNumberToFixedFunction } from '@/utils/monitoringStatusValueFormatters'
 import { isSingleCard } from '@/utils/urls'
