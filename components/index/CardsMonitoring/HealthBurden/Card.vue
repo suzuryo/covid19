@@ -29,7 +29,7 @@
 import dayjs from 'dayjs'
 import Vue from 'vue'
 
-import HealthBurdenTable from '@/components/index/CardsFeatured/HealthBurden/Table.vue'
+import HealthBurdenTable from '@/components/index/CardsMonitoring/HealthBurden/Table.vue'
 import HealthBurden from '@/data/health_burden.json'
 import { isSingleCard } from '@/utils/urls'
 

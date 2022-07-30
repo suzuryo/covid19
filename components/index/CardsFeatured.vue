@@ -6,9 +6,9 @@
 import Vue from 'vue'
 
 import CardsLazyRow from '@/components/index/_shared/CardsLazyRow.vue'
+import AgeGroupCard from '@/components/index/CardsFeatured/AgeGroup/Card.vue'
 import ConfirmedCasesAreaChart from '@/components/index/CardsFeatured/ConfirmedCasesArea/Card.vue'
 import ConfirmedCasesDetailsCard from '@/components/index/CardsFeatured/ConfirmedCasesDetails/Card.vue'
-import HealthBurdenCard from '@/components/index/CardsFeatured/HealthBurden/Card.vue'
 import HomeCapacityCard from '@/components/index/CardsFeatured/HomeCapacity/Card.vue'
 import HospitalCapacityCard from '@/components/index/CardsFeatured/HospitalCapacity/Card.vue'
 import HotelCapacityCard from '@/components/index/CardsFeatured/HotelCapacity/Card.vue'
@@ -23,8 +23,8 @@ export default Vue.extend({
   data() {
     return {
       rows: [
-        [StageCard, HealthBurdenCard],
-        [ConfirmedCasesDetailsCard, ConfirmedCasesAreaChart],
+        [StageCard, ConfirmedCasesDetailsCard],
+        [ConfirmedCasesAreaChart, AgeGroupCard],
         [HospitalCapacityCard, HotelCapacityCard],
         [HomeCapacityCard],
       ],
