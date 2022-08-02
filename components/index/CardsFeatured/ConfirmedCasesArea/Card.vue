@@ -130,7 +130,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
           return date === d.date
         })
         if (a !== undefined) {
-          return a.data[area]
+          return a.last7ma[area]
         } else {
           return 0
         }
