@@ -15,7 +15,7 @@ import HospitalCapacityCard from '@/components/index/CardsFeatured/HospitalCapac
 import HotelCapacityCard from '@/components/index/CardsFeatured/HotelCapacity/Card.vue'
 // import MonitoringConfirmedCasesNumberPer100kCard from '@/components/index/CardsFeatured/MonitoringConfirmedCasesNumberPer100k/Card.vue'
 import StageCard from '@/components/index/CardsFeatured/Stage/Card.vue'
-// import WeeklyMapCard from '@/components/index/CardsFeatured/WeeklyMap/Card.vue'
+import WeeklyMapCard from '@/components/index/CardsFeatured/WeeklyMap/Card.vue'
 
 export default Vue.extend({
   components: {
@@ -26,7 +26,7 @@ export default Vue.extend({
       rows: [
         [StageCard, ConfirmedCasesDetailsCard],
         [ConfirmedCasesAreaChart, ConfirmedCasesAreaPer100kCard],
-        [AgeGroupCard],
+        [AgeGroupCard, WeeklyMapCard],
         [HospitalCapacityCard, HotelCapacityCard],
         [HomeCapacityCard],
       ],

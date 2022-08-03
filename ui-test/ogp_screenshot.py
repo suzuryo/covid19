@@ -18,7 +18,7 @@ PATHS = {
     "/cards/hospital-capacity/": (959, 520),
     "/cards/hotel-capacity/": (959, 520),
     "/cards/home-capacity/": (959, 520),
-#    "/cards/weekly-map/": (959, 520),
+    "/cards/weekly-map/": (959, 520),
     "/cards/whats-new/": (959, 520),
     "/cards/self-disclosures/": (959, 520),
     "/cards/details-of-confirmed-cases/": (959, 520),

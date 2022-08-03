@@ -13,7 +13,6 @@
 
 <script>
 import Breadcrumb from '@/components/_shared/Breadcrumb.vue'
-// import WeeklyMapCard from '@/components/index/CardsFeatured/WeeklyMap/Card.vue'
 import AgeGroupCard from '@/components/index/CardsFeatured/AgeGroup/Card.vue'
 import ConfirmedCasesAreaCard from '@/components/index/CardsFeatured/ConfirmedCasesArea/Card.vue'
 import ConfirmedCasesAreaPer100kCard from '@/components/index/CardsFeatured/ConfirmedCasesAreaPer100k/Card.vue'
@@ -23,6 +22,7 @@ import HospitalCapacityCard from '@/components/index/CardsFeatured/HospitalCapac
 import HotelCapacityCard from '@/components/index/CardsFeatured/HotelCapacity/Card.vue'
 // import MonitoringConfirmedCasesNumberPer100kCard from '@/components/index/CardsFeatured/MonitoringConfirmedCasesNumberPer100k/Card.vue'
 import StageCard from '@/components/index/CardsFeatured/Stage/Card.vue'
+import WeeklyMapCard from '@/components/index/CardsFeatured/WeeklyMap/Card.vue'
 import ConfirmedCasesNumberCard from '@/components/index/CardsMonitoring/ConfirmedCasesNumber/Card.vue'
 import HealthBurdenCard from '@/components/index/CardsMonitoring/HealthBurden/Card.vue'
 // import EffectiveReproductionNumberCard from '@/components/index/CardsMonitoring/EffectiveReproductionNumber/Card.vue'
@@ -45,7 +45,7 @@ export default {
   components: {
     SiteTopUpper,
     RestaurantMapCard,
-    // WeeklyMapCard,
+    WeeklyMapCard,
     Breadcrumb,
     WhatsNewCard,
     SelfDisclosuresCard,
@@ -79,10 +79,10 @@ export default {
 
     let cardComponent, cardTitle
     switch (this.$route.params.card) {
-      // case 'weekly-map':
-      //   cardComponent = 'weekly-map-card'
-      //   cardTitle = this.$t('WeeklyMapCard.title')
-      //   break
+      case 'weekly-map':
+        cardComponent = 'weekly-map-card'
+        cardTitle = this.$t('WeeklyMapCard.title')
+        break
       case 'whats-new':
         cardComponent = 'whats-new-card'
         cardTitle = this.$t('WhatsNewCard.title')
