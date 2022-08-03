@@ -80,6 +80,14 @@ export default Vue.extend({
       items.sort((a: any, b: any) => {
         let comparison: number
 
+        // 「県全体」は常に一番上にする
+        if (a.code === '888888') {
+          return -1
+        }
+        if (b.code === '888888') {
+          return 1
+        }
+
         // 「県外」は常に一番下にする
         if (a.code === '999999') {
           return 1

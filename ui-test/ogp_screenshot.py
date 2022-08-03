@@ -9,6 +9,7 @@ if not os.path.exists("ogp"):
 
 PATHS = {
     "/cards/confirmed-cases-area/": (959, 520),
+    "/cards/confirmed-cases-area-per-100k/": (959, 520),
     "/cards/health-burden/": (959, 520),
     "/cards/health-burden-hospital/": (959, 520),
     "/cards/age-group/": (959, 520),
