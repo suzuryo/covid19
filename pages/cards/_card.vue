@@ -16,6 +16,7 @@ import Breadcrumb from '@/components/_shared/Breadcrumb.vue'
 // import WeeklyMapCard from '@/components/index/CardsFeatured/WeeklyMap/Card.vue'
 import AgeGroupCard from '@/components/index/CardsFeatured/AgeGroup/Card.vue'
 import ConfirmedCasesAreaCard from '@/components/index/CardsFeatured/ConfirmedCasesArea/Card.vue'
+import ConfirmedCasesAreaPer100kCard from '@/components/index/CardsFeatured/ConfirmedCasesAreaPer100k/Card.vue'
 import ConfirmedCasesDetailsCard from '@/components/index/CardsFeatured/ConfirmedCasesDetails/Card.vue'
 import HomeCapacityCard from '@/components/index/CardsFeatured/HomeCapacity/Card.vue'
 import HospitalCapacityCard from '@/components/index/CardsFeatured/HospitalCapacity/Card.vue'
@@ -65,6 +66,7 @@ export default {
     AgeGroupCard,
     HealthBurdenCard,
     ConfirmedCasesAreaCard,
+    ConfirmedCasesAreaPer100kCard,
     HealthBurdenHospitalCard,
   },
   data() {
@@ -160,6 +162,10 @@ export default {
       case 'confirmed-cases-area':
         cardComponent = 'confirmed-cases-area-card'
         cardTitle = this.$t('ConfirmedCasesAreaCard.title')
+        break
+      case 'confirmed-cases-area-per-100k':
+        cardComponent = 'confirmed-cases-area-per-100k-card'
+        cardTitle = this.$t('ConfirmedCasesAreaPer100kCard.title')
         break
       case 'health-burden-hospital':
         cardComponent = 'health-burden-hospital-card'

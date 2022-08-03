@@ -608,6 +608,7 @@
   "ConfirmedCasesAreaCard": {
     "title": "Number of positive cases in health center jurisdiction (7-day moving average)",
     "area": {
+      "県全体": "IWATE PREF",
       "盛岡": "MORIOKA",
       "県央": "KEN-OU",
       "中部": "CHU-BU",
@@ -631,6 +632,10 @@
       "Kuji Area: Kuji・Fudai・Noda・Hirono",
       "Ninohe Area: Ninohe・Karumai・Kunohe・Ichinohe"
     ]
+  },
+  "ConfirmedCasesAreaPer100kCard": {
+    "title": "Number of Positive Cases by area per 100,000 population in last 7 Days",
+    "notes": []
   },
   "HealthBurdenHospitalCard": {
     "title": "Projected number of secured hospital beds that may be needed",
