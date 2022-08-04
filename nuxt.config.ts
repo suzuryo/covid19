@@ -16,6 +16,7 @@ const pages = [
   '/cards/health-burden',
   '/cards/health-burden-hospital',
   '/cards/weekly-map/',
+  '/cards/clinic-map/',
   '/cards/whats-new/',
   '/cards/self-disclosures/',
   '/cards/details-of-confirmed-cases/',
