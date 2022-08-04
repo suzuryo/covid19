@@ -14,6 +14,7 @@ PATHS = {
     "/cards/health-burden-hospital/": (959, 520),
     "/cards/age-group/": (959, 520),
     "/cards/restaurant-map/": (959, 520),
+    "/cards/clinic-map/": (959, 520),
     "/cards/stage/": (959, 520),
     "/cards/hospital-capacity/": (959, 520),
     "/cards/hotel-capacity/": (959, 520),

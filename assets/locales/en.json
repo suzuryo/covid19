@@ -590,6 +590,13 @@
       "Happened at 2022/01/14"
     ]
   },
+  "TestTreatClinicMapCard": {
+    "title": "診療・検査医療機関マップ",
+    "notes": [
+      "岩手県が公表している「診療・検査医療機関」の元サイト https://www.pref.iwate.jp/kurashikankyou/iryou/covid19/1052938.html には一覧のPDFファイルしかなく、地図で見たかったので、元サイトで公開されているデータに含まれている住所に基づいてGoogle Mapsにマッピングしたもの",
+      "元サイトに公式に地図機能が実装されたり、データが公開されなくなった場合は、当マップの提供を停止する予定"
+    ]
+  },
   "RestaurantCard": {
     "title": "いわて飲食店安心認証マップ",
     "notes": [

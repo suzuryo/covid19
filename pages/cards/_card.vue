@@ -35,6 +35,7 @@ import UntrackedRateCard from '@/components/index/CardsMonitoring/UntrackedRate/
 import ConfirmedCasesByMunicipalitiesCard from '@/components/index/CardsReference/ConfirmedCasesByMunicipalities/Card.vue'
 import RestaurantMapCard from '@/components/index/CardsReference/IwateNinshou/Restaurant/Card'
 import SelfDisclosuresCard from '@/components/index/CardsReference/SelfDisclosures/Card.vue'
+import TestTreatClinicMapCard from '@/components/index/CardsReference/TestTreatClinic/Card.vue'
 import WhatsNewCard from '@/components/index/CardsReference/WhatsNew/Card.vue'
 import SiteTopUpper from '@/components/index/SiteTopUpper.vue'
 import PositiveRate from '@/data/positive_rate.json'
@@ -45,6 +46,7 @@ export default {
   components: {
     SiteTopUpper,
     RestaurantMapCard,
+    TestTreatClinicMapCard,
     WeeklyMapCard,
     Breadcrumb,
     WhatsNewCard,
@@ -150,6 +152,10 @@ export default {
       case 'restaurant-map':
         cardComponent = 'restaurant-map-card'
         cardTitle = this.$t('RestaurantCard.title')
+        break
+      case 'clinic-map':
+        cardComponent = 'test-treat-clinic-map-card'
+        cardTitle = this.$t('TestTreatClinicMapCard.title')
         break
       case 'age-group':
         cardComponent = 'age-group-card'
