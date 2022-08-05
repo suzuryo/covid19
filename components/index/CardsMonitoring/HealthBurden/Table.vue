@@ -1,31 +1,31 @@
 <template>
   <data-view :title="infoTitles[0]" :title-id="titleId" :date="date">
     <p :class="$style.lead">
-      「新たなレベル分類の考え方」で示された「予測ツール」によるシミュレーション結果
+      {{ $t('HealthBurdenCard.description') }}
     </p>
     <table :class="$style.table">
       <thead>
         <tr>
           <th colspan="2" :class="$style.headers">
-            酸素投与を要する人（重症者を含む）の予測値
+            {{ $t('HealthBurdenCard.table1_head') }}
           </th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <th>1週間後</th>
+          <th>{{ $t('HealthBurdenCard.1週間後') }}</th>
           <td :class="$style.simulation">
             {{ healthBurden.酸素需要を要する人.week1 }}
           </td>
         </tr>
         <tr>
-          <th>2週間後</th>
+          <th>{{ $t('HealthBurdenCard.2週間後') }}</th>
           <td :class="$style.simulation">
             {{ healthBurden.酸素需要を要する人.week2 }}
           </td>
         </tr>
         <tr>
-          <th>3週間後</th>
+          <th>{{ $t('HealthBurdenCard.3週間後') }}</th>
           <td :class="$style.simulation">
             {{ healthBurden.酸素需要を要する人.week3 }}
           </td>
@@ -36,14 +36,16 @@
       <thead>
         <tr>
           <th colspan="2" :class="$style.headers">
-            必要と思われる重症病床の確保数の予測値
+            {{ $t('HealthBurdenCard.table2_head') }}
           </th>
-          <th :class="[$style.headers, $style.real]">実際の確保数</th>
+          <th :class="[$style.headers, $style.real]">
+            {{ $t('HealthBurdenCard.実際の確保数') }}
+          </th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <th>1週間後</th>
+          <th>{{ $t('HealthBurdenCard.1週間後') }}</th>
           <td
             :class="[
               $style.simulation,
@@ -57,7 +59,7 @@
           <td rowspan="3">34</td>
         </tr>
         <tr>
-          <th>2週間後</th>
+          <th>{{ $t('HealthBurdenCard.2週間後') }}</th>
           <td
             :class="[
               $style.simulation,
@@ -70,7 +72,7 @@
           </td>
         </tr>
         <tr>
-          <th>3週間後</th>
+          <th>{{ $t('HealthBurdenCard.3週間後') }}</th>
           <td
             :class="[
               $style.simulation,
@@ -88,14 +90,16 @@
       <thead>
         <tr>
           <th colspan="2" :class="$style.headers">
-            自宅療養や療養施設を積極的に利用した場合、必要と思われる確保病床数の予測値
+            {{ $t('HealthBurdenCard.table3_head') }}
           </th>
-          <th :class="[$style.headers, $style.real]">実際の確保数</th>
+          <th :class="[$style.headers, $style.real]">
+            {{ $t('HealthBurdenCard.実際の確保数') }}
+          </th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <th>1週間後</th>
+          <th>{{ $t('HealthBurdenCard.1週間後') }}</th>
           <td
             :class="[
               $style.simulation,
@@ -112,7 +116,7 @@
           <td rowspan="3">435</td>
         </tr>
         <tr>
-          <th>2週間後</th>
+          <th>{{ $t('HealthBurdenCard.2週間後') }}</th>
           <td
             :class="[
               $style.simulation,
@@ -128,7 +132,7 @@
           </td>
         </tr>
         <tr>
-          <th>3週間後</th>
+          <th>{{ $t('HealthBurdenCard.3週間後') }}</th>
           <td
             :class="[
               $style.simulation,
@@ -149,14 +153,16 @@
       <thead>
         <tr>
           <th colspan="2" :class="$style.headers">
-            ハイリスク軽症者や、ハイリスクでなくとも中等症1は基本的に入院させる場合、必要と思われる確保病床数の予測値
+            {{ $t('HealthBurdenCard.table4_head') }}
           </th>
-          <th :class="[$style.headers, $style.real]">実際の確保数</th>
+          <th :class="[$style.headers, $style.real]">
+            {{ $t('HealthBurdenCard.実際の確保数') }}
+          </th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <th>1週間後</th>
+          <th>{{ $t('HealthBurdenCard.1週間後') }}</th>
           <td
             :class="[
               $style.simulation,
@@ -170,7 +176,7 @@
           <td rowspan="3">435</td>
         </tr>
         <tr>
-          <th>2週間後</th>
+          <th>{{ $t('HealthBurdenCard.2週間後') }}</th>
           <td
             :class="[
               $style.simulation,
@@ -183,7 +189,7 @@
           </td>
         </tr>
         <tr>
-          <th>3週間後</th>
+          <th>{{ $t('HealthBurdenCard.3週間後') }}</th>
           <td
             :class="[
               $style.simulation,

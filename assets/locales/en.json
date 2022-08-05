@@ -493,6 +493,15 @@
   },
   "HealthBurdenCard": {
     "title": "Forecasting medical demand for level decisions",
+    "description": "Simulation results from the \"Prediction Tool\" presented in the \"New Approach to Level Classification",
+    "table1_head": "Predicted value of persons requiring oxygen administration (including those who are critically ill)",
+    "table2_head": "Projected number of critical care beds that may be needed",
+    "table3_head": "Projected number of secured beds that would be needed if home care and treatment facilities were actively used",
+    "table4_head": "Projected number of secured beds that would be needed if high-risk mildly ill persons and non-high-risk moderately ill1 were to be basically hospitalized",
+    "1週間後": "1 week later",
+    "2週間後": "2 weeks later",
+    "3週間後": "3 weeks later",
+    "実際の確保数": "Actual number of beds secured",
     "notes": [
       "Forecast of healthcare demand using the forecasting tool presented in the \"New Level Classification Approach\".",
       "Calculated based on actual daily values in Iwate Prefecture using the formula in the \"医療需要予測ツール_オミクロンとブースター考慮版v3_20220103.xlsx\", a tool for forecasting medical demand according to the spread of new coronavirus infection and vaccination progress",
@@ -507,10 +516,7 @@
     "title": "Positive case map for the last week",
     "notes": [
       "Number of new positives in the last week, categorized by city, town, or village of residence, with color added.",
-      "Areas with a high number of new positives in the last week are darker in color, and areas with a low number of positives are lighter in color.",
-      "If it is announced as being within the jurisdiction of the local health department, +1 for all municipalities covered by the department.",
-      "If residence is in Iwate and staying is also in Iwate, the calculation will be based on staying place.",
-      "If residence is outside of the prefecture and the staying is known, the calculation will be based on staying place."
+      "Areas with a high number of new positives in the last week are darker in color, and areas with a low number of positives are lighter in color."
     ]
   },
   "岩手のCOVID-19が気になる有志": "Volunteers who are interested in COVID-19 in Iwate",
@@ -591,19 +597,19 @@
     ]
   },
   "TestTreatClinicMapCard": {
-    "title": "診療・検査医療機関マップ",
+    "title": "COVID-19 Test & Treat Clinic Map",
     "notes": [
-      "岩手県が公表している「診療・検査医療機関」の元サイト https://www.pref.iwate.jp/kurashikankyou/iryou/covid19/1052938.html には一覧のPDFファイルしかなく、地図で見たかったので、元サイトで公開されているデータに含まれている住所に基づいてGoogle Mapsにマッピングしたもの",
-      "元サイトに公式に地図機能が実装されたり、データが公開されなくなった場合は、当マップの提供を停止する予定"
+      "The original site of Iwate Prefecture https://www.pref.iwate.jp/kurashikankyou/iryou/covid19/1052938.html has only a PDF file of the list, but We wanted to see it on a map, so We mapped it to Google Maps based on the addresses included in the data published on the original site.",
+      "We will stop providing this map when the map function is officially implemented on the original site or when the data is no longer publicly available."
     ]
   },
   "RestaurantCard": {
-    "title": "いわて飲食店安心認証マップ",
+    "title": "Iwate Restaurant Safety Certification Map",
     "notes": [
-      "岩手県が実施している「いわて飲食店安心認証制度」の元サイト https://iwate-ninshou.jp/ には店舗一覧の表示しかなく、地図で見たかったので、元サイトで公開されているデータに含まれている緯度経度に基づいてGoogle Mapsにマッピングしたもの",
-      "元サイトで公開されているデータ(店名・住所・URL・緯度経度)をそのまま利用しており、当サイトではデータの正確性などは確認していません",
-      "元サイトで公開されているデータに、緯度経度が含まれていない店舗があり、それらはマッピングされていない",
-      "元サイトに公式に地図機能が実装されたり、データが公開されなくなった場合は、当マップの提供を停止する予定"
+      "The original site of the Iwate Prefecture's https://iwate-ninshou.jp only shows a list of stores, but We wanted to see it on a map, so We mapped it to Google Maps based on the latitude and longitude included in the data published on the original site.",
+      "The data (store name, address, URL, latitude and longitude) published on the original site is used as is, and we have not verified the accuracy of the data.",
+      "Some stores do not include latitude and longitude in the data published on the original site, and these are not mapped.",
+      "We will stop providing this map when the map function is officially implemented on the original site or when the data is no longer publicly available."
     ]
   },
   "AgeGroupCard": {
@@ -642,7 +648,18 @@
   },
   "ConfirmedCasesAreaPer100kCard": {
     "title": "Number of Positive Cases by area per 100,000 population in last 7 Days",
-    "notes": []
+    "notes": [
+      "Morioka Area: Morioka",
+      "Iwate Central Area: Hachimantai・Takizawa・Shizukuishi・Kuzumaki・Iwate・Shiwa・Yahaba",
+      "Iwate Mid Central Area: Hanamaki・Tōno・Kitakami・Nishiwaga",
+      "Ōshū Area: Ōshū・Kanegasaki",
+      "Ichinoseki Area: Ichinoseki・Hiraizumi",
+      "Ōfunato Area: Ōfunato・Rikuzentakata・Sumita",
+      "Kamaishi Area: Kamaishi・Ōtsuchi",
+      "Miyako Area: Miyako・Yamada・Iwaizumi・Tanohata",
+      "Kuji Area: Kuji・Fudai・Noda・Hirono",
+      "Ninohe Area: Ninohe・Karumai・Kunohe・Ichinohe"
+    ]
   },
   "HealthBurdenHospitalCard": {
     "title": "Projected number of secured hospital beds that may be needed",
