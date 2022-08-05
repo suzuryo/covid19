@@ -51,6 +51,15 @@
               >{{ $t('診療・検査医療機関の一覧') }}
             </app-link>
           </p>
+          <p :class="$style.detail">
+            <app-link
+              :to="localePath('/cards/clinic-map/')"
+              :icon-size="20"
+              :icon-class="$style.icon"
+              :class="$style.detailButton"
+              >{{ $t('TestTreatClinicMapCard.title') }}
+            </app-link>
+          </p>
         </div>
         <div :class="[$style.box, $style.bgYellow]">
           <h5 :class="$style.boxHeading">
