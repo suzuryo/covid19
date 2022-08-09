@@ -347,12 +347,13 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       ]
     },
     tableData() {
+      const chartData = this.chartData
       return this.labels
         .map((label, i) => {
           return Object.assign(
             { text: label },
-            ...this.chartData.map((_, j) => {
-              const data = this.chartData[j]
+            ...chartData.map((_, j) => {
+              const data = chartData[j]
               if (data[i] === null) {
                 return {
                   [j]: '',
@@ -446,10 +447,11 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       return options
     },
     scaledTicksYAxisMax() {
-      const max = Array.from(this.chartData[0].keys())
-        .map((i) => this.chartData[0][i] + this.chartData[1][i])
+      const chartData = this.chartData
+      const max = Array.from(chartData[0].keys())
+        .map((i) => chartData[0][i] + chartData[1][i])
         .reduce((a, b) => Math.max(a, b), 0)
-      const maxTotal = this.chartData[2].reduce((a, b) => Math.max(a, b), max)
+      const maxTotal = chartData[2].reduce((a, b) => Math.max(a, b), max)
       const digits = String(maxTotal).length
       const base = 10 ** (digits - 1)
       return Math.ceil(max / base) * base
