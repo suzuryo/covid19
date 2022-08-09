@@ -274,13 +274,14 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       ]
     },
     tableData() {
+      const chartData = this.chartData
       return this.labels
         .map((label, i) => {
           return Object.assign(
             { text: label },
             ...(this.tableLabels as string[]).map((_, j) => {
               return {
-                [j]: this.getFormatter(j)(this.chartData[j][i]),
+                [j]: this.getFormatter(j)(chartData[j][i]),
               }
             })
           )
