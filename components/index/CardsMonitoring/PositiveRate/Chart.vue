@@ -398,18 +398,19 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       ]
     },
     tableData() {
+      const chartData = this.chartData
       return this.labels
         .map((label, i) => {
           return Object.assign(
             { text: label },
             ...(this.dataLabels as string[]).map((_, j) => {
-              if (this.chartData[j][i] === null) {
+              if (chartData[j][i] === null) {
                 return {
                   [j]: '',
                 }
               }
               return {
-                [j]: this.getFormatter(j)(this.chartData[j][i]),
+                [j]: this.getFormatter(j)(chartData[j][i]),
               }
             })
           )
@@ -515,9 +516,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
           ],
         },
       }
-      if (this.$route.query.ogp === 'true') {
-        Object.assign(options, { animation: { duration: 0 } })
-      }
+      Object.assign(options, { animation: { duration: 0 } })
       return options
     },
     scaledTicksYAxisMax() {

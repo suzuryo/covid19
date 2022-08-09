@@ -275,15 +275,16 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       ]
     },
     tableData() {
+      const chartData = this.chartData
       return this.labels
         .map((label, i) => {
           return Object.assign(
             {
               text: label,
             },
-            ...this.chartData.map((_, j) => {
+            ...chartData.map((_, j) => {
               // j=0が入院, j=1が宿泊療養, j=2が自宅療養, j=3が調整中
-              const data = this.chartData[j]
+              const data = chartData[j]
               if (data[i] === null) {
                 return {
                   [j]: '',
@@ -296,10 +297,10 @@ const options: ThisTypedComponentOptionsWithRecordProps<
             {
               // j=4で合計を計算
               4:
-                this.chartData[0][i] +
-                this.chartData[1][i] +
-                this.chartData[2][i] +
-                this.chartData[3][i],
+                chartData[0][i] +
+                chartData[1][i] +
+                chartData[2][i] +
+                chartData[3][i],
             }
           )
         })
@@ -379,14 +380,13 @@ const options: ThisTypedComponentOptionsWithRecordProps<
           ],
         },
       }
-      if (this.$route.query.ogp === 'true') {
-        Object.assign(options, { animation: { duration: 0 } })
-      }
+      Object.assign(options, { animation: { duration: 0 } })
       return options
     },
     scaledTicksYAxisMax() {
-      return Array.from(this.chartData[0].keys())
-        .map((i) => this.chartData[0][i] + this.chartData[1][i])
+      const chartData = this.chartData
+      return Array.from(chartData[0].keys())
+        .map((i) => chartData[0][i] + chartData[1][i])
         .reduce((a, b) => Math.max(a, b), 0)
     },
   },

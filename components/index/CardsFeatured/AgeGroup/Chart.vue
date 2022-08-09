@@ -245,18 +245,19 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         const date = dayjs(item)
         return date.isBetween(this.startDate, this.endDate, 'day', '[]')
       })
+      const chartData = this.chartData
       return {
         labels: rangeDate,
-        datasets: this.chartData.map((_, i) => {
+        datasets: chartData.map((_, i) => {
           return {
             type: 'line',
             label: rangeDate,
-            data: this.chartData[i].slice(
+            data: chartData[i].slice(
               this.startDateIndex,
               this.endDateIndex + 1
             ),
             pointRadius: 1,
-            borderColor: this.colors.rgbAt(i / this.chartData.length),
+            borderColor: this.colors.rgbAt(i / chartData.length),
             borderWidth: 1.1,
             fill: false,
             order: i,
@@ -274,13 +275,14 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       ]
     },
     tableData() {
+      const chartData = this.chartData
       return this.labels
         .map((label, i) => {
           return Object.assign(
             { text: label },
             ...(this.tableLabels as string[]).map((_, j) => {
               return {
-                [j]: this.getFormatter(j)(this.chartData[j][i]),
+                [j]: this.getFormatter(j)(chartData[j][i]),
               }
             })
           )
@@ -358,9 +360,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
           ],
         },
       }
-      if (this.$route.query.ogp === 'true') {
-        Object.assign(options, { animation: { duration: 0 } })
-      }
+      Object.assign(options, { animation: { duration: 0 } })
       return options
     },
     scaledTicksYAxisMax() {
