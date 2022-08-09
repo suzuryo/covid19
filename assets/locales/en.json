@@ -312,6 +312,7 @@
       "Number of positive cases/Population is the ratio of the number of positive cases to the population of the municipality (as of Oct 1, 2020)."
     ]
   },
+  "県全体": "IWATE PREF",
   "岩手県": "Iwate Prefecture",
   "盛岡市": "Morioka",
   "宮古市": "Miyako",
@@ -346,6 +347,7 @@
   "九戸村": "Kunohe",
   "洋野町": "Hirono",
   "一戸町": "Ichinohe",
+  "けんぜんたい": "けんぜんたい",
   "もりおかし": "もりおかし",
   "みやこし": "みやこし",
   "おおふなとし": "おおふなとし",
