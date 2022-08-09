@@ -442,9 +442,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
           ],
         },
       }
-      if (this.$route.query.ogp === 'true') {
-        Object.assign(options, { animation: { duration: 0 } })
-      }
+      Object.assign(options, { animation: { duration: 0 } })
       return options
     },
     scaledTicksYAxisMax() {
