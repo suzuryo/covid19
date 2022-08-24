@@ -1112,7 +1112,7 @@
     debug "^4.1.0"
     globals "^11.1.0"
 
-"@babel/traverse@^7.18.13":
+"@babel/traverse@^7.18.10", "@babel/traverse@^7.18.13":
   version "7.18.13"
   resolved "https://registry.yarnpkg.com/@babel/traverse/-/traverse-7.18.13.tgz#5ab59ef51a997b3f10c4587d648b9696b6cb1a68"
   integrity sha512-N6kt9X1jRMLPxxxPYWi7tgvJRH/rtoU+dbKAPDM44RFHiMH8igdsaSBgFeskhSl/kLWLDUvIh1RXCrTmg0/zvA==
@@ -1753,13 +1753,13 @@
     chalk "^4.1.0"
     semver "^7.3.2"
 
-"@nuxtjs/i18n@7.2.3":
-  version "7.2.3"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/i18n/-/i18n-7.2.3.tgz#3d65868213123f696a3debc7b3dc31bdd8a5a81b"
-  integrity sha512-Zi/1df2ISXtsPs5+IhdHbh3ebWLq4V+tU71SkAuB2F9Es2qANF5EIq2dT9rCDW/1bbfO48MQU/eUWectDX6D7g==
+"@nuxtjs/i18n@7.3.0":
+  version "7.3.0"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/i18n/-/i18n-7.3.0.tgz#49ddaaf5c39a0eb60e59515bbdebb0a94845cc06"
+  integrity sha512-KBmFzgHjaJ/b+I/nISWUkAxcigjc5FiR1ScRzq/eC8Ahxi5zIulfF8vRROmYbW1gP6B2yYBblOuWemW/T/YM0A==
   dependencies:
-    "@babel/parser" "^7.18.9"
-    "@babel/traverse" "^7.18.9"
+    "@babel/parser" "^7.18.10"
+    "@babel/traverse" "^7.18.10"
     "@intlify/vue-i18n-extensions" "^1.0.2"
     "@intlify/vue-i18n-loader" "^1.1.0"
     cookie "^0.5.0"
