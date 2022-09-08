@@ -66,6 +66,7 @@ def has_hospitalized_number_card
   expect(page).to have_selector('#HospitalizedNumberCard .NotesExpansionPanel .v-expansion-panel--active')
 
   # 注釈の中身をチェック
+  expect(find('#HospitalizedNumberCard .NotesExpansionPanel .v-expansion-panel-content ul > li:nth-child(1)').text).to eq JA_JSON['HospitalizedNumberCard']['notes'][0]
   expect(find('#HospitalizedNumberCard .NotesExpansionPanel .v-expansion-panel-content table[class^=beds] > caption').text).to eq '岩手県の病床確保計画'
 
   # 注釈を表示ボタンをクリックすると閉じる
