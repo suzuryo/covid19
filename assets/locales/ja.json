@@ -571,7 +571,10 @@
   },
   "陽性者数/人口": "陽性者数/人口",
   "HospitalizedNumberCard": {
-    "title": "療養者数の推移"
+    "title": "療養者数の推移",
+    "notes": [
+      "2022/09/07に自宅療養の療養期間が10日から7日に変更になった"
+    ]
   },
   "HospitalCapacityCard": {
     "title": "入院病床の状況",
