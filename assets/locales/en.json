@@ -568,7 +568,10 @@
   },
   "陽性者数/人口": "Number of positive cases/Population",
   "HospitalizedNumberCard": {
-    "title": "Number of patients receiving treatment"
+    "title": "Number of patients receiving treatment",
+    "notes": [
+      "On 2022/09/07, the recuperation period for home care was changed from 10 days to 7 days."
+    ]
   },
   "HospitalCapacityCard": {
     "title": "Hospital care room status",

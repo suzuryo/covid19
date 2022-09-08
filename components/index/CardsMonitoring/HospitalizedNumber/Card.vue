@@ -20,6 +20,11 @@
         :day-period="isSingleCard && $vuetify.breakpoint.mdAndUp ? 120 : 60"
       >
         <template #notes>
+          <ul :class="$style.notes">
+            <li v-for="note in $t('HospitalizedNumberCard.notes')" :key="note">
+              {{ note }}
+            </li>
+          </ul>
           <table :class="$style.beds">
             <caption>
               {{
@@ -166,6 +171,9 @@ export default {
 </script>
 
 <style lang="scss" module>
+ul.notes {
+  margin-bottom: 1.5rem;
+}
 table {
   &.beds {
     border-collapse: collapse;
