@@ -74,7 +74,7 @@
     }
   },
   "ConfirmedCasesDetailsCard": {
-    "title": "Status of Positive cases",
+    "title": "Status of Positive cases [Update stopped]",
     "legends": [
       "Recuperating at home",
       "Hospitalization / Medical treatment, etc.",
@@ -93,7 +93,7 @@
     "reports": "cases"
   },
   "TestedNumberCard": {
-    "title": "Number of Tests",
+    "title": "Number of Tests [Update stopped]",
     "legends": [
       "PCR tests",
       "Antigen tests"
@@ -224,10 +224,10 @@
   "合計": " Total",
   "{date}の合計": " Total of %{date}",
   "WhatsNewCard": {
-    "title": "What's new"
+    "title": "What's new [Update stopped]"
   },
   "SelfDisclosuresCard": {
-    "title": "Self Disclosures",
+    "title": "Self Disclosures [Update stopped]",
     "notes": [
       "There is no legal obligation for voluntary disclosure. Fear of rumors and harmful rumors, protection of personal information, social responsibility as an organization, risk management and BCP, disclosure under the FIEA, loss of reputation due to later discovery, and providing peace of mind to customers and the community through prompt disclosure of facts. Information that was voluntarily disclosed on each website with courage after worrying about whether to disclose it for various reasons 👏",
       "Identified only"
@@ -262,8 +262,8 @@
   "接触歴等不明者数（７日間移動平均）": "Unlinked 7-MA",
   "PositiveRateCard": {
     "titles": [
-      "Positive rate",
-      "Number of tests (7-MA)"
+      "Positive rate [Update stopped]",
+      "Number of tests (7-MA) [Update stopped]"
     ],
     "検査の陽性率": "Positive Test Percentage",
     "陽性": "Positive",
@@ -298,7 +298,7 @@
   "発症日不明者 {num} 人を除く": "Except {num} people with unknown date of outbreak",
   "各保健所から報告があった患者の発生情報を、検査により陽性であることを医師が確認した日別（確定日別）に整理したものである": "The occurrence of infected people reported from health centers are organized by the confirmed date (the date confirmed positive by their doctors)",
   "ConfirmedCasesByMunicipalitiesCard": {
-    "title": "Positive cases by area",
+    "title": "Positive cases by area [Update stopped]",
     "legends": [
       "Municipality",
       "Positive cases",
@@ -413,19 +413,19 @@
   "感染症病床に余裕がある": "Infectious disease beds are almost available in all medical institutions.",
   "陽性者数が4.4人/日 (31人/週) (実効再生産数 R1.7) の状態が 3日間 続いたら、社会への協力要請": "If the number of positive cases remains at 4.4 persons/day (31 persons/week) (effective reproduction R1.7) for 3 days, a request for self-restraint will be made.",
   "ConfirmedCasesNumberCard": {
-    "title": "Transition of Positive cases by reported date"
+    "title": "Transition of Positive cases by reported date [Update stopped]"
   },
   "MonitoringConfirmedCasesNumberCard": {
     "titles": [
-      "Average Daily Cases in Last 7 Days",
-      "Number of Positive Cases per 100,000 population in Last 7 Days"
+      "Average Daily Cases in Last 7 Days [Update stopped]",
+      "Number of Positive Cases per 100,000 population in Last 7 Days [Update stopped]"
     ],
     "a": [
       "Including examinations at medical institutions"
     ]
   },
   "MonitoringConfirmedCasesNumberPer100kCard": {
-    "title": "Number of Positive Cases per 100,000 population in last 7 Days",
+    "title": "Number of Positive Cases per 100,000 population in last 7 Days [Update stopped]",
     "legends": [
       "Positive cases",
       "per 100,000 population in last 7 days"
@@ -450,7 +450,7 @@
     ]
   },
   "EffectiveReproductionNumberCard": {
-    "title": "Effective Reproduction Number (estimated)",
+    "title": "Effective Reproduction Number (estimated) [Update stopped]",
     "legends": [
       "Effective Reproduction Number (estimated)"
     ],
@@ -463,7 +463,7 @@
     ]
   },
   "StageCard": {
-    "title": "Indicators for stage determination",
+    "title": "Indicators for stage determination [Update stopped]",
     "指標": "Indicators",
     "医療提供体制の負荷": "Healthcare delivery system load",
     "医療のひっ迫具合": "Tightness of healthcare",
@@ -494,7 +494,7 @@
     ]
   },
   "HealthBurdenCard": {
-    "title": "Forecasting medical demand for level decisions",
+    "title": "Forecasting medical demand for level decisions [Update stopped]",
     "description": "Simulation results from the \"Prediction Tool\" presented in the \"New Approach to Level Classification",
     "table1_head": "Predicted value of persons requiring oxygen administration (including those who are critically ill)",
     "table2_head": "Projected number of critical care beds that may be needed",
@@ -515,7 +515,7 @@
   "COVID-19感染報告者数に基づく簡易実効再生産数推定方法(IASR Vol.42 p128-129: 2021年6月号)": "COVID-19感染報告者数に基づく簡易実効再生産数推定方法(IASR Vol.42 p128-129: 2021年6月号)",
   "を用いて計算": "",
   "WeeklyMapCard": {
-    "title": "Positive case map for the last week",
+    "title": "Positive case map for the last week [Update stopped]",
     "notes": [
       "Number of new positives in the last week, categorized by city, town, or village of residence, with color added.",
       "Areas with a high number of new positives in the last week are darker in color, and areas with a low number of positives are lighter in color."
@@ -535,7 +535,7 @@
   "かかりつけ医にて受診・検査をおこないます（診療・検査医療機関の場合）": "If your family doctor is a specific designated medical laboratory, you will be examined there.",
   "診療・検査医療機関の一覧": "List of medical institutions for covid19 treatment and testing",
   "ConfirmedCasesAttributesCard": {
-    "title": "Details of test positives",
+    "title": "Details of test positives [Update stopped]",
     "notes": [
       "Outbreak date is the number of relative days to the confirmed date.",
       "It does not reflect the existence of contact route at the time of publication, which may be revealed by additional investigation after publication."
@@ -559,7 +559,7 @@
   },
   "UntrackedRateCard": {
     "titles": [
-      "Number of Unlinked 7-MA (Positive cases with unknown routes of infection) "
+      "Number of Unlinked 7-MA (Positive cases with unknown routes of infection)  [Update stopped]"
     ],
     "notes": [
       "The new positive cases are classified into those with unlink (unknown contact history) or with link (known contact history) as of the date of publication.",
@@ -568,13 +568,13 @@
   },
   "陽性者数/人口": "Number of positive cases/Population",
   "HospitalizedNumberCard": {
-    "title": "Number of patients receiving treatment",
+    "title": "Number of patients receiving treatment [Update stopped]",
     "notes": [
       "On 2022/09/07, the recuperation period for home care was changed from 10 days to 7 days."
     ]
   },
   "HospitalCapacityCard": {
-    "title": "Hospital care room status",
+    "title": "Hospital care room status [Update stopped]",
     "入院中": "In use",
     "入院療養等調整中": "Waiting",
     "空き": "Vacant",
@@ -584,7 +584,7 @@
     ]
   },
   "HotelCapacityCard": {
-    "title": "Hotel care room status",
+    "title": "Hotel care room status [Update stopped]",
     "療養中": "In use",
     "空き": "Vacancy",
     "notes": [
@@ -595,21 +595,21 @@
     ]
   },
   "HomeCapacityCard": {
-    "title": "Home care status",
+    "title": "Home care status [Update stopped]",
     "療養中": "In use",
     "notes": [
       "Happened at 2022/01/14"
     ]
   },
   "TestTreatClinicMapCard": {
-    "title": "COVID-19 Test & Treat Clinic Map",
+    "title": "COVID-19 Test & Treat Clinic Map [Update stopped]",
     "notes": [
       "The original site of Iwate Prefecture https://www.pref.iwate.jp/kurashikankyou/iryou/covid19/1052938.html has only a PDF file of the list, but We wanted to see it on a map, so We mapped it to Google Maps based on the addresses included in the data published on the original site.",
       "We will stop providing this map when the map function is officially implemented on the original site or when the data is no longer publicly available."
     ]
   },
   "RestaurantCard": {
-    "title": "Iwate Restaurant Safety Certification Map",
+    "title": "Iwate Restaurant Safety Certification Map [Update stopped]",
     "notes": [
       "The original site of the Iwate Prefecture's https://iwate-ninshou.jp only shows a list of stores, but We wanted to see it on a map, so We mapped it to Google Maps based on the latitude and longitude included in the data published on the original site.",
       "The data (store name, address, URL, latitude and longitude) published on the original site is used as is, and we have not verified the accuracy of the data.",
@@ -618,13 +618,13 @@
     ]
   },
   "AgeGroupCard": {
-    "title": "Age group 7-day moving average of number of positive cases",
+    "title": "Age group 7-day moving average of number of positive cases [Update stopped]",
     "notes": [
       "7-day moving average of the number of new positive cases (based on reporting date) by age group"
     ]
   },
   "ConfirmedCasesAreaCard": {
-    "title": "Number of positive cases in health center jurisdiction (7-day moving average)",
+    "title": "Number of positive cases in health center jurisdiction (7-day moving average) [Update stopped]",
     "area": {
       "県全体": "IWATE PREF",
       "盛岡": "MORIOKA",
@@ -652,7 +652,7 @@
     ]
   },
   "ConfirmedCasesAreaPer100kCard": {
-    "title": "Number of Positive Cases by area per 100,000 population in last 7 Days",
+    "title": "Number of Positive Cases by area per 100,000 population in last 7 Days [Update stopped]",
     "notes": [
       "Morioka Area: Morioka",
       "Iwate Central Area: Hachimantai・Takizawa・Shizukuishi・Kuzumaki・Iwate・Shiwa・Yahaba",
@@ -667,7 +667,7 @@
     ]
   },
   "HealthBurdenHospitalCard": {
-    "title": "Projected number of secured hospital beds that may be needed",
+    "title": "Projected number of secured hospital beds that may be needed [Update stopped]",
     "自宅療養や療養施設を積極的に利用した場合": "Active use of home treatment and treatment facilities",
     "ハイリスク軽症者やハイリスクでなくとも中等症1は基本的に入院させる場合": "When high-risk minor illness or not high-risk but moderate illness1 is basically hospitalized",
     "確保病床435床": "435 secured hospital beds",
