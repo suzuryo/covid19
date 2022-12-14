@@ -51,21 +51,12 @@
               >{{ $t('診療・検査医療機関の一覧') }}
             </app-link>
           </p>
-          <p :class="$style.detail">
-            <app-link
-              :to="localePath('/cards/clinic-map/')"
-              :icon-size="20"
-              :icon-class="$style.icon"
-              :class="$style.detailButton"
-              >{{ $t('TestTreatClinicMapCard.title') }}
-            </app-link>
-          </p>
         </div>
         <div :class="[$style.box, $style.bgYellow]">
           <h5 :class="$style.boxHeading">
             {{
               $t(
-                '相談する医療機関に迷う場合や「かかりつけ医」がない場合「受診・相談センター」'
+                '相談する医療機関に迷う場合や「かかりつけ医」がない場合「いわて健康フォローアップセンター」'
               )
             }}
           </h5>
@@ -75,9 +66,9 @@
                 {{ $t('24時間 全日（土日・祝日を含む）') }}
               </dt>
               <dd>
-                <a :class="$style.tel" href="tel:019-651-3175">
+                <a :class="$style.tel" href="tel:0570-089-005">
                   <icon-phone :class="$style.icon" aria-hidden="true" />
-                  019-651-3175</a
+                  0570-089-005</a
                 >
               </dd>
             </div>
@@ -85,53 +76,37 @@
           <p :class="$style.notice">
             {{
               $t(
-                '聴覚に障害のある方をはじめ電話でのご相談が難しい方に向けてファクス (019-626-0837) でも受付をしています。'
+                '聴覚に障害のある方をはじめ電話でのご相談が難しい方に向けてファクス (050-3730-7658) でも受付をしています。'
               )
             }}
           </p>
         </div>
-      </div>
-      <div id="anx" ref="lowerTrigger" :class="$style.section">
-        <h4 :class="$style.sxnHeading">
-          <fig-cond-anx :class="$style.fig" aria-hidden="true" />
-          {{ $t('不安に思う方') }}
-        </h4>
-        <p :class="$style.detail">
-          <app-link
-            :to="extUrlFreePCR"
-            :icon-size="20"
-            :icon-class="$style.icon"
-            :class="$style.detailButton"
-            >{{ $t('無症状の方の薬局等におけるPCR検査等の無料化') }}
-          </app-link>
-        </p>
-        <p :class="$style.sxnText">
-          {{
-            $t(
-              '感染したかもしれないと不安に思う方、感染予防法を知りたい方などは、下記、新型コロナウイルス感染症相談窓口にご相談ください。'
-            )
-          }}
-        </p>
-        <div :class="[$style.box, $style.bgGray]">
+        <div :class="[$style.box, $style.bgYellow]">
           <h5 :class="$style.boxHeading">
-            <!-- TODO: 対応言語を確認 -->
-            {{ $t('新型コロナウイルス感染症相談窓口') }}
+            {{ $t('自ら検査する場合') }}
           </h5>
-          <dl :class="$style.contact">
-            <dt>{{ $t('9時～21時（土日祝含む）') }}</dt>
-            <dd>
-              <a :class="$style.tel" href="tel:019-629-6085">
-                <icon-phone :class="$style.icon" aria-hidden="true" />
-                019-629-6085</a
-              >
-            </dd>
-          </dl>
-          <p :class="$style.notice">
+          <p>
             {{
               $t(
-                '聴覚に障害のある方をはじめ電話でのご相談が難しい方に向けてファクス (019-626-0837) でも受付をしています。'
+                '重症化リスクの低い方は、検査キット送付センターを利用して自分で検査ができます'
               )
             }}
+          </p>
+          <p>
+            {{
+              $t(
+                'いわて陽性者登録センターに登録すると、健康サポート・必要時の宿泊療養施設の入所・食糧支援・パルスオキシメーターの貸与などを受けることができます'
+              )
+            }}
+          </p>
+          <p :class="$style.detail">
+            <app-link
+              to="https://www.pref.iwate.jp/kurashikankyou/iryou/seido/1058849.html"
+              :icon-size="20"
+              :icon-class="$style.icon"
+              :class="$style.detailButton"
+              >{{ $t('いわて検査キット送付センター') }}
+            </app-link>
           </p>
         </div>
       </div>
